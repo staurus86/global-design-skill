@@ -70,6 +70,9 @@ Use the design system defined in [path to SKILL.md].
 | Build an onboarding flow | "Use global-design-skill and design a user onboarding flow" |
 | Design a dashboard | "Use global-design-skill and build a dashboard for [app]" |
 | Run a design audit | "Use global-design-skill and audit this page: [HTML/screenshot/URL]" |
+| Find design references | "Use global-design-skill reference-hunter to find hero examples for [context]" |
+| Competitive analysis | "Use global-design-skill reference-hunter to compare [site1], [site2], [site3]" |
+| Audit a live URL | "Use global-design-skill reference-hunter to audit [URL]" |
 | Write a frontend spec | "Use global-design-skill and write a frontend ТЗ for [component]" |
 | Improve a hero section | "Use global-design-skill and improve this hero section" |
 | Improve navigation | "Use global-design-skill and improve the navigation" |
@@ -95,7 +98,7 @@ global-design-skill/
 │   ├── output-formats.md           ← Output format per audience
 │   └── quality-gates.md            ← 8 acceptance gates
 │
-├── agents/                         ← 10 specialized review agents
+├── agents/                         ← 11 specialized review agents
 │   ├── design-director.md          ← Visual maturity, brand alignment
 │   ├── ux-architect.md             ← User flows, IA, edge cases
 │   ├── conversion-designer.md      ← CTAs, pricing, friction
@@ -105,7 +108,8 @@ global-design-skill/
 │   ├── performance-auditor.md      ← CWV investigation, LCP/CLS/INP
 │   ├── copy-editor.md              ← Headline test, CTAs, banned words
 │   ├── motion-designer.md          ← Easing audit, duration, reduced-motion
-│   └── design-systems-auditor.md   ← Token coverage, debt scoring 0–100
+│   ├── design-systems-auditor.md   ← Token coverage, debt scoring 0–100
+│   └── reference-hunter.md         ← Find/score real examples, audit URLs
 │
 ├── blueprints/                     ← Build-from-scratch protocols
 │   ├── landing-page-from-scratch.md ← 9-section AIDA landing page
@@ -153,6 +157,15 @@ global-design-skill/
 │       ├── filters.md              └── bulk-actions.md
 │       └── dashboard-layouts.md
 │
+├── references/                     ← Curated real-world examples
+│   ├── inspiration-sites.md        ← 8-category site gallery (galleries, SaaS, portfolios...)
+│   ├── aesthetic-archetypes.md     ← Real sites per archetype A–H with annotations
+│   ├── saas-ui-examples.md         ← Annotated SaaS UI patterns (empty states, onboarding...)
+│   ├── marketing-sites.md          ← Hero/social proof/features/CTAs in production
+│   ├── portfolios.md               ← 8 annotated portfolio sites with thesis analysis
+│   ├── pricing-pages.md            ← Linear/Vercel/Stripe/Notion pricing analyzed
+│   └── navigation-examples.md      ← Sidebar/top nav/mobile/breadcrumbs in the wild
+│
 ├── tokens/                         ← Design token system
 │   ├── design-tokens.json          ← W3C DTCG format (Style Dictionary ready)
 │   ├── tokens.css                  ← CSS custom properties — light mode
@@ -162,9 +175,11 @@ global-design-skill/
 ├── templates/
 │   ├── specs/
 │   │   ├── frontend-tz.md          ← Gate 8 developer handoff template
-│   │   └── component-spec.md       ← Component API + states + ARIA template
+│   │   ├── component-spec.md       ← Component API + states + ARIA template
+│   │   └── design-review-report.md ← Review output with gates + scores + sign-off
 │   └── briefs/
-│       └── project-brief.md        ← Problem → goal → scope → sign-off
+│       ├── project-brief.md        ← Problem → goal → scope → sign-off
+│       └── redesign-brief.md       ← Redesign scope, constraints, acceptance criteria
 │
 ├── checklists/
 │   ├── global-design-review.md     ← 100+ checks, 11 sections, banned patterns
@@ -190,8 +205,12 @@ global-design-skill/
 │   ├── 06-dark-mode-implementation.md ← Token layer + toggle
 │   ├── landing-pages/
 │   │   └── 01-saas-hero-redesign.md  ← Banned hero → editorial split
-│   └── apps/
-│       └── 01-settings-page.md      ← Flat form → vertical tab nav
+│   ├── apps/
+│   │   └── 01-settings-page.md      ← Flat form → vertical tab nav
+│   ├── audits/
+│   │   └── 01-landing-page-audit.md  ← Full audit: 34/100 → all gates + fixes
+│   └── websites/
+│       └── 01-multi-page-site.md    ← Multi-page IA, nav system, schema, CSS Anchor
 │
 ├── integrations/                   ← 7 AI tool configuration files
 │   ├── claude-code/CLAUDE.md       ← Paste-ready CLAUDE.md snippet
@@ -261,6 +280,7 @@ Ten specialized agents for different phases and domains:
 | `copy-editor` | Any user-facing text | Headline test + rewrite examples |
 | `motion-designer` | Animation audit, flat pages | PASS / REVISE / BLOCKED |
 | `design-systems-auditor` | Token migration, consistency | Debt score 0–100 + migration path |
+| `reference-hunter` | Find examples, audit URLs, competitive analysis | Annotated examples + scores |
 
 ---
 

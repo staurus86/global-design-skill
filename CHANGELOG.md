@@ -198,21 +198,37 @@ Format: [version] — date — description
 - `examples/landing-pages/01-saas-hero-redesign.md` — banned centered hero → editorial left-aligned split with Fraunces + product screenshot
 - `examples/apps/01-settings-page.md` — flat single-column form → vertical tab navigation with two-column rows + isolated danger zone
 
+### Sprint 26 — References System + Reference Hunter Agent (13 files)
+
+- `references/inspiration-sites.md` — 8-category curated gallery: general galleries, SaaS/product, marketing, portfolios, pricing, navigation, forms, dashboards
+- `references/aesthetic-archetypes.md` — real production sites per archetype A–H, each with 8 examples + signature techniques + what to study
+- `references/saas-ui-examples.md` — annotated SaaS UI: command palette, empty states, settings pages, onboarding, loading states, errors, modals, notifications, tables
+- `references/marketing-sites.md` — hero sections, social proof, feature sections, pricing, CTAs, nav, animation — all annotated with "what to steal"
+- `references/portfolios.md` — 8 top portfolio sites (paco.me, rauno.me, leerob.io, antfu.me, joshwcomeau.com, maggieappleton.com, brianlovin.it, tobiasahlin.com) with thesis analysis
+- `references/pricing-pages.md` — Linear, Vercel, Stripe, Notion, GitHub, Intercom pricing analyzed — psychology, patterns, anti-patterns
+- `references/navigation-examples.md` — sidebar (Linear, Vercel, Stripe, Notion), top nav (Webflow, Stripe, Arc), mobile (bottom tabs, hamburger), breadcrumbs
+- `agents/reference-hunter.md` — 4 capabilities: (1) search by block category, (2) search by style/aesthetic, (3) competitive analysis, (4) URL audit with scoring rubric
+- `templates/specs/design-review-report.md` — structured review output: gates, dimension scores, banned patterns, critical/major/minor issues, sign-off table
+- `templates/briefs/redesign-brief.md` — redesign scope brief: what exists, what fails, constraints, acceptance criteria, sign-off
+- `examples/audits/01-landing-page-audit.md` — full audit of generic B2B SaaS landing: 34/100 → all 8 gates, banned patterns found, prioritized fixes
+- `examples/websites/01-multi-page-site.md` — multi-page site IA decisions, docs nav system, CSS Anchor Positioning, View Transitions, schema markup per page type
+
 ---
 
-## Total: 108 files, ~38,000 lines
+## Total: 121 files, ~44,000 lines
 
 | Category | Files | Description |
 |---|---|---|
 | Core skill | 5 | Entry point, routing, principles, gates, formats |
-| Agents | 10 | 10 specialized review roles |
+| Agents | 11 | 11 specialized review roles (+ reference-hunter) |
 | Blueprints | 8 | Build-from-scratch protocols |
 | Rules | 16 | Domain rules with rationale and code |
 | Patterns | 27 | Marketing, product UI, navigation, admin |
+| References | 7 | Curated real-world examples per category and archetype |
 | Tokens | 4 | JSON + CSS light + CSS dark + guide |
-| Templates | 3 | Specs and briefs |
+| Templates | 5 | Specs, briefs, review report, redesign brief |
 | Checklists | 3 | Design review, conversion, UI ship |
 | Recipes | 11 | Step-by-step improvement guides |
 | Integrations | 7 | Claude Code, Cursor, ChatGPT, Windsurf, Copilot, Figma (×2) |
-| Examples | 8 | Before/after worked examples |
+| Examples | 10 | Before/after worked examples + audits + websites |
 | Docs | 4 | README, CONTRIBUTING, CHANGELOG, install |
