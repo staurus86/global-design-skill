@@ -278,9 +278,20 @@ Full-repository cross-reference audit. Fixed dangling links left by an earlier `
 - Fixed `patterns/product-ui/data-tables.md` → `patterns/admin-ui/data-tables.md` in `rules/11-data-tables.md`
 - Fixed `skills/hyperdesign/references/color-alchemy.md` → `references/color-alchemy.md` in `tokens/README.md`
 
+### Sprint 30 — Publication Readiness (1 new file + metadata fixes)
+
+Prepared the repository for public GitHub release.
+
+- `LICENSE` — added MIT license file (© 2026 Stanislav Kirichenko)
+- Replaced placeholder GitHub URLs (`yourusername`, `your-org`) with the real repository path `github.com/staurus86/global-design-skill` in README, install.md, manifest.yaml, and the Claude Code integration
+- `manifest.yaml` — fixed `author` field, corrected `tokens` list (was 5 non-existent files, now the 3 real token files), completed the `agents` list (5 → 11) and `integrations` list (+windsurf, +github_copilot)
+- `install.md` — rewrote to remove references to a non-existent helper script; manual `cp` commands throughout; corrected token file names; added Windsurf and GitHub Copilot sections
+- `CONTRIBUTING.md` — removed stale "rule gaps" list (all 16 rules now exist)
+- `README.md` — added Author section (Stanislav Kirichenko / Staurus, sk-seo.ru), corrected the author name, linked the `LICENSE` file
+
 ---
 
-## Total: 153 files, ~59,000 lines
+## Total: 154 files, ~59,000 lines
 
 | Category | Files | Description |
 |---|---|---|
@@ -296,4 +307,4 @@ Full-repository cross-reference audit. Fixed dangling links left by an earlier `
 | Recipes | 15 | Step-by-step improvement guides incl. wow recipes |
 | Integrations | 8 | Claude Code, Cursor, ChatGPT, Windsurf, Copilot, Figma (×3) |
 | Examples | 11 | Before/after worked examples + audits + websites |
-| Docs | 5 | README, CONTRIBUTING, CHANGELOG, install, manifest |
+| Docs | 6 | README, CONTRIBUTING, CHANGELOG, install, manifest, LICENSE |

@@ -205,4 +205,4 @@ Full rule documentation in the `rules/` directory:
 
 ---
 
-*Source: github.com/[your-org]/global-design-skill — add to CLAUDE.md in any project*
+*Source: github.com/staurus86/global-design-skill — add to CLAUDE.md in any project*

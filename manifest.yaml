@@ -4,9 +4,9 @@ description: >
   A design operating system for AI-assisted development.
   Covers UX architecture, UI patterns, design tokens, agents,
   blueprints, checklists, and frontend handoff — from zero to production.
-author: sk-seo.ru
+author: Stanislav Kirichenko (Staurus) — https://sk-seo.ru
 license: MIT
-repository: https://github.com/yourusername/global-design-skill
+repository: https://github.com/staurus86/global-design-skill
 
 standards:
   css: "2026 Baseline (nesting, :has, @property, @starting-style, anchor-positioning, scroll-driven-animations)"
@@ -26,19 +26,25 @@ agents:
   - agents/conversion-designer.md
   - agents/design-critic.md
   - agents/frontend-handoff-reviewer.md
+  - agents/accessibility-auditor.md
+  - agents/performance-auditor.md
+  - agents/copy-editor.md
+  - agents/motion-designer.md
+  - agents/design-systems-auditor.md
+  - agents/reference-hunter.md
 
 integrations:
   claude_code: integrations/claude-code/CLAUDE.md
   cursor: integrations/cursor/cursor-rules.md
   chatgpt: integrations/chatgpt/custom-gpt-instructions.md
+  windsurf: integrations/windsurf/rules.md
+  github_copilot: integrations/github-copilot/copilot-instructions.md
   figma: integrations/figma/figma-handoff-checklist.md
 
-token_sets:
-  - tokens/default-tokens.json
-  - tokens/saas-dark.json
-  - tokens/saas-light.json
-  - tokens/enterprise-admin.json
-  - tokens/editorial.json
+tokens:
+  - tokens/design-tokens.json
+  - tokens/tokens.css
+  - tokens/tokens-dark.css
 
 compatibility:
   claude_code: ">=1.0"

@@ -10,7 +10,7 @@ This is a decision framework, not a style guide. Every contribution must answer:
 - New patterns in `patterns/` — real-world variants with working code
 - Additional blueprints in `blueprints/` for project types not covered
 - New recipes in `recipes/` based on problems you actually solved
-- Rule files filling gaps in `rules/` (03-typography, 04-color, 05-animation, 07-accessibility, 08-performance)
+- New rule files for domains not yet covered, or refinements to existing `rules/`
 - Agent refinements based on real usage
 
 **Low value (don't submit):**

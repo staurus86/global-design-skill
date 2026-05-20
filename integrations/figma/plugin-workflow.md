@@ -29,7 +29,7 @@
 
 ```
 Settings → Sync → GitHub
-Repository: your-org/your-repo
+Repository: <your-org>/<your-project>   # the repo where your tokens live
 Branch: main
 File path: design-tokens.json
 Token: [GitHub Personal Access Token with repo scope]

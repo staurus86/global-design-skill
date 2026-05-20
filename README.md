@@ -37,7 +37,7 @@ Global Design Skill =
 
 ```bash
 # 1. Clone
-git clone https://github.com/yourusername/global-design-skill.git
+git clone https://github.com/staurus86/global-design-skill.git
 
 # 2. Add to your project's CLAUDE.md
 echo "\n# Design System\nSee global-design-skill/skills/global-design/SKILL.md" >> your-project/CLAUDE.md
@@ -404,10 +404,15 @@ See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 See [CHANGELOG.md](CHANGELOG.md).
 
+## Author
+
+**Stanislav Kirichenko** (Staurus) — ML SEO Tech Lead, 20 years in technical SEO and AI/ML automation.
+
+- Website: [sk-seo.ru](https://sk-seo.ru)
+- About: [sk-seo.ru/about.html](https://sk-seo.ru/about.html)
+
+If this project is useful to you, a link back to [sk-seo.ru](https://sk-seo.ru) is appreciated.
+
 ## License
 
-MIT — use freely, attribution appreciated.
-
----
-
-Built by [Stanislav Kalyuzhnyy](https://sk-seo.ru) — ML SEO Tech Lead.
+[MIT](LICENSE) © 2026 Stanislav Kirichenko — use freely, attribution appreciated.
