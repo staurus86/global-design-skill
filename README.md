@@ -2,7 +2,7 @@
 
 A design operating system for AI-assisted development. Not a style guide — a production toolkit for building interfaces from zero to frontend handoff.
 
-Works with Claude Code, Cursor, ChatGPT Custom GPTs, and any AI coding assistant.
+Works with Claude Code, Cursor, Windsurf, GitHub Copilot, ChatGPT Custom GPTs, and any AI coding assistant.
 
 [![Version](https://img.shields.io/badge/version-1.0.0-blue)](CHANGELOG.md)
 [![Standards](https://img.shields.io/badge/CSS-2026%20Baseline-green)](rules/)
@@ -65,12 +65,21 @@ Use the design system defined in [path to SKILL.md].
 | Build a landing page from scratch | "Use global-design-skill and create a landing page for [product]" |
 | Build a SaaS app | "Use global-design-skill and scaffold a SaaS app shell for [product]" |
 | Build an admin panel | "Use global-design-skill and architect an admin panel for [product]" |
+| Build a pricing page | "Use global-design-skill and create a pricing page for [product]" |
+| Build a portfolio | "Use global-design-skill and create a developer portfolio for [name]" |
+| Build an onboarding flow | "Use global-design-skill and design a user onboarding flow" |
 | Design a dashboard | "Use global-design-skill and build a dashboard for [app]" |
 | Run a design audit | "Use global-design-skill and audit this page: [HTML/screenshot/URL]" |
 | Write a frontend spec | "Use global-design-skill and write a frontend ТЗ for [component]" |
 | Improve a hero section | "Use global-design-skill and improve this hero section" |
+| Improve navigation | "Use global-design-skill and improve the navigation" |
+| Improve typography | "Use global-design-skill and improve the typography" |
+| Add animations | "Use global-design-skill and add animations to this page" |
+| Fix loading states | "Use global-design-skill and improve the loading states" |
 | Add dark mode | "Use global-design-skill and add dark mode to this project" |
 | Review before shipping | "Use global-design-skill and run a UI review checklist" |
+| WCAG accessibility audit | "Use global-design-skill accessibility-auditor on this component" |
+| Performance audit | "Use global-design-skill performance-auditor on this page" |
 
 ---
 
@@ -86,53 +95,63 @@ global-design-skill/
 │   ├── output-formats.md           ← Output format per audience
 │   └── quality-gates.md            ← 8 acceptance gates
 │
-├── agents/                         ← Specialized review agents
+├── agents/                         ← 10 specialized review agents
 │   ├── design-director.md          ← Visual maturity, brand alignment
 │   ├── ux-architect.md             ← User flows, IA, edge cases
 │   ├── conversion-designer.md      ← CTAs, pricing, friction
 │   ├── design-critic.md            ← Adversarial — finds banned patterns
-│   └── frontend-handoff-reviewer.md ← Gate 8: implementation-ready?
+│   ├── frontend-handoff-reviewer.md ← Gate 8: implementation-ready?
+│   ├── accessibility-auditor.md    ← 4-phase WCAG audit, severity matrix
+│   ├── performance-auditor.md      ← CWV investigation, LCP/CLS/INP
+│   ├── copy-editor.md              ← Headline test, CTAs, banned words
+│   ├── motion-designer.md          ← Easing audit, duration, reduced-motion
+│   └── design-systems-auditor.md   ← Token coverage, debt scoring 0–100
 │
 ├── blueprints/                     ← Build-from-scratch protocols
 │   ├── landing-page-from-scratch.md ← 9-section AIDA landing page
 │   ├── saas-app-from-scratch.md    ← 3 shell options, 6 core screens
 │   ├── admin-panel-from-scratch.md ← Density-first, 6 screens
 │   ├── website-from-scratch.md     ← Multi-page IA, nav, schema
-│   └── redesign-existing-page.md   ← 6-phase redesign protocol
+│   ├── redesign-existing-page.md   ← 6-phase redesign protocol
+│   ├── pricing-page-from-scratch.md ← Hero+toggle, 3 tiers, FAQ, trust
+│   ├── portfolio-from-scratch.md   ← Work grid, about, contact, anti-patterns
+│   └── onboarding-flow-from-scratch.md ← Signup → aha moment → checklist
 │
-├── rules/                          ← Design rules by domain
-│   ├── 01-visual-hierarchy.md      ← 10 hierarchy rules
-│   ├── 02-layout-and-grid.md       ← 12 layout rules, breakpoints
-│   ├── 06-components.md            ← Component contracts, 10 rules
-│   ├── 12-admin-panels.md          ← Density-first, 11 rules
-│   ├── 13-saas-products.md         ← Day 1 vs Day 365, 10 rules
-│   ├── 14-landing-pages.md         ← Single metric, 11 rules
-│   └── 16-design-for-seo.md        ← CWV, schema, semantic HTML
+├── rules/                          ← 16 domain rules files
+│   ├── 01-visual-hierarchy.md      ├── 09-responsive.md
+│   ├── 02-layout-and-grid.md       ├── 10-forms.md
+│   ├── 03-typography.md            ├── 11-data-tables.md
+│   ├── 04-color.md                 ├── 12-admin-panels.md
+│   ├── 05-animation.md             ├── 13-saas-products.md
+│   ├── 06-components.md            ├── 14-landing-pages.md
+│   ├── 07-accessibility.md         ├── 15-iconography.md
+│   └── 08-performance.md           └── 16-design-for-seo.md
 │
 ├── patterns/
-│   ├── marketing-blocks/           ← Landing page sections
-│   │   ├── hero-sections.md        ← 4 patterns: split, centered, video, bento
-│   │   ├── pricing-sections.md     ← 3 patterns + psychology principles
-│   │   ├── social-proof.md         ← 5 patterns: logos, metrics, testimonials
-│   │   ├── cta-sections.md         ← 4 patterns + button system
-│   │   └── faq-sections.md         ← 3 patterns + FAQPage schema
+│   ├── marketing-blocks/           ← 7 landing page section files
+│   │   ├── hero-sections.md        ├── feature-sections.md
+│   │   ├── pricing-sections.md     ├── comparison-sections.md
+│   │   ├── social-proof.md         └── stats-sections.md
+│   │   ├── cta-sections.md
+│   │   └── faq-sections.md
 │   │
-│   ├── product-ui/                 ← SaaS / app UI
-│   │   ├── onboarding.md           ← Linear wizard, checklist, product tour
-│   │   ├── empty-states.md         ← 5 types with copy formulas
-│   │   ├── error-states.md         ← 9-type taxonomy, 5 patterns
-│   │   ├── loading-states.md       ← Decision matrix + 6 patterns
-│   │   └── settings-pages.md       ← IA, forms, toggles, danger zone
+│   ├── product-ui/                 ← 10 SaaS / app UI files
+│   │   ├── onboarding.md           ├── forms.md
+│   │   ├── empty-states.md         ├── modals.md
+│   │   ├── error-states.md         ├── notifications.md
+│   │   ├── loading-states.md       ├── search.md
+│   │   ├── settings-pages.md       ├── tooltips-popovers.md
+│   │   └── command-palette.md
 │   │
-│   ├── navigation/                 ← Navigation systems
-│   │   ├── header-patterns.md      ← Marketing + app headers
-│   │   ├── sidebar-patterns.md     ← Full + collapsed + workspace switcher
-│   │   └── mobile-navigation.md    ← Bottom tab bar + hamburger drawer
+│   ├── navigation/                 ← 6 navigation pattern files
+│   │   ├── header-patterns.md      ├── tabs-patterns.md
+│   │   ├── sidebar-patterns.md     ├── breadcrumbs.md
+│   │   └── mobile-navigation.md    └── pagination.md
 │   │
-│   └── admin-ui/                   ← Admin / data-heavy interfaces
-│       ├── data-tables.md          ← Full anatomy: sort, select, pagination
-│       ├── filters.md              ← Filter bar, chips, dropdown, URL state
-│       └── dashboard-layouts.md    ← KPI cards, charts, real-time pattern
+│   └── admin-ui/                   ← 5 admin / data-heavy files
+│       ├── data-tables.md          ├── charts.md
+│       ├── filters.md              └── bulk-actions.md
+│       └── dashboard-layouts.md
 │
 ├── tokens/                         ← Design token system
 │   ├── design-tokens.json          ← W3C DTCG format (Style Dictionary ready)
@@ -152,15 +171,37 @@ global-design-skill/
 │   ├── landing-conversion-review.md ← AIDA, CTA, social proof, friction, SEO
 │   └── ui-review.md                ← Forms, tables, modals, loading, errors, a11y
 │
-├── recipes/                        ← "How to improve X" step-by-step guides
-│   ├── make-page-more-premium.md   ← 9 steps: font → texture → asymmetry
-│   ├── make-interface-cleaner.md   ← 9 steps: 1 accent → borders → hierarchy
-│   ├── improve-hero-section.md     ← 7 steps: layout → headline → visual → CTA
-│   ├── improve-pricing-page.md     ← 8 steps: annual → recommended → anchoring
-│   ├── improve-forms.md            ← 7 steps: fields → labels → errors → loading
-│   ├── add-dark-mode.md            ← 7 steps: tokens → toggle → flash prevention
-│   ├── improve-mobile-version.md   ← 10 steps: dvh → targets → safe areas
-│   └── improve-empty-states.md     ← 5 types with copy formulas and animations
+├── recipes/                        ← 11 step-by-step improvement guides
+│   ├── make-page-more-premium.md   ├── improve-navigation.md
+│   ├── make-interface-cleaner.md   ├── improve-typography.md
+│   ├── improve-hero-section.md     ├── add-animations.md
+│   ├── improve-pricing-page.md     ├── improve-loading-states.md
+│   ├── improve-forms.md            └── improve-onboarding.md
+│   ├── add-dark-mode.md
+│   ├── improve-mobile-version.md
+│   └── improve-empty-states.md
+│
+├── examples/                       ← Before/after worked examples
+│   ├── 01-hero-redesign.md         ← Font, gradient, CTA fixes
+│   ├── 02-color-token-migration.md ← Hardcoded hex → OKLCH tokens
+│   ├── 03-form-accessibility.md    ← 8 a11y fixes
+│   ├── 04-card-grid-cleanup.md     ← Equal grid → asymmetric bento
+│   ├── 05-performance-lcp.md       ← LCP 4.2s → 1.8s
+│   ├── 06-dark-mode-implementation.md ← Token layer + toggle
+│   ├── landing-pages/
+│   │   └── 01-saas-hero-redesign.md  ← Banned hero → editorial split
+│   └── apps/
+│       └── 01-settings-page.md      ← Flat form → vertical tab nav
+│
+├── integrations/                   ← 7 AI tool configuration files
+│   ├── claude-code/CLAUDE.md       ← Paste-ready CLAUDE.md snippet
+│   ├── cursor/cursor-rules.md      ← .cursorrules content
+│   ├── chatgpt/custom-gpt-instructions.md ← GPT system prompt
+│   ├── windsurf/rules.md           ← .windsurfrules content
+│   ├── github-copilot/copilot-instructions.md ← Copilot Chat rules
+│   └── figma/
+│       ├── variables-export-guide.md  ← Primitives + semantic + Style Dictionary
+│       └── plugin-workflow.md         ← Tokens Studio + handoff gate
 │
 ├── README.md                       ← This file
 ├── CONTRIBUTING.md                 ← Contribution standards
@@ -206,7 +247,7 @@ Dark mode: import `tokens-dark.css` and add `data-theme="dark"` to `<html>`. See
 
 ## Agents
 
-Five agents run in sequence. Each has a distinct role:
+Ten specialized agents for different phases and domains:
 
 | Agent | Runs when | Verdict format |
 |---|---|---|
@@ -215,6 +256,11 @@ Five agents run in sequence. Each has a distinct role:
 | `conversion-designer` | Landing pages, pricing, onboarding | Friction inventory |
 | `design-critic` | After design-director | REJECTED / CONDITIONAL / APPROVED |
 | `frontend-handoff-reviewer` | Before dev handoff | Pass/fail per Gate 8 criterion |
+| `accessibility-auditor` | WCAG review, pre-ship | Severity matrix (critical/major/minor) |
+| `performance-auditor` | CWV issues, slow pages | CWV dashboard + action list |
+| `copy-editor` | Any user-facing text | Headline test + rewrite examples |
+| `motion-designer` | Animation audit, flat pages | PASS / REVISE / BLOCKED |
+| `design-systems-auditor` | Token migration, consistency | Debt score 0–100 + migration path |
 
 ---
 

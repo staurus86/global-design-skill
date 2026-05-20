@@ -115,28 +115,104 @@ Format: [version] — date — description
 - `integrations/cursor/cursor-rules.md` — .cursorrules content for Cursor IDE: complete rule set in cursor-native format, 3 setup options (file/settings/docs)
 - `integrations/chatgpt/custom-gpt-instructions.md` — full system prompt for Custom GPT or OpenAI API: role definition, all rule categories, banned patterns, color strategy guide, tech stack defaults, response format instructions, Python API usage example
 
+### Sprint 13 — Worked Examples (5 files)
+
+- `examples/01-hero-redesign.md` — centered to editorial split: font, gradient, CTA hierarchy fixes
+- `examples/02-color-token-migration.md` — 12 files of hardcoded hex → OKLCH semantic token layer
+- `examples/03-form-accessibility.md` — 8 a11y fixes: labels, error formula, touch targets, autocomplete
+- `examples/04-card-grid-cleanup.md` — 3-equal-column grid → asymmetric bento with hierarchy
+- `examples/05-performance-lcp.md` — fetchpriority, preload, image sizing, defer: LCP 4.2s → 1.8s
+
+### Sprint 14 — Missing Rules (4 files)
+
+- `rules/09-responsive.md` — 5 breakpoints, mobile-first, 100dvh, safe area insets, srcset/sizes, hover-only gating
+- `rules/10-forms.md` — minimum fields, blur validation, error formula, no reset, autocomplete/inputmode, disabled states
+- `rules/11-data-tables.md` — column alignment, density modes, aria-sort, row selection, sticky header, pagination vs infinite
+- `rules/15-iconography.md` — stroke 1.5px, currentColor, single icon set, no emoji as icons, semantic labels
+
+### Sprint 15 — Missing Patterns (4 files)
+
+- `patterns/product-ui/forms.md` — sign-in, settings, multi-step, shared elements
+- `patterns/product-ui/modals.md` — confirmation dialog, form modal, drawer, @starting-style entry, focus trap
+- `patterns/product-ui/notifications.md` — 4-type decision tree, toast manager, banner, inline alert, aria-live
+- `patterns/marketing-blocks/feature-sections.md` — alternating split, asymmetric bento grid, how-it-works steps
+
+### Sprint 16 — New Agents (5 files)
+
+- `agents/accessibility-auditor.md` — 4-phase WCAG audit (visual, keyboard, ARIA, content), severity matrix, WCAG 2.2 table
+- `agents/performance-auditor.md` — CWV investigation, LCP/CLS/INP identification, budget table, regression detection
+- `agents/copy-editor.md` — headline test, CTA formula, error formula, 20+ banned words, tone calibration table
+- `agents/motion-designer.md` — easing audit by context, duration scale, prefers-reduced-motion, motion budget by page type
+- `agents/design-systems-auditor.md` — token coverage grep commands, component state matrix, debt scoring 0–100, migration path
+
+### Sprint 17 — Marketing Patterns + Recipes (3 files)
+
+- `patterns/marketing-blocks/feature-sections.md` — alternating split, asymmetric bento, how-it-works with connectors
+- `recipes/improve-navigation.md` — 6 steps: Hick's Law audit, rename to user goals, active state, mobile nav, breadcrumbs
+- `recipes/improve-typography.md` — 7 steps: font replacement, fluid scale, line-height, letter-spacing, eyebrow, 65ch prose, gradient text
+
+### Sprint 18 — Example + New Integrations (3 files)
+
+- `examples/06-dark-mode-implementation.md` — primitive→semantic token layer, class-based toggle, localStorage, no-flash inline script, Next.js implementation
+- `integrations/windsurf/rules.md` — .windsurfrules content: all 8 rule categories in Windsurf-native format
+- `integrations/github-copilot/copilot-instructions.md` — .github/copilot-instructions.md: full design system rules for Copilot Chat
+
+### Sprint 19 — Figma Integration (2 files)
+
+- `integrations/figma/variables-export-guide.md` — variable architecture (primitives + semantic), Tokens Studio export, Style Dictionary transform, GitHub Actions auto-sync
+- `integrations/figma/plugin-workflow.md` — plugin stack, Tokens Studio setup + GitHub sync, contrast checking workflow, handoff annotation, Gate checklist
+
+### Sprint 20 — Navigation Patterns (3 files)
+
+- `patterns/navigation/tabs-patterns.md` — horizontal tabs, pill tabs, vertical tabs, keyboard handler, ARIA roles
+- `patterns/navigation/breadcrumbs.md` — standard, collapsed (ellipsis), dropdown variant, JSON-LD structured data
+- `patterns/navigation/pagination.md` — standard, compact, rows-per-page, ellipsis algorithm, rel=prev/next SEO
+
+### Sprint 21 — Product UI Patterns (3 files)
+
+- `patterns/product-ui/search.md` — inline filter, live search with combobox ARIA + keyboard, empty state
+- `patterns/product-ui/tooltips-popovers.md` — CSS-only tooltip, click popover, info tooltip, positioning rules
+- `patterns/product-ui/command-palette.md` — full ⌘K palette: combobox, grouping, keyboard nav, search, command data schema
+
+### Sprint 22 — Marketing + Admin Patterns (4 files)
+
+- `patterns/marketing-blocks/comparison-sections.md` — pricing card grid, feature comparison table with highlighted column
+- `patterns/marketing-blocks/stats-sections.md` — horizontal stats bar, stats with context + source, animated counter
+- `patterns/admin-ui/charts.md` — chart type selection, Recharts line/bar/donut, sparklines, accessibility requirements
+- `patterns/admin-ui/bulk-actions.md` — inline toolbar (slides in on selection), sticky bottom bar (mobile), confirmation modal
+
+### Sprint 23 — Recipes (3 files)
+
+- `recipes/add-animations.md` — 8 steps: motion budget, easing tokens, hover transitions, IntersectionObserver, hero entrance, skeleton shimmer, motion/react migration, @starting-style modals
+- `recipes/improve-loading-states.md` — 5 patterns: skeleton loading, button spinner, optimistic UI, blur-up images, empty state
+- `recipes/improve-onboarding.md` — 3 principles, multi-step wizard component, empty dashboard checklist, activation metrics
+
+### Sprint 24 — Blueprints (3 files)
+
+- `blueprints/pricing-page-from-scratch.md` — hero + annual toggle, 3-tier cards, comparison table, FAQ accordion, trust strip, final CTA, pricing psychology checklist
+- `blueprints/portfolio-from-scratch.md` — hero with availability status, work grid (featured + 2-col), short about, contact CTA, portfolio anti-patterns
+- `blueprints/onboarding-flow-from-scratch.md` — signup form (OAuth first), 3-step wizard, aha moment animation, getting-started checklist, activation metrics
+
+### Sprint 25 — Example Directories (2 files)
+
+- `examples/landing-pages/01-saas-hero-redesign.md` — banned centered hero → editorial left-aligned split with Fraunces + product screenshot
+- `examples/apps/01-settings-page.md` — flat single-column form → vertical tab navigation with two-column rows + isolated danger zone
+
 ---
 
-## Total: 65 files, ~21,000 lines
+## Total: 108 files, ~38,000 lines
 
 | Category | Files | Description |
 |---|---|---|
 | Core skill | 5 | Entry point, routing, principles, gates, formats |
-| Agents | 5 | 5 specialized review roles |
-| Blueprints | 5 | Build-from-scratch protocols |
-| Rules | 12 | Domain rules with rationale and code |
-| Patterns | 16 | Marketing, product UI, navigation, admin |
+| Agents | 10 | 10 specialized review roles |
+| Blueprints | 8 | Build-from-scratch protocols |
+| Rules | 16 | Domain rules with rationale and code |
+| Patterns | 27 | Marketing, product UI, navigation, admin |
 | Tokens | 4 | JSON + CSS light + CSS dark + guide |
 | Templates | 3 | Specs and briefs |
 | Checklists | 3 | Design review, conversion, UI ship |
-| Recipes | 8 | Step-by-step improvement guides |
-| Integrations | 3 | Claude Code, Cursor, ChatGPT configurations |
+| Recipes | 11 | Step-by-step improvement guides |
+| Integrations | 7 | Claude Code, Cursor, ChatGPT, Windsurf, Copilot, Figma (×2) |
+| Examples | 8 | Before/after worked examples |
 | Docs | 4 | README, CONTRIBUTING, CHANGELOG, install |
-
----
-
-## Upcoming
-
-- `examples/` — worked examples with before/after rationale
-- Rules gaps: `09` through `16` (SEO, responsive, components extended, etc.)
-- Patterns gaps: form patterns, modal patterns, notification system
