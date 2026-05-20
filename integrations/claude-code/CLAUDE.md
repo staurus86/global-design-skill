@@ -30,16 +30,21 @@ You are working on a project that follows the **global-design-skill** design sys
 - No gradient text (`background-clip: text` banned)
 - Banned primary display fonts: Inter, Roboto, Arial, Helvetica, Poppins, Space Grotesk
 
-### Animation
+### Animation & Effects
 - Every element must enter — nothing appears statically
 - No `ease-in-out`, no `ease` — all `cubic-bezier()` via `var(--ease-*)` tokens
 - No `transition: all` — explicit property list only
 - `@starting-style` for elements transitioning from `display: none`
-- `prefers-reduced-motion` override on every animation
+- `prefers-reduced-motion` override on EVERY animation and transition
 - `IntersectionObserver` for scroll triggers — never `window.addEventListener('scroll')`
+- `will-change: transform` set only during active animation, removed after
 - No multiple simultaneous `animate-pulse` — use shimmer pattern
 - Sequential elements stagger 60–120ms
 - Import from `motion/react` — never `framer-motion`
+- Canvas `devicePixelRatio` capped at 2 — `Math.min(window.devicePixelRatio, 2)`
+- Three.js / R3F canvas pauses when off-screen via `IntersectionObserver`
+- Cursor / tilt effects disabled on `pointer: coarse` (touch devices)
+- `min-height: 100dvh` on full-screen sections — never `100vh` (iOS Safari bug)
 
 ### Accessibility (WCAG 2.2 AA minimum)
 - All interactive elements reachable and operable by keyboard
@@ -125,6 +130,10 @@ Motion:    transition: all
            ease-in-out on any transition
            Multiple simultaneous animate-pulse
            Importing from framer-motion
+           window.addEventListener('scroll') for animation calculations
+           will-change: transform left on permanently
+           h-screen / 100vh on full-height sections (use 100dvh)
+           Cursor/tilt effects on touch devices (pointer: coarse)
 
 Copy:      "Seamless", "Elevate", "Unleash", "Next-Gen", "Empower", "Revolutionize"
            Placeholder data: "John Doe", "Acme Corp", generic numbers
@@ -147,7 +156,12 @@ Before marking any UI task complete:
 [ ] Color contrast verified (4.5:1 text, 3:1 components)
 [ ] Touch targets ≥ 44×44px
 [ ] No banned patterns present
+[ ] Effects: will-change removed after animation completes
+[ ] Effects: cursor/tilt disabled on pointer: coarse
+[ ] Effects: min-height: 100dvh used (not 100vh)
 ```
+
+For pages with motion/effects, also run `checklists/wow-effects-checklist.md` (score ≥ 80% required).
 
 ---
 
@@ -157,19 +171,37 @@ Full rule documentation in the `rules/` directory:
 
 | Rule | File |
 |---|---|
-| Spacing & Layout | `rules/01-spacing.md` |
-| Cognitive Laws | `rules/02-cognitive-laws.md` |
+| Visual Hierarchy | `rules/01-visual-hierarchy.md` |
+| Layout and Grid | `rules/02-layout-and-grid.md` |
 | Typography | `rules/03-typography.md` |
-| Color | `rules/04-color.md` |
-| Animation | `rules/05-animation.md` |
+| Color (OKLCH) | `rules/04-color.md` |
+| Animation and Motion | `rules/05-animation.md` |
 | Components | `rules/06-components.md` |
-| Accessibility | `rules/07-accessibility.md` |
-| Performance | `rules/08-performance.md` |
+| Accessibility (WCAG 2.2) | `rules/07-accessibility.md` |
+| Performance (CWV) | `rules/08-performance.md` |
+| Responsive Design | `rules/09-responsive.md` |
+| Forms | `rules/10-forms.md` |
+| Data Tables | `rules/11-data-tables.md` |
+| Landing Pages | `rules/14-landing-pages.md` |
+| Iconography | `rules/15-iconography.md` |
 
-Patterns: `patterns/marketing-blocks/` and `patterns/product-ui/`
-Recipes: `recipes/` — targeted improvements for specific problems
-Blueprints: `blueprints/` — complete page/section scaffolds
-Tokens: `tokens/tokens.css` + `tokens/tokens-dark.css`
+**Effects patterns** (animations, parallax, 3D, motion): `patterns/effects/`
+
+| Effect | Pattern |
+|---|---|
+| Grain, mesh, spotlight, glow | `patterns/effects/visual-effects.md` |
+| Parallax (CSS / JS / GSAP) | `patterns/effects/parallax-system.md` |
+| Text reveals, scramble, marquee | `patterns/effects/text-animations.md` |
+| Pinned scroll, horizontal gallery | `patterns/effects/scroll-experiences.md` |
+| Hover tilt, magnetic button | `patterns/effects/hover-effects.md` |
+| Custom cursor | `patterns/effects/cursor-effects.md` |
+| CSS 3D, Three.js, Spline | `patterns/effects/3d-effects.md` |
+
+**Blueprints**: `blueprints/` — complete page scaffolds  
+**Wow blueprint**: `blueprints/interactive-landing-page.md` — full effects stack  
+**Recipes**: `recipes/` — targeted improvements  
+**Tokens**: `tokens/tokens.css` + `tokens/tokens-dark.css`  
+**Real-world references**: `references/` — curated production examples
 
 ---
 
