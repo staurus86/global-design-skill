@@ -404,7 +404,26 @@ Anti-patterns
 
 ## Reference Files
 
-Load on demand — not all at once. These are curated real-world examples.
+Load on demand — not all at once.
+
+**Knowledge references** — deep domain code and technique catalogs:
+
+| Domain | File |
+|---|---|
+| Typography + variable fonts | `references/typography.md` |
+| OKLCH color science | `references/color-alchemy.md` |
+| Motion: CSS + GSAP patterns | `references/motion-systems.md` |
+| Motion: React API (hooks, scroll, variants) | `references/motion-dev.md` |
+| Visual effects catalog | `references/visual-effects.md` |
+| 3D / WebGL / R3F | `references/3d-animations.md` |
+| Accessibility: ARIA, focus, keyboard | `references/accessibility.md` |
+| Performance: CWV, images, fonts, bundle | `references/performance.md` |
+| Design tokens: spacing, shadow, radius | `references/tokens.md` |
+| Forms: states, validation, components | `references/forms.md` |
+| Responsive: breakpoints, container queries | `references/responsive.md` |
+| Data visualization: charts, tables, KPIs | `references/data-viz.md` |
+
+**Curated example references** — real-world production sites to study:
 
 | Need | File |
 |---|---|
@@ -416,6 +435,4 @@ Load on demand — not all at once. These are curated real-world examples.
 | Best pricing pages | `references/pricing-pages.md` |
 | Navigation in real products | `references/navigation-examples.md` |
 
-For visual effects implementation code: `patterns/effects/` (not in references — use the patterns directory directly).
-
-For design domain rules (OKLCH color, typography, animation easing, accessibility): `rules/` directory.
+For visual effects implementation code, use `patterns/effects/` directly. For design domain rules, use the `rules/` directory.

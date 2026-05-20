@@ -241,27 +241,43 @@ Format: [version] — date — description
 - `patterns/effects/text-animations.md` — split reveal (CSS + GSAP SplitText), blur-in sequence, character scramble hover, typewriter with cursor, variable font weight on scroll, gradient sweep, velocity marquee, count-up with IntersectionObserver
 - `patterns/effects/scroll-experiences.md` — Lenis smooth scroll + GSAP integration, pinned stacking cards, horizontal scroll gallery, reading progress bar, section reveal system (IntersectionObserver), scroll-linked opacity fade, scroll snap
 - `patterns/effects/hover-effects.md` — 3D card tilt + shine (mouse tracking), magnetic button, button fill slide/radial, image zoom/clip-path/overlay/caption, link underline draw, card lift, pill nav sliding indicator
+- `patterns/effects/cursor-effects.md` — cursor glow tracking, custom dot cursor with lerp + hover/click states, mix-blend-mode invert, text-reveal cursor, cursor trail (`pointer: coarse` detection throughout)
 
 **recipes/ (2 files):**
 - `recipes/create-wow-hero.md` — 9-step wow hero: headline formula, 3 layout options, background atmosphere per archetype, display font setup, product visual with bezel+perspective, CTA hierarchy with magnetic, trust signal, entrance sequence, LCP optimization checklist
 - `recipes/add-page-transitions.md` — first-load entrance (`[data-enter]` stagger system), View Transitions API (Baseline 2024), shared element transitions for portfolios, Next.js App Router integration, navigation progress bar
 
+### Sprint 28 — Effects Completion + Wow Blueprint (4 new files + 3 updates)
+
+**New files:**
+- `patterns/effects/3d-effects.md` — CSS 3D fundamentals (perspective model), card flip, product tilt showcase with layered parallax, isometric layout, prism rotation, Three.js minimal setup, react-three-fiber integration, Spline embed, 3D text. Performance rules + when-to-use matrix
+- `blueprints/interactive-landing-page.md` — full wow-stack blueprint: token foundation, global atmosphere (grain + spotlight), hero with entrance sequence, scroll reveals, GSAP pinned stack, marquee, CTA glow, View Transitions. 25-item assembly checklist, 4 archetype starter configs
+- `checklists/wow-effects-checklist.md` — 9-category effects quality gate (65 items): reduced motion, GPU/compositing, bundle/load, mobile degradation, visual quality, entrance sequence, banned patterns, scroll integrity, accessibility. Scoring: ≥90% ship, 70–89% beta, <70% block
+- `examples/websites/02-agency-portfolio.md` — full Cyberbrutalism (archetype C) studio site: brutal nav with offset-shadow buttons, kinetic marquee, Monument hero, asymmetric work grid, manifesto, case study layout, character scramble effect, view-transition title morph
+
+**Updates:**
+- `skills/global-design/task-routing.md` — rewritten: fixed broken paths, added Visual Effects Tasks section (all 7 effects files), references routing, reference-hunter agent
+- `skills/global-design/SKILL.md` — added Effects Decision Block (4-step flow), fixed routing table, restored knowledge references + added example references
+- `integrations/claude-code/CLAUDE.md` — added effects rules (will-change, devicePixelRatio, pointer:coarse, 100dvh), corrected rule file paths, added effects patterns table
+
+**Also committed:** 12 knowledge references (`references/typography.md`, `color-alchemy.md`, `motion-systems.md`, `motion-dev.md`, `visual-effects.md`, `3d-animations.md`, `accessibility.md`, `performance.md`, `tokens.md`, `forms.md`, `responsive.md`, `data-viz.md`) and `patterns/marketing-blocks/bento-grid.md` — content that existed on disk but was never tracked (~5,700 lines).
+
 ---
 
-## Total: 134 files, ~52,000 lines
+## Total: 149 files, ~58,000 lines
 
 | Category | Files | Description |
 |---|---|---|
 | Core skill | 5 | Entry point, routing, principles, gates, formats |
-| Agents | 11 | 11 specialized review roles |
-| Blueprints | 8 | Build-from-scratch protocols |
+| Agents | 11 | Specialized review roles incl. reference-hunter |
+| Blueprints | 9 | Build-from-scratch protocols incl. interactive landing |
 | Rules | 16 | Domain rules with rationale and code |
-| Patterns | 37 | Marketing, product UI, navigation, admin, effects (new) |
-| References | 7 | Curated real-world examples per category and archetype |
+| Patterns | 38 | Marketing, product UI, navigation, admin, effects |
+| References | 19 | 12 knowledge references + 7 curated example galleries |
 | Tokens | 4 | JSON + CSS light + CSS dark + guide |
 | Templates | 5 | Specs, briefs, review report, redesign brief |
-| Checklists | 3 | Design review, conversion, UI ship |
-| Recipes | 13 | Step-by-step improvement guides |
+| Checklists | 4 | Design review, conversion, UI ship, wow effects |
+| Recipes | 15 | Step-by-step improvement guides incl. wow recipes |
 | Integrations | 7 | Claude Code, Cursor, ChatGPT, Windsurf, Copilot, Figma (×2) |
-| Examples | 10 | Before/after worked examples + audits + websites |
-| Docs | 4 | README, CONTRIBUTING, CHANGELOG, install |
+| Examples | 11 | Before/after worked examples + audits + websites |
+| Docs | 5 | README, CONTRIBUTING, CHANGELOG, install, manifest |

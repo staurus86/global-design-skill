@@ -118,6 +118,7 @@ global-design-skill/
 │
 ├── blueprints/                     ← Build-from-scratch protocols
 │   ├── landing-page-from-scratch.md ← 9-section AIDA landing page
+│   ├── interactive-landing-page.md ← Full wow stack: grain+mesh+effects
 │   ├── saas-app-from-scratch.md    ← 3 shell options, 6 core screens
 │   ├── admin-panel-from-scratch.md ← Density-first, 6 screens
 │   ├── website-from-scratch.md     ← Multi-page IA, nav, schema
@@ -137,11 +138,11 @@ global-design-skill/
 │   └── 08-performance.md           └── 16-design-for-seo.md
 │
 ├── patterns/
-│   ├── marketing-blocks/           ← 7 landing page section files
+│   ├── marketing-blocks/           ← 9 landing page section files
 │   │   ├── hero-sections.md        ├── feature-sections.md
 │   │   ├── pricing-sections.md     ├── comparison-sections.md
-│   │   ├── social-proof.md         └── stats-sections.md
-│   │   ├── cta-sections.md
+│   │   ├── social-proof.md         ├── stats-sections.md
+│   │   ├── cta-sections.md         └── bento-grid.md
 │   │   └── faq-sections.md
 │   │
 │   ├── product-ui/                 ← 10 SaaS / app UI files
@@ -162,15 +163,28 @@ global-design-skill/
 │   │   ├── filters.md              └── bulk-actions.md
 │   │   └── dashboard-layouts.md
 │   │
-│   └── effects/                    ← 5 visual effects files (new)
+│   └── effects/                    ← 7 visual effects files
 │       ├── visual-effects.md       ← Grain, mesh gradient, spotlight, glow, glass, aurora
 │       ├── parallax-system.md      ← 6 levels: CSS / JS / mouse / GSAP / scroll-driven
 │       ├── text-animations.md      ← Split reveal, blur-in, scramble, typewriter, marquee
 │       ├── scroll-experiences.md   ← Lenis, pinned cards, h-scroll, progress bar, snap
 │       ├── hover-effects.md        ← 3D tilt, magnetic btn, fill slide, image hover, pill nav
-│       └── cursor-effects.md       ← Glow, custom dot, invert, text-reveal, trail
+│       ├── cursor-effects.md       ← Glow, custom dot, invert, text-reveal, trail
+│       └── 3d-effects.md           ← CSS 3D, card flip, product tilt, Three.js, Spline
 │
-├── references/                     ← Curated real-world examples
+├── references/                     ← 19 reference files: knowledge + examples
+│   ├── typography.md               ← Variable fonts, fluid scale, pairing, loading
+│   ├── color-alchemy.md            ← OKLCH color science, palette construction
+│   ├── motion-systems.md           ← CSS + GSAP motion patterns
+│   ├── motion-dev.md               ← Motion React API (hooks, scroll, variants)
+│   ├── visual-effects.md           ← Visual effects code catalog
+│   ├── 3d-animations.md            ← 3D / WebGL / react-three-fiber
+│   ├── accessibility.md            ← ARIA, focus, keyboard reference
+│   ├── performance.md              ← CWV, images, fonts, bundle reference
+│   ├── tokens.md                   ← Spacing, shadow, radius token reference
+│   ├── forms.md                    ← Form states, validation, components
+│   ├── responsive.md               ← Breakpoints, container queries
+│   ├── data-viz.md                 ← Charts, tables, KPI reference
 │   ├── inspiration-sites.md        ← 8-category site gallery (galleries, SaaS, portfolios...)
 │   ├── aesthetic-archetypes.md     ← Real sites per archetype A–H with annotations
 │   ├── saas-ui-examples.md         ← Annotated SaaS UI patterns (empty states, onboarding...)
@@ -197,17 +211,19 @@ global-design-skill/
 ├── checklists/
 │   ├── global-design-review.md     ← 100+ checks, 11 sections, banned patterns
 │   ├── landing-conversion-review.md ← AIDA, CTA, social proof, friction, SEO
-│   └── ui-review.md                ← Forms, tables, modals, loading, errors, a11y
+│   ├── ui-review.md                ← Forms, tables, modals, loading, errors, a11y
+│   └── wow-effects-checklist.md    ← 65 checks: reduced-motion, GPU, mobile, banned
 │
-├── recipes/                        ← 11 step-by-step improvement guides
-│   ├── make-page-more-premium.md   ├── improve-navigation.md
-│   ├── make-interface-cleaner.md   ├── improve-typography.md
-│   ├── improve-hero-section.md     ├── add-animations.md
-│   ├── improve-pricing-page.md     ├── improve-loading-states.md
-│   ├── improve-forms.md            └── improve-onboarding.md
-│   ├── add-dark-mode.md
+├── recipes/                        ← 15 step-by-step improvement guides
+│   ├── make-page-more-premium.md   ├── improve-typography.md
+│   ├── make-interface-cleaner.md   ├── add-animations.md
+│   ├── improve-hero-section.md     ├── improve-loading-states.md
+│   ├── improve-pricing-page.md     ├── improve-onboarding.md
+│   ├── improve-forms.md            ├── create-wow-hero.md
+│   ├── add-dark-mode.md            └── add-page-transitions.md
 │   ├── improve-mobile-version.md
-│   └── improve-empty-states.md
+│   ├── improve-empty-states.md
+│   └── improve-navigation.md
 │
 ├── examples/                       ← Before/after worked examples
 │   ├── 01-hero-redesign.md         ← Font, gradient, CTA fixes
@@ -223,7 +239,8 @@ global-design-skill/
 │   ├── audits/
 │   │   └── 01-landing-page-audit.md  ← Full audit: 34/100 → all gates + fixes
 │   └── websites/
-│       └── 01-multi-page-site.md    ← Multi-page IA, nav system, schema, CSS Anchor
+│       ├── 01-multi-page-site.md    ← Multi-page IA, nav system, schema, CSS Anchor
+│       └── 02-agency-portfolio.md   ← Cyberbrutalism studio: scramble, view-transitions
 │
 ├── integrations/                   ← 7 AI tool configuration files
 │   ├── claude-code/CLAUDE.md       ← Paste-ready CLAUDE.md snippet
@@ -279,7 +296,7 @@ Dark mode: import `tokens-dark.css` and add `data-theme="dark"` to `<html>`. See
 
 ## Agents
 
-Ten specialized agents for different phases and domains:
+Eleven specialized agents for different phases and domains:
 
 | Agent | Runs when | Verdict format |
 |---|---|---|
@@ -313,6 +330,9 @@ Ten specialized agents for different phases and domains:
 
 **CTA label formula:** `rules/14-landing-pages.md`
 → `Verb + Object + Context` — "Start Pro free for 14 days"
+
+**Wow effects stack:** `blueprints/interactive-landing-page.md`
+→ Grain texture → Mesh gradient → Spotlight cursor → Entrance sequence → Scroll reveals → 3D tilt → View Transitions
 
 ---
 
