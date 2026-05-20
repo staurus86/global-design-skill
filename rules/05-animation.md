@@ -348,5 +348,71 @@ import { useAnimate, useInView, animateView } from 'motion/react'
 
 ---
 
+## R11 — Use scroll-driven animations for simple reveals. Use `IntersectionObserver` as fallback.
+
+CSS scroll-driven animations (Baseline 2024) replace `IntersectionObserver` for visual reveals and parallax — no JavaScript.
+
+```css
+/* Simple scroll reveal — no JS needed */
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.scroll-reveal {
+  animation: reveal linear both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 40%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal { animation: none; opacity: 1; transform: none; }
+}
+```
+
+**When to use `IntersectionObserver` instead:** When you need class-toggling, complex stagger via JavaScript, or must support browsers without scroll-driven animation support.
+
+---
+
+## R12 — View Transitions for same-document navigation.
+
+Use the View Transitions API for page and component transitions. CSS-native, no library required.
+
+```css
+/* Enable for all navigations */
+@view-transition {
+  navigation: auto;
+}
+
+/* Customize transitions */
+::view-transition-old(root) {
+  animation: 250ms var(--ease-exit) both fade-out;
+}
+::view-transition-new(root) {
+  animation: 300ms var(--ease-spring) both fade-in;
+}
+
+/* Named element — animates between matched elements across pages */
+.product-card-image {
+  view-transition-name: product-image;
+  contain: layout;
+}
+```
+
+```ts
+/* JS-triggered view transition (SPA routing) */
+async function navigate(url: string) {
+  if (!document.startViewTransition) {
+    window.location.href = url
+    return
+  }
+  await document.startViewTransition(() => {
+    window.location.href = url
+  }).finished
+}
+```
+
+---
+
 *Rule version: global-design-skill v1.0 — `rules/05-animation.md`*
-*Related: `tokens/tokens.css` animation section, `patterns/product-ui/loading-states.md`, `skills/hyperdesign/SKILL.md` §8*
+*Related: `references/motion-systems.md`, `references/motion-dev.md`, `tokens/tokens.css`, `patterns/product-ui/loading-states.md`*

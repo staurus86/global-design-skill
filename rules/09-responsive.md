@@ -332,5 +332,40 @@ Overriding font size inside media queries creates discrete jumps. `clamp()` prod
 
 ---
 
+## R11 — Use container queries for component-level adaptation.
+
+Media queries respond to viewport width. Container queries respond to the component's own container width. Use container queries when a component must adapt to the space it is placed in, not the viewport.
+
+```css
+/* Define a containment context on the wrapper */
+.card-grid-item {
+  container-type: inline-size;
+  container-name: feature-card;
+}
+
+/* Component adapts based on its own width */
+.feature-card { display: flex; flex-direction: column; }
+
+@container feature-card (min-width: 380px) {
+  .feature-card {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+/* Dashboard card that works at any column span */
+.dashboard-widget {
+  container-type: inline-size;
+}
+
+@container (min-width: 400px) { .widget-chart { height: 200px; } }
+@container (min-width: 600px) { .widget-chart { height: 280px; } }
+```
+
+**When to use media query:** Page-level section layout (hero, navigation).
+**When to use container query:** Card, sidebar widget, table row, any component placed in a grid.
+
+---
+
 *Rule version: global-design-skill v1.0 — `rules/09-responsive.md`*
-*Related: `rules/07-accessibility.md` R8, `rules/08-performance.md` R3, `recipes/improve-mobile-version.md`, `tokens/tokens.css` breakpoints section*
+*Related: `references/responsive.md`, `rules/07-accessibility.md` R8, `references/tokens.md` §breakpoints, `recipes/improve-mobile-version.md`*
