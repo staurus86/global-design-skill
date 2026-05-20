@@ -1,0 +1,47 @@
+name: global-design-skill
+version: 1.0.0
+description: >
+  A design operating system for AI-assisted development.
+  Covers UX architecture, UI patterns, design tokens, agents,
+  blueprints, checklists, and frontend handoff — from zero to production.
+author: sk-seo.ru
+license: MIT
+repository: https://github.com/yourusername/global-design-skill
+
+standards:
+  css: "2026 Baseline (nesting, :has, @property, @starting-style, anchor-positioning, scroll-driven-animations)"
+  colors: "OKLCH throughout"
+  tailwind: "v4 (@theme CSS-native)"
+  react: "19 (useActionState, useOptimistic, ref-as-prop)"
+  nextjs: "15 (async APIs, use cache, Turbopack)"
+  motion: "motion/react (formerly framer-motion)"
+  typescript: "5.x (satisfies, const type params)"
+  accessibility: "WCAG 2.2 AA"
+
+skill_entry: skills/global-design/SKILL.md
+
+agents:
+  - agents/design-director.md
+  - agents/ux-architect.md
+  - agents/conversion-designer.md
+  - agents/design-critic.md
+  - agents/frontend-handoff-reviewer.md
+
+integrations:
+  claude_code: integrations/claude-code/CLAUDE.md
+  cursor: integrations/cursor/cursor-rules.md
+  chatgpt: integrations/chatgpt/custom-gpt-instructions.md
+  figma: integrations/figma/figma-handoff-checklist.md
+
+token_sets:
+  - tokens/default-tokens.json
+  - tokens/saas-dark.json
+  - tokens/saas-light.json
+  - tokens/enterprise-admin.json
+  - tokens/editorial.json
+
+compatibility:
+  claude_code: ">=1.0"
+  cursor: ">=0.40"
+  chatgpt: "GPT-4o, o1, o3"
+  node: ">=20"
