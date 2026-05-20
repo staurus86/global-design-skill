@@ -228,7 +228,40 @@ Format: [version] — date — description
 | Tokens | 4 | JSON + CSS light + CSS dark + guide |
 | Templates | 5 | Specs, briefs, review report, redesign brief |
 | Checklists | 3 | Design review, conversion, UI ship |
-| Recipes | 11 | Step-by-step improvement guides |
+| Recipes | 13 | Step-by-step improvement guides (+wow hero, +page transitions) |
+| Integrations | 7 | Claude Code, Cursor, ChatGPT, Windsurf, Copilot, Figma (×2) |
+| Examples | 10 | Before/after worked examples + audits + websites |
+| Docs | 4 | README, CONTRIBUTING, CHANGELOG, install |
+
+### Sprint 27 — Effects System + Wow Recipes (8 files)
+
+**patterns/effects/ (new directory):**
+- `patterns/effects/visual-effects.md` — grain texture, mesh gradient, spotlight cursor, glow/bloom, glassmorphism depth, double bezel, background patterns (dot/grid/diagonal), shadow depth system, aurora
+- `patterns/effects/parallax-system.md` — 6 levels: CSS perspective (zero JS), JS scroll+RAF, multi-layer depth, mouse-tracking (lerp), GSAP ScrollTrigger scrub+pin, CSS scroll-driven `@scroll-timeline`
+- `patterns/effects/text-animations.md` — split reveal (CSS + GSAP SplitText), blur-in sequence, character scramble hover, typewriter with cursor, variable font weight on scroll, gradient sweep, velocity marquee, count-up with IntersectionObserver
+- `patterns/effects/scroll-experiences.md` — Lenis smooth scroll + GSAP integration, pinned stacking cards, horizontal scroll gallery, reading progress bar, section reveal system (IntersectionObserver), scroll-linked opacity fade, scroll snap
+- `patterns/effects/hover-effects.md` — 3D card tilt + shine (mouse tracking), magnetic button, button fill slide/radial, image zoom/clip-path/overlay/caption, link underline draw, card lift, pill nav sliding indicator
+
+**recipes/ (2 files):**
+- `recipes/create-wow-hero.md` — 9-step wow hero: headline formula, 3 layout options, background atmosphere per archetype, display font setup, product visual with bezel+perspective, CTA hierarchy with magnetic, trust signal, entrance sequence, LCP optimization checklist
+- `recipes/add-page-transitions.md` — first-load entrance (`[data-enter]` stagger system), View Transitions API (Baseline 2024), shared element transitions for portfolios, Next.js App Router integration, navigation progress bar
+
+---
+
+## Total: 134 files, ~52,000 lines
+
+| Category | Files | Description |
+|---|---|---|
+| Core skill | 5 | Entry point, routing, principles, gates, formats |
+| Agents | 11 | 11 specialized review roles |
+| Blueprints | 8 | Build-from-scratch protocols |
+| Rules | 16 | Domain rules with rationale and code |
+| Patterns | 37 | Marketing, product UI, navigation, admin, effects (new) |
+| References | 7 | Curated real-world examples per category and archetype |
+| Tokens | 4 | JSON + CSS light + CSS dark + guide |
+| Templates | 5 | Specs, briefs, review report, redesign brief |
+| Checklists | 3 | Design review, conversion, UI ship |
+| Recipes | 13 | Step-by-step improvement guides |
 | Integrations | 7 | Claude Code, Cursor, ChatGPT, Windsurf, Copilot, Figma (×2) |
 | Examples | 10 | Before/after worked examples + audits + websites |
 | Docs | 4 | README, CONTRIBUTING, CHANGELOG, install |

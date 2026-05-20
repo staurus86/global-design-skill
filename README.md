@@ -80,6 +80,11 @@ Use the design system defined in [path to SKILL.md].
 | Add animations | "Use global-design-skill and add animations to this page" |
 | Fix loading states | "Use global-design-skill and improve the loading states" |
 | Add dark mode | "Use global-design-skill and add dark mode to this project" |
+| Add wow effects | "Use global-design-skill and add visual effects to this hero" |
+| Add parallax | "Use global-design-skill and add parallax to this page" |
+| Add page transitions | "Use global-design-skill and add page transitions" |
+| Add hover effects | "Use global-design-skill and add hover effects to the cards" |
+| Add text animations | "Use global-design-skill and animate the hero text" |
 | Review before shipping | "Use global-design-skill and run a UI review checklist" |
 | WCAG accessibility audit | "Use global-design-skill accessibility-auditor on this component" |
 | Performance audit | "Use global-design-skill performance-auditor on this page" |
@@ -152,10 +157,18 @@ global-design-skill/
 │   │   ├── sidebar-patterns.md     ├── breadcrumbs.md
 │   │   └── mobile-navigation.md    └── pagination.md
 │   │
-│   └── admin-ui/                   ← 5 admin / data-heavy files
-│       ├── data-tables.md          ├── charts.md
-│       ├── filters.md              └── bulk-actions.md
-│       └── dashboard-layouts.md
+│   ├── admin-ui/                   ← 5 admin / data-heavy files
+│   │   ├── data-tables.md          ├── charts.md
+│   │   ├── filters.md              └── bulk-actions.md
+│   │   └── dashboard-layouts.md
+│   │
+│   └── effects/                    ← 5 visual effects files (new)
+│       ├── visual-effects.md       ← Grain, mesh gradient, spotlight, glow, glass, aurora
+│       ├── parallax-system.md      ← 6 levels: CSS / JS / mouse / GSAP / scroll-driven
+│       ├── text-animations.md      ← Split reveal, blur-in, scramble, typewriter, marquee
+│       ├── scroll-experiences.md   ← Lenis, pinned cards, h-scroll, progress bar, snap
+│       ├── hover-effects.md        ← 3D tilt, magnetic btn, fill slide, image hover, pill nav
+│       └── cursor-effects.md       ← Glow, custom dot, invert, text-reveal, trail
 │
 ├── references/                     ← Curated real-world examples
 │   ├── inspiration-sites.md        ← 8-category site gallery (galleries, SaaS, portfolios...)
@@ -369,3 +382,7 @@ See [CHANGELOG.md](CHANGELOG.md).
 ## License
 
 MIT — use freely, attribution appreciated.
+
+---
+
+Built by [Stanislav Kalyuzhnyy](https://sk-seo.ru) — ML SEO Tech Lead.
