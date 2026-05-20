@@ -383,4 +383,4 @@ For single-metric gauges (storage used, quota consumed, completion rate).
 ---
 
 *Reference version: global-design-skill v1.0 — `references/data-viz.md`*
-*Related: `rules/11-tables-and-data-ui.md`, `patterns/admin-ui/data-tables.md`, `references/accessibility.md`*
+*Related: `rules/11-data-tables.md`, `patterns/admin-ui/data-tables.md`, `references/accessibility.md`*

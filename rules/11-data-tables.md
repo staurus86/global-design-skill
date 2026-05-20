@@ -480,4 +480,4 @@ A 12-column table cannot fit on 390px. Decide which columns are essential and hi
 ---
 
 *Rule version: global-design-skill v1.0 — `rules/11-data-tables.md`*
-*Related: `rules/07-accessibility.md`, `rules/09-responsive.md`, `patterns/product-ui/data-tables.md`, `checklists/ui-review.md` §3*
+*Related: `rules/07-accessibility.md`, `rules/09-responsive.md`, `patterns/admin-ui/data-tables.md`, `checklists/ui-review.md` §3*

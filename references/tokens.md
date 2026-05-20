@@ -277,4 +277,4 @@ For components that adapt based on container size, not viewport.
 ---
 
 *Reference version: global-design-skill v1.0 — `references/tokens.md`*
-*Related: `tokens/design-tokens.json`, `tokens/tokens.css`, `rules/05-spacing-and-density.md`*
+*Related: `tokens/design-tokens.json`, `tokens/tokens.css`, `rules/02-layout-and-grid.md`*

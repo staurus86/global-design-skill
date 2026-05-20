@@ -300,7 +300,7 @@ For large sites (> 100 pages), every page must earn its crawl.
 
 ## Related Files
 
-- `rules/07-responsive-design.md` — mobile-first (Google mobile-first indexing)
+- `rules/09-responsive.md` — mobile-first (Google mobile-first indexing)
 - `references/performance.md` — Core Web Vitals implementation
 - `blueprints/landing-page-from-scratch.md` — landing page performance requirements
 - `blueprints/website-from-scratch.md` — multi-page SEO architecture

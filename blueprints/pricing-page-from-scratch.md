@@ -426,4 +426,4 @@ document.querySelectorAll('.faq-trigger').forEach(trigger => {
 ---
 
 *Blueprint version: global-design-skill v1.0 — `blueprints/pricing-page-from-scratch.md`*  
-*Related: `patterns/marketing-blocks/comparison-sections.md`, `agents/copy-editor.md`, `rules/02-cognitive-laws.md`*
+*Related: `patterns/marketing-blocks/comparison-sections.md`, `agents/copy-editor.md`, `skills/global-design/operating-principles.md`*

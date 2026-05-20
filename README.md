@@ -204,14 +204,18 @@ global-design-skill/
 │   │   ├── frontend-tz.md          ← Gate 8 developer handoff template
 │   │   ├── component-spec.md       ← Component API + states + ARIA template
 │   │   └── design-review-report.md ← Review output with gates + scores + sign-off
-│   └── briefs/
-│       ├── project-brief.md        ← Problem → goal → scope → sign-off
-│       └── redesign-brief.md       ← Redesign scope, constraints, acceptance criteria
+│   ├── briefs/
+│   │   ├── project-brief.md        ← Problem → goal → scope → sign-off
+│   │   └── redesign-brief.md       ← Redesign scope, constraints, acceptance criteria
+│   └── outputs/
+│       └── ux-audit-report.md      ← UX audit deliverable template
 │
 ├── checklists/
 │   ├── global-design-review.md     ← 100+ checks, 11 sections, banned patterns
 │   ├── landing-conversion-review.md ← AIDA, CTA, social proof, friction, SEO
 │   ├── ui-review.md                ← Forms, tables, modals, loading, errors, a11y
+│   ├── frontend-handoff-review.md  ← Gate 8 extended handoff checklist
+│   ├── admin-panel-review.md       ← Density, tables, destructive actions, states
 │   └── wow-effects-checklist.md    ← 65 checks: reduced-motion, GPU, mobile, banned
 │
 ├── recipes/                        ← 15 step-by-step improvement guides
@@ -230,7 +234,7 @@ global-design-skill/
 │   ├── 02-color-token-migration.md ← Hardcoded hex → OKLCH tokens
 │   ├── 03-form-accessibility.md    ← 8 a11y fixes
 │   ├── 04-card-grid-cleanup.md     ← Equal grid → asymmetric bento
-│   ├── 05-performance-lcp.md       ← LCP 4.2s → 1.8s
+│   ├── 05-performance-audit.md     ← LCP 4.2s → 1.8s
 │   ├── 06-dark-mode-implementation.md ← Token layer + toggle
 │   ├── landing-pages/
 │   │   └── 01-saas-hero-redesign.md  ← Banned hero → editorial split
@@ -242,7 +246,7 @@ global-design-skill/
 │       ├── 01-multi-page-site.md    ← Multi-page IA, nav system, schema, CSS Anchor
 │       └── 02-agency-portfolio.md   ← Cyberbrutalism studio: scramble, view-transitions
 │
-├── integrations/                   ← 7 AI tool configuration files
+├── integrations/                   ← 8 AI tool configuration files
 │   ├── claude-code/CLAUDE.md       ← Paste-ready CLAUDE.md snippet
 │   ├── cursor/cursor-rules.md      ← .cursorrules content
 │   ├── chatgpt/custom-gpt-instructions.md ← GPT system prompt
@@ -250,7 +254,8 @@ global-design-skill/
 │   ├── github-copilot/copilot-instructions.md ← Copilot Chat rules
 │   └── figma/
 │       ├── variables-export-guide.md  ← Primitives + semantic + Style Dictionary
-│       └── plugin-workflow.md         ← Tokens Studio + handoff gate
+│       ├── plugin-workflow.md         ← Tokens Studio + handoff gate
+│       └── figma-handoff-checklist.md ← Naming conventions + handoff protocol
 │
 ├── README.md                       ← This file
 ├── CONTRIBUTING.md                 ← Contribution standards

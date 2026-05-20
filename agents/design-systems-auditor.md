@@ -200,4 +200,4 @@ HIGH DEBT — Token coverage < 60%, many missing states, no dark mode
 ---
 
 *Agent version: global-design-skill v1.0 — `agents/design-systems-auditor.md`*
-*Related: `tokens/tokens.css`, `tokens/tokens-dark.css`, `rules/04-color.md`, `rules/01-spacing.md`, `examples/02-color-token-migration.md`*
+*Related: `tokens/tokens.css`, `tokens/tokens-dark.css`, `rules/04-color.md`, `rules/02-layout-and-grid.md`, `examples/02-color-token-migration.md`*

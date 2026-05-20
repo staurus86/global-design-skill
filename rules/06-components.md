@@ -320,7 +320,7 @@ Custom dropdown for: multi-select, search-within, grouped options, custom render
 ## Related Files
 
 - `skills/global-design/quality-gates.md` — Gate 4 (all states required)
-- `rules/08-accessibility.md` — ARIA patterns per component type
-- `rules/10-forms-and-inputs.md` — full form rules
+- `rules/07-accessibility.md` — ARIA patterns per component type
+- `rules/10-forms.md` — full form rules
 - `references/accessibility.md` — ARIA recipes and keyboard nav patterns
 - `references/forms.md` — input anatomy, validation patterns

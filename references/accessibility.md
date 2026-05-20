@@ -449,4 +449,4 @@ if (!reduced) {
 ---
 
 *Reference version: global-design-skill v1.0 — `references/accessibility.md`*
-*Related: `rules/08-accessibility.md`, `checklists/global-design-review.md` §7, `references/forms.md`*
+*Related: `rules/07-accessibility.md`, `checklists/global-design-review.md` §7, `references/forms.md`*

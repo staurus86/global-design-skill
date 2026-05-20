@@ -411,4 +411,4 @@ function MultiStepForm() {
 ---
 
 *Reference version: global-design-skill v1.0 — `references/forms.md`*
-*Related: `rules/10-forms-and-inputs.md`, `patterns/product-ui/forms.md`, `references/accessibility.md`*
+*Related: `rules/10-forms.md`, `patterns/product-ui/forms.md`, `references/accessibility.md`*

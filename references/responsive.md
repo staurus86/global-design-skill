@@ -388,4 +388,4 @@ WCAG 1.4.4 requires text to be readable at 200% browser zoom without horizontal 
 ---
 
 *Reference version: global-design-skill v1.0 — `references/responsive.md`*
-*Related: `rules/07-responsive-design.md`, `checklists/global-design-review.md` §5, `references/tokens.md`*
+*Related: `rules/09-responsive.md`, `checklists/global-design-review.md` §5, `references/tokens.md`*

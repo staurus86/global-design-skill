@@ -313,7 +313,6 @@ For media containers before image loads:
 ## Related Files
 
 - `rules/01-visual-hierarchy.md` — visual rank within layouts
-- `rules/05-spacing-and-density.md` — spacing tokens, gap scales
-- `rules/07-responsive-design.md` → `references/responsive.md` — breakpoints, container queries
+- `rules/09-responsive.md` — breakpoints, container queries
 - `references/tokens.md` — spacing token system
 - `patterns/navigation/` — header and sidebar layout patterns

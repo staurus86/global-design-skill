@@ -412,4 +412,4 @@ For 5+ features with fine-grained tier differences.
 ---
 
 *Pattern version: global-design-skill v1.0 — `patterns/marketing-blocks/comparison-sections.md`*  
-*Related: `patterns/marketing-blocks/feature-sections.md`, `patterns/marketing-blocks/stats-sections.md`, `rules/02-cognitive-laws.md`*
+*Related: `patterns/marketing-blocks/feature-sections.md`, `patterns/marketing-blocks/stats-sections.md`, `skills/global-design/operating-principles.md`*

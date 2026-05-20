@@ -517,4 +517,4 @@ Show 2–4 projects max. Each needs: real outcome, not just tech stack.
 ---
 
 *Blueprint version: global-design-skill v1.0 — `blueprints/portfolio-from-scratch.md`*  
-*Related: `blueprints/onboarding-flow-from-scratch.md`, `rules/03-typography.md`, `rules/06-layout.md`*
+*Related: `blueprints/onboarding-flow-from-scratch.md`, `rules/03-typography.md`, `rules/02-layout-and-grid.md`*

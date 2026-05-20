@@ -335,4 +335,4 @@ Any page more than 2 levels deep needs breadcrumbs. Users should always be able 
 ---
 
 *Recipe version: global-design-skill v1.0 — `recipes/improve-navigation.md`*
-*Related: `rules/02-cognitive-laws.md` R1 (Hick's Law), `rules/07-accessibility.md`, `patterns/navigation/header-patterns.md`, `patterns/navigation/mobile-navigation.md`*
+*Related: `skills/global-design/operating-principles.md` (Hick's Law), `rules/07-accessibility.md`, `patterns/navigation/header-patterns.md`, `patterns/navigation/mobile-navigation.md`*

@@ -243,7 +243,7 @@ Suspended → red (distinct from Error: intentional, not failure)
 ## Related Files
 
 - `blueprints/admin-panel-from-scratch.md` — full build protocol
-- `rules/11-tables-and-data-ui.md` — data table deep rules
+- `rules/11-data-tables.md` — data table deep rules
 - `patterns/admin-ui/data-tables.md` — table implementation patterns
 - `patterns/admin-ui/filters.md` — filter UI patterns
 - `checklists/admin-panel-review.md` — admin review checklist

@@ -121,7 +121,7 @@ Format: [version] — date — description
 - `examples/02-color-token-migration.md` — 12 files of hardcoded hex → OKLCH semantic token layer
 - `examples/03-form-accessibility.md` — 8 a11y fixes: labels, error formula, touch targets, autocomplete
 - `examples/04-card-grid-cleanup.md` — 3-equal-column grid → asymmetric bento with hierarchy
-- `examples/05-performance-lcp.md` — fetchpriority, preload, image sizing, defer: LCP 4.2s → 1.8s
+- `examples/05-performance-audit.md` — fetchpriority, preload, image sizing, defer: LCP 4.2s → 1.8s
 
 ### Sprint 14 — Missing Rules (4 files)
 
@@ -262,9 +262,25 @@ Format: [version] — date — description
 
 **Also committed:** 12 knowledge references (`references/typography.md`, `color-alchemy.md`, `motion-systems.md`, `motion-dev.md`, `visual-effects.md`, `3d-animations.md`, `accessibility.md`, `performance.md`, `tokens.md`, `forms.md`, `responsive.md`, `data-viz.md`) and `patterns/marketing-blocks/bento-grid.md` — content that existed on disk but was never tracked (~5,700 lines).
 
+### Sprint 29 — Link Rot Audit + Missing Files (4 new files + ~20 reference fixes)
+
+Full-repository cross-reference audit. Fixed dangling links left by an earlier `rules/` renumbering and created files that were referenced but never authored.
+
+**New files:**
+- `checklists/frontend-handoff-review.md` — extended Gate 8 handoff checklist, 7 sections + final gate
+- `checklists/admin-panel-review.md` — admin-panel review: density, data tables, destructive actions, bulk actions, states, keyboard efficiency, scored gate
+- `templates/outputs/ux-audit-report.md` — UX audit deliverable template: exec summary, critical/medium issues, WCAG findings, priorities, estimates, scope
+- `integrations/figma/figma-handoff-checklist.md` — Figma handoff: variable→token mapping, naming conventions, component structure, Dev Mode, token sync pipeline
+
+**Reference fixes:**
+- Renamed `examples/05-performance-lcp.md` → `05-performance-audit.md` in README + CHANGELOG
+- Repointed ~17 stale rule references (old renumbering scheme: `01-spacing`, `02-cognitive-laws`, `04-color-systems`, `05-spacing-and-density`, `06-layout`, `07-responsive-design`, `08-accessibility`, `10-forms-and-inputs`, `11-tables-and-data-ui`) to canonical names across 14 files
+- Fixed `patterns/product-ui/data-tables.md` → `patterns/admin-ui/data-tables.md` in `rules/11-data-tables.md`
+- Fixed `skills/hyperdesign/references/color-alchemy.md` → `references/color-alchemy.md` in `tokens/README.md`
+
 ---
 
-## Total: 149 files, ~58,000 lines
+## Total: 153 files, ~59,000 lines
 
 | Category | Files | Description |
 |---|---|---|
@@ -275,9 +291,9 @@ Format: [version] — date — description
 | Patterns | 38 | Marketing, product UI, navigation, admin, effects |
 | References | 19 | 12 knowledge references + 7 curated example galleries |
 | Tokens | 4 | JSON + CSS light + CSS dark + guide |
-| Templates | 5 | Specs, briefs, review report, redesign brief |
-| Checklists | 4 | Design review, conversion, UI ship, wow effects |
+| Templates | 6 | Specs, briefs, review report, redesign brief, audit report |
+| Checklists | 6 | Design review, conversion, UI, handoff, admin, wow effects |
 | Recipes | 15 | Step-by-step improvement guides incl. wow recipes |
-| Integrations | 7 | Claude Code, Cursor, ChatGPT, Windsurf, Copilot, Figma (×2) |
+| Integrations | 8 | Claude Code, Cursor, ChatGPT, Windsurf, Copilot, Figma (×3) |
 | Examples | 11 | Before/after worked examples + audits + websites |
 | Docs | 5 | README, CONTRIBUTING, CHANGELOG, install, manifest |

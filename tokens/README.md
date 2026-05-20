@@ -342,4 +342,4 @@ module.exports = {
 
 *Token version: global-design-skill v1.0*
 *Source: `tokens/design-tokens.json` (W3C DTCG format)*
-*Related: `skills/hyperdesign/references/color-alchemy.md`, `rules/02-layout-and-grid.md`, `recipes/add-dark-mode.md`*
+*Related: `references/color-alchemy.md`, `rules/02-layout-and-grid.md`, `recipes/add-dark-mode.md`*

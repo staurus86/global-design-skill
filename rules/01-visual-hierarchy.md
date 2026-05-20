@@ -172,6 +172,6 @@ Users read in F or Z patterns depending on layout. Place Rank 1 elements where t
 
 - `operating-principles.md` — Principle 2 (one focus), Principle 6 (hierarchy through space)
 - `rules/03-typography.md` — type scale and weight system
-- `rules/04-color-systems.md` — contrast and color hierarchy
-- `rules/05-spacing-and-density.md` — spatial grouping
+- `rules/04-color.md` — contrast and color hierarchy
+- `rules/02-layout-and-grid.md` — spatial grouping
 - `checklists/ui-review.md` — visual review checklist
