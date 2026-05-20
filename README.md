@@ -24,26 +24,10 @@ Global Design Skill =
 + Output Templates           (templates/)
 + Review Checklists          (checklists/)
 + Improvement Recipes        (recipes/)
-+ Worked Examples            (examples/)
-+ Tool Integrations          (integrations/)
 ```
 
 **Not:** "make it look nice."
 **Yes:** what to build, for whom, why, which grid, which states, how to hand it off, how to verify the result.
-
----
-
-## Capabilities
-
-| Task | Command |
-|---|---|
-| Build a landing page from scratch | "Use global-design-skill and create a landing page structure for [product]" |
-| Design a SaaS dashboard | "Use global-design-skill and build a dashboard blueprint for [app]" |
-| Audit existing UI | "Use global-design-skill and run a UX/UI audit of this page: [URL/HTML/screenshot]" |
-| Create a design system | "Use global-design-skill and generate a design system: grid, typography, tokens, components" |
-| Prepare frontend spec | "Use global-design-skill and write a frontend ТЗ for this design decision" |
-| Redesign a page | "Use global-design-skill and create a redesign plan for [page], prioritized by impact" |
-| Build admin panel | "Use global-design-skill and architect an admin panel for [product]" |
 
 ---
 
@@ -55,22 +39,38 @@ Global Design Skill =
 # 1. Clone
 git clone https://github.com/yourusername/global-design-skill.git
 
-# 2. Copy skill to your project
-bash scripts/copy-skill-to-project.sh
-
-# 3. Add to your project's CLAUDE.md
-cat integrations/claude-code/CLAUDE.md >> your-project/CLAUDE.md
+# 2. Add to your project's CLAUDE.md
+echo "\n# Design System\nSee global-design-skill/skills/global-design/SKILL.md" >> your-project/CLAUDE.md
 ```
 
 ### Cursor
 
 ```bash
-cp integrations/cursor/cursor-rules.md your-project/.cursorrules
+cp skills/global-design/SKILL.md your-project/.cursorrules
 ```
 
-### ChatGPT
+### Any AI assistant
 
-Copy `integrations/chatgpt/custom-gpt-instructions.md` into your Custom GPT system prompt.
+Start your prompt with:
+```
+Use the design system defined in [path to SKILL.md].
+```
+
+---
+
+## Capabilities
+
+| Task | How to invoke |
+|---|---|
+| Build a landing page from scratch | "Use global-design-skill and create a landing page for [product]" |
+| Build a SaaS app | "Use global-design-skill and scaffold a SaaS app shell for [product]" |
+| Build an admin panel | "Use global-design-skill and architect an admin panel for [product]" |
+| Design a dashboard | "Use global-design-skill and build a dashboard for [app]" |
+| Run a design audit | "Use global-design-skill and audit this page: [HTML/screenshot/URL]" |
+| Write a frontend spec | "Use global-design-skill and write a frontend ТЗ for [component]" |
+| Improve a hero section | "Use global-design-skill and improve this hero section" |
+| Add dark mode | "Use global-design-skill and add dark mode to this project" |
+| Review before shipping | "Use global-design-skill and run a UI review checklist" |
 
 ---
 
@@ -79,76 +79,203 @@ Copy `integrations/chatgpt/custom-gpt-instructions.md` into your Custom GPT syst
 ```
 global-design-skill/
 │
-├── skills/global-design/        ← Core skill: routing, principles, quality gates
-│   ├── SKILL.md                 ← Main entry point for AI agents
-│   ├── task-routing.md          ← "If task is X, use files Y"
-│   ├── operating-principles.md  ← How to think about design decisions
-│   ├── output-formats.md        ← Output format per audience
-│   └── quality-gates.md        ← Acceptance criteria
+├── skills/global-design/           ← Core skill — start here
+│   ├── SKILL.md                    ← Main AI entry point
+│   ├── task-routing.md             ← "If task is X, use files Y"
+│   ├── operating-principles.md     ← Design decision framework
+│   ├── output-formats.md           ← Output format per audience
+│   └── quality-gates.md            ← 8 acceptance gates
 │
-├── agents/                      ← Specialized agent roles
-├── rules/                       ← Design rules by domain
-├── blueprints/                  ← Build-from-scratch scenarios
-├── patterns/                    ← UI block patterns with variants
-├── tokens/                      ← Design tokens (CSS + JSON)
-├── templates/                   ← Briefs, specs, prompts, outputs
-├── checklists/                  ← Review checklists by task type
-├── recipes/                     ← "How to improve X" guides
-├── examples/                    ← Worked examples
-└── integrations/                ← Claude Code, Cursor, ChatGPT, Figma
+├── agents/                         ← Specialized review agents
+│   ├── design-director.md          ← Visual maturity, brand alignment
+│   ├── ux-architect.md             ← User flows, IA, edge cases
+│   ├── conversion-designer.md      ← CTAs, pricing, friction
+│   ├── design-critic.md            ← Adversarial — finds banned patterns
+│   └── frontend-handoff-reviewer.md ← Gate 8: implementation-ready?
+│
+├── blueprints/                     ← Build-from-scratch protocols
+│   ├── landing-page-from-scratch.md ← 9-section AIDA landing page
+│   ├── saas-app-from-scratch.md    ← 3 shell options, 6 core screens
+│   ├── admin-panel-from-scratch.md ← Density-first, 6 screens
+│   ├── website-from-scratch.md     ← Multi-page IA, nav, schema
+│   └── redesign-existing-page.md   ← 6-phase redesign protocol
+│
+├── rules/                          ← Design rules by domain
+│   ├── 01-visual-hierarchy.md      ← 10 hierarchy rules
+│   ├── 02-layout-and-grid.md       ← 12 layout rules, breakpoints
+│   ├── 06-components.md            ← Component contracts, 10 rules
+│   ├── 12-admin-panels.md          ← Density-first, 11 rules
+│   ├── 13-saas-products.md         ← Day 1 vs Day 365, 10 rules
+│   ├── 14-landing-pages.md         ← Single metric, 11 rules
+│   └── 16-design-for-seo.md        ← CWV, schema, semantic HTML
+│
+├── patterns/
+│   ├── marketing-blocks/           ← Landing page sections
+│   │   ├── hero-sections.md        ← 4 patterns: split, centered, video, bento
+│   │   ├── pricing-sections.md     ← 3 patterns + psychology principles
+│   │   ├── social-proof.md         ← 5 patterns: logos, metrics, testimonials
+│   │   ├── cta-sections.md         ← 4 patterns + button system
+│   │   └── faq-sections.md         ← 3 patterns + FAQPage schema
+│   │
+│   ├── product-ui/                 ← SaaS / app UI
+│   │   ├── onboarding.md           ← Linear wizard, checklist, product tour
+│   │   ├── empty-states.md         ← 5 types with copy formulas
+│   │   ├── error-states.md         ← 9-type taxonomy, 5 patterns
+│   │   ├── loading-states.md       ← Decision matrix + 6 patterns
+│   │   └── settings-pages.md       ← IA, forms, toggles, danger zone
+│   │
+│   ├── navigation/                 ← Navigation systems
+│   │   ├── header-patterns.md      ← Marketing + app headers
+│   │   ├── sidebar-patterns.md     ← Full + collapsed + workspace switcher
+│   │   └── mobile-navigation.md    ← Bottom tab bar + hamburger drawer
+│   │
+│   └── admin-ui/                   ← Admin / data-heavy interfaces
+│       ├── data-tables.md          ← Full anatomy: sort, select, pagination
+│       ├── filters.md              ← Filter bar, chips, dropdown, URL state
+│       └── dashboard-layouts.md    ← KPI cards, charts, real-time pattern
+│
+├── tokens/                         ← Design token system
+│   ├── design-tokens.json          ← W3C DTCG format (Style Dictionary ready)
+│   ├── tokens.css                  ← CSS custom properties — light mode
+│   ├── tokens-dark.css             ← Dark mode overrides
+│   └── README.md                   ← Usage guide + tooling integration
+│
+├── templates/
+│   ├── specs/
+│   │   ├── frontend-tz.md          ← Gate 8 developer handoff template
+│   │   └── component-spec.md       ← Component API + states + ARIA template
+│   └── briefs/
+│       └── project-brief.md        ← Problem → goal → scope → sign-off
+│
+├── checklists/
+│   ├── global-design-review.md     ← 100+ checks, 11 sections, banned patterns
+│   ├── landing-conversion-review.md ← AIDA, CTA, social proof, friction, SEO
+│   └── ui-review.md                ← Forms, tables, modals, loading, errors, a11y
+│
+├── recipes/                        ← "How to improve X" step-by-step guides
+│   ├── make-page-more-premium.md   ← 9 steps: font → texture → asymmetry
+│   ├── make-interface-cleaner.md   ← 9 steps: 1 accent → borders → hierarchy
+│   ├── improve-hero-section.md     ← 7 steps: layout → headline → visual → CTA
+│   ├── improve-pricing-page.md     ← 8 steps: annual → recommended → anchoring
+│   ├── improve-forms.md            ← 7 steps: fields → labels → errors → loading
+│   ├── add-dark-mode.md            ← 7 steps: tokens → toggle → flash prevention
+│   ├── improve-mobile-version.md   ← 10 steps: dvh → targets → safe areas
+│   └── improve-empty-states.md     ← 5 types with copy formulas and animations
+│
+├── README.md                       ← This file
+├── CONTRIBUTING.md                 ← Contribution standards
+├── CHANGELOG.md                    ← Version history
+└── install.md                      ← Setup per tool
 ```
 
 ---
 
-## Technology Standards (2025–2026)
-
-This skill is built on current baseline — no legacy patterns:
+## Technology Standards (2026 Baseline)
 
 | Area | Standard |
 |---|---|
-| CSS | Nesting, `:has()`, `@property`, `@starting-style`, Popover API, Anchor Positioning, Scroll-driven Animations, View Transitions Level 2 |
-| Colors | OKLCH throughout — `oklch(65% 0.22 258)` not hex |
-| Tailwind | v4 — `@theme {}` in CSS, no `tailwind.config.js` |
-| React | 19 — `useActionState`, `useOptimistic`, `useFormStatus`, ref as prop |
-| Next.js | 15 — async APIs (`await cookies()`), `"use cache"`, Turbopack |
-| Motion | `motion/react` package — `useAnimate`, `useInView`, `animateView()` |
-| GSAP | `useGSAP` hook from `@gsap/react`, `contextSafe()`, auto-cleanup |
-| TypeScript | 5.x — `satisfies`, `const` type params, template literal types |
-| Accessibility | WCAG 2.2 AA — 4.5:1 contrast, 44px touch targets, focus-visible |
+| **CSS** | Nesting, `:has()`, `@property`, `@starting-style`, Popover API, Anchor Positioning, Scroll-driven Animations, View Transitions Level 2 |
+| **Colors** | OKLCH throughout — `oklch(65% 0.22 258)` not hex |
+| **Tailwind** | v4 — `@theme {}` in CSS, no `tailwind.config.js` |
+| **React** | 19 — `useActionState`, `useOptimistic`, `useFormStatus`, ref as prop |
+| **Next.js** | 15 — `await cookies()`, `"use cache"`, Turbopack |
+| **Motion** | `motion/react` — `useAnimate`, `useInView`, `animateView()` |
+| **GSAP** | `useGSAP` from `@gsap/react`, `contextSafe()` |
+| **TypeScript** | 5.x — `satisfies`, `const` type params, template literal types |
+| **Accessibility** | WCAG 2.2 AA — 4.5:1 contrast, 44px touch targets, focus-visible |
 
 ---
 
 ## Design System
 
-All color values use OKLCH for perceptual uniformity. All spacing on a 4px grid. All type sizes use `clamp()` for fluid scaling.
+All colors use **OKLCH** for perceptual uniformity. All spacing on a **4px grid**. All type sizes use **`clamp()`** for fluid scaling.
 
 ```css
-/* Core token example */
---color-accent:  oklch(65% 0.22 258);   /* electric blue */
---color-base:    oklch(9%  0.012 258);  /* dark surface */
+/* tokens/tokens.css — import in your project */
+--color-accent:  oklch(57% 0.22 258);          /* electric blue */
+--color-surface: oklch(100% 0.003 258);        /* card background */
 --text-hero:     clamp(3.5rem, 8vw + 1rem, 12rem);
---space-6:       1.5rem;               /* 24px */
+--space-6:       24px;                          /* 4px × 6 */
+--radius-xl:     16px;
+--ease-spring:   cubic-bezier(0.16, 1, 0.3, 1);
 ```
 
-See `tokens/` for full token sets per design style (SaaS dark, SaaS light, Editorial, Enterprise Admin).
+Dark mode: import `tokens-dark.css` and add `data-theme="dark"` to `<html>`. See `recipes/add-dark-mode.md`.
 
 ---
 
 ## Agents
 
-| Agent | Responsibility |
-|---|---|
-| `design-director` | Overall concept, visual maturity, brand alignment |
-| `ux-architect` | User journeys, information architecture, flows |
-| `conversion-designer` | CTAs, offer structure, pricing psychology |
-| `design-critic` | Adversarial review — finds weak points, not solutions |
-| `frontend-handoff-reviewer` | Verifies implementation-readiness |
+Five agents run in sequence. Each has a distinct role:
+
+| Agent | Runs when | Verdict format |
+|---|---|---|
+| `ux-architect` | Problem definition phase | Gates checklist |
+| `design-director` | After concept is presented | Table: area / problem / severity |
+| `conversion-designer` | Landing pages, pricing, onboarding | Friction inventory |
+| `design-critic` | After design-director | REJECTED / CONDITIONAL / APPROVED |
+| `frontend-handoff-reviewer` | Before dev handoff | Pass/fail per Gate 8 criterion |
+
+---
+
+## Key Patterns at a Glance
+
+**Landing page structure:** `blueprints/landing-page-from-scratch.md`
+→ Hero → Social proof bar → Problem → How it works → Features → Deep proof → Pricing → FAQ → Final CTA
+
+**Admin panel core screens:** `blueprints/admin-panel-from-scratch.md`
+→ Data table → Detail/Edit → Create/Form → User management → Audit log → Settings
+
+**SaaS empty state formula:** `patterns/product-ui/empty-states.md`
+→ Preview image → "[Feature] will appear here" → Why valuable → "Create your first [noun]"
+
+**Error message formula:** `patterns/product-ui/error-states.md`
+→ `[What failed] — [Why] — [How to fix]`
+
+**CTA label formula:** `rules/14-landing-pages.md`
+→ `Verb + Object + Context` — "Start Pro free for 14 days"
+
+---
+
+## Quality Gates
+
+A design passes handoff when it clears all 8 gates:
+
+```
+Gate 1 — Problem defined (specific, data-backed)
+Gate 2 — User identified (concrete person with context)
+Gate 3 — Metric set (one primary metric with target)
+Gate 4 — All states designed (idle/hover/active/focus/disabled/loading/empty/error/success)
+Gate 5 — Responsive behavior specified (390px / 768px / 1280px)
+Gate 6 — ARIA specified (every attribute on every interactive element)
+Gate 7 — Tokens used (no raw hex, no raw px in components)
+Gate 8 — Developer can implement without asking a question
+```
+
+Full gate specifications: `skills/global-design/quality-gates.md`
+Developer handoff template: `templates/specs/frontend-tz.md`
+
+---
+
+## Banned Patterns
+
+These patterns cause immediate design failure. Full list in `checklists/global-design-review.md`.
+
+- Centered hero: H1 + subtext + 2 equal buttons (the default)
+- Side-stripe accent borders (border-left/right > 1px colored)
+- Gradient text (`background-clip: text`)
+- Pure `#000000` / `#ffffff` without hue tint
+- `transition: all` or `ease-in-out`
+- `100vh` instead of `100dvh`
+- `framer-motion` import instead of `motion/react`
+- Placeholder text as form label
+- Error messages: "Invalid", "Required", "Error" — no context
 
 ---
 
 ## Philosophy
 
-**Снимает неопределённость, не генерирует красоту.**
+**Removes uncertainty, doesn't generate beauty.**
 
 Every output answers:
 - What are we building?

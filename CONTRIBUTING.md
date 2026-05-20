@@ -1,102 +1,148 @@
 # Contributing
 
+This is a decision framework, not a style guide. Every contribution must answer: **"What decision does this help make, and how?"**
+
+---
+
 ## What to contribute
 
-High-value contributions:
-- New patterns in `patterns/` with real-world variants
+**High value:**
+- New patterns in `patterns/` — real-world variants with working code
 - Additional blueprints in `blueprints/` for project types not covered
-- Improvement recipes in `recipes/` based on common problems
-- Worked examples in `examples/` with clear rationale
-- Agent refinements based on actual usage
+- New recipes in `recipes/` based on problems you actually solved
+- Rule files filling gaps in `rules/` (03-typography, 04-color, 05-animation, 07-accessibility, 08-performance)
+- Agent refinements based on real usage
 
-Low-value contributions (please don't):
-- Aesthetic opinions without rationale
+**Low value (don't submit):**
+- Aesthetic opinions without rationale or code
 - Patterns that duplicate existing ones
-- Generic advice that doesn't add to existing rules
-- Anything that contradicts the technology standards in `manifest.yaml`
+- Generic advice without "when to use" and "what not to do"
+- Anything using banned tech: `framer-motion`, `ease-in-out`, `100vh`, raw hex, `rgba()`
 
 ---
 
-## File standards
+## File Standards
 
-### All files follow this header:
+### Every file opens with:
 
 ```markdown
-# Title
+# [Title] — [Pattern | Rule | Recipe | Blueprint]
 
-> One-sentence summary of what this file is for and when to use it.
+> One sentence: what this is for and when to use it.
 
 ---
 ```
 
-### Rules files (`rules/`)
+### Rules (`rules/`)
 
-Structure:
 ```
 # Rule: [Topic]
-## Core principle (1-2 sentences)
-## When this applies
-## The rule with rationale
-## Code examples (correct + incorrect)
-## Common mistakes
-## Checklist
-```
-
-### Pattern files (`patterns/`)
-
-Structure:
-```
-# [Block] Patterns
-## When to use this block
-## Variants (named, with description)
-## Required elements
+## R1 — [Rule name]
+[Rationale in 1-2 sentences]
+[Correct code example]
+[Wrong code example — labeled "Before (wrong)"]
 ## Anti-patterns
-## Responsive behavior
-## Accessibility requirements
-## Code example (preferred variant)
+## Acceptance criteria
 ```
 
-### Blueprint files (`blueprints/`)
+### Patterns (`patterns/`)
 
-Structure:
+```
+# Pattern — [Block name]
+> [One-sentence principle]
+## Pattern A — [Name]
+Best for: [specific scenario]
+[HTML]
+[CSS]
+## Anti-Patterns
+## Related Files
+```
+
+### Recipes (`recipes/`)
+
+```
+# Recipe — [Goal]
+> [What this fixes]
+## When to use
+## Diagnosis: [Problem] Checklist
+## Step 1 — [First action]
+[Before / After code comparison]
+## Acceptance Criteria
+```
+
+### Blueprints (`blueprints/`)
+
 ```
 # [Type] From Scratch
+> [One-line purpose]
 ## When to use
-## Questions to ask before starting
-## Required sections/screens (ordered)
-## UX rules for this type
-## UI rules for this type
-## Anti-patterns
-## Related agents
-## Related checklists
-## Output format
+## Before you start: questions to answer
+## Section/Screen [N]: [Name]
+[HTML structure]
+[CSS]
+[Rationale]
+## Anti-Patterns
+## Related Files
 ```
 
 ---
 
-## Code examples
+## Code Standards
 
-- CSS: OKLCH for all colors — no hex unless brand-specified
-- TypeScript: use `satisfies` for token objects
-- React: React 19 patterns (`useActionState`, ref as prop)
-- Next.js: 15 patterns (`await cookies()`, `"use cache"`)
-- Motion: `motion/react` imports — not `framer-motion`
-- GSAP: `useGSAP` hook pattern with `contextSafe()`
-- Tailwind: v4 `@theme {}` pattern — no `tailwind.config.js`
+All code examples must follow the 2026 baseline:
+
+| Area | Requirement |
+|---|---|
+| Colors | OKLCH only — `oklch(65% 0.22 258)` — no hex, no rgb() |
+| Spacing | CSS custom properties — `var(--space-4)` — no raw px |
+| Animation | Named cubic-bezier — `var(--ease-spring)` — no `ease-in-out` |
+| Viewport height | `100dvh` — never `100vh` |
+| Motion library | `motion/react` import — never `framer-motion` |
+| Hover states | Wrapped in `@media (hover: hover)` |
+| React | React 19 patterns — `useActionState`, `useOptimistic` |
+| Next.js | v15 patterns — `await cookies()`, `"use cache"` |
+| Tailwind | v4 `@theme {}` pattern |
+
+**Verification:** Run your code example through `checklists/global-design-review.md` before submitting. It must pass all CRITICAL items.
 
 ---
 
-## Pull request process
+## Naming Conventions
 
-1. One PR per logical addition (one new pattern, one new rule, one recipe)
-2. Test your addition by actually using it with Claude Code or Cursor
-3. Include a brief description of what real problem this solved
-4. Update `CHANGELOG.md`
+| Location | Format | Example |
+|---|---|---|
+| `rules/` | `NN-topic.md` (two-digit number) | `03-typography.md` |
+| `patterns/[category]/` | `topic-patterns.md` | `form-patterns.md` |
+| `recipes/` | `verb-object.md` | `improve-typography.md` |
+| `blueprints/` | `type-from-scratch.md` | `ecommerce-from-scratch.md` |
+| `agents/` | `role-name.md` | `seo-auditor.md` |
+| `templates/[type]/` | `purpose.md` | `audit-report.md` |
+| `checklists/` | `scope-review.md` | `ecommerce-review.md` |
+
+---
+
+## Pull Request Process
+
+1. One PR per logical addition
+2. Test by actually using it with Claude Code, Cursor, or another AI assistant
+3. Include in description: what real problem this solved, what you tried first
+4. Update `CHANGELOG.md` under `## Upcoming`
+5. The PR title format: `[category] Add [name]` or `[category] Improve [name]`
+
+**PR checklist:**
+```
+[ ] Code examples use OKLCH, CSS tokens, cubic-bezier
+[ ] File has opening > quote describing when to use
+[ ] Anti-patterns section present
+[ ] No duplicate of existing content
+[ ] Passes global-design-review.md CRITICAL checks
+[ ] CHANGELOG.md updated
+```
 
 ---
 
 ## Philosophy
 
-This is not a style guide. It is a decision framework. Every addition should answer: **"What decision does this help make, and how?"**
+If your contribution only describes what something looks like — not **why**, **when**, and **how to verify** — it belongs elsewhere.
 
-If your contribution only describes what something looks like — not why, when, and how to verify — it belongs elsewhere.
+The test: could a developer implement your pattern correctly after reading it, without asking a single question? If yes, it's ready.
