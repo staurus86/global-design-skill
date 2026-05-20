@@ -1,0 +1,192 @@
+/* =============================================================================
+   DESIGN TOKENS — Dark Mode Overrides
+   global-design-skill v1.0
+
+   Usage:
+     @import './tokens.css';
+     @import './tokens-dark.css';
+
+   The dark mode activates via:
+     1. [data-theme="dark"] on <html> — user preference (JS toggle)
+     2. @media (prefers-color-scheme: dark) — system preference fallback
+
+   To prevent flash of wrong theme, add this script to <head> BEFORE any CSS:
+     <script>
+       const t = localStorage.getItem('theme')
+       const s = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+       document.documentElement.setAttribute('data-theme', t ?? s)
+     </script>
+   ============================================================================= */
+
+
+/* =============================================================================
+   USER PREFERENCE — [data-theme="dark"]
+   Applied when user explicitly selects dark mode (persisted in localStorage).
+   ============================================================================= */
+
+[data-theme="dark"] {
+
+  /* --- Surface hierarchy --- */
+  --color-base:      oklch(10%  0.015 258);   /* page background */
+  --color-surface:   oklch(14%  0.012 258);   /* card, panel, dialog */
+  --color-surface-2: oklch(19%  0.010 258);   /* input bg, hover, nested */
+  --color-border:    oklch(26%  0.012 258 / 0.7); /* borders at reduced opacity */
+
+  /* --- Text hierarchy --- */
+  --color-text-primary:   var(--color-neutral-50);   /* oklch(99% 0.005 258) */
+  --color-text-secondary: var(--color-neutral-300);  /* oklch(87% 0.010 258) */
+  --color-text-muted:     var(--color-neutral-500);  /* oklch(55% 0.010 258) */
+
+  /* --- Brand (lighter on dark background) --- */
+  --color-accent:    var(--color-accent-400);         /* oklch(73% 0.18 258) */
+  --color-accent-bg: oklch(20% 0.06 258);             /* accent tint for dark */
+
+  /* --- Status (same hues, adjusted for dark backgrounds) --- */
+  --color-success:    oklch(62% 0.16 145);   /* slightly lighter on dark */
+  --color-success-bg: oklch(17% 0.06 145);
+  --color-warning:    oklch(72% 0.16 75);
+  --color-warning-bg: oklch(18% 0.06 75);
+  --color-error:      oklch(60% 0.18 25);
+  --color-error-bg:   oklch(17% 0.07 25);
+
+  /* --- Shadows: invisible on dark, use borders + depth instead --- */
+  --shadow-xs: 0 0 0 1px var(--color-border);
+  --shadow-sm: 0 0 0 1px var(--color-border);
+  --shadow-md: 0 0 0 1px var(--color-border),
+               0 4px 24px oklch(0% 0 0 / 0.4);
+  --shadow-lg: 0 0 0 1px var(--color-border),
+               0 8px 48px oklch(0% 0 0 / 0.6);
+  --shadow-xl: 0 0 0 1px var(--color-border),
+               0 16px 64px oklch(0% 0 0 / 0.8);
+
+  /* Inner highlight remains (useful for glass surfaces) */
+  --shadow-inner:
+    inset 0  1px 0 oklch(100% 0 0 / 0.08),
+    inset 0 -1px 0 oklch(0%   0 0 / 0.10);
+}
+
+
+/* =============================================================================
+   SYSTEM PREFERENCE FALLBACK
+   Applied when no [data-theme] attribute is present.
+   The [data-theme="light"] selector prevents this from overriding user's
+   explicit light mode choice.
+   ============================================================================= */
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+
+    --color-base:      oklch(10%  0.015 258);
+    --color-surface:   oklch(14%  0.012 258);
+    --color-surface-2: oklch(19%  0.010 258);
+    --color-border:    oklch(26%  0.012 258 / 0.7);
+
+    --color-text-primary:   var(--color-neutral-50);
+    --color-text-secondary: var(--color-neutral-300);
+    --color-text-muted:     var(--color-neutral-500);
+
+    --color-accent:    var(--color-accent-400);
+    --color-accent-bg: oklch(20% 0.06 258);
+
+    --color-success:    oklch(62% 0.16 145);
+    --color-success-bg: oklch(17% 0.06 145);
+    --color-warning:    oklch(72% 0.16 75);
+    --color-warning-bg: oklch(18% 0.06 75);
+    --color-error:      oklch(60% 0.18 25);
+    --color-error-bg:   oklch(17% 0.07 25);
+
+    --shadow-xs: 0 0 0 1px var(--color-border);
+    --shadow-sm: 0 0 0 1px var(--color-border);
+    --shadow-md: 0 0 0 1px var(--color-border),
+                 0 4px 24px oklch(0% 0 0 / 0.4);
+    --shadow-lg: 0 0 0 1px var(--color-border),
+                 0 8px 48px oklch(0% 0 0 / 0.6);
+    --shadow-xl: 0 0 0 1px var(--color-border),
+                 0 16px 64px oklch(0% 0 0 / 0.8);
+
+    --shadow-inner:
+      inset 0  1px 0 oklch(100% 0 0 / 0.08),
+      inset 0 -1px 0 oklch(0%   0 0 / 0.10);
+  }
+}
+
+
+/* =============================================================================
+   COMPONENT OVERRIDES FOR DARK MODE
+
+   Specific components that need more than just token switching.
+   ============================================================================= */
+
+/* Scrollbar */
+[data-theme="dark"] {
+  color-scheme: dark;  /* dark mode system scrollbars */
+  scrollbar-color: var(--color-surface-2) transparent;
+}
+
+/* Selection highlight */
+[data-theme="dark"] ::selection {
+  background: oklch(from var(--color-accent) l c h / 0.25);
+  color: var(--color-text-primary);
+}
+
+:root ::selection {
+  background: oklch(from var(--color-accent) l c h / 0.15);
+  color: var(--color-text-primary);
+}
+
+/* Code blocks in dark mode */
+[data-theme="dark"] pre,
+[data-theme="dark"] code {
+  background: oklch(12% 0.01 258);
+  border-color: var(--color-border);
+}
+
+/* HR dividers */
+[data-theme="dark"] hr {
+  border-color: var(--color-border);
+}
+
+/* Placeholder text (slightly different opacity in dark) */
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] textarea::placeholder {
+  color: var(--color-text-muted);
+  opacity: 0.6;
+}
+
+/* Image inversion for icons on white backgrounds */
+/* Only use on monochrome SVG icons that have white fill */
+[data-theme="dark"] .icon-invert-dark {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+/* Logos: show dark variant */
+[data-theme="dark"] .logo-light { display: none; }
+[data-theme="dark"] .logo-dark  { display: block; }
+
+:root .logo-dark  { display: none; }
+:root .logo-light { display: block; }
+
+
+/* =============================================================================
+   THEME TRANSITION
+   Applied only during mode toggle (prevents transition on page load).
+   Add via JS: document.documentElement.classList.add('theme-transition')
+   Remove after: setTimeout(() => el.classList.remove('theme-transition'), 300)
+   ============================================================================= */
+
+.theme-transition,
+.theme-transition * {
+  transition:
+    background-color var(--duration-moderate) var(--ease-smooth),
+    border-color     var(--duration-moderate) var(--ease-smooth),
+    color            var(--duration-fast)     var(--ease-smooth),
+    box-shadow       var(--duration-moderate) var(--ease-smooth) !important;
+}
+
+/* Respect prefers-reduced-motion for theme transition */
+@media (prefers-reduced-motion: reduce) {
+  .theme-transition,
+  .theme-transition * {
+    transition: none !important;
+  }
+}

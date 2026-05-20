@@ -1,0 +1,267 @@
+{
+  "$schema": "https://tr.designtokens.org/format/",
+  "$metadata": {
+    "version": "1.0.0",
+    "description": "global-design-skill design token system — W3C DTCG format",
+    "colorSpace": "oklch",
+    "baseUnit": "4px"
+  },
+
+  "color": {
+    "$type": "color",
+    "$description": "All colors in OKLCH. Never use hex in components — reference these tokens.",
+
+    "primitive": {
+      "$description": "Raw palette — do not use directly in components. Use semantic tokens instead.",
+
+      "accent": {
+        "50":  { "$value": "oklch(97% 0.04 258)", "$description": "Lightest accent tint" },
+        "100": { "$value": "oklch(93% 0.07 258)" },
+        "200": { "$value": "oklch(87% 0.11 258)" },
+        "300": { "$value": "oklch(80% 0.15 258)" },
+        "400": { "$value": "oklch(73% 0.18 258)" },
+        "500": { "$value": "oklch(65% 0.22 258)", "$description": "Base accent — light mode" },
+        "600": { "$value": "oklch(57% 0.22 258)" },
+        "700": { "$value": "oklch(48% 0.20 258)" },
+        "800": { "$value": "oklch(38% 0.17 258)" },
+        "900": { "$value": "oklch(28% 0.12 258)" }
+      },
+
+      "neutral": {
+        "$description": "Tinted neutrals — hue matches accent (258 = blue). Never pure gray.",
+        "0":   { "$value": "oklch(100% 0.002 258)" },
+        "50":  { "$value": "oklch(99%  0.005 258)" },
+        "100": { "$value": "oklch(97%  0.007 258)" },
+        "200": { "$value": "oklch(93%  0.008 258)" },
+        "300": { "$value": "oklch(87%  0.010 258)" },
+        "400": { "$value": "oklch(72%  0.010 258)" },
+        "500": { "$value": "oklch(55%  0.010 258)" },
+        "600": { "$value": "oklch(42%  0.012 258)" },
+        "700": { "$value": "oklch(32%  0.012 258)" },
+        "800": { "$value": "oklch(22%  0.012 258)" },
+        "900": { "$value": "oklch(15%  0.013 258)" },
+        "950": { "$value": "oklch(11%  0.014 258)" },
+        "1000":{ "$value": "oklch(8%   0.015 258)" }
+      },
+
+      "success": {
+        "100": { "$value": "oklch(94% 0.07 145)" },
+        "500": { "$value": "oklch(55% 0.18 145)", "$description": "Base success green" },
+        "700": { "$value": "oklch(42% 0.18 145)" }
+      },
+
+      "warning": {
+        "100": { "$value": "oklch(95% 0.08 75)" },
+        "500": { "$value": "oklch(65% 0.18 75)",  "$description": "Base warning amber" },
+        "700": { "$value": "oklch(52% 0.18 75)" }
+      },
+
+      "error": {
+        "100": { "$value": "oklch(95% 0.07 25)" },
+        "500": { "$value": "oklch(52% 0.22 25)",  "$description": "Base error red" },
+        "700": { "$value": "oklch(40% 0.20 25)" }
+      }
+    },
+
+    "semantic": {
+      "$description": "Semantic tokens — use these in all components.",
+
+      "light": {
+        "base":          { "$value": "{color.primitive.neutral.50}",   "$description": "Page background" },
+        "surface":       { "$value": "{color.primitive.neutral.0}",    "$description": "Card, panel, dialog" },
+        "surface2":      { "$value": "{color.primitive.neutral.100}",  "$description": "Input bg, hover bg, nested surface" },
+        "border":        { "$value": "{color.primitive.neutral.200}",  "$description": "Dividers, card borders, input borders" },
+        "textPrimary":   { "$value": "{color.primitive.neutral.950}",  "$description": "Headlines, body, primary content" },
+        "textSecondary": { "$value": "{color.primitive.neutral.700}",  "$description": "Supporting text" },
+        "textMuted":     { "$value": "{color.primitive.neutral.500}",  "$description": "Labels, captions, timestamps, placeholders" },
+        "accent":        { "$value": "{color.primitive.accent.600}",   "$description": "Interactive elements, links, focus rings" },
+        "accentBg":      { "$value": "{color.primitive.accent.50}",    "$description": "Accent-tinted backgrounds" }
+      },
+
+      "dark": {
+        "base":          { "$value": "{color.primitive.neutral.1000}",  "$description": "Page background" },
+        "surface":       { "$value": "{color.primitive.neutral.950}",   "$description": "Card, panel, dialog" },
+        "surface2":      { "$value": "{color.primitive.neutral.900}",   "$description": "Input bg, hover bg, nested surface" },
+        "border":        { "$value": "oklch(26% 0.012 258 / 0.7)",      "$description": "Dividers at reduced opacity" },
+        "textPrimary":   { "$value": "{color.primitive.neutral.50}",    "$description": "Primary content" },
+        "textSecondary": { "$value": "{color.primitive.neutral.300}",   "$description": "Supporting text" },
+        "textMuted":     { "$value": "{color.primitive.neutral.500}",   "$description": "Muted content" },
+        "accent":        { "$value": "{color.primitive.accent.400}",    "$description": "Lighter accent for dark backgrounds" },
+        "accentBg":      { "$value": "oklch(20% 0.06 258)",             "$description": "Accent tint on dark surface" }
+      },
+
+      "status": {
+        "success":    { "$value": "{color.primitive.success.500}" },
+        "successBg":  { "$value": "{color.primitive.success.100}" },
+        "warning":    { "$value": "{color.primitive.warning.500}" },
+        "warningBg":  { "$value": "{color.primitive.warning.100}" },
+        "error":      { "$value": "{color.primitive.error.500}" },
+        "errorBg":    { "$value": "{color.primitive.error.100}" }
+      }
+    }
+  },
+
+  "space": {
+    "$type": "dimension",
+    "$description": "4px base grid. All spacing must use these tokens — no raw px values.",
+    "1":  { "$value": "4px" },
+    "2":  { "$value": "8px" },
+    "3":  { "$value": "12px" },
+    "4":  { "$value": "16px" },
+    "5":  { "$value": "20px" },
+    "6":  { "$value": "24px" },
+    "7":  { "$value": "28px" },
+    "8":  { "$value": "32px" },
+    "9":  { "$value": "36px" },
+    "10": { "$value": "40px" },
+    "11": { "$value": "44px" },
+    "12": { "$value": "48px" },
+    "14": { "$value": "56px" },
+    "16": { "$value": "64px" },
+    "20": { "$value": "80px" },
+    "24": { "$value": "96px" },
+    "32": { "$value": "128px" },
+    "40": { "$value": "160px" },
+    "48": { "$value": "192px" },
+    "64": { "$value": "256px" }
+  },
+
+  "typography": {
+    "$description": "Fluid type scale using clamp(). All display/heading sizes must be fluid.",
+
+    "scale": {
+      "hero":    { "$type": "dimension", "$value": "clamp(3.5rem, 8vw + 1rem, 12rem)",       "$description": "Landing page hero H1" },
+      "display": { "$type": "dimension", "$value": "clamp(2.5rem, 5vw + 0.5rem, 7rem)",      "$description": "Section hero H1, marketing display" },
+      "h1":      { "$type": "dimension", "$value": "clamp(2rem, 4vw + 0.25rem, 4.5rem)",     "$description": "Page H1" },
+      "h2":      { "$type": "dimension", "$value": "clamp(1.75rem, 3vw + 0.5rem, 4rem)",     "$description": "Section heading" },
+      "h3":      { "$type": "dimension", "$value": "clamp(1.25rem, 2vw + 0.25rem, 2rem)",    "$description": "Card heading, sub-section" },
+      "h4":      { "$type": "dimension", "$value": "clamp(1.125rem, 1.5vw + 0.25rem, 1.5rem)", "$description": "Sub-heading, sidebar heading" },
+      "body":    { "$type": "dimension", "$value": "clamp(1rem, 1.2vw + 0.4rem, 1.2rem)",   "$description": "Body text" },
+      "sm":      { "$type": "dimension", "$value": "0.9375rem",  "$description": "Secondary body, captions" },
+      "xs":      { "$type": "dimension", "$value": "0.875rem",   "$description": "UI labels, table cells" },
+      "2xs":     { "$type": "dimension", "$value": "0.8125rem",  "$description": "Muted labels, timestamps, badges" },
+      "3xs":     { "$type": "dimension", "$value": "0.75rem",    "$description": "Eyebrow tags, legal text" }
+    },
+
+    "weight": {
+      "normal":   { "$type": "number", "$value": 400 },
+      "medium":   { "$type": "number", "$value": 500 },
+      "semibold": { "$type": "number", "$value": 600 },
+      "bold":     { "$type": "number", "$value": 700 }
+    },
+
+    "lineHeight": {
+      "none":    { "$type": "number", "$value": 1,    "$description": "Single-line UI elements" },
+      "tight":   { "$type": "number", "$value": 1.1,  "$description": "Large display headlines" },
+      "snug":    { "$type": "number", "$value": 1.3,  "$description": "Medium headings" },
+      "normal":  { "$type": "number", "$value": 1.5,  "$description": "UI text, captions" },
+      "relaxed": { "$type": "number", "$value": 1.65, "$description": "Body prose" },
+      "loose":   { "$type": "number", "$value": 1.8,  "$description": "Small text, high-density reading" }
+    },
+
+    "letterSpacing": {
+      "tighter": { "$type": "dimension", "$value": "-0.04em", "$description": "Large display type > 48px" },
+      "tight":   { "$type": "dimension", "$value": "-0.03em", "$description": "Display type 32–48px" },
+      "snug":    { "$type": "dimension", "$value": "-0.02em", "$description": "Headings 24–32px" },
+      "normal":  { "$type": "dimension", "$value": "0",       "$description": "Body text" },
+      "wide":    { "$type": "dimension", "$value": "0.04em",  "$description": "Subheadings, UI labels" },
+      "wider":   { "$type": "dimension", "$value": "0.06em",  "$description": "Table headers (uppercase)" },
+      "widest":  { "$type": "dimension", "$value": "0.12em",  "$description": "Eyebrow tags (uppercase)" }
+    }
+  },
+
+  "radius": {
+    "$type": "dimension",
+    "$description": "Border radius scale. Use sm for inputs, md for buttons/badges, lg/xl for cards, 2xl for large panels.",
+    "none":   { "$value": "0" },
+    "sm":     { "$value": "4px",   "$description": "Subtle rounding — checkboxes, small badges" },
+    "md":     { "$value": "8px",   "$description": "Buttons, inputs, dropdowns, small cards" },
+    "lg":     { "$value": "12px",  "$description": "Cards, panels" },
+    "xl":     { "$value": "16px",  "$description": "Large cards, modals, drawers" },
+    "2xl":    { "$value": "24px",  "$description": "Hero containers, featured sections" },
+    "3xl":    { "$value": "32px",  "$description": "Large marketing cards" },
+    "full":   { "$value": "9999px","$description": "Pills, badges, toggle chips" }
+  },
+
+  "shadow": {
+    "$type": "shadow",
+    "$description": "Layered shadows using OKLCH black. Dark mode uses surface + border instead.",
+    "xs": {
+      "$value": "0 1px 2px oklch(0% 0 0 / 0.04)",
+      "$description": "Subtle lift — form inputs"
+    },
+    "sm": {
+      "$value": "0 1px 2px oklch(0% 0 0 / 0.04), 0 2px 4px oklch(0% 0 0 / 0.04)",
+      "$description": "Default card shadow"
+    },
+    "md": {
+      "$value": "0 4px 8px oklch(0% 0 0 / 0.06), 0 12px 24px oklch(0% 0 0 / 0.08)",
+      "$description": "Hover cards, dropdowns"
+    },
+    "lg": {
+      "$value": "0 8px 16px oklch(0% 0 0 / 0.08), 0 24px 48px oklch(0% 0 0 / 0.14)",
+      "$description": "Modals, popovers"
+    },
+    "xl": {
+      "$value": "0 16px 32px oklch(0% 0 0 / 0.10), 0 48px 96px oklch(0% 0 0 / 0.18)",
+      "$description": "Large overlays, command palette"
+    },
+    "accent": {
+      "$value": "0 8px 32px oklch(from var(--color-accent) l c h / 0.25)",
+      "$description": "Accent-colored shadow for primary buttons"
+    },
+    "inner": {
+      "$value": "inset 0 1px 0 oklch(100% 0 0 / 0.12), inset 0 -1px 0 oklch(0% 0 0 / 0.06)",
+      "$description": "Inner highlight — bezel inner, glass surfaces"
+    }
+  },
+
+  "duration": {
+    "$type": "duration",
+    "$description": "Animation durations. Micro for instant feedback, standard for UI transitions, entrance for page-level.",
+    "instant":  { "$value": "80ms",  "$description": "Icon swap, badge update" },
+    "micro":    { "$value": "120ms", "$description": "Hover state change, button active" },
+    "fast":     { "$value": "150ms", "$description": "Color transitions, border change" },
+    "normal":   { "$value": "200ms", "$description": "Component entrance/exit (small)" },
+    "moderate": { "$value": "300ms", "$description": "Drawer, dropdown open/close" },
+    "slow":     { "$value": "400ms", "$description": "Modal, page transition" },
+    "entrance": { "$value": "600ms", "$description": "Hero entrance, large element reveal" },
+    "relaxed":  { "$value": "800ms", "$description": "Background transitions, parallax" }
+  },
+
+  "easing": {
+    "$type": "cubicBezier",
+    "$description": "Never use ease-in-out. Always use specific cubic-bezier values.",
+    "spring":    { "$value": [0.16, 1, 0.3, 1],     "$description": "Default UI spring — overshoot into place. Use for most enter animations." },
+    "smooth":    { "$value": [0.25, 0.46, 0.45, 0.94], "$description": "Smooth decelerate — element settling. Good for hovers." },
+    "enter":     { "$value": [0, 0, 0.2, 1],         "$description": "Accelerate to full speed quickly — crisp enter" },
+    "exit":      { "$value": [0.4, 0, 1, 1],         "$description": "Elements leaving — fast decelerate" },
+    "snappy":    { "$value": [0.4, 0, 0, 1],         "$description": "Snappy response — micro-interactions" },
+    "linear":    { "$value": [0, 0, 1, 1],           "$description": "Continuous animation only (spinners, marquees)" }
+  },
+
+  "zIndex": {
+    "$type": "number",
+    "$description": "Z-index layers. Use these constants — never raw numbers.",
+    "base":     { "$value": 0 },
+    "raised":   { "$value": 10,   "$description": "Slightly raised cards, sticky table headers" },
+    "sticky":   { "$value": 100,  "$description": "Sticky headers, bottom tab bar" },
+    "overlay":  { "$value": 200,  "$description": "Tooltips, popovers, dropdowns" },
+    "dropdown": { "$value": 300,  "$description": "Dropdown menus, date pickers" },
+    "drawer":   { "$value": 400,  "$description": "Sidebars, navigation drawers" },
+    "modal":    { "$value": 500,  "$description": "Dialogs, modals" },
+    "toast":    { "$value": 600,  "$description": "Toast notifications" },
+    "max":      { "$value": 9999, "$description": "Emergency override only" }
+  },
+
+  "breakpoint": {
+    "$type": "dimension",
+    "$description": "Mobile-first breakpoints. Always use min-width — never max-width.",
+    "sm":  { "$value": "640px",  "$description": "Large phones, small landscape" },
+    "md":  { "$value": "768px",  "$description": "Tablet portrait" },
+    "lg":  { "$value": "1024px", "$description": "Tablet landscape, small laptop" },
+    "xl":  { "$value": "1280px", "$description": "Desktop" },
+    "2xl": { "$value": "1440px", "$description": "Wide desktop" },
+    "3xl": { "$value": "1920px", "$description": "Ultra-wide" }
+  }
+}
