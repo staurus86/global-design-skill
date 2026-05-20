@@ -332,4 +332,4 @@ After applying all steps, the design should pass:
 ---
 
 *Recipe version: global-design-skill v1.0 — `recipes/make-page-more-premium.md`*
-*Related: `skills/hyperdesign/SKILL.md`, `rules/01-visual-hierarchy.md`, `rules/02-layout-and-grid.md`*
+*Related: `references/visual-effects.md`, `rules/01-visual-hierarchy.md`, `rules/02-layout-and-grid.md`*

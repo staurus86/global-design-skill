@@ -115,13 +115,13 @@
 - **Location:** Hero `background: linear-gradient(135deg, #6366f1, #8b5cf6)`
 - **Problem:** Banned color pattern. Signals genericness. Removes all possibility of brand distinctiveness.
 - **Fix:** Remove gradient entirely. Use a dark surface color from the token system: `var(--color-surface)` or `oklch(10% 0.015 258)` for dark-mode hero.
-- **Reference:** `rules/04-color.md` R1, hyperdesign banned patterns
+- **Reference:** `rules/04-color.md` R1, `checklists/global-design-review.md` banned patterns
 
 ### 3. Side-stripe border-left accent on feature cards
 - **Location:** All 3 feature cards (`border-left: 4px solid #6366f1`)
 - **Problem:** Banned structural pattern. Conveys no meaning, just decoration that signals "I ran out of ideas."
 - **Fix:** Remove the border-left entirely. If visual grouping is needed, use a subtle background tint: `background: oklch(from var(--color-accent) l c h / 0.05)`.
-- **Reference:** hyperdesign banned patterns — "Side-stripe borders"
+- **Reference:** `checklists/global-design-review.md` banned patterns — "Side-stripe borders"
 
 ---
 

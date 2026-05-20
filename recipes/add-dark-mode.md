@@ -353,4 +353,4 @@ const chartColors = {
 ---
 
 *Recipe version: global-design-skill v1.0 — `recipes/add-dark-mode.md`*
-*Related: `references/color-alchemy.md`, `rules/02-layout-and-grid.md`, `skills/hyperdesign/SKILL.md`*
+*Related: `references/color-alchemy.md`, `rules/02-layout-and-grid.md`, `rules/04-color.md`*

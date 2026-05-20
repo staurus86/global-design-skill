@@ -913,4 +913,4 @@ function initMagneticButtons(selector = '.btn-magnetic') {
 ---
 
 *Reference version: global-design-skill v1.0 — `references/visual-effects.md`*
-*Related: `rules/05-animation.md`, `references/3d-animations.md`, `references/aesthetic-archetypes.md`, `skills/hyperdesign/SKILL.md`*
+*Related: `rules/05-animation.md`, `references/3d-animations.md`, `references/aesthetic-archetypes.md`, `references/motion-systems.md`*

@@ -288,4 +288,4 @@ Variable fonts allow smooth transitions between weights. Used deliberately, this
 ---
 
 *Rule version: global-design-skill v1.0 — `rules/03-typography.md`*
-*Related: `skills/hyperdesign/SKILL.md` §4, `tokens/tokens.css` typography section, `patterns/marketing-blocks/hero-sections.md`*
+*Related: `references/typography.md`, `tokens/tokens.css` typography section, `patterns/marketing-blocks/hero-sections.md`*

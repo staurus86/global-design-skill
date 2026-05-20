@@ -1,6 +1,6 @@
 # Reference — Aesthetic Archetypes in the Wild
 
-> Real examples of each hyperdesign archetype. Use when a client needs a direction, or when choosing which archetype to commit to. Each archetype includes 5–8 live sites, their defining visual signatures, and what makes them a strong reference for that archetype.
+> Real examples of each aesthetic archetype (A–H). Use when a client needs a direction, or when choosing which archetype to commit to. Each archetype includes 5–8 live sites, their defining visual signatures, and what makes them a strong reference for that archetype.
 
 ---
 

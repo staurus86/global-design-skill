@@ -342,4 +342,4 @@ Level 5 — Toast / critical:     above everything, shadow-lg + border
 ---
 
 *Recipe version: global-design-skill v1.0 — `recipes/make-interface-cleaner.md`*
-*Related: `rules/01-visual-hierarchy.md`, `rules/06-components.md`, `skills/hyperdesign/SKILL.md`*
+*Related: `rules/01-visual-hierarchy.md`, `rules/06-components.md`, `recipes/make-page-more-premium.md`*

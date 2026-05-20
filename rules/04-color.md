@@ -259,4 +259,4 @@ Choosing colors without a strategy leads to inconsistent application. Pick one s
 ---
 
 *Rule version: global-design-skill v1.0 — `rules/04-color.md`*
-*Related: `tokens/tokens.css` color section, `tokens/tokens-dark.css`, `recipes/add-dark-mode.md`, `skills/hyperdesign/SKILL.md` §5*
+*Related: `tokens/tokens.css` color section, `tokens/tokens-dark.css`, `recipes/add-dark-mode.md`, `references/color-alchemy.md`*
