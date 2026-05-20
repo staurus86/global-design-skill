@@ -101,21 +101,36 @@ Format: [version] — date — description
 - `README.md` — updated: complete file map (57 files), quick start, capabilities table, quality gates summary, banned patterns quick reference
 - `CHANGELOG.md` — updated: complete sprint history
 
+### Sprint 11 — Missing Rules (5 files)
+
+- `rules/03-typography.md` — R1 fluid clamp scale, R2 16px minimum, R3 letter-spacing tracks size, R4 line-height by context, R5 75ch max line length, R6 font pairing (banned fonts list), R7 eyebrow tag CSS, R8 H1 ≤3 lines on mobile, R9 no gradient text, R10 variable font weight animation
+- `rules/04-color.md` — R1 OKLCH mandatory (anatomy), R2 tinted neutrals, R3 one accent hue, R4 accent ≤15% surface area, R5 chroma at extremes, R6 WCAG contrast table, R7 color not only differentiator, R8 dark mode as separate system, R9 color-mix() for alpha, R10 color strategy selection
+- `rules/05-animation.md` — R1 everything must enter, R2 no ease-in-out (easing guide), R3 no transition:all, R4 duration scale table, R5 @starting-style, R6 prefers-reduced-motion, R7 IntersectionObserver, R8 no multiple pulse (shimmer), R9 stagger, R10 motion/react not framer-motion
+- `rules/07-accessibility.md` — R1 keyboard-operable, R2 focus-visible ring, R3 persistent labels, R4 alt text, R5 ARIA custom components, R6 aria-live dynamic content, R7 modal focus trap, R8 44px touch targets, R9 skip navigation, R10 semantic HTML first. Keyboard reference table.
+- `rules/08-performance.md` — Core Web Vitals targets table, R1 LCP fetchpriority, R2 image dimensions (CLS), R3 WebP/AVIF (compression targets), R4 lazy/eager loading, R5 font-display:swap, R6 async/defer scripts, R7 no CLS from dynamic content, R8 Doherty Threshold 400ms, R9 virtualize >200 rows, R10 Next.js "use cache"
+
+### Sprint 12 — Integrations (3 files)
+
+- `integrations/claude-code/CLAUDE.md` — ready-to-paste CLAUDE.md snippet: all 8 rule categories, token usage guide, quality gates checklist, banned patterns quick reference, reference file table
+- `integrations/cursor/cursor-rules.md` — .cursorrules content for Cursor IDE: complete rule set in cursor-native format, 3 setup options (file/settings/docs)
+- `integrations/chatgpt/custom-gpt-instructions.md` — full system prompt for Custom GPT or OpenAI API: role definition, all rule categories, banned patterns, color strategy guide, tech stack defaults, response format instructions, Python API usage example
+
 ---
 
-## Total: 57 files, ~18,000 lines
+## Total: 65 files, ~21,000 lines
 
 | Category | Files | Description |
 |---|---|---|
 | Core skill | 5 | Entry point, routing, principles, gates, formats |
 | Agents | 5 | 5 specialized review roles |
 | Blueprints | 5 | Build-from-scratch protocols |
-| Rules | 7 | Domain rules with rationale and code |
+| Rules | 12 | Domain rules with rationale and code |
 | Patterns | 16 | Marketing, product UI, navigation, admin |
 | Tokens | 4 | JSON + CSS light + CSS dark + guide |
 | Templates | 3 | Specs and briefs |
 | Checklists | 3 | Design review, conversion, UI ship |
 | Recipes | 8 | Step-by-step improvement guides |
+| Integrations | 3 | Claude Code, Cursor, ChatGPT configurations |
 | Docs | 4 | README, CONTRIBUTING, CHANGELOG, install |
 
 ---
@@ -123,6 +138,5 @@ Format: [version] — date — description
 ## Upcoming
 
 - `examples/` — worked examples with before/after rationale
-- `integrations/` — Claude Code CLAUDE.md, Cursor .cursorrules, ChatGPT system prompt
-- Rules gaps: `03-typography.md`, `04-color.md`, `05-animation.md`, `07-accessibility.md`, `08-performance.md`
+- Rules gaps: `09` through `16` (SEO, responsive, components extended, etc.)
 - Patterns gaps: form patterns, modal patterns, notification system
