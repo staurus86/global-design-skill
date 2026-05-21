@@ -29,6 +29,7 @@ The system helps teams audit live pages, redesign generic AI-generated UI, creat
 - Core skill: https://github.com/staurus86/global-design-skill/blob/master/skills/global-design/SKILL.md
 - Examples: https://github.com/staurus86/global-design-skill/tree/master/examples
 - Prompts: https://github.com/staurus86/global-design-skill/tree/master/examples/prompts
+- Social preview asset: https://github.com/staurus86/global-design-skill/blob/master/docs/assets/social-preview.jpg
 
 ## Launch Post
 
@@ -48,4 +49,3 @@ Global Design Skill gives Claude Code, Cursor, Codex, ChatGPT, Windsurf, GitHub 
 
 Repository:
 https://github.com/staurus86/global-design-skill
-
