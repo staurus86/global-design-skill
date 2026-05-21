@@ -1,3 +1,5 @@
+![Global Design Skill cover](pic.png)
+
 # Global Design Skill
 
 Turn Claude Code, Cursor, Codex, ChatGPT, Windsurf, and GitHub Copilot into a stricter UI/UX design reviewer and frontend handoff assistant.
