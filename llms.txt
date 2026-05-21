@@ -1,0 +1,50 @@
+# Global Design Skill
+
+> Portable design operating system for AI-assisted frontend development. It helps AI coding assistants produce stricter UI/UX reviews, better frontend handoff specs, and less generic interface output.
+
+## Primary Repository
+
+- [GitHub repository](https://github.com/staurus86/global-design-skill)
+- [Installation guide](https://github.com/staurus86/global-design-skill/blob/master/install.md)
+- [Core skill entry point](https://github.com/staurus86/global-design-skill/blob/master/skills/global-design/SKILL.md)
+- [Manifest](https://github.com/staurus86/global-design-skill/blob/master/manifest.yaml)
+
+## Key Sections
+
+- [Design rules](https://github.com/staurus86/global-design-skill/tree/master/rules)
+- [UX blueprints](https://github.com/staurus86/global-design-skill/tree/master/blueprints)
+- [UI patterns](https://github.com/staurus86/global-design-skill/tree/master/patterns)
+- [Design tokens](https://github.com/staurus86/global-design-skill/tree/master/tokens)
+- [Review agents](https://github.com/staurus86/global-design-skill/tree/master/agents)
+- [Checklists](https://github.com/staurus86/global-design-skill/tree/master/checklists)
+- [Recipes](https://github.com/staurus86/global-design-skill/tree/master/recipes)
+- [Templates](https://github.com/staurus86/global-design-skill/tree/master/templates)
+- [Examples](https://github.com/staurus86/global-design-skill/tree/master/examples)
+- [Copy-paste prompts](https://github.com/staurus86/global-design-skill/tree/master/examples/prompts)
+
+## Compatible AI Tools
+
+- Claude Code
+- Cursor
+- Codex
+- ChatGPT Custom GPTs
+- Windsurf
+- GitHub Copilot
+- Any AI coding assistant that can read repository context
+
+## Main Use Cases
+
+- Audit live URLs, screenshots, HTML, and generated UI
+- Redesign generic landing pages and SaaS heroes
+- Build admin panels and product dashboards
+- Improve forms, pricing pages, navigation, empty states, and loading states
+- Specify accessibility, responsive behavior, tokens, and frontend implementation details
+- Produce developer-ready handoff specs
+
+## Author
+
+Stanislav Kirichenko (Staurus), ML SEO Tech Lead.
+
+- Website: https://sk-seo.ru
+- GitHub: https://github.com/staurus86
+

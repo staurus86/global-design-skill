@@ -1,12 +1,52 @@
 name: global-design-skill
 version: 1.0.0
 description: >
-  A design operating system for AI-assisted development.
-  Covers UX architecture, UI patterns, design tokens, agents,
-  blueprints, checklists, and frontend handoff — from zero to production.
+  Portable design operating system for AI-assisted frontend development.
+  Turns Claude Code, Cursor, Codex, ChatGPT, Windsurf, GitHub Copilot,
+  and other AI coding assistants into stricter UI/UX reviewers and
+  frontend handoff assistants.
 author: Stanislav Kirichenko (Staurus) — https://sk-seo.ru
 license: MIT
 repository: https://github.com/staurus86/global-design-skill
+
+keywords:
+  - claude-code
+  - cursor
+  - codex
+  - chatgpt
+  - windsurf
+  - github-copilot
+  - ai-agents
+  - ai-coding
+  - design-system
+  - ui-ux
+  - frontend
+  - react
+  - nextjs
+  - tailwindcss
+  - accessibility
+  - prompt-engineering
+
+github:
+  description: "Portable design system skill for Claude Code, Cursor, Codex, ChatGPT, Windsurf, Copilot, and AI coding agents."
+  homepage: "https://github.com/staurus86/global-design-skill#readme"
+  topics:
+    - claude-code
+    - cursor
+    - codex
+    - chatgpt
+    - windsurf
+    - github-copilot
+    - ai-agents
+    - ai-coding
+    - design-system
+    - ui-ux
+    - frontend
+    - react
+    - nextjs
+    - tailwindcss
+    - accessibility
+    - prompt-engineering
 
 standards:
   css: "2026 Baseline (nesting, :has, @property, @starting-style, anchor-positioning, scroll-driven-animations)"

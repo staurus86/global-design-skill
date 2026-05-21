@@ -1,14 +1,76 @@
-# global-design-skill
+# Global Design Skill
 
-A design operating system for AI-assisted development. Not a style guide — a production toolkit for building interfaces from zero to frontend handoff.
+Turn Claude Code, Cursor, Codex, ChatGPT, Windsurf, and GitHub Copilot into a stricter UI/UX design reviewer and frontend handoff assistant.
 
-Works with Claude Code, Cursor, Windsurf, GitHub Copilot, ChatGPT Custom GPTs, and any AI coding assistant.
+Not another prompt collection. A portable design operating system for AI-assisted frontend work: UX architecture, UI patterns, design tokens, review agents, checklists, and implementation-ready specs.
 
 [![Version](https://img.shields.io/badge/version-1.0.0-blue)](CHANGELOG.md)
 [![Standards](https://img.shields.io/badge/CSS-2026%20Baseline-green)](rules/)
 [![React](https://img.shields.io/badge/React-19-blue)](rules/)
 [![Next.js](https://img.shields.io/badge/Next.js-15-black)](rules/)
 [![Tailwind](https://img.shields.io/badge/Tailwind-v4-cyan)](tokens/)
+[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+
+## Why this exists
+
+AI coding tools can generate UI quickly, but they often ship the same generic hero sections, vague CTAs, missing states, weak mobile behavior, raw colors, inaccessible forms, and handoff gaps.
+
+Global Design Skill gives the agent a reusable design operating system. It forces every output to answer:
+
+- who the interface is for
+- what metric it serves
+- which layout, grid, states, and tokens to use
+- how it works on mobile
+- how accessibility is specified
+- how a developer can implement it without asking follow-up questions
+
+## Install in 30 seconds
+
+```bash
+git clone https://github.com/staurus86/global-design-skill.git
+```
+
+### Claude Code
+
+```bash
+mkdir -p .claude/skills .claude/agents
+cp -r path/to/global-design-skill/skills/global-design .claude/skills/
+cp path/to/global-design-skill/agents/*.md .claude/agents/
+cat path/to/global-design-skill/integrations/claude-code/CLAUDE.md >> CLAUDE.md
+```
+
+### Cursor
+
+```bash
+cp path/to/global-design-skill/integrations/cursor/cursor-rules.md .cursorrules
+```
+
+### GitHub Copilot
+
+```bash
+mkdir -p .github
+cp path/to/global-design-skill/integrations/github-copilot/copilot-instructions.md .github/copilot-instructions.md
+```
+
+More install options: [install.md](install.md).
+
+## Try it
+
+Copy one of these into your AI coding assistant:
+
+```text
+Use global-design-skill and audit this landing page. Return the top 10 design problems, severity, and implementation-ready fixes.
+```
+
+```text
+Use global-design-skill and redesign this SaaS hero. Avoid generic centered hero patterns. Specify layout, type scale, CTA copy, responsive behavior, and accessibility notes.
+```
+
+```text
+Use global-design-skill and create a frontend handoff spec for this component. Include states, tokens, ARIA, keyboard behavior, and acceptance criteria.
+```
+
+More copy-paste prompts: [examples/prompts](examples/prompts/).
 
 ---
 
@@ -27,34 +89,7 @@ Global Design Skill =
 ```
 
 **Not:** "make it look nice."
-**Yes:** what to build, for whom, why, which grid, which states, how to hand it off, how to verify the result.
-
----
-
-## Quick Start
-
-### Claude Code
-
-```bash
-# 1. Clone
-git clone https://github.com/staurus86/global-design-skill.git
-
-# 2. Add to your project's CLAUDE.md
-echo "\n# Design System\nSee global-design-skill/skills/global-design/SKILL.md" >> your-project/CLAUDE.md
-```
-
-### Cursor
-
-```bash
-cp skills/global-design/SKILL.md your-project/.cursorrules
-```
-
-### Any AI assistant
-
-Start your prompt with:
-```
-Use the design system defined in [path to SKILL.md].
-```
+**Yes:** what to build, for whom, why, which grid, which states, how to hand it off, and how to verify the result.
 
 ---
 
@@ -88,6 +123,32 @@ Use the design system defined in [path to SKILL.md].
 | Review before shipping | "Use global-design-skill and run a UI review checklist" |
 | WCAG accessibility audit | "Use global-design-skill accessibility-auditor on this component" |
 | Performance audit | "Use global-design-skill performance-auditor on this page" |
+
+---
+
+## Worked Examples
+
+| Example | What it demonstrates |
+|---|---|
+| [Hero redesign](examples/01-hero-redesign.md) | Generic hero → clearer hierarchy, better CTA, stronger visual system |
+| [Color token migration](examples/02-color-token-migration.md) | Hardcoded color cleanup with OKLCH tokens |
+| [Form accessibility](examples/03-form-accessibility.md) | Labels, errors, focus states, ARIA, and keyboard behavior |
+| [Card grid cleanup](examples/04-card-grid-cleanup.md) | Flat equal cards → stronger editorial rhythm |
+| [Performance audit](examples/05-performance-audit.md) | LCP/CLS/INP issues translated into fixes |
+| [Dark mode implementation](examples/06-dark-mode-implementation.md) | Token layer and theme switch strategy |
+| [Landing page audit](examples/audits/01-landing-page-audit.md) | Full page review with gate-based scoring |
+| [SaaS hero redesign](examples/landing-pages/01-saas-hero-redesign.md) | Landing page rewrite with implementation notes |
+
+---
+
+## Best For
+
+- AI-assisted frontend teams that want fewer generic layouts
+- Claude Code, Cursor, Codex, Windsurf, ChatGPT, and Copilot users
+- solo builders who need UI critique before shipping
+- agencies turning rough ideas into frontend handoff specs
+- product teams standardizing AI-generated UI output
+- design engineers who want reusable gates, tokens, and review checklists
 
 ---
 

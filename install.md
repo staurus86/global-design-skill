@@ -132,7 +132,7 @@ See `tokens/README.md` for the full token reference and tooling setup.
 
 ```bash
 cd global-design-skill
-git pull origin main
+git pull origin master
 ```
 
 Then re-run the copy commands from the relevant section above to refresh the files in your project.
