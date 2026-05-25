@@ -113,7 +113,7 @@
       border-radius: 6px; color: var(--color-text-muted); font-size: var(--text-sm);
       transition: background var(--t-fast) var(--ease-out), color var(--t-fast) var(--ease-out);
     }
-    .hn-vote-btn:hover { background: oklch(52% 0.20 258 / 0.1); color: var(--color-accent); }
+    .hn-vote-btn:hover { background: oklch(from var(--color-accent) l c h / 0.1); color: var(--color-accent); }
     .hn-vote-btn:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 1px; }
     .hn-score { font-size: var(--text-sm); font-weight: 700; color: var(--color-text-secondary); }
     .hn-body { flex: 1; min-width: 0; }
@@ -214,7 +214,7 @@
   <a href="index.html" class="page-header-back">← Gallery</a>
 </header>
 
-<div class="content">
+<main class="content">
 
   <div class="toggle-bar" role="group" aria-label="Before/After state toggle">
     <button class="toggle-btn" id="btn-before" aria-pressed="false" aria-label="Show original Hacker News design">← Before</button>
@@ -354,7 +354,7 @@
     </tbody>
   </table>
 
-</div>
+</main>
 
 <script>
   const wrapper   = document.getElementById('component-wrapper');
