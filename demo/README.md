@@ -1,6 +1,6 @@
 # Demo Gallery
 
-Eight self-contained Before/After redesign demos using global-design-skill.
+Nine self-contained Before/After redesign demos using global-design-skill.
 
 ## Token Update Protocol
 
@@ -31,3 +31,4 @@ Never edit token values in individual demo files directly.
 | `product-hunt.html` | 2 | Product Hunt Listing |
 | `caniuse-table.html` | 3 | Can I Use Browser Table |
 | `devto-card.html` | 3 | Dev.to Article Card |
+| `lighthouse-audit.html` | 3 | Lighthouse Audit Result |

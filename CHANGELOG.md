@@ -58,6 +58,12 @@ Format: [version] — date — description
 - `demo/devto-card.html` — self-contained Before/After redesign for a Dev.to article card, with skeleton state, change log, token legend, responsive article layout, and keyboard-accessible toggle
 - `demo/index.html` — Wave 3 cards activated with live links; all 8 gallery demos are now clickable
 
+### Sprint 45 — Demo Gallery Ninth Example
+
+- `demo/lighthouse-audit.html` — self-contained Before/After redesign for a Lighthouse performance audit result, with priority action framing, Core Web Vitals cards, sequenced fix list, skeleton state, change log, token legend, and keyboard-accessible toggle
+- `demo/index.html` — Lighthouse audit card added to Wave 3; gallery count updated to 9 redesigns
+- `demo/README.md` — demo inventory updated with the ninth example
+
 ---
 
 ## [1.5.0] — 2026-05-25
