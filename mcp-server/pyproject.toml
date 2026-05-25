@@ -18,7 +18,7 @@ dependencies = [
 test = ["pytest>=8.0", "pytest-cov>=5.0"]
 
 [project.scripts]
-gds-mcp = "mcp_server.server:main"
+gds-mcp = "server:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["mcp_server"]

@@ -40,7 +40,7 @@ def main():
         return list_sectors()
 
     @mcp.tool()
-    def get_sector_context_tool(sector: str, niche: str = None) -> str:
+    def get_sector_context_tool(sector: str, niche: str | None = None) -> str:
         """Get full design context (required elements, banned patterns, trust signals)
         for a specific sector from industries/*.md.
 
