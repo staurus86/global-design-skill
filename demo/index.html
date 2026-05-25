@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo Gallery — global-design-skill</title>
+  <style>
+    /* ── Tokens ── */
+    :root {
+      --color-bg:             oklch(96% 0.004 258);
+      --color-surface:        oklch(100% 0 0);
+      --color-border:         oklch(90% 0.006 258);
+      --color-text:           oklch(17% 0.012 258);
+      --color-text-secondary: oklch(42% 0.012 258);
+      --color-text-muted:     oklch(60% 0.008 258);
+      --color-accent:         oklch(52% 0.20 258);
+      --color-accent-hover:   oklch(45% 0.21 258);
+      --space-1: 4px;  --space-2: 8px;  --space-3: 12px; --space-4: 16px;
+      --space-5: 20px; --space-6: 24px; --space-8: 32px; --space-10: 40px;
+      --text-xs: 11px; --text-sm: 13px; --text-base: 15px;
+      --text-md: 17px; --text-lg: 19px;
+      --text-xl:  clamp(20px, 2.3vw + 0.5rem, 26px);
+      --text-2xl: clamp(26px, 3.5vw + 0.5rem, 36px);
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --t-fast: 140ms; --t-base: 210ms;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --color-bg:             oklch(13% 0.010 258);
+        --color-surface:        oklch(17% 0.010 258);
+        --color-border:         oklch(26% 0.010 258);
+        --color-text:           oklch(94% 0.004 258);
+        --color-text-secondary: oklch(72% 0.008 258);
+        --color-text-muted:     oklch(55% 0.006 258);
+        --color-accent:         oklch(65% 0.20 258);
+        --color-accent-hover:   oklch(72% 0.20 258);
+      }
+    }
+
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: var(--text-base); background: var(--color-bg);
+      color: var(--color-text); min-height: 100dvh;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { border: none; background: none; cursor: pointer; font: inherit; }
+
+    /* ── Nav ── */
+    .nav {
+      padding: var(--space-3) var(--space-6);
+      border-bottom: 1px solid var(--color-border);
+      display: flex; align-items: center; justify-content: space-between;
+      background: var(--color-surface);
+      position: sticky; top: 0; z-index: 10;
+    }
+    .nav-logo {
+      font-size: var(--text-sm); font-weight: 800; color: var(--color-accent);
+      letter-spacing: -0.02em;
+    }
+    .nav-filters { display: flex; gap: var(--space-1); }
+    .filter-btn {
+      font-size: var(--text-sm); font-weight: 600; padding: var(--space-1) var(--space-3);
+      border-radius: 999px; color: var(--color-text-muted); min-height: 36px;
+      transition: background var(--t-fast) var(--ease-out), color var(--t-fast) var(--ease-out);
+    }
+    .filter-btn:hover { background: oklch(from var(--color-border) l c h / 0.7); color: var(--color-text); }
+    .filter-btn.active { background: var(--color-accent); color: oklch(100% 0 0); }
+    .filter-btn:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+
+    /* ── Hero ── */
+    .hero {
+      background: oklch(13% 0.010 258);
+      padding: var(--space-10) var(--space-6);
+      text-align: center;
+    }
+    .hero-title {
+      font-size: var(--text-2xl); font-weight: 800;
+      color: oklch(94% 0.004 258); letter-spacing: -0.03em; margin-bottom: var(--space-3);
+    }
+    .hero-sub {
+      font-size: var(--text-sm); color: oklch(55% 0.006 258); max-width: 480px; margin: 0 auto;
+      line-height: 1.6;
+    }
+    .hero-pills {
+      display: flex; justify-content: center; gap: var(--space-2); margin-top: var(--space-5); flex-wrap: wrap;
+    }
+    .hero-pill {
+      font-size: var(--text-xs); font-weight: 600; padding: var(--space-1) var(--space-3);
+      border-radius: 999px; border: 1px solid oklch(30% 0.010 258);
+      color: oklch(60% 0.008 258);
+    }
+
+    /* ── Grid ── */
+    .grid-section { max-width: 1200px; margin: 0 auto; padding: var(--space-8) var(--space-6); }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: clamp(16px, 2vw, 24px);
+    }
+    @media (min-width: 640px)  { .grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .grid { grid-template-columns: repeat(3, 1fr); } }
+
+    /* ── Demo card ── */
+    .demo-card {
+      background: var(--color-surface); border: 1px solid var(--color-border);
+      border-radius: 16px; overflow: hidden;
+      transition: transform var(--t-fast) var(--ease-out), box-shadow var(--t-fast) var(--ease-out),
+                  opacity 150ms var(--ease-out);
+    }
+    .demo-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px oklch(17% 0.012 258 / 0.10); }
+    .demo-card.card--hidden {
+      opacity: 0; transform: scale(0.96); pointer-events: none; transition: opacity 150ms var(--ease-out), transform 150ms var(--ease-out);
+    }
+
+    /* Thumbnail: 50/50 split — Before (red tint) | After (green tint) */
+    .card-thumb { display: grid; grid-template-columns: 1fr 1fr; height: 80px; }
+    .card-thumb-half {
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+    }
+    .card-thumb-half.before { background: oklch(88% 0.05 25); }
+    .card-thumb-half.after  { background: oklch(90% 0.05 145); }
+    .card-thumb-emoji { font-size: 24px; line-height: 1; }
+    .card-thumb-label {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .card-thumb-half.before .card-thumb-label { color: oklch(40% 0.12 25); }
+    .card-thumb-half.after  .card-thumb-label { color: oklch(30% 0.12 145); }
+    .card-thumb-divider {
+      width: 1px; height: 80px; background: oklch(100% 0 0 / 0.4); align-self: center;
+    }
+
+    .card-info { padding: var(--space-4); }
+    .card-site { font-size: var(--text-base); font-weight: 700; color: var(--color-text); margin-bottom: var(--space-1); }
+    .card-component { font-size: var(--text-sm); color: var(--color-accent); margin-bottom: var(--space-3); }
+    .card-footer { display: flex; align-items: center; justify-content: space-between; }
+    .card-badge {
+      font-size: var(--text-xs); font-weight: 700; padding: 2px var(--space-2); border-radius: 999px;
+    }
+    .badge-wow  { background: oklch(90% 0.08 68);  color: oklch(38% 0.12 68); }
+    .badge-high { background: oklch(90% 0.06 145); color: oklch(30% 0.10 145); }
+    .badge-deep { background: oklch(88% 0.06 258); color: oklch(35% 0.14 258); }
+    .card-link {
+      font-size: var(--text-sm); font-weight: 600; color: var(--color-accent);
+      display: inline-flex; align-items: center; gap: var(--space-1); padding: var(--space-1) 0;
+      min-height: 44px;
+    }
+    .card-link:hover { text-decoration: underline; }
+    .card-link:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; border-radius: 4px; }
+
+    /* Wave label above grid */
+    .wave-label {
+      font-size: var(--text-xs); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--color-text-muted); margin-bottom: var(--space-4); margin-top: var(--space-8);
+    }
+    .wave-label:first-child { margin-top: 0; }
+
+    /* ── Footer ── */
+    .site-footer {
+      border-top: 1px solid var(--color-border); padding: var(--space-8) var(--space-6);
+      text-align: center; font-size: var(--text-sm); color: var(--color-text-muted);
+      display: flex; align-items: center; justify-content: center; gap: var(--space-4); flex-wrap: wrap;
+    }
+    .site-footer a { color: var(--color-accent); }
+    .site-footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Site navigation">
+  <span class="nav-logo">global-design-skill</span>
+  <div class="nav-filters" role="group" aria-label="Filter demos by wave">
+    <button class="filter-btn active" data-wave="all"    aria-pressed="true">All</button>
+    <button class="filter-btn"        data-wave="wave-1" aria-pressed="false">Wave 1</button>
+    <button class="filter-btn"        data-wave="wave-2" aria-pressed="false">Wave 2</button>
+    <button class="filter-btn"        data-wave="wave-3" aria-pressed="false">Wave 3</button>
+  </div>
+</nav>
+
+<section class="hero">
+  <h1 class="hero-title">Demo Gallery</h1>
+  <p class="hero-sub">Real redesigns of developer tools using global-design-skill. Every component: Before and After, live HTML, OKLCH tokens, WCAG 2.2 AA.</p>
+  <div class="hero-pills">
+    <span class="hero-pill">8 redesigns</span>
+    <span class="hero-pill">OKLCH tokens</span>
+    <span class="hero-pill">Dark mode</span>
+    <span class="hero-pill">All states</span>
+  </div>
+</section>
+
+<main class="grid-section">
+
+  <div class="wave-label">Wave 1 — Maximum contrast</div>
+  <div class="grid" id="demo-grid">
+
+    <div class="demo-card" data-wave="wave-1">
+      <div class="card-thumb">
+        <div class="card-thumb-half before">
+          <span class="card-thumb-emoji">🟠</span>
+          <span class="card-thumb-label">Before</span>
+        </div>
+        <div class="card-thumb-half after">
+          <span class="card-thumb-emoji">🟠</span>
+          <span class="card-thumb-label">After</span>
+        </div>
+      </div>
+      <div class="card-info">
+        <div class="card-site">🟠 Hacker News</div>
+        <div class="card-component">Story List Item</div>
+        <div class="card-footer">
+          <span class="card-badge badge-wow">WOW</span>
+          <a href="hacker-news.html" class="card-link">View demo →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-card" data-wave="wave-1">
+      <div class="card-thumb">
+        <div class="card-thumb-half before">
+          <span class="card-thumb-emoji">📚</span>
+          <span class="card-thumb-label">Before</span>
+        </div>
+        <div class="card-thumb-half after">
+          <span class="card-thumb-emoji">📚</span>
+          <span class="card-thumb-label">After</span>
+        </div>
+      </div>
+      <div class="card-info">
+        <div class="card-site">📚 Stack Overflow</div>
+        <div class="card-component">Question Card</div>
+        <div class="card-footer">
+          <span class="card-badge badge-wow">WOW</span>
+          <a href="stack-overflow.html" class="card-link">View demo →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-card" data-wave="wave-1">
+      <div class="card-thumb">
+        <div class="card-thumb-half before">
+          <span class="card-thumb-emoji">🐙</span>
+          <span class="card-thumb-label">Before</span>
+        </div>
+        <div class="card-thumb-half after">
+          <span class="card-thumb-emoji">🐙</span>
+          <span class="card-thumb-label">After</span>
+        </div>
+      </div>
+      <div class="card-info">
+        <div class="card-site">🐙 GitHub</div>
+        <div class="card-component">PR / Issue Card</div>
+        <div class="card-footer">
+          <span class="card-badge badge-high">High</span>
+          <a href="github-pr.html" class="card-link">View demo →</a>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- #demo-grid -->
+
+  <div class="wave-label" style="margin-top:var(--space-10)">Wave 2 — Depth &amp; variety <span style="font-weight:400;font-style:italic;text-transform:none;letter-spacing:0">(coming soon)</span></div>
+  <div class="grid">
+
+    <div class="demo-card" data-wave="wave-2" style="opacity:0.5;pointer-events:none">
+      <div class="card-thumb">
+        <div class="card-thumb-half before"><span class="card-thumb-emoji">📦</span><span class="card-thumb-label">Before</span></div>
+        <div class="card-thumb-half after"><span class="card-thumb-emoji">📦</span><span class="card-thumb-label">After</span></div>
+      </div>
+      <div class="card-info">
+        <div class="card-site">📦 npm</div>
+        <div class="card-component">Package Search Card</div>
+        <div class="card-footer"><span class="card-badge badge-high">High</span><span class="card-link" style="color:var(--color-text-muted)">Coming soon</span></div>
+      </div>
+    </div>
+
+    <div class="demo-card" data-wave="wave-2" style="opacity:0.5;pointer-events:none">
+      <div class="card-thumb">
+        <div class="card-thumb-half before"><span class="card-thumb-emoji">🦊</span><span class="card-thumb-label">Before</span></div>
+        <div class="card-thumb-half after"><span class="card-thumb-emoji">🦊</span><span class="card-thumb-label">After</span></div>
+      </div>
+      <div class="card-info">
+        <div class="card-site">🦊 MDN</div>
+        <div class="card-component">API Method Block</div>
+        <div class="card-footer"><span class="card-badge badge-deep">Deep</span><span class="card-link" style="color:var(--color-text-muted)">Coming soon</span></div>
+      </div>
+    </div>
+
+    <div class="demo-card" data-wave="wave-2" style="opacity:0.5;pointer-events:none">
+      <div class="card-thumb">
+        <div class="card-thumb-half before"><span class="card-thumb-emoji">🚀</span><span class="card-thumb-label">Before</span></div>
+        <div class="card-thumb-half after"><span class="card-thumb-emoji">🚀</span><span class="card-thumb-label">After</span></div>
+      </div>
+      <div class="card-info">
+        <div class="card-site">🚀 Product Hunt</div>
+        <div class="card-component">Product Listing</div>
+        <div class="card-footer"><span class="card-badge badge-high">High</span><span class="card-link" style="color:var(--color-text-muted)">Coming soon</span></div>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <a href="https://github.com/staurus86/global-design-skill" aria-label="View global-design-skill on GitHub">GitHub repo</a>
+  <span style="opacity:0.3">·</span>
+  <span>MIT licence</span>
+  <span style="opacity:0.3">·</span>
+  <span>OKLCH · No build step · GitHub Pages</span>
+</footer>
+
+<script>
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const allCards   = document.querySelectorAll('.demo-card');
+
+  function hideCard(card) {
+    card.classList.add('card--hidden');
+    card.addEventListener('transitionend', () => { card.style.display = 'none'; }, { once: true });
+  }
+  function showCard(card) {
+    card.style.display = '';
+    requestAnimationFrame(() => requestAnimationFrame(() => card.classList.remove('card--hidden')));
+  }
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const wave = btn.dataset.wave;
+      filterBtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
+      btn.classList.add('active'); btn.setAttribute('aria-pressed', 'true');
+      allCards.forEach(card => {
+        const matches = wave === 'all' || card.dataset.wave === wave;
+        if (matches) showCard(card); else hideCard(card);
+      });
+    });
+    btn.addEventListener('keydown', e => {
+      if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); btn.click(); }
+    });
+  });
+</script>
+
+</body>
+</html>
