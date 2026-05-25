@@ -20,7 +20,7 @@ def check_banned_patterns(sector: str, content: str) -> str:
     if not sector_file.exists():
         return json.dumps({"error": f"Sector '{sector}' not found"})
 
-    text = sector_file.read_text(encoding="utf-8")
+    text = sector_file.read_text(encoding="utf-8").replace('\r\n', '\n')
 
     # Extract Banned Patterns section
     bp_match = re.search(r"## Banned Patterns\n(.*?)(?=\n##|\Z)", text, re.DOTALL)

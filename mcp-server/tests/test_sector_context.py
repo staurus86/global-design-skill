@@ -33,6 +33,14 @@ def test_check_banned_patterns_no_violation():
     assert len(result["violations"]) == 0
 
 
+def test_check_banned_patterns_unknown_sector():
+    result = json.loads(check_banned_patterns(
+        sector="nonexistent-sector",
+        content="anything here"
+    ))
+    assert "error" in result
+
+
 def test_get_sector_context_returns_sections():
     result = json.loads(get_sector_context("b2b-products"))
     assert "sections" in result

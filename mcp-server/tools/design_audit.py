@@ -62,22 +62,28 @@ def get_quick_diagnosis(
     Returns JSON string: {"sector": str, "pattern": str, "rationale": str}
     """
     # Try exact match with hint
-    key = (who_pays.lower(), decision_type.lower(), risk_level.lower())
-    key_with_hint = key + (choice_type.lower(),)
+    who_pays_lc = who_pays.lower()
+    decision_lc = decision_type.lower()
+    risk_lc = risk_level.lower()
+    user_value_lc = user_value.lower()
+    choice_lc = choice_type.lower()
+
+    key = (who_pays_lc, decision_lc, risk_lc)
+    key_with_hint = key + (choice_lc,)
 
     sector = DIAGNOSIS_MATRIX.get(key_with_hint) or DIAGNOSIS_MATRIX.get(key)
 
     # Fallback heuristics
     if not sector:
-        if who_pays == "citizen":
+        if who_pays_lc == "citizen":
             sector = "government"
-        elif who_pays == "donor":
+        elif who_pays_lc == "donor":
             sector = "non-profit"
-        elif risk_level == "high" and decision_type == "emotional":
+        elif risk_lc == "high" and decision_lc == "emotional":
             sector = "real-estate"
-        elif user_value == "enjoy":
+        elif user_value_lc == "enjoy":
             sector = "entertainment"
-        elif user_value == "learn":
+        elif user_value_lc == "learn":
             sector = "education"
         else:
             sector = "tech-saas"  # generic modern product default

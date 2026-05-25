@@ -177,7 +177,7 @@ def list_sectors() -> str:
         if path.name == "_index.md":
             continue
         sector_id = path.stem
-        text = path.read_text(encoding="utf-8")
+        text = path.read_text(encoding="utf-8").replace('\r\n', '\n')
 
         # Extract description from Sector Profile section
         profile_match = re.search(
@@ -211,7 +211,7 @@ def get_sector_context(sector: str, niche: str | None = None) -> str:
             "available_sectors": available,
         })
 
-    text = sector_file.read_text(encoding="utf-8")
+    text = sector_file.read_text(encoding="utf-8").replace('\r\n', '\n')
 
     # Parse frontmatter
     fm_match = re.match(r"^---\n(.*?)\n---\n", text, re.DOTALL)
