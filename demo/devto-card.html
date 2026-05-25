@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dev.to Article Card — global-design-skill Demo</title>
+  <style>
+    /* ── Tokens ── */
+    :root {
+      --color-bg:             oklch(96% 0.004 258);
+      --color-surface:        oklch(100% 0 0);
+      --color-border:         oklch(90% 0.006 258);
+      --color-text:           oklch(17% 0.012 258);
+      --color-text-secondary: oklch(42% 0.012 258);
+      --color-text-muted:     oklch(60% 0.008 258);
+      --color-accent:         oklch(52% 0.20 258);
+      --color-accent-hover:   oklch(45% 0.21 258);
+      --color-success:        oklch(45% 0.15 145);
+      --color-success-bg:     oklch(56% 0.17 145 / 0.12);
+      --space-1: 4px;  --space-2: 8px;  --space-3: 12px; --space-4: 16px;
+      --space-5: 20px; --space-6: 24px; --space-8: 32px; --space-10: 40px;
+      --text-xs: 11px; --text-sm: 13px; --text-base: 15px;
+      --text-md: 17px; --text-lg: 19px;
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --t-fast: 140ms; --t-base: 210ms;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --color-bg:             oklch(13% 0.010 258);
+        --color-surface:        oklch(17% 0.010 258);
+        --color-border:         oklch(26% 0.010 258);
+        --color-text:           oklch(94% 0.004 258);
+        --color-text-secondary: oklch(72% 0.008 258);
+        --color-text-muted:     oklch(55% 0.006 258);
+        --color-accent:         oklch(65% 0.20 258);
+        --color-accent-hover:   oklch(72% 0.20 258);
+        --color-success:        oklch(70% 0.12 145);
+        --color-success-bg:     oklch(56% 0.17 145 / 0.15);
+      }
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: var(--text-base); background: var(--color-bg); color: var(--color-text); min-height: 100dvh; }
+    a { color: inherit; text-decoration: none; }
+    button { border: none; background: none; cursor: pointer; font: inherit; }
+    .page-header { padding: var(--space-3) var(--space-6); border-bottom: 1px solid var(--color-border); display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); flex-wrap: wrap; font-size: var(--text-sm); color: var(--color-text-muted); }
+    .page-header > div { min-width: 0; }
+    .page-header-site { font-weight: 700; color: var(--color-text); }
+    .page-header-back { color: var(--color-accent); }
+    .page-header-back:hover { text-decoration: underline; }
+    .content { max-width: 780px; margin: 0 auto; padding: var(--space-8) var(--space-4); }
+    .toggle-bar { display: flex; border: 1px solid var(--color-border); border-radius: 10px; overflow: hidden; margin-bottom: var(--space-6); background: var(--color-surface); }
+    .toggle-btn { flex: 1; padding: var(--space-3) var(--space-4); font-size: var(--text-sm); font-weight: 600; color: var(--color-text-muted); min-height: 44px; transition: background var(--t-fast) var(--ease-out), color var(--t-fast) var(--ease-out); }
+    .toggle-btn.active { background: var(--color-accent); color: oklch(100% 0 0); }
+    .toggle-btn:focus-visible { outline: 2px solid var(--color-accent); outline-offset: -2px; }
+    .component-wrapper { position: relative; margin-bottom: var(--space-8); }
+    .component-state { transition: opacity 200ms cubic-bezier(0.16,1,0.3,1), transform 200ms cubic-bezier(0.16,1,0.3,1); }
+    @media (prefers-reduced-motion: reduce) { .component-state { transition: none; } }
+
+    /* ── BEFORE: faithful Dev.to feed article card ── */
+    .dev-before { background: #f5f5f5; border: 1px solid #d6d6d7; border-radius: 6px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #171717; overflow: hidden; }
+    .dev-before-cover { height: 160px; background: linear-gradient(135deg, #3b49df 0%, #0a0a0a 100%); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; font-size: 28px; letter-spacing: 0.02em; }
+    .dev-before-body { background: #fff; padding: 16px 20px 14px; }
+    .dev-before-author { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+    .dev-before-avatar { width: 32px; height: 32px; border-radius: 999px; background: #e6e6e7; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+    .dev-before-name { font-size: 13px; font-weight: 600; }
+    .dev-before-date { font-size: 12px; color: #717171; margin-top: 1px; }
+    .dev-before-title { display: block; font-size: 24px; line-height: 1.25; font-weight: 800; margin-bottom: 10px; }
+    .dev-before-title:hover { color: #3b49df; }
+    .dev-before-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+    .dev-before-tag { font-size: 13px; color: #525252; }
+    .dev-before-footer { display: flex; align-items: center; justify-content: space-between; font-size: 13px; color: #525252; }
+    .dev-before-meta { display: flex; align-items: center; gap: 14px; }
+    .dev-before-save { border-radius: 6px; padding: 6px 8px; color: #525252; }
+    .dev-before-save:hover { background: #f5f5f5; }
+
+    /* ── AFTER: redesigned article card ── */
+    .article-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; overflow: hidden; }
+    .article-cover { min-height: 148px; padding: var(--space-4); display: flex; align-items: flex-end; justify-content: space-between; gap: var(--space-4); background:
+      radial-gradient(circle at 24% 22%, oklch(65% 0.20 258 / 0.22), transparent 32%),
+      linear-gradient(135deg, oklch(21% 0.04 258), oklch(15% 0.012 258)); color: oklch(96% 0.004 258); }
+    .article-series { font-size: var(--text-xs); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: oklch(78% 0.12 258); }
+    .article-readtime { flex-shrink: 0; font-size: var(--text-xs); font-weight: 700; border: 1px solid oklch(100% 0 0 / 0.22); border-radius: 999px; padding: var(--space-1) var(--space-3); color: oklch(92% 0.004 258); }
+    .article-body { padding: var(--space-4); display: flex; flex-direction: column; gap: var(--space-4); }
+    .article-author { display: flex; align-items: center; gap: var(--space-2); }
+    .article-avatar { width: 36px; height: 36px; border-radius: 999px; background: var(--color-success-bg); color: var(--color-success); display: flex; align-items: center; justify-content: center; font-size: var(--text-sm); font-weight: 800; flex-shrink: 0; }
+    .article-author-name { font-size: var(--text-sm); font-weight: 700; color: var(--color-text); }
+    .article-date { font-size: var(--text-xs); color: var(--color-text-muted); margin-top: 1px; }
+    .article-title { font-size: 23px; line-height: 1.18; font-weight: 780; letter-spacing: 0; color: var(--color-text); }
+    .article-title a:hover { color: var(--color-accent); }
+    .article-excerpt { font-size: var(--text-sm); line-height: 1.6; color: var(--color-text-secondary); max-width: 62ch; }
+    .article-tags { display: flex; flex-wrap: wrap; gap: var(--space-1); }
+    .article-tag { font-size: var(--text-xs); font-weight: 650; color: var(--color-text-muted); border: 1px solid var(--color-border); border-radius: 999px; padding: 2px var(--space-2); }
+    .article-tag:hover { color: var(--color-accent); border-color: var(--color-accent); }
+    .article-footer { border-top: 1px solid var(--color-border); padding: var(--space-3) var(--space-4); display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); background: oklch(from var(--color-surface) calc(l - 0.03) c h); }
+    .article-stats { display: flex; align-items: center; gap: var(--space-2); flex-wrap: wrap; color: var(--color-text-muted); font-size: var(--text-xs); }
+    .article-stat { display: inline-flex; align-items: center; gap: var(--space-1); min-height: 28px; }
+    .bookmark-btn { min-width: 44px; min-height: 44px; border-radius: 10px; border: 1px solid var(--color-border); display: inline-flex; align-items: center; justify-content: center; color: var(--color-text-muted); transition: color var(--t-fast) var(--ease-out), border-color var(--t-fast) var(--ease-out), background var(--t-fast) var(--ease-out); }
+    .bookmark-btn:hover { color: var(--color-accent); border-color: var(--color-accent); background: oklch(from var(--color-accent) l c h / 0.08); }
+    .bookmark-btn:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+    @media (max-width: 520px) {
+      .page-header { padding-inline: var(--space-4); }
+      .article-cover { min-height: 128px; align-items: flex-start; flex-direction: column; justify-content: flex-end; }
+      .article-title { font-size: var(--text-lg); }
+      .article-footer { align-items: flex-start; flex-direction: column; }
+      .bookmark-btn { align-self: flex-end; margin-top: calc(-1 * var(--space-6)); }
+    }
+
+    /* ── Skeleton ── */
+    .skeleton-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; overflow: hidden; }
+    .sk-cover { height: 148px; background: linear-gradient(90deg, var(--color-border) 25%, var(--color-bg) 50%, var(--color-border) 75%); background-size: 200% 100%; animation: shimmer 1.5s linear infinite; }
+    .sk-body { padding: var(--space-4); display: flex; flex-direction: column; gap: var(--space-3); }
+    .sk-author { display: flex; align-items: center; gap: var(--space-2); }
+    .skel { background: linear-gradient(90deg, var(--color-border) 25%, var(--color-bg) 50%, var(--color-border) 75%); background-size: 200% 100%; border-radius: 4px; animation: shimmer 1.5s linear infinite; }
+    @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+    @media (prefers-reduced-motion: reduce) { .skel, .sk-cover { animation: none; background: var(--color-border); } }
+    .sk-avatar { width: 36px; height: 36px; border-radius: 999px; flex-shrink: 0; }
+    .sk-name { height: 14px; width: 120px; }
+    .sk-date { height: 11px; width: 84px; margin-top: var(--space-1); }
+    .sk-title-1 { height: 25px; width: 90%; }
+    .sk-title-2 { height: 25px; width: 62%; }
+    .sk-line { height: 13px; width: 100%; }
+    .sk-line-short { height: 13px; width: 68%; }
+    .sk-footer { height: 54px; border-top: 1px solid var(--color-border); }
+
+    .section-label { font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-text-muted); margin-bottom: var(--space-4); margin-top: var(--space-8); padding-bottom: var(--space-2); border-bottom: 1px solid var(--color-border); }
+    .changelog { display: block; overflow-x: auto; max-width: 100%; width: 100%; border-collapse: collapse; font-size: var(--text-sm); margin-bottom: var(--space-8); }
+    .changelog th { text-align: left; padding: var(--space-2) var(--space-3); font-size: var(--text-xs); font-weight: 700; color: var(--color-text-muted); border-bottom: 1px solid var(--color-border); }
+    .changelog td { padding: var(--space-3); border-bottom: 1px solid var(--color-border); vertical-align: top; line-height: 1.5; }
+    .changelog tr:last-child td { border-bottom: none; }
+    .changelog td:first-child { font-weight: 600; white-space: nowrap; }
+    .changelog .before { color: var(--color-text-secondary); }
+    .changelog .after  { color: var(--color-text); }
+    .principle { font-size: var(--text-xs); color: var(--color-accent); }
+    .token-legend { display: block; overflow-x: auto; max-width: 100%; width: 100%; border-collapse: collapse; font-size: var(--text-sm); }
+    .token-legend th { text-align: left; padding: var(--space-2) var(--space-3); font-size: var(--text-xs); font-weight: 700; color: var(--color-text-muted); border-bottom: 1px solid var(--color-border); }
+    .token-legend td { padding: var(--space-2) var(--space-3); border-bottom: 1px solid var(--color-border); vertical-align: top; font-family: 'Menlo','Consolas',monospace; font-size: var(--text-xs); }
+    .token-legend tr:last-child td { border-bottom: none; }
+    .token-name { color: var(--color-accent); }
+  </style>
+</head>
+<body>
+
+<header class="page-header">
+  <div>
+    <span class="page-header-site">global-design-skill</span>
+    <span style="margin:0 8px;opacity:0.3">·</span>
+    <span>✍️ Dev.to — Article Card</span>
+  </div>
+  <a href="index.html" class="page-header-back">← Gallery</a>
+</header>
+
+<main class="content">
+  <div class="toggle-bar" role="group" aria-label="Before/After state toggle">
+    <button class="toggle-btn" id="btn-before" aria-pressed="false" aria-label="Show original Dev.to article card">← Before</button>
+    <button class="toggle-btn active" id="btn-after" aria-pressed="true" aria-label="Show redesigned version">After →</button>
+  </div>
+
+  <div class="component-wrapper" id="component-wrapper">
+    <div aria-live="polite" aria-atomic="true">
+      <div id="state-after" class="component-state">
+        <article class="article-card">
+          <div class="article-cover">
+            <span class="article-series">Architecture notes</span>
+            <span class="article-readtime">7 min read</span>
+          </div>
+          <div class="article-body">
+            <div class="article-author">
+              <div class="article-avatar" aria-hidden="true">SK</div>
+              <div>
+                <div class="article-author-name">Sofia Kovalenko</div>
+                <div class="article-date">May 25, 2026</div>
+              </div>
+            </div>
+            <h2 class="article-title"><a href="#">Building a resilient CSS architecture with container queries</a></h2>
+            <p class="article-excerpt">A practical pattern for component-level breakpoints, fallback layering, and testing responsive behavior without coupling every decision to the viewport.</p>
+            <div class="article-tags" aria-label="Article tags">
+              <a href="#" class="article-tag">#css</a>
+              <a href="#" class="article-tag">#frontend</a>
+              <a href="#" class="article-tag">#architecture</a>
+              <a href="#" class="article-tag">#webdev</a>
+            </div>
+          </div>
+          <div class="article-footer">
+            <div class="article-stats" aria-label="Article engagement">
+              <span class="article-stat">❤️ 248 reactions</span>
+              <span class="article-stat">💬 34 comments</span>
+              <span class="article-stat">🔖 91 saves</span>
+            </div>
+            <button class="bookmark-btn" aria-label="Save article">🔖</button>
+          </div>
+        </article>
+      </div>
+
+      <div id="state-before" class="component-state" hidden>
+        <article class="dev-before">
+          <div class="dev-before-cover">DEV</div>
+          <div class="dev-before-body">
+            <div class="dev-before-author">
+              <div class="dev-before-avatar" aria-hidden="true">SK</div>
+              <div>
+                <div class="dev-before-name">Sofia Kovalenko</div>
+                <div class="dev-before-date">May 25</div>
+              </div>
+            </div>
+            <a href="#" class="dev-before-title">Building a resilient CSS architecture with container queries</a>
+            <div class="dev-before-tags">
+              <a href="#" class="dev-before-tag">#css</a>
+              <a href="#" class="dev-before-tag">#frontend</a>
+              <a href="#" class="dev-before-tag">#architecture</a>
+              <a href="#" class="dev-before-tag">#webdev</a>
+            </div>
+            <div class="dev-before-footer">
+              <div class="dev-before-meta">
+                <span>❤️ 248 reactions</span>
+                <span>💬 34 comments</span>
+              </div>
+              <button class="dev-before-save" aria-label="Save article">🔖</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label">Skeleton State</div>
+  <div class="skeleton-card" aria-busy="true" aria-label="Loading Dev.to article card">
+    <div class="sk-cover"></div>
+    <div class="sk-body">
+      <div class="sk-author">
+        <div class="skel sk-avatar"></div>
+        <div>
+          <div class="skel sk-name"></div>
+          <div class="skel sk-date"></div>
+        </div>
+      </div>
+      <div class="skel sk-title-1"></div>
+      <div class="skel sk-title-2"></div>
+      <div class="skel sk-line"></div>
+      <div class="skel sk-line-short"></div>
+    </div>
+    <div class="skel sk-footer"></div>
+  </div>
+
+  <div class="section-label">Change Log</div>
+  <table class="changelog">
+    <thead><tr><th>Change</th><th>Before</th><th>After</th><th>Principle</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Reading decision</td>
+        <td class="before">Title and engagement sit close together; read time is not visible until later context</td>
+        <td class="after">Series and read-time sit in the cover, so effort and topic are known before scanning the title</td>
+        <td><span class="principle">operating-principles §2 (context that changes a decision)</span></td>
+      </tr>
+      <tr>
+        <td>Title hierarchy</td>
+        <td class="before">Large title works, but the card lacks a summary bridge between title and tags</td>
+        <td class="after">Title remains dominant; excerpt adds enough semantic detail to qualify the click</td>
+        <td><span class="principle">operating-principles §1 (primary focal point); rules/14-landing-pages.md (specific value before CTA)</span></td>
+      </tr>
+      <tr>
+        <td>Tags</td>
+        <td class="before">Inline hashtag links blend into body chrome and have limited hit area</td>
+        <td class="after">Bordered tag chips with hover state and clearer secondary weight</td>
+        <td><span class="principle">quality-gates Gate 4 (hover state); operating-principles §7 (touch target clarity)</span></td>
+      </tr>
+      <tr>
+        <td>Save action</td>
+        <td class="before">Small icon button is visually quiet and shares the baseline with stats</td>
+        <td class="after">44×44px bookmark button with border, hover tint, and focus ring</td>
+        <td><span class="principle">operating-principles §7 (Fitts); quality-gates Gate 4 (focus/hover states)</span></td>
+      </tr>
+      <tr>
+        <td>Engagement row</td>
+        <td class="before">Reactions and comments are present; saves are only implied through the icon</td>
+        <td class="after">Reactions, comments, and saves are explicit in one footer band</td>
+        <td><span class="principle">operating-principles §2 (one zone for secondary metadata)</span></td>
+      </tr>
+      <tr>
+        <td>Dark mode</td>
+        <td class="before">Hardcoded DEV neutrals are preserved as a faithful light-only reference</td>
+        <td class="after">OKLCH tokens control card, text, tags, footer, and bookmark states</td>
+        <td><span class="principle">quality-gates Gate 6 (dark mode required)</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-label">Token Legend</div>
+  <table class="token-legend">
+    <thead><tr><th>Token</th><th>Light</th><th>Dark</th><th>Used for</th></tr></thead>
+    <tbody>
+      <tr><td class="token-name">--color-bg</td><td>oklch(96% 0.004 258)</td><td>oklch(13% 0.010 258)</td><td>Page background, skeleton midpoint</td></tr>
+      <tr><td class="token-name">--color-surface</td><td>oklch(100% 0 0)</td><td>oklch(17% 0.010 258)</td><td>Article card background and footer base</td></tr>
+      <tr><td class="token-name">--color-border</td><td>oklch(90% 0.006 258)</td><td>oklch(26% 0.010 258)</td><td>Card border, tag borders, bookmark outline</td></tr>
+      <tr><td class="token-name">--color-text</td><td>oklch(17% 0.012 258)</td><td>oklch(94% 0.004 258)</td><td>Title and author name</td></tr>
+      <tr><td class="token-name">--color-text-secondary</td><td>oklch(42% 0.012 258)</td><td>oklch(72% 0.008 258)</td><td>Excerpt and body copy</td></tr>
+      <tr><td class="token-name">--color-text-muted</td><td>oklch(60% 0.008 258)</td><td>oklch(55% 0.006 258)</td><td>Date, tags, engagement stats, bookmark icon</td></tr>
+      <tr><td class="token-name">--color-accent</td><td>oklch(52% 0.20 258)</td><td>oklch(65% 0.20 258)</td><td>Title hover, tag hover, bookmark hover, focus rings</td></tr>
+      <tr><td class="token-name">--color-success</td><td>oklch(45% 0.15 145)</td><td>oklch(70% 0.12 145)</td><td>Author avatar badge</td></tr>
+    </tbody>
+  </table>
+</main>
+
+<script>
+  const wrapper   = document.getElementById('component-wrapper');
+  const afterEl   = document.getElementById('state-after');
+  const beforeEl  = document.getElementById('state-before');
+  const btnBefore = document.getElementById('btn-before');
+  const btnAfter  = document.getElementById('btn-after');
+  const reduced   = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let current = 'after';
+
+  function measureHeights() {
+    afterEl.hidden = false; beforeEl.hidden = false;
+    afterEl.style.visibility = 'hidden'; beforeEl.style.visibility = 'hidden';
+    const afterH  = afterEl.getBoundingClientRect().height;
+    const beforeH = beforeEl.getBoundingClientRect().height;
+    afterEl.style.visibility = ''; beforeEl.style.visibility = '';
+    wrapper.style.minHeight = Math.max(afterH, beforeH) + 'px';
+    beforeEl.hidden = true;
+  }
+
+  function switchTo(target) {
+    if (target === current) return;
+    current = target;
+    const showEl = target === 'after' ? afterEl : beforeEl;
+    const hideEl = target === 'after' ? beforeEl : afterEl;
+    btnBefore.classList.toggle('active', target === 'before');
+    btnAfter.classList.toggle('active',  target === 'after');
+    btnBefore.setAttribute('aria-pressed', target === 'before');
+    btnAfter.setAttribute('aria-pressed',  target === 'after');
+    if (reduced) { hideEl.hidden = true; showEl.hidden = false; return; }
+    hideEl.style.opacity = '0'; hideEl.style.transform = 'translateY(4px)';
+    setTimeout(() => { hideEl.hidden = true; hideEl.style.opacity = ''; hideEl.style.transform = ''; }, 200);
+    showEl.hidden = false; showEl.style.opacity = '0'; showEl.style.transform = 'translateY(4px)';
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      showEl.style.transition = 'opacity 200ms cubic-bezier(0.16,1,0.3,1), transform 200ms cubic-bezier(0.16,1,0.3,1)';
+      showEl.style.opacity = '1'; showEl.style.transform = 'translateY(0)';
+      setTimeout(() => { showEl.style.transition = ''; }, 220);
+    }));
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    measureHeights();
+    btnBefore.addEventListener('click', () => switchTo('before'));
+    btnAfter.addEventListener('click',  () => switchTo('after'));
+    [btnBefore, btnAfter].forEach(btn =>
+      btn.addEventListener('keydown', e => {
+        if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); btn.click(); }
+      })
+    );
+  });
+</script>
+</body>
+</html>

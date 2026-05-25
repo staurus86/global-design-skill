@@ -52,6 +52,12 @@ Format: [version] — date — description
 - `docs/packs.md` — full pack breakdown: Core, UI packs (Landing/SaaS/Admin/Effects), Audit packs (a11y/perf/design-system/conversion), MCP Intelligence
 - `README.md` — "Start here" table, "How it learns (SEDI)" section, self-learning tagline, compatibility matrix (7 tools x 4 capabilities), MCP section with resources URI list and 5 prompts
 
+### Sprint 44 — Demo Gallery Wave 3
+
+- `demo/caniuse-table.html` — self-contained Before/After redesign for a Can I Use browser compatibility table, with skeleton state, change log, token legend, responsive browser cards, and keyboard-accessible toggle
+- `demo/devto-card.html` — self-contained Before/After redesign for a Dev.to article card, with skeleton state, change log, token legend, responsive article layout, and keyboard-accessible toggle
+- `demo/index.html` — Wave 3 cards activated with live links; all 8 gallery demos are now clickable
+
 ---
 
 ## [1.5.0] — 2026-05-25
