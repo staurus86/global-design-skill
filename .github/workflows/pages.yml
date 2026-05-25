@@ -1,6 +1,7 @@
 name: Deploy Demo Gallery to GitHub Pages
 
 on:
+  workflow_dispatch:
   push:
     branches: ["master"]
     paths: ["demo/**"]
