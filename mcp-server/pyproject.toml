@@ -12,6 +12,8 @@ dependencies = [
     "fastmcp>=0.1",
     "markdown-it-py>=3.0",
     "PyYAML>=6.0",
+    "requests>=2.31",
+    "beautifulsoup4>=4.12",
 ]
 
 [project.optional-dependencies]
