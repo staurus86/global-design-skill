@@ -2,9 +2,9 @@
 
 # Global Design Skill
 
-Turn Claude Code, Cursor, Codex, ChatGPT, Windsurf, and GitHub Copilot into a stricter UI/UX design reviewer and frontend handoff assistant.
+Turn Claude Code, Cursor, Codex, ChatGPT, Windsurf, and GitHub Copilot into a stricter UI/UX design reviewer and frontend handoff assistant — one that detects your business niche, applies sector-specific rules, and improves with every project.
 
-Not another prompt collection. A portable design operating system for AI-assisted frontend work: UX architecture, UI patterns, design tokens, review agents, checklists, and implementation-ready specs.
+Not another prompt collection. A self-learning design operating system: it knows sector-specific rules for 13 industries, learns from reference sites you point it at, and calibrates its pattern weights based on your feedback. All local, no telemetry.
 
 [![Version](https://img.shields.io/badge/version-1.5.0-blue)](CHANGELOG.md)
 [![Standards](https://img.shields.io/badge/CSS-2026%20Baseline-green)](rules/)
@@ -25,6 +25,8 @@ Global Design Skill gives the agent a reusable design operating system. It force
 - how it works on mobile
 - how accessibility is specified
 - how a developer can implement it without asking follow-up questions
+
+v1.5.0 adds **SEDI (Self-Evolving Design Intelligence)**: the skill now detects your business sector automatically (B2B SaaS, e-commerce, health, finance, and 10 more), applies sector-specific banned patterns and required elements, learns from reference sites you point it at, and refines its pattern weights based on revision count. The more you use it, the more accurate it becomes — and all of that stays on your machine.
 
 ## Install in 30 seconds
 
@@ -88,10 +90,13 @@ Global Design Skill =
 + Output Templates           (templates/)
 + Review Checklists          (checklists/)
 + Improvement Recipes        (recipes/)
++ Industry Sector Rules      (industries/)   ← 13 sectors, niche auto-detected
++ Self-Learning Engine       (learning/)     ← learns from sites you point it at
++ SEDI                       (sedi/)         ← adapts to your feedback over time
 ```
 
 **Not:** "make it look nice."
-**Yes:** what to build, for whom, why, which grid, which states, how to hand it off, and how to verify the result.
+**Yes:** what to build, for whom, why, which grid, which states, how to hand it off — and a skill that gets more accurate the more you use it.
 
 ---
 
@@ -155,6 +160,8 @@ Global Design Skill =
 - agencies turning rough ideas into frontend handoff specs
 - product teams standardizing AI-generated UI output
 - design engineers who want reusable gates, tokens, and review checklists
+- teams building in niche industries that generic design rules don't cover well
+- anyone who wants a design system that gets smarter the more they use it
 
 ---
 
@@ -433,6 +440,30 @@ python server.py
 | `reset_weights` | SEDI | Reset pattern weights to default |
 
 See `mcp-server/README.md` for full setup and privacy notes.
+
+---
+
+## How it learns (SEDI)
+
+Global Design Skill v1.5.0 introduces **SEDI (Self-Evolving Design Intelligence)** — a 6-layer pipeline that makes the skill adapt to your work instead of staying static.
+
+```
+Request → Perception → Cognition → Execution → Feedback → Evolution
+```
+
+**Perception** — detects the business sector (B2B SaaS, e-commerce, health, finance...), sub-niche, intent (create / improve / audit), and constraints from your request.
+
+**Cognition** — selects design rules using a 4-level priority resolver: your explicit overrides win first, then validated learned patterns, then static sector rules, then generic design principles.
+
+**Execution** — generates design output with a source citation per rule applied, so every decision is traceable.
+
+**Feedback Engine** — tracks explicit ratings (1–5) and implicit signals (revision count). Pattern weights adjust ±10% per interaction, bounded between 0.1× and 2.0×. After 5+ interactions the skill self-calibrates.
+
+**Learning Engine** — when a niche isn't in the 13 built-in sectors, the skill scrapes reference sites you provide (robots.txt-compliant, 10 req/min), extracts layout/trust/conversion patterns, and saves them to a local knowledge base.
+
+**Evolution** — a weekly cycle detects stale niches, captures accuracy baselines, and logs all changes to `~/.global-design-skill/evolution_log/`.
+
+All learning is **local, private, and reversible**. Use `forget_niche` or `reset_weights` via the MCP server to clear any learned state.
 
 ---
 
