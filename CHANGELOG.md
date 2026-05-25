@@ -67,6 +67,7 @@ Format: [version] — date — description
 ### Sprint 46 — Lighthouse Demo Depth Pass
 
 - `demo/lighthouse-audit.html` — enriched the After state with audit-specific tokens, category score breakdown, environment metadata, projected score panel, performance budget rails, verification command snippet, and stateful fix checklist
+- `demo/lighthouse-audit.html` — fixed score-chip label architecture: category text and numeric score now render as separate elements, while score bar color selectors only target progress rails
 
 ---
 

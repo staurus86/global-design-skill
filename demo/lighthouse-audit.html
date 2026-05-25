@@ -100,13 +100,15 @@
     .audit-score-label { display: block; margin-top: var(--space-1); font-size: var(--text-xs); font-weight: 800; }
     .score-breakdown { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-2); padding: var(--space-4); border-bottom: 1px solid var(--color-border); }
     .score-chip { border: 1px solid var(--color-border); border-radius: 10px; padding: var(--space-3); background: oklch(from var(--color-surface) calc(l - 0.018) c h); }
-    .score-chip-label { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); font-size: var(--text-xs); font-weight: 780; color: var(--color-text-muted); }
+    .score-chip-label { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: start; gap: var(--space-2); }
+    .score-category { min-width: 0; color: var(--color-text-muted); font-size: var(--text-xs); font-weight: 820; line-height: 1.25; overflow-wrap: anywhere; }
+    .score-number { min-width: 34px; text-align: center; border: 1px solid var(--color-border); border-radius: 999px; padding: 2px var(--space-2); background: var(--color-surface); color: var(--color-text); font-size: var(--text-xs); font-weight: 850; line-height: 1.2; }
     .score-chip-value { margin-top: var(--space-2); font-size: var(--text-lg); font-weight: 850; color: var(--color-text); }
     .score-bar { margin-top: var(--space-2); height: 6px; border-radius: 999px; background: var(--color-border); overflow: hidden; }
     .score-bar span { display: block; height: 100%; border-radius: inherit; }
-    .score-warn span { width: 72%; background: var(--audit-warn); }
-    .score-good span { width: 94%; background: var(--color-success); }
-    .score-bad span { width: 64%; background: var(--audit-danger); }
+    .score-warn .score-bar span { width: 72%; background: var(--audit-warn); }
+    .score-good .score-bar span { width: 94%; background: var(--color-success); }
+    .score-bad .score-bar span { width: 64%; background: var(--audit-danger); }
     .env-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-2); padding: 0 var(--space-4) var(--space-4); }
     .env-item { border: 1px solid oklch(from var(--audit-info) l c h / 0.28); background: var(--audit-info-bg); border-radius: 10px; padding: var(--space-2) var(--space-3); }
     .env-label { font-size: var(--text-xs); font-weight: 800; color: var(--audit-info); }
@@ -248,22 +250,22 @@
 
           <div class="score-breakdown" aria-label="Lighthouse category score breakdown">
             <div class="score-chip score-warn">
-              <div class="score-chip-label"><span>Performance</span><span>72</span></div>
+              <div class="score-chip-label"><span class="score-category">Performance</span><span class="score-number">72</span></div>
               <div class="score-chip-value">LCP-bound</div>
               <div class="score-bar"><span></span></div>
             </div>
             <div class="score-chip score-good">
-              <div class="score-chip-label"><span>Accessibility</span><span>94</span></div>
+              <div class="score-chip-label"><span class="score-category">Accessibility</span><span class="score-number">94</span></div>
               <div class="score-chip-value">Stable</div>
               <div class="score-bar"><span></span></div>
             </div>
             <div class="score-chip score-bad">
-              <div class="score-chip-label"><span>SEO</span><span>64</span></div>
+              <div class="score-chip-label"><span class="score-category">SEO</span><span class="score-number">64</span></div>
               <div class="score-chip-value">Missing meta</div>
               <div class="score-bar"><span></span></div>
             </div>
             <div class="score-chip score-good">
-              <div class="score-chip-label"><span>Best practices</span><span>96</span></div>
+              <div class="score-chip-label"><span class="score-category">Best practices</span><span class="score-number">96</span></div>
               <div class="score-chip-value">Clean</div>
               <div class="score-bar"><span></span></div>
             </div>
