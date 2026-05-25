@@ -59,7 +59,7 @@ No build tooling. Each file is self-contained HTML+CSS+JS. No external dependenc
 
 ### Toggle behaviour
 
-- Default state: **After** (shows the redesign)
+- Default state: **After** (shows the redesign — visitor sees the best version first, Before is the contrast, not the hero)
 - Clicking "Before" renders the original component recreation (faithful to the original, not a screenshot)
 - Both states are rendered live HTML — no images
 - Toggle is keyboard accessible: `Tab` to focus, `Space`/`Enter` to switch
@@ -70,7 +70,7 @@ No build tooling. Each file is self-contained HTML+CSS+JS. No external dependenc
 ### Skeleton state
 
 - Matches the **After** (redesigned) component layout exactly
-- CSS shimmer animation: `background-position` sweep, 1.5s, `ease-in-out`
+- CSS shimmer animation: `background-position` sweep, 1.5s, `linear` — shimmer is functional, not decorative; `ease-in-out` is banned per §8
 - `prefers-reduced-motion`: static flat colour, no animation
 - Labelled with `aria-busy="true"` and `aria-label="Loading [component name]"`
 
@@ -92,7 +92,14 @@ Table of every CSS custom property used, with its computed OKLCH value and seman
 
 ## 4. Design Tokens (shared across all demos)
 
-All demos import from the same token block embedded in each file (no external CSS).
+All demos embed the same token block inline (no external CSS, no build step). This means tokens are duplicated across 8 files — an explicit trade-off for self-containment.
+
+**Token update protocol:** `demo/tokens.css` is the single source of truth (not loaded by browsers — exists only as a reference). To update a token across all files, run:
+```bash
+# Example: update --color-accent in all demo files
+grep -rl "\-\-color-accent:" demo/ | xargs sed -i 's/--color-accent: oklch(52% 0.20 258)/--color-accent: oklch(NEW)/g'
+```
+Document this in `demo/README.md`. Never edit token values in individual demo files directly.
 
 ### Colour — OKLCH
 
@@ -118,13 +125,18 @@ All demos import from the same token block embedded in each file (no external CS
 
 `--space-1: 4px` through `--space-10: 40px`
 
-### Typography — fluid with `clamp()`
+### Typography — fixed sizes (no `clamp()`)
+
+1px fluid ranges are indistinguishable from fixed values. Use fixed sizes; reserve `clamp()` for display headings with genuine viewport dependence.
 
 ```css
---text-sm:   clamp(12px, 1.3vw, 13px)
---text-base: clamp(13px, 1.45vw, 14px)
---text-lg:   clamp(17px, 2vw, 19px)
---text-xl:   clamp(20px, 2.3vw, 22px)
+--text-xs:   11px
+--text-sm:   13px
+--text-base: 15px
+--text-md:   17px
+--text-lg:   19px
+--text-xl:   clamp(20px, 2.3vw + 0.5rem, 26px)   /* display size — real range */
+--text-2xl:  clamp(26px, 3.5vw + 0.5rem, 36px)
 ```
 
 ### Motion
@@ -154,6 +166,8 @@ All demos import from the same token block embedded in each file (no external CS
 
 ```
 [Thumbnail]   split 50/50 — left: Before (red tint), right: After (green tint)
+              Centre of each half: site emoji (32px) + component name (11px, bold)
+              Without this, all 8 cards are visually identical colour blocks
 [Info]        site emoji + name · component type · difficulty badge
 [CTA]         "View demo →" link
 ```
@@ -161,7 +175,7 @@ All demos import from the same token block embedded in each file (no external CS
 ### Filter tabs
 
 "All" | "Wave 1" | "Wave 2" | "Wave 3"  
-Client-side JS filter — no page reload. Cards not matching the active filter get `display: none`.
+Client-side JS filter — no page reload. Cards not matching the active filter get `opacity: 0; transform: scale(0.96); pointer-events: none` with `transition: opacity 150ms, transform 150ms` — not `display: none` (would block transition).
 
 ### Difficulty badges
 
@@ -189,7 +203,7 @@ Every demo file must pass before it ships:
 | **Dark mode** | Both Before and After render in dark mode without broken contrast. |
 | **Responsive** | No horizontal overflow at 390px, 768px, 1280px. |
 | **Accessibility** | All interactive elements have `aria-label`. Focus ring visible. Touch targets ≥ 44×44px. |
-| **Performance** | Images (if any) have `width`+`height`. `aspect-ratio` on media containers. |
+| **Performance** | No layout shift during Before/After toggle. `aspect-ratio` locked on component container so height doesn't jump between states. |
 | **Change log** | Every visible change is documented with the principle or gate it addresses. |
 
 ---
@@ -202,7 +216,7 @@ Extract the common CSS custom properties into a `<style>` comment block used as 
 ### Step 2 — Wave 1 demos (3 files)
 
 **2a. hacker-news.html**
-- Before: faithful recreation of current HN story item (black text, Times New Roman, orange link, grey meta)
+- Before: faithful recreation of HN story item as of **2026-05-25** snapshot (black text, Times New Roman, orange link, grey meta)
 - After: modern redesign — card surface, vote widget, domain pill, time, comment count, share
 - Key challenge: maximum contrast with minimum components
 
@@ -217,9 +231,12 @@ Extract the common CSS custom properties into a `<style>` comment block used as 
 - Key challenge: status communication
 
 ### Step 3 — Gallery page (index.html)
-Built after Wave 1 is complete. Thumbnails are colour-block splits (50/50, red-tint Before / green-tint After) — no screenshots or iframes required, consistent with the live-HTML-only rule.
+Built after Wave 1 is complete. Thumbnails are colour-block splits (50/50, red-tint Before / green-tint After) with site emoji + component name centred in each half — no screenshots or iframes required.
 
-### Step 4 — Wave 2 and Wave 3
+### Step 4 — Enable GitHub Pages
+In repo Settings → Pages → Source: deploy from branch `master`, folder `/demo`. Verify `demo/index.html` is reachable at the published URL before marking Wave 1 done. Add the Pages URL to `README.md`.
+
+### Step 5 — Wave 2 and Wave 3
 Follow same format. Each gets its own spec addendum if the component type requires it.
 
 ---
@@ -245,4 +262,7 @@ Follow same format. Each gets its own spec addendum if the component type requir
 - [ ] No horizontal scroll at 390px on any demo or gallery page
 - [ ] Gallery page filter works without JS errors
 - [ ] Every change log entry references a specific principle or quality gate
-- [ ] README in repo links to `demo/index.html` (GitHub Pages URL)
+- [ ] GitHub Pages configured (Settings → Pages → branch `master`, folder `/demo`)
+- [ ] README links to the live GitHub Pages URL
+- [ ] `demo/tokens.css` exists as the token source of truth
+- [ ] `demo/README.md` documents the token update protocol
