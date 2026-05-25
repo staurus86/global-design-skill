@@ -14,6 +14,8 @@ To update a token value across all demo files, run from the repo root:
 sed -i'' 's/--color-accent: oklch(52% 0.20 258)/--color-accent: oklch(NEW_VALUE)/g' demo/*.html
 ```
 
+Use the same pattern for any other token — replace the property name and old value accordingly.
+
 Never edit token values in individual demo files directly.
 
 ## Files
