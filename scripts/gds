@@ -25,7 +25,7 @@ import sys
 from pathlib import Path
 
 GDS_ROOT = Path(__file__).parent.parent.resolve()
-VERSION = "1.5.0"
+VERSION = "1.6.0"
 
 # Force UTF-8 output so checkmarks and dashes render correctly everywhere
 if hasattr(sys.stdout, "reconfigure"):

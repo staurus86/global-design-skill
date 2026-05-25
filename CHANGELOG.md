@@ -36,7 +36,7 @@ Format: [version] — date — description
 
 ### Sprint 41 — MCP Resources and Prompts
 
-- `mcp-server/server.py` — 13 dynamic resources via `gds://` URI scheme: `rules/{name}`, `industries/{sector}`, `blueprints/{name}`, `patterns/{category}/{name}`, `tokens/css`, `tokens/css-dark`, `templates/frontend-tz`, `templates/component-spec`, `checklists/global-design-review`, `checklists/landing-conversion-review`, `skills/global-design`
+- `mcp-server/server.py` — 11 dynamic resources via `gds://` URI scheme: `rules/{name}`, `industries/{sector}`, `blueprints/{name}`, `patterns/{category}/{name}`, `tokens/css`, `tokens/css-dark`, `templates/frontend-tz`, `templates/component-spec`, `checklists/global-design-review`, `checklists/landing-conversion-review`, `skills/global-design`
 - `mcp-server/server.py` — 5 workflow prompts: `audit_landing_page`, `redesign_hero`, `create_frontend_handoff`, `improve_admin_table`, `sector_design_brief`
 - `mcp-server/server.py` — `_read_repo_file()` helper with CRLF normalization
 - `mcp-server/tests/test_resources.py` — 10 tests for resource reading and `GDS_MCP_SAFE_MODE` env parsing
@@ -68,6 +68,11 @@ Format: [version] — date — description
 
 - `demo/lighthouse-audit.html` — enriched the After state with audit-specific tokens, category score breakdown, environment metadata, projected score panel, performance budget rails, verification command snippet, and stateful fix checklist
 - `demo/lighthouse-audit.html` — fixed score-chip label architecture: category text and numeric score now render as separate elements, while score bar color selectors only target progress rails
+
+### Sprint 47 — README Consistency Pass
+
+- `README.md` — synchronized version references, install commands, MCP tool/resource counts, quality gate names, typography wording, and Gemini CLI compatibility notes
+- `scripts/gds` and `manifest.yaml` — version synchronized to 1.6.0
 
 ---
 

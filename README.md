@@ -6,7 +6,7 @@ Turn Claude Code, Cursor, Codex, ChatGPT, Windsurf, and GitHub Copilot into a st
 
 Not another prompt collection. A self-learning design operating system: it knows sector-specific rules for 13 industries, learns from reference sites you point it at, and calibrates its pattern weights based on your feedback. All local, no telemetry.
 
-[![Version](https://img.shields.io/badge/version-1.5.0-blue)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-1.6.0-blue)](CHANGELOG.md)
 [![Standards](https://img.shields.io/badge/CSS-2026%20Baseline-green)](rules/)
 [![React](https://img.shields.io/badge/React-19-blue)](rules/)
 [![Next.js](https://img.shields.io/badge/Next.js-15-black)](rules/)
@@ -28,12 +28,14 @@ Global Design Skill gives the agent a reusable design operating system. It force
 - how accessibility is specified
 - how a developer can implement it without asking follow-up questions
 
-v1.5.0 adds **SEDI (Self-Evolving Design Intelligence)**: the skill now detects your business sector automatically (B2B SaaS, e-commerce, health, finance, and 10 more), applies sector-specific banned patterns and required elements, learns from reference sites you point it at, and refines its pattern weights based on revision count. The more you use it, the more accurate it becomes — and all of that stays on your machine.
+Current v1.6.0 includes **SEDI (Self-Evolving Design Intelligence)**: the skill detects your business sector automatically (B2B SaaS, e-commerce, health, finance, and 10 more), applies sector-specific banned patterns and required elements, learns from reference sites you point it at, and refines its pattern weights based on revision count. The more you use it, the more accurate it becomes — and all of that stays on your machine.
 
 ## Install in 30 seconds
 
 ```bash
 git clone https://github.com/staurus86/global-design-skill.git
+cd global-design-skill
+python scripts/gds install --tool=all /path/to/your-project
 ```
 
 ### Claude Code
@@ -69,7 +71,7 @@ More install options: [install.md](install.md).
 | Admin panels | Core + Admin Pack |
 | Design audits (a11y, perf, conversion) | Core + Audit Pack |
 | Sector-aware rules + self-learning | Core + MCP Intelligence |
-| Everything | `gds install --tool=all` |
+| Everything | `python scripts/gds install --tool=all /path/to/your-project` |
 
 Full pack breakdown: [docs/packs.md](docs/packs.md)
 
@@ -346,7 +348,7 @@ global-design-skill/
 │
 ├── feedback/                   ← Gate-8 tracker and iteration log templates
 │
-├── mcp-server/                 ← Python MCP server: 12 tools, 0 database
+├── mcp-server/                 ← Python MCP server: 11 tools, 0 database
 │   ├── server.py
 │   ├── tools/
 │   └── tests/
@@ -394,7 +396,7 @@ global-design-skill/
 
 ## Design System
 
-All colors use **OKLCH** for perceptual uniformity. All spacing on a **4px grid**. All type sizes use **`clamp()`** for fluid scaling.
+All colors use **OKLCH** for perceptual uniformity. All spacing sits on a **4px grid**. Display type uses **`clamp()`** where a real viewport range is needed; compact UI text uses fixed token sizes.
 
 ```css
 /* tokens/tokens.css — import in your project */
@@ -457,13 +459,20 @@ GDS_MCP_SAFE_MODE=1 python server.py # static tools only, no HTTP requests
 | `resolve_suspicion` | SEDI | Resolve static/learned conflicts |
 | `reset_weights` | SEDI | Reset pattern weights to 1.0 (sector or global) |
 
-**Resources** (13 dynamic URIs — agents can pull any file directly):
+**Resources** (11 dynamic URI patterns — agents can pull repository files directly):
 
 ```
-gds://rules/{name}             gds://industries/{sector}
-gds://blueprints/{name}        gds://patterns/{category}/{name}
-gds://tokens/css               gds://templates/frontend-tz
+gds://rules/{name}
+gds://industries/{sector}
+gds://blueprints/{name}
+gds://patterns/{category}/{name}
+gds://tokens/css
+gds://tokens/css-dark
+gds://templates/frontend-tz
+gds://templates/component-spec
 gds://checklists/global-design-review
+gds://checklists/landing-conversion-review
+gds://skills/global-design
 ```
 
 **5 prompts** (pre-built workflows): `audit_landing_page`, `redesign_hero`, `create_frontend_handoff`, `improve_admin_table`, `sector_design_brief`
@@ -474,7 +483,7 @@ See `mcp-server/README.md` for full setup. See `PRIVACY.md` for data handling an
 
 ## How it learns (SEDI)
 
-Global Design Skill v1.5.0 introduces **SEDI (Self-Evolving Design Intelligence)** — a 6-layer pipeline that makes the skill adapt to your work instead of staying static.
+Global Design Skill includes **SEDI (Self-Evolving Design Intelligence)** — a 6-layer pipeline that makes the skill adapt to your work instead of staying static.
 
 ```
 Request → Perception → Cognition → Execution → Feedback → Evolution
@@ -523,14 +532,14 @@ All learning is **local, private, and reversible**. Use `forget_niche` or `reset
 A design passes handoff when it clears all 8 gates:
 
 ```
-Gate 1 — Problem defined (specific, data-backed)
-Gate 2 — User identified (concrete person with context)
-Gate 3 — Metric set (one primary metric with target)
-Gate 4 — All states designed (idle/hover/active/focus/disabled/loading/empty/error/success)
-Gate 5 — Responsive behavior specified (390px / 768px / 1280px)
-Gate 6 — ARIA specified (every attribute on every interactive element)
-Gate 7 — Tokens used (no raw hex, no raw px in components)
-Gate 8 — Developer can implement without asking a question
+Gate 1 — Problem Definition
+Gate 2 — Information Architecture
+Gate 3 — Design System
+Gate 4 — States
+Gate 5 — Responsive
+Gate 6 — Accessibility
+Gate 7 — Performance
+Gate 8 — Frontend Readiness
 ```
 
 Full gate specifications: `skills/global-design/quality-gates.md`
@@ -564,7 +573,7 @@ These patterns cause immediate design failure. Full list in `checklists/global-d
 | Windsurf | ✅ via rules | ⚠️ partial | ✅ via MCP config | Use `.windsurfrules` + MCP |
 | ChatGPT | ✅ manual paste | ❌ | ❌ | Paste skill content as system prompt |
 | Codex / o3 | ✅ via AGENTS.md | ⚠️ partial | ❌ not yet | Use `AGENTS.md` in repo root |
-| Gemini CLI | ✅ via GEMINI.md | ⚠️ partial | ❌ experimental | Use `GEMINI.md` in repo root |
+| Gemini CLI | ✅ manual paste | ❌ | ❌ experimental | No packaged `GEMINI.md` yet; use the ChatGPT instructions manually |
 
 See `install.md` for setup instructions per tool.
 
