@@ -1,0 +1,333 @@
+#!/usr/bin/env python3
+"""gds — Global Design Skill CLI
+
+Usage:
+  gds install [--tool=TOOL ...] [PROJECT_PATH]
+  gds doctor  [PROJECT_PATH]
+  gds version
+
+Tools: claude-code | cursor | copilot | windsurf | mcp | all (default)
+
+Examples:
+  gds install                          # install everything in current directory
+  gds install --tool=claude-code .     # Claude Code only
+  gds install --tool=cursor --tool=mcp ~/myproject
+  gds doctor                           # check current directory
+  gds doctor ~/myproject
+"""
+
+import argparse
+import json
+import os
+import shutil
+import subprocess
+import sys
+from pathlib import Path
+
+GDS_ROOT = Path(__file__).parent.parent.resolve()
+VERSION = "1.5.0"
+
+# Force UTF-8 output so checkmarks and dashes render correctly everywhere
+if hasattr(sys.stdout, "reconfigure"):
+    try:
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    except Exception:
+        pass
+
+_MARK_OK = "+"
+_MARK_FAIL = "x"
+
+# ─── Install helpers ──────────────────────────────────────────────────────────
+
+
+def _ok(msg: str) -> None:
+    print(f"  {_MARK_OK} {msg}")
+
+
+def _fail(msg: str) -> None:
+    print(f"  {_MARK_FAIL} {msg}")
+
+
+def _info(msg: str) -> None:
+    print(f"    {msg}")
+
+
+def _install_claude_code(target: Path) -> None:
+    print(f"\nClaude Code → {target}")
+
+    skills_dst = target / ".claude" / "skills" / "global-design"
+    agents_dst = target / ".claude" / "agents"
+    skills_dst.mkdir(parents=True, exist_ok=True)
+    agents_dst.mkdir(parents=True, exist_ok=True)
+
+    src_skill = GDS_ROOT / "skills" / "global-design"
+    if src_skill.exists():
+        shutil.copytree(src_skill, skills_dst, dirs_exist_ok=True)
+        _ok(f"Skills → {skills_dst}")
+    else:
+        _fail(f"Source not found: {src_skill}")
+
+    src_agents = GDS_ROOT / "agents"
+    if src_agents.exists():
+        count = 0
+        for agent_file in src_agents.glob("*.md"):
+            shutil.copy2(agent_file, agents_dst / agent_file.name)
+            count += 1
+        _ok(f"Agents ({count} files) → {agents_dst}")
+    else:
+        _fail(f"Source not found: {src_agents}")
+
+    claude_md_src = GDS_ROOT / "integrations" / "claude-code" / "CLAUDE.md"
+    claude_md_dst = target / "CLAUDE.md"
+    if claude_md_src.exists():
+        snippet = claude_md_src.read_text(encoding="utf-8")
+        if claude_md_dst.exists():
+            existing = claude_md_dst.read_text(encoding="utf-8")
+            if "global-design-skill" not in existing:
+                with claude_md_dst.open("a", encoding="utf-8") as f:
+                    f.write(f"\n\n{snippet}")
+                _ok("Appended global-design-skill to CLAUDE.md")
+            else:
+                _ok("CLAUDE.md already references global-design-skill (skipped)")
+        else:
+            shutil.copy2(claude_md_src, claude_md_dst)
+            _ok(f"Created CLAUDE.md")
+    else:
+        _fail(f"Integration source not found: {claude_md_src}")
+
+
+def _install_cursor(target: Path) -> None:
+    print(f"\nCursor → {target}")
+    src = GDS_ROOT / "integrations" / "cursor" / "cursor-rules.md"
+    dst = target / ".cursorrules"
+    if src.exists():
+        shutil.copy2(src, dst)
+        _ok(f".cursorrules created")
+    else:
+        _fail(f"Source not found: {src}")
+
+
+def _install_copilot(target: Path) -> None:
+    print(f"\nGitHub Copilot → {target}")
+    gh_dir = target / ".github"
+    gh_dir.mkdir(exist_ok=True)
+    src = GDS_ROOT / "integrations" / "github-copilot" / "copilot-instructions.md"
+    dst = gh_dir / "copilot-instructions.md"
+    if src.exists():
+        shutil.copy2(src, dst)
+        _ok(f".github/copilot-instructions.md created")
+    else:
+        _fail(f"Source not found: {src}")
+
+
+def _install_windsurf(target: Path) -> None:
+    print(f"\nWindsurf → {target}")
+    src = GDS_ROOT / "integrations" / "windsurf" / "rules.md"
+    dst = target / ".windsurfrules"
+    if src.exists():
+        shutil.copy2(src, dst)
+        _ok(f".windsurfrules created")
+    else:
+        _fail(f"Source not found: {src}")
+
+
+def _install_mcp(target: Path) -> None:
+    print(f"\nMCP server → {target}")
+    mcp_dir = GDS_ROOT / "mcp-server"
+
+    result = subprocess.run(
+        [sys.executable, "-m", "pip", "install", "-e", ".[test]", "--quiet"],
+        cwd=mcp_dir,
+        capture_output=True,
+        text=True,
+    )
+    if result.returncode == 0:
+        _ok("Dependencies installed (fastmcp, mcp, requests, beautifulsoup4)")
+    else:
+        _fail(f"pip install failed")
+        _info(result.stderr.strip()[:300])
+        return
+
+    server_path = str(mcp_dir / "server.py")
+    mcp_entry = {
+        "command": sys.executable,
+        "args": [server_path],
+        "env": {},
+    }
+
+    config_path = target / ".claude" / "mcp.json"
+    config_path.parent.mkdir(parents=True, exist_ok=True)
+
+    if config_path.exists():
+        try:
+            existing = json.loads(config_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            existing = {}
+        existing.setdefault("mcpServers", {})["GlobalDesignSkill"] = mcp_entry
+        config_path.write_text(json.dumps(existing, indent=2) + "\n", encoding="utf-8")
+        _ok(f"GlobalDesignSkill added to existing {config_path.name}")
+    else:
+        config = {"mcpServers": {"GlobalDesignSkill": mcp_entry}}
+        config_path.write_text(json.dumps(config, indent=2) + "\n", encoding="utf-8")
+        _ok(f"Created {config_path}")
+
+    _info(f"Server: {server_path}")
+    _info("Safe mode: GDS_MCP_SAFE_MODE=1 python mcp-server/server.py")
+
+
+# ─── Commands ─────────────────────────────────────────────────────────────────
+
+
+def cmd_version(_args) -> None:
+    print(f"gds {VERSION} — Global Design Skill CLI")
+    print(f"Repository: {GDS_ROOT}")
+
+
+def cmd_install(args) -> None:
+    target = Path(args.path).resolve()
+    tools = list(args.tool) if args.tool else ["all"]
+
+    if "all" in tools:
+        tools = ["claude-code", "cursor", "copilot", "windsurf", "mcp"]
+
+    dispatch = {
+        "claude-code": _install_claude_code,
+        "cursor": _install_cursor,
+        "copilot": _install_copilot,
+        "windsurf": _install_windsurf,
+        "mcp": _install_mcp,
+    }
+
+    for tool in tools:
+        if tool in dispatch:
+            dispatch[tool](target)
+        else:
+            print(f"  Unknown tool: {tool}")
+
+    print(f"\nDone. Run 'gds doctor {target}' to verify.")
+
+
+def cmd_doctor(args) -> None:
+    target = Path(args.path).resolve()
+    print(f"\ngds doctor — {target}\n")
+
+    results = []
+
+    def chk(ok: bool, msg_ok: str, msg_fail: str) -> None:
+        results.append((ok, msg_ok if ok else msg_fail))
+
+    # Python version
+    v = sys.version_info
+    chk(v >= (3, 11), f"Python {v.major}.{v.minor}.{v.micro} ≥ 3.11", f"Python {v.major}.{v.minor} — need 3.11+")
+
+    # fastmcp
+    try:
+        import fastmcp as _fm
+        chk(True, f"fastmcp importable ({getattr(_fm, '__version__', 'unknown')})", "")
+    except ImportError:
+        chk(False, "", "fastmcp not installed — run: pip install 'fastmcp>=0.1'")
+
+    # Skills
+    skill_file = target / ".claude" / "skills" / "global-design" / "SKILL.md"
+    chk(skill_file.exists(), f"Skills installed ({skill_file.parent})", f"Skills not found — run: gds install --tool=claude-code {target}")
+
+    # Agents
+    agents_dir = target / ".claude" / "agents"
+    agent_count = len(list(agents_dir.glob("*.md"))) if agents_dir.exists() else 0
+    chk(agent_count > 0, f"Agents installed ({agent_count} files)", f"Agents not found — run: gds install --tool=claude-code {target}")
+
+    # MCP server syntax
+    server_py = GDS_ROOT / "mcp-server" / "server.py"
+    if server_py.exists():
+        r = subprocess.run([sys.executable, "-m", "py_compile", str(server_py)], capture_output=True)
+        chk(r.returncode == 0, "MCP server.py syntax OK", f"MCP server.py syntax error: {r.stderr.decode().strip()[:120]}")
+    else:
+        chk(False, "", f"MCP server.py not found at {server_py}")
+
+    # Tokens
+    tokens = GDS_ROOT / "tokens" / "tokens.css"
+    chk(tokens.exists() and tokens.stat().st_size > 100, f"Tokens CSS readable ({tokens.stat().st_size if tokens.exists() else 0} bytes)", "Tokens CSS missing or empty")
+
+    # Industries
+    industry_count = len(list((GDS_ROOT / "industries").glob("*.md")))
+    chk(industry_count >= 14, f"Industry files present ({industry_count}/14)", f"Industry files incomplete ({industry_count}/14)")
+
+    # MCP config
+    mcp_config = target / ".claude" / "mcp.json"
+    if mcp_config.exists():
+        try:
+            cfg = json.loads(mcp_config.read_text(encoding="utf-8"))
+            has_gds = "GlobalDesignSkill" in cfg.get("mcpServers", {})
+            chk(has_gds, "MCP config contains GlobalDesignSkill", "MCP config found but GlobalDesignSkill not registered")
+        except json.JSONDecodeError:
+            chk(False, "", f"MCP config at {mcp_config} is not valid JSON")
+    else:
+        chk(False, "", f"No MCP config at {mcp_config} — run: gds install --tool=mcp {target}")
+
+    # Line endings
+    bad = [
+        p.name for p in [
+            GDS_ROOT / "mcp-server" / "server.py",
+            GDS_ROOT / "mcp-server" / "pyproject.toml",
+            GDS_ROOT / "industries" / "b2b-products.md",
+        ]
+        if p.exists() and b"\r" in p.read_bytes()
+    ]
+    chk(not bad, "Line endings OK", f"CR line endings in: {', '.join(bad)}")
+
+    # Print
+    passed = sum(1 for ok, _ in results if ok)
+    failed = len(results) - passed
+
+    for ok, msg in results:
+        print(f"  {_MARK_OK if ok else _MARK_FAIL} {msg}")
+
+    print(f"\n  {passed} passed, {failed} failed", end="")
+    if failed == 0:
+        print(" — all good!")
+    else:
+        print(" — fix the issues above")
+        sys.exit(1)
+
+
+# ─── Entry point ──────────────────────────────────────────────────────────────
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(
+        prog="gds",
+        description="Global Design Skill CLI — install and verify the skill in your project",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog=__doc__,
+    )
+    sub = parser.add_subparsers(dest="command")
+
+    sub.add_parser("version", help="Show version and repository path")
+
+    install_p = sub.add_parser("install", help="Install skill files into a project directory")
+    install_p.add_argument(
+        "--tool",
+        choices=["claude-code", "cursor", "copilot", "windsurf", "mcp", "all"],
+        action="append",
+        metavar="TOOL",
+        help="Tool to install for (default: all). Repeat for multiple.",
+    )
+    install_p.add_argument("path", nargs="?", default=".", help="Project root (default: .)")
+
+    doctor_p = sub.add_parser("doctor", help="Verify installation health")
+    doctor_p.add_argument("path", nargs="?", default=".", help="Project root (default: .)")
+
+    args = parser.parse_args()
+
+    if args.command == "version":
+        cmd_version(args)
+    elif args.command == "install":
+        cmd_install(args)
+    elif args.command == "doctor":
+        cmd_doctor(args)
+    else:
+        parser.print_help()
+
+
+if __name__ == "__main__":
+    main()

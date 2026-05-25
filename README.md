@@ -58,6 +58,21 @@ cp path/to/global-design-skill/integrations/github-copilot/copilot-instructions.
 
 More install options: [install.md](install.md).
 
+## Start here
+
+| Goal | What to use |
+|---|---|
+| Better landing pages | Core + Landing Pack |
+| SaaS app screens | Core + SaaS Pack |
+| Admin panels | Core + Admin Pack |
+| Design audits (a11y, perf, conversion) | Core + Audit Pack |
+| Sector-aware rules + self-learning | Core + MCP Intelligence |
+| Everything | `gds install --tool=all` |
+
+Full pack breakdown: [docs/packs.md](docs/packs.md)
+
+---
+
 ## Try it
 
 Copy one of these into your AI coding assistant:
@@ -415,12 +430,13 @@ Eleven specialized agents for different phases and domains:
 
 ## MCP Server
 
-The optional MCP server exposes design intelligence as tools callable from Claude Code, Cursor, and Windsurf:
+The optional MCP server exposes design intelligence as **tools**, **resources**, and **prompts** callable from Claude Code, Cursor, and Windsurf:
 
 ```bash
 cd mcp-server
 pip install -e ".[test]"
-python server.py
+python server.py                     # full mode
+GDS_MCP_SAFE_MODE=1 python server.py # static tools only, no HTTP requests
 ```
 
 **11 tools across 4 layers:**
@@ -439,7 +455,18 @@ python server.py
 | `resolve_suspicion` | SEDI | Resolve static/learned conflicts |
 | `reset_weights` | SEDI | Reset pattern weights to 1.0 (sector or global) |
 
-See `mcp-server/README.md` for full setup and privacy notes.
+**Resources** (13 dynamic URIs — agents can pull any file directly):
+
+```
+gds://rules/{name}             gds://industries/{sector}
+gds://blueprints/{name}        gds://patterns/{category}/{name}
+gds://tokens/css               gds://templates/frontend-tz
+gds://checklists/global-design-review
+```
+
+**5 prompts** (pre-built workflows): `audit_landing_page`, `redesign_hero`, `create_frontend_handoff`, `improve_admin_table`, `sector_design_brief`
+
+See `mcp-server/README.md` for full setup. See `PRIVACY.md` for data handling and `SECURITY.md` for the safe-mode flag.
 
 ---
 
