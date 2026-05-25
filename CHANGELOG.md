@@ -74,6 +74,7 @@ Format: [version] — date — description
 - `README.md` — synchronized version references, install commands, MCP tool/resource counts, quality gate names, typography wording, and Gemini CLI compatibility notes
 - `scripts/gds` and `manifest.yaml` — version synchronized to 1.6.0
 - `.github/workflows/pages.yml` — added a manual GitHub Pages deploy trigger for README-only or workflow-only maintenance pushes
+- `.github/workflows/*.yml` — opted workflows into GitHub Actions Node 24 execution to clear Node 20 deprecation warnings
 
 ---
 
