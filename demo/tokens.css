@@ -1,6 +1,6 @@
 /* demo/tokens.css — single source of truth for demo design tokens.
    NOT loaded by browsers. Exists for reference and sed-based sync only.
-   Update protocol: sed -i'' 's/--color-accent: oklch(52% 0.20 258)/--color-accent: oklch(NEW)/g' demo/*.html
+   Update protocol: sed -i'' 's/--color-accent: oklch(52% 0.20 258)/--color-accent: oklch(NEW_VALUE)/g' demo/*.html
 */
 :root {
   --color-bg:             oklch(96% 0.004 258);
