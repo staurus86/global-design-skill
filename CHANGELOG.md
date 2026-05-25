@@ -6,6 +6,54 @@ Format: [version] — date — description
 
 ---
 
+## [1.6.0] — 2026-05-25
+
+### Sprint 37 — Repository Infrastructure
+
+- `.gitattributes` — LF normalization for all text files on commit
+- `.editorconfig` — consistent indent/charset/newline per file type
+- `.github/workflows/ci.yml` — CI pipeline: line-ending check, industry validation, MCP/learning/SEDI test suites, Python syntax check across all `.py` files
+
+### Sprint 38 — Root Agent Files
+
+- `AGENTS.md` — contribution rules for Codex, Copilot, Claude, Cursor, Gemini; key invariants (stdout in MCP, STORE_ROOT import pattern, CRLF, test requirements)
+- `CLAUDE.md` — task routing, design constraints, MCP setup for Claude Code
+- `.github/instructions/mcp-server.instructions.md` — path-specific Copilot rules for `mcp-server/**/*.py`
+- `.github/instructions/industries.instructions.md` — path-specific rules for `industries/*.md`
+
+### Sprint 39 — Security and Privacy
+
+- `SECURITY.md` — scope, MCP HTTP behavior, local storage path, reporting policy, `GDS_MCP_SAFE_MODE` flag
+- `PRIVACY.md` — what is stored locally, what makes outbound requests, deletion commands, safe mode instructions
+- `mcp-server/server.py` — `GDS_MCP_SAFE_MODE` env var: when set, all learning + SEDI tools are replaced with discoverable stubs returning a clear JSON error; `logging.error()` replaces `print()` for STDIO transport safety; `mcp.run(transport="stdio")` explicit transport
+
+### Sprint 40 — Eval Suite
+
+- `evals/trigger-evals.json` — 15 prompts with `should_trigger: true/false` verdicts for skill routing verification
+- `evals/output-evals.json` — 5 full-task scenarios with `required_in_output` and `forbidden_in_output` arrays
+- `evals/golden/o01-hero-redesign.expected.md` — reference output defining the quality bar for hero redesign
+- `evals/README.md` — how to run and extend evals
+
+### Sprint 41 — MCP Resources and Prompts
+
+- `mcp-server/server.py` — 13 dynamic resources via `gds://` URI scheme: `rules/{name}`, `industries/{sector}`, `blueprints/{name}`, `patterns/{category}/{name}`, `tokens/css`, `tokens/css-dark`, `templates/frontend-tz`, `templates/component-spec`, `checklists/global-design-review`, `checklists/landing-conversion-review`, `skills/global-design`
+- `mcp-server/server.py` — 5 workflow prompts: `audit_landing_page`, `redesign_hero`, `create_frontend_handoff`, `improve_admin_table`, `sector_design_brief`
+- `mcp-server/server.py` — `_read_repo_file()` helper with CRLF normalization
+- `mcp-server/tests/test_resources.py` — 10 tests for resource reading and `GDS_MCP_SAFE_MODE` env parsing
+
+### Sprint 42 — Installer and CLI
+
+- `scripts/gds` — cross-platform Python CLI: `gds install [--tool=...] [path]`, `gds doctor [path]`, `gds version`; `doctor` runs 9-point health check (Python version, fastmcp, skills, agents, server syntax, tokens, industries, MCP config, line endings)
+- `scripts/install.sh` — bash one-liner wrapper for Linux/Mac
+
+### Sprint 43 — Compatibility and Discovery
+
+- `ROADMAP.md` — v1.6, v1.7, v2.0 milestones
+- `docs/packs.md` — full pack breakdown: Core, UI packs (Landing/SaaS/Admin/Effects), Audit packs (a11y/perf/design-system/conversion), MCP Intelligence
+- `README.md` — "Start here" table, "How it learns (SEDI)" section, self-learning tagline, compatibility matrix (7 tools x 4 capabilities), MCP section with resources URI list and 5 prompts
+
+---
+
 ## [1.5.0] — 2026-05-25
 
 ### Sprint 31 — Industry Content Layer (Phase 1)

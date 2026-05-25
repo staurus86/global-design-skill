@@ -10,11 +10,38 @@ All paths below are relative to the cloned `global-design-skill/` directory.
 
 ---
 
-## Claude Code
+## One-command install (recommended)
 
-### Option A: Per-project install
+Use the `gds` CLI to install everything in one step:
 
-Copy the skill and agents into your project's `.claude/` directory:
+```bash
+# Install for all tools (Claude Code + Cursor + Copilot + Windsurf + MCP)
+python scripts/gds install --tool=all /path/to/your-project
+
+# Install for a specific tool only
+python scripts/gds install --tool=claude-code /path/to/your-project
+python scripts/gds install --tool=cursor /path/to/your-project
+python scripts/gds install --tool=mcp /path/to/your-project
+
+# Verify the install
+python scripts/gds doctor /path/to/your-project
+```
+
+On Linux/Mac you can also use the bash wrapper:
+
+```bash
+bash scripts/install.sh /path/to/your-project
+```
+
+`gds doctor` runs a 9-point health check: Python version, fastmcp, skills, agents, MCP server syntax, tokens, industry files, MCP config, and line endings.
+
+---
+
+## Manual install
+
+### Claude Code
+
+#### Option A: Per-project install
 
 ```bash
 # From inside your project
@@ -26,7 +53,7 @@ cp path/to/global-design-skill/agents/*.md .claude/agents/
 cat path/to/global-design-skill/integrations/claude-code/CLAUDE.md >> CLAUDE.md
 ```
 
-### Option B: Global install
+#### Option B: Global install
 
 Make the skill available in every project:
 
@@ -36,7 +63,7 @@ cp agents/*.md ~/.claude/agents/
 cat integrations/claude-code/CLAUDE.md >> ~/.claude/CLAUDE.md
 ```
 
-### Verify
+#### Verify
 
 Open Claude Code and run:
 
@@ -46,7 +73,7 @@ Use global-design-skill and describe what you can help with.
 
 ---
 
-## Cursor
+### Cursor
 
 ```bash
 cp integrations/cursor/cursor-rules.md your-project/.cursorrules
@@ -60,7 +87,7 @@ cat integrations/cursor/cursor-rules.md >> your-project/.cursorrules
 
 ---
 
-## Windsurf
+### Windsurf
 
 ```bash
 cp integrations/windsurf/rules.md your-project/.windsurfrules
@@ -68,12 +95,47 @@ cp integrations/windsurf/rules.md your-project/.windsurfrules
 
 ---
 
-## GitHub Copilot
+### GitHub Copilot
 
 ```bash
 mkdir -p your-project/.github
 cp integrations/github-copilot/copilot-instructions.md your-project/.github/copilot-instructions.md
 ```
+
+---
+
+### MCP Server (optional)
+
+The MCP server gives Claude Code, Cursor, and Windsurf direct access to sector-specific design rules, learning tools, and SEDI intelligence.
+
+**Requirements:** Python 3.11+
+
+```bash
+cd mcp-server
+pip install -e ".[test]"
+python server.py
+```
+
+Add to `.claude/mcp.json` in your project (or let `gds install --tool=mcp` do it automatically):
+
+```json
+{
+  "mcpServers": {
+    "GlobalDesignSkill": {
+      "command": "python",
+      "args": ["/path/to/global-design-skill/mcp-server/server.py"]
+    }
+  }
+}
+```
+
+**Safe mode** (no outbound HTTP, static tools only):
+
+```bash
+GDS_MCP_SAFE_MODE=1 python mcp-server/server.py
+```
+
+See `PRIVACY.md` for what is stored locally and `SECURITY.md` for the full safe-mode reference.
 
 ---
 
