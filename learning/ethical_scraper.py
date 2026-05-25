@@ -12,12 +12,12 @@ except ImportError:
 
 USER_AGENT = "GlobalDesignSkill-Bot/1.0 (Learning/Reference Collection)"
 RATE_LIMIT_SECONDS = 6  # 10 requests/minute = 1 per 6 seconds
-_last_request_time: float = 0.0
 
 
 class EthicalScraper:
     def __init__(self):
         self._robots_cache: dict[str, urllib.robotparser.RobotFileParser] = {}
+        self._last_request_time: float = 0.0
 
     def can_fetch(self, url: str) -> bool:
         """Check robots.txt before fetching."""
@@ -50,8 +50,7 @@ class EthicalScraper:
         if not self.can_fetch(url):
             return {"error": f"Disallowed by robots.txt: {url}"}
 
-        global _last_request_time
-        elapsed = time.time() - _last_request_time
+        elapsed = time.time() - self._last_request_time
         if elapsed < RATE_LIMIT_SECONDS:
             time.sleep(RATE_LIMIT_SECONDS - elapsed)
 
@@ -61,7 +60,7 @@ class EthicalScraper:
                 headers={"User-Agent": USER_AGENT},
                 timeout=10,
             )
-            _last_request_time = time.time()
+            self._last_request_time = time.time()
             return {
                 "html": response.text,
                 "url": url,

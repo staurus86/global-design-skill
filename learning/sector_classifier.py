@@ -107,6 +107,10 @@ def classify_sector(query: str) -> dict:
         for s, sc in sorted_sectors[1:4]
     ]
 
+    # Spec rule: low confidence means unknown sector
+    if confidence < 0.5:
+        return {"sector": "unknown", "confidence": confidence, "sub_niche": None, "alternatives": alternatives}
+
     return {
         "sector": top_sector,
         "confidence": confidence,

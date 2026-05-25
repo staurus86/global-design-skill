@@ -31,8 +31,7 @@ def detect_gaps(sector: str, extracted: dict) -> dict:
         sector:    Sector ID (e.g. "b2b-products")
         extracted: Output from pattern_extractor.extract_patterns()
 
-    Returns dict: {missing_trust_signals, missing_components, missing_conversion,
-                   suspicion_flag, notes}
+    Returns dict: {missing_trust_signals, missing_components, suspicion_flag, notes}
     """
     sector_file = INDUSTRIES_DIR / f"{sector}.md"
     if not sector_file.exists():

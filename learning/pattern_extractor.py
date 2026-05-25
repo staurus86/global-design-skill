@@ -15,7 +15,13 @@ def extract_patterns(html: str) -> dict:
     Returns dict with layout, components, trust_signals, conversion_elements.
     """
     if not BS4_AVAILABLE:
-        return {"error": "beautifulsoup4 not installed. Run: pip install beautifulsoup4"}
+        return {
+            "layout": {},
+            "components": [],
+            "trust_signals": [],
+            "conversion_elements": [],
+            "error": "beautifulsoup4 not installed. Run: pip install beautifulsoup4",
+        }
 
     soup = BeautifulSoup(html, "html.parser")
     text = html.lower()
