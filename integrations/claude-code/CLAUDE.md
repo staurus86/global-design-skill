@@ -206,3 +206,18 @@ Full rule documentation in the `rules/` directory:
 ---
 
 *Source: github.com/staurus86/global-design-skill — add to CLAUDE.md in any project*
+
+## Industry Context (new in v1.5.0)
+
+When the user request mentions a business, product, or service:
+1. Open `industries/_index.md` to identify the correct sector
+2. Load the matching `industries/<sector>.md` file
+3. Apply sector-specific Required Elements, Banned Patterns, Trust Signals,
+   and Conversion Path rules before generating any design output
+
+If no sector matches, proceed with generic rules from `rules/` and `blueprints/`.
+
+## Extended States (new in v1.5.0)
+
+The 9-state system is extended to 14 states. Read `patterns/states/_decision-matrix.md`
+when designing loading, error, or access-control interactions.
