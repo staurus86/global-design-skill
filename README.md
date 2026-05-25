@@ -6,7 +6,7 @@ Turn Claude Code, Cursor, Codex, ChatGPT, Windsurf, and GitHub Copilot into a st
 
 Not another prompt collection. A portable design operating system for AI-assisted frontend work: UX architecture, UI patterns, design tokens, review agents, checklists, and implementation-ready specs.
 
-[![Version](https://img.shields.io/badge/version-1.0.0-blue)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-1.5.0-blue)](CHANGELOG.md)
 [![Standards](https://img.shields.io/badge/CSS-2026%20Baseline-green)](rules/)
 [![React](https://img.shields.io/badge/React-19-blue)](rules/)
 [![Next.js](https://img.shields.io/badge/Next.js-15-black)](rules/)
@@ -125,6 +125,10 @@ Global Design Skill =
 | Review before shipping | "Use global-design-skill and run a UI review checklist" |
 | WCAG accessibility audit | "Use global-design-skill accessibility-auditor on this component" |
 | Performance audit | "Use global-design-skill performance-auditor on this page" |
+| Detect business niche automatically | "Use global-design-skill and design for [product/context]" — niche auto-detected |
+| Get sector-specific design rules | "Use global-design-skill and get rules for [sector]" |
+| Learn from reference sites | "Use global-design-skill MCP: learn_from_reference [url]" |
+| Query pattern weights and feedback | "Use global-design-skill MCP: list_learned_niches" |
 
 ---
 
@@ -309,6 +313,26 @@ global-design-skill/
 │       ├── 01-multi-page-site.md    ← Multi-page IA, nav system, schema, CSS Anchor
 │       └── 02-agency-portfolio.md   ← Cyberbrutalism studio: scramble, view-transitions
 │
+├── industries/                 ← 13 sector-specific design rule files
+│   └── _index.md, b2b-products.md … entertainment.md
+│
+├── patterns/states/            ← 6 extended UI state files + decision matrix
+│
+├── validators/                 ← Lighthouse CI, axe-core, bundle-analyzer guides
+│
+├── feedback/                   ← Gate-8 tracker and iteration log templates
+│
+├── mcp-server/                 ← Python MCP server: 12 tools, 0 database
+│   ├── server.py
+│   ├── tools/
+│   └── tests/
+│
+├── learning/                   ← Phase 3 learning engine (ethical scraper + KB)
+│
+├── sedi/                       ← Phase 4 SEDI: perception → cognition → execution
+│   │                             → feedback → evolution
+│   └── local_store/            ← ~/.global-design-skill/ (local only, no telemetry)
+│
 ├── integrations/                   ← 8 AI tool configuration files
 │   ├── claude-code/CLAUDE.md       ← Paste-ready CLAUDE.md snippet
 │   ├── cursor/cursor-rules.md      ← .cursorrules content
@@ -379,6 +403,36 @@ Eleven specialized agents for different phases and domains:
 | `motion-designer` | Animation audit, flat pages | PASS / REVISE / BLOCKED |
 | `design-systems-auditor` | Token migration, consistency | Debt score 0–100 + migration path |
 | `reference-hunter` | Find examples, audit URLs, competitive analysis | Annotated examples + scores |
+
+---
+
+## MCP Server
+
+The optional MCP server exposes design intelligence as tools callable from Claude Code, Cursor, and Windsurf:
+
+```bash
+cd mcp-server
+pip install -e ".[test]"
+python server.py
+```
+
+**12 tools across 4 layers:**
+
+| Tool | Layer | Description |
+|---|---|---|
+| `list_sectors` | Static | All 13 sectors with descriptions |
+| `classify_niche` | Static | Detect sector from a text query |
+| `get_sector_context` | Static | Full rules from industries/*.md |
+| `check_banned_patterns` | Static | Flag banned patterns in a design |
+| `get_quick_diagnosis` | Static | 5-question sector + pattern detection |
+| `learn_from_reference` | Learning | Scrape a site and extract patterns |
+| `get_or_learn_sector` | Learning | Get static + learned context combined |
+| `list_learned_niches` | Learning | Show all locally-learned niches |
+| `forget_niche` | Learning | Delete a niche from local KB |
+| `resolve_suspicion` | SEDI | Resolve static/learned conflicts |
+| `reset_weights` | SEDI | Reset pattern weights to default |
+
+See `mcp-server/README.md` for full setup and privacy notes.
 
 ---
 

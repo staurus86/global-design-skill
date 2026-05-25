@@ -6,6 +6,78 @@ Format: [version] — date — description
 
 ---
 
+## [1.5.0] — 2026-05-25
+
+### Sprint 31 — Industry Content Layer (Phase 1)
+
+- `industries/_index.md` — routing table for all 13 sectors with disambiguation rules
+- `industries/b2b-products.md` — YAML frontmatter v1.0.0, 9 sections: sector profile, mobile rules, required elements, banned patterns, trust signals, conversion path, page structure, quick diagnosis, disambiguation
+- `industries/b2c-products.md` — same structure; swipeable gallery, add-to-cart primary CTA, review aggregators
+- `industries/services.md` — booking-first layout, social proof hierarchy, bottom sheet on mobile
+- `industries/content-media.md` — reading experience, subscription conversion, editorial layout
+- `industries/education.md` — course conversion, outcome-first messaging, cohort vs self-paced paths
+- `industries/health.md` — trust-first design, regulatory constraint handling, appointment booking
+- `industries/finance.md` — compliance design patterns, trust hierarchy, risk disclosure layout
+- `industries/real-estate.md` — listing-first layout, map integration, lead capture patterns
+- `industries/travel.md` — availability-first UX, price anchoring, destination photography rules
+- `industries/tech-saas.md` — developer-first hierarchy, free trial conversion, API documentation patterns
+- `industries/non-profit.md` — donation funnel, emotional proof patterns, volunteer conversion
+- `industries/government.md` — accessibility-first, task-completion hierarchy, plain language rules
+- `industries/entertainment.md` — sub-niche routing (casual-games / aaa-games / streaming / live-events)
+- `scripts/validate-industries.py` — frontmatter validator: checks all 9 required sections across all 13 files
+
+### Sprint 32 — Extended State System (Phase 1)
+
+- `patterns/states/_decision-matrix.md` — when to use loading vs skeleton vs partial-error vs offline vs permission vs rate-limit; loading/skeleton mutual exclusion rule
+- `patterns/states/skeleton-states.md` — shimmer/pulse/structure-preview variants, CSS implementation
+- `patterns/states/partial-error-states.md` — inline error rows, degraded-mode banners, retry-per-row
+- `patterns/states/offline-states.md` — sync queue UI, last-updated timestamp, reconnection flow
+- `patterns/states/permission-states.md` — no-access / upgrade-required / role-locked / coming-soon variants
+- `patterns/states/rate-limit-states.md` — countdown timer, retry-after display, quota progress bar
+
+### Sprint 33 — Validators + Feedback Tracking (Phase 1)
+
+- `validators/lighthouse-ci.md` — LCP < 2.5s / CLS < 0.1 / FID < 100ms budgets, CI config examples
+- `validators/axe-core.md` — a11y thresholds, Jest/Playwright setup
+- `validators/bundle-analyzer.md` — size limits per component, tree-shaking checklist
+- `feedback/gate-8-tracker.md` — log template for developer questions after handoff
+- `feedback/iteration-log.md` — template for recording revision count before acceptance
+
+### Sprint 34 — MCP Static Server (Phase 2)
+
+- `mcp-server/` — new directory; Python 3.11+, fastmcp + graceful ImportError fallback
+- `mcp-server/pyproject.toml` — dependencies: mcp>=1.0, fastmcp>=0.1, markdown-it-py>=3.0, PyYAML>=6.0
+- `mcp-server/server.py` — 10 registered MCP tools with graceful degradation if fastmcp unavailable
+- `mcp-server/tools/sector_context.py` — `list_sectors()`, `classify_niche()`, `get_sector_context()`
+- `mcp-server/tools/industry_rules.py` — `check_banned_patterns(sector, content)`
+- `mcp-server/tools/design_audit.py` — `get_quick_diagnosis(who_pays, decision_type, risk_level, choice_type, user_value)`
+- `mcp-server/tests/test_classify_niche.py` — parametrised accuracy test over 50 fixtures (100% accuracy achieved)
+- `mcp-server/tests/test_sector_context.py` — validates all 13 industry files parse and contain required sections
+- `mcp-server/tests/fixtures/sample_queries.json` — 50 ground-truth queries across 13 sectors
+- `mcp-server/README.md` — setup for Claude Code, Cursor, Windsurf; privacy disclosure; tool reference
+
+### Sprint 35 — Learning Engine (Phase 3)
+
+- `learning/sector_classifier.py` — keyword-weighted sector detection; `sub_niche` for entertainment; confidence < 0.5 → `"unknown"` + clarification
+- `learning/ethical_scraper.py` — robots.txt compliance, noindex respect, 10 req/min rate limit, User-Agent `GlobalDesignSkill-Bot/1.0`
+- `learning/pattern_extractor.py` — BeautifulSoup-based layout/components/trust_signals/conversion_elements extraction
+- `learning/gap_detector.py` — static vs learned comparison; `suspicion_flag` at >40% divergence
+- `learning/knowledge_base.py` — JSON store at `~/.global-design-skill/knowledge/`; LRU eviction at 500 MB; MAX_REFERENCES_PER_NICHE=10; CACHE_TTL_DAYS=30
+- `mcp-server/tools/learning_tools.py` — 5 MCP tools: `learn_from_reference()`, `get_or_learn_sector()`, `list_learned_niches()`, `forget_niche()`, `reset_weights()`
+
+### Sprint 36 — SEDI Full Architecture (Phase 4)
+
+- `sedi/local_store.py` — `~/.global-design-skill/` initializer; 5 subdirs (knowledge/weights/feedback/evolution_log/metrics); chmod 700 on Unix
+- `sedi/perception.py` — `RequestAnalysis` dataclass: intent / sector / niche / sub_niche / context / emotions / constraints; confidence < 0.5 → sector="unknown"
+- `sedi/cognition.py` — `ConflictPriority` enum (USER_OVERRIDE > LEARNED > STATIC > GENERIC); `select_blueprint()` with sector overrides; `resolve_knowledge()` with validated-learned gate
+- `sedi/execution.py` — `DesignOutput` dataclass; source citations per applied rule; quality gate stubs
+- `sedi/feedback_engine.py` — explicit rating 1–5; implicit score from revision_count; success_rate formula; pattern weights ±10%, capped [0.1, 2.0]; `reset_weights()` per-sector or global
+- `sedi/evolution.py` — `capture_baseline()` / `update_current_accuracy()` / `improvement_rate.json`; `check_stale_niches()`; `log_evolution_event()`; `run_weekly_cycle()`
+- `mcp-server/tools/learning_tools.py` — 2 additional SEDI tools: `resolve_suspicion()` (3 modes: accept_learned / keep_static / merge) + `reset_weights_tool()`
+- `integrations/claude-code/CLAUDE.md` — updated: `industries/` directory reference, sector-aware routing instruction
+
+---
+
 ## [1.0.0] — 2026-05-20
 
 ### Sprint 0 — Foundation
