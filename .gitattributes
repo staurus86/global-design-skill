@@ -1,0 +1,24 @@
+# Normalize line endings to LF on commit, checkout as LF on all platforms
+* text=auto eol=lf
+
+# Force LF for code and markup
+*.py    text eol=lf
+*.md    text eol=lf
+*.json  text eol=lf
+*.yaml  text eol=lf
+*.yml   text eol=lf
+*.toml  text eol=lf
+*.css   text eol=lf
+*.sh    text eol=lf
+
+# Force LF for shell scripts to be executable on Linux CI
+*.sh    eol=lf
+
+# Binary — no conversion
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.ico   binary
+*.pdf   binary
+*.pyc   binary

@@ -1,0 +1,92 @@
+[
+  {
+    "id": "t01",
+    "query": "улучши hero секцию SaaS лендинга, сейчас она выглядит как шаблонный блок с H1, текстом и двумя кнопками",
+    "should_trigger": true,
+    "reason": "UI/UX redesign task — hero section improvement"
+  },
+  {
+    "id": "t02",
+    "query": "redesign this SaaS hero section, it looks generic — H1, subtitle, two equal buttons",
+    "should_trigger": true,
+    "reason": "UI/UX redesign task — hero section improvement"
+  },
+  {
+    "id": "t03",
+    "query": "сделай админку для CRM: таблица клиентов, фильтры, массовые действия, пустые состояния",
+    "should_trigger": true,
+    "reason": "Admin UI architecture — full admin panel design"
+  },
+  {
+    "id": "t04",
+    "query": "audit this landing page and find the top 10 design problems",
+    "should_trigger": true,
+    "reason": "Design audit task"
+  },
+  {
+    "id": "t05",
+    "query": "create a frontend handoff spec for the checkout flow, include all states and ARIA",
+    "should_trigger": true,
+    "reason": "Developer handoff specification"
+  },
+  {
+    "id": "t06",
+    "query": "add WCAG 2.2 AA accessibility to this form: labels, error states, focus indicators",
+    "should_trigger": true,
+    "reason": "Accessibility review — form component"
+  },
+  {
+    "id": "t07",
+    "query": "design a pricing page with 3 tiers, annual/monthly toggle, and highlighted recommended plan",
+    "should_trigger": true,
+    "reason": "Pricing page construction"
+  },
+  {
+    "id": "t08",
+    "query": "improve the loading states in this app — currently just a spinner",
+    "should_trigger": true,
+    "reason": "UI state improvement — loading/skeleton"
+  },
+  {
+    "id": "t09",
+    "query": "add dark mode to this project using CSS custom properties",
+    "should_trigger": true,
+    "reason": "Token layer and dark mode implementation"
+  },
+  {
+    "id": "t10",
+    "query": "create a wow landing page with grain texture, mesh gradient, and scroll animations",
+    "should_trigger": true,
+    "reason": "Interactive landing page with effects stack"
+  },
+  {
+    "id": "t11",
+    "query": "напиши SQL-запрос для выборки пользователей по дате регистрации",
+    "should_trigger": false,
+    "reason": "Pure SQL — no design work"
+  },
+  {
+    "id": "t12",
+    "query": "set up a Redis cluster with 3 shards and replication",
+    "should_trigger": false,
+    "reason": "Backend infrastructure — no UI/UX"
+  },
+  {
+    "id": "t13",
+    "query": "write a Python function to parse CSV files",
+    "should_trigger": false,
+    "reason": "Pure code task — no design output"
+  },
+  {
+    "id": "t14",
+    "query": "design a B2B industrial equipment catalog: product grid, spec comparison, lead capture",
+    "should_trigger": true,
+    "reason": "Industry-specific design — b2b-products sector"
+  },
+  {
+    "id": "t15",
+    "query": "design a healthcare booking flow: appointment calendar, provider selection, trust signals",
+    "should_trigger": true,
+    "reason": "Industry-specific design — health sector"
+  }
+]

@@ -1,0 +1,77 @@
+name: CI
+
+on:
+  push:
+    branches: ["master", "main"]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Check line endings (no CR bytes)
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          CHECKED = {".py", ".md", ".toml", ".yaml", ".yml", ".json", ".css", ".sh"}
+          SKIP = {"__pycache__", ".git", ".pytest_cache"}
+          bad = []
+          for p in Path(".").rglob("*"):
+              if any(s in p.parts for s in SKIP):
+                  continue
+              if p.is_file() and p.suffix in CHECKED:
+                  if b"\r" in p.read_bytes():
+                      bad.append(str(p))
+          if bad:
+              print("CR line endings found in:")
+              print("\n".join(f"  {f}" for f in bad))
+              raise SystemExit(1)
+          print(f"Line endings OK ({len(list(Path('.').rglob('*')))} files checked)")
+          PY
+
+      - name: Validate industry frontmatter
+        run: python scripts/validate-industries.py
+
+      - name: Install MCP server dependencies
+        run: |
+          cd mcp-server
+          pip install -e ".[test]"
+
+      - name: Run MCP server tests
+        run: |
+          cd mcp-server
+          python -m pytest tests/ -q --tb=short
+
+      - name: Run learning module tests
+        run: |
+          pip install -e ".[test]" 2>/dev/null || pip install pytest pyyaml requests beautifulsoup4
+          python -m pytest tests/learning/ -q --tb=short
+
+      - name: Run SEDI tests
+        run: python -m pytest sedi/tests/ -q --tb=short
+
+      - name: Syntax check all Python files
+        run: |
+          python - <<'PY'
+          import ast, sys
+          from pathlib import Path
+          errors = []
+          for p in Path(".").rglob("*.py"):
+              if "__pycache__" in str(p):
+                  continue
+              try:
+                  ast.parse(p.read_text(encoding="utf-8"))
+              except SyntaxError as e:
+                  errors.append(f"{p}: {e}")
+          if errors:
+              print("Syntax errors:")
+              print("\n".join(errors))
+              sys.exit(1)
+          print(f"Syntax OK ({len(list(Path('.').rglob('*.py')))} files)")
+          PY

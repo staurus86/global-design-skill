@@ -1,0 +1,96 @@
+[
+  {
+    "id": "o01",
+    "task": "Redesign a SaaS hero section",
+    "prompt": "Use global-design-skill and redesign this SaaS hero. The current version has a centered H1, subtitle, and two equal CTA buttons.",
+    "required_in_output": [
+      "banned pattern",
+      "centered hero",
+      "layout",
+      "grid",
+      "CTA",
+      "mobile"
+    ],
+    "forbidden_in_output": [
+      "background-clip: text",
+      "transition: all",
+      "100vh",
+      "framer-motion"
+    ],
+    "gate_checks": [1, 2, 3, 4, 5, 6, 7, 8],
+    "notes": "Must flag centered hero as banned. Must specify layout alternative (editorial split, asymmetric, etc.)."
+  },
+  {
+    "id": "o02",
+    "task": "Admin panel architecture",
+    "prompt": "Use global-design-skill and architect an admin panel for a CRM. Include customer list, filters, bulk actions, and empty states.",
+    "required_in_output": [
+      "data table",
+      "filter",
+      "empty state",
+      "bulk action",
+      "density",
+      "keyboard"
+    ],
+    "forbidden_in_output": [
+      "background-clip: text",
+      "decorative gradient"
+    ],
+    "gate_checks": [1, 2, 3, 4, 5, 6, 7, 8],
+    "notes": "Must address all states: loading, empty, error, bulk-selected. Must specify keyboard shortcuts."
+  },
+  {
+    "id": "o03",
+    "task": "Accessibility audit",
+    "prompt": "Use global-design-skill accessibility-auditor on this form: name field, email field, submit button. No labels visible.",
+    "required_in_output": [
+      "label",
+      "aria",
+      "focus",
+      "error",
+      "contrast",
+      "44px"
+    ],
+    "forbidden_in_output": [],
+    "gate_checks": [4, 6],
+    "notes": "Must produce severity matrix: critical/major/minor. Must cite WCAG 2.2 criteria."
+  },
+  {
+    "id": "o04",
+    "task": "Industry sector detection — health",
+    "prompt": "Use global-design-skill and design a patient appointment booking flow for a private clinic.",
+    "required_in_output": [
+      "trust",
+      "certification",
+      "privacy",
+      "appointment",
+      "doctor"
+    ],
+    "forbidden_in_output": [
+      "aggressive CTA",
+      "flash sale",
+      "countdown timer"
+    ],
+    "gate_checks": [1, 2, 3, 4, 5],
+    "notes": "Should auto-detect health sector. Must apply trust-first hierarchy. Must avoid banned patterns from industries/health.md."
+  },
+  {
+    "id": "o05",
+    "task": "Frontend handoff spec",
+    "prompt": "Use global-design-skill and write a frontend handoff spec for a pricing toggle component (monthly/annual).",
+    "required_in_output": [
+      "states",
+      "aria",
+      "keyboard",
+      "token",
+      "acceptance criteria"
+    ],
+    "forbidden_in_output": [
+      "ask developer",
+      "TBD",
+      "figure out"
+    ],
+    "gate_checks": [4, 6, 7, 8],
+    "notes": "Gate 8: developer should be able to implement without asking any follow-up questions."
+  }
+]

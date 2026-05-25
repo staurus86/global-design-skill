@@ -423,7 +423,7 @@ pip install -e ".[test]"
 python server.py
 ```
 
-**12 tools across 4 layers:**
+**11 tools across 4 layers:**
 
 | Tool | Layer | Description |
 |---|---|---|
@@ -437,7 +437,7 @@ python server.py
 | `list_learned_niches` | Learning | Show all locally-learned niches |
 | `forget_niche` | Learning | Delete a niche from local KB |
 | `resolve_suspicion` | SEDI | Resolve static/learned conflicts |
-| `reset_weights` | SEDI | Reset pattern weights to default |
+| `reset_weights` | SEDI | Reset pattern weights to 1.0 (sector or global) |
 
 See `mcp-server/README.md` for full setup and privacy notes.
 
@@ -522,6 +522,22 @@ These patterns cause immediate design failure. Full list in `checklists/global-d
 - `framer-motion` import instead of `motion/react`
 - Placeholder text as form label
 - Error messages: "Invalid", "Required", "Error" — no context
+
+---
+
+## Compatibility
+
+| Tool | Skill files | Agents | MCP server | Notes |
+|---|---|---|---|---|
+| Claude Code | ✅ full | ✅ full | ✅ full | Best support — CLAUDE.md + agents + MCP |
+| Cursor | ✅ via rules | ⚠️ partial | ✅ via MCP config | Use `.cursorrules` + MCP |
+| GitHub Copilot | ✅ via instructions | ⚠️ partial | ❌ not yet | Use `.github/copilot-instructions.md` |
+| Windsurf | ✅ via rules | ⚠️ partial | ✅ via MCP config | Use `.windsurfrules` + MCP |
+| ChatGPT | ✅ manual paste | ❌ | ❌ | Paste skill content as system prompt |
+| Codex / o3 | ✅ via AGENTS.md | ⚠️ partial | ❌ not yet | Use `AGENTS.md` in repo root |
+| Gemini CLI | ✅ via GEMINI.md | ⚠️ partial | ❌ experimental | Use `GEMINI.md` in repo root |
+
+See `install.md` for setup instructions per tool.
 
 ---
 
