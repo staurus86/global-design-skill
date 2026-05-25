@@ -64,6 +64,10 @@ Format: [version] — date — description
 - `demo/index.html` — Lighthouse audit card added to Wave 3; gallery count updated to 9 redesigns
 - `demo/README.md` — demo inventory updated with the ninth example
 
+### Sprint 46 — Lighthouse Demo Depth Pass
+
+- `demo/lighthouse-audit.html` — enriched the After state with audit-specific tokens, category score breakdown, environment metadata, projected score panel, performance budget rails, verification command snippet, and stateful fix checklist
+
 ---
 
 ## [1.5.0] — 2026-05-25
