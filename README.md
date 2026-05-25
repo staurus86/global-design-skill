@@ -13,6 +13,8 @@ Not another prompt collection. A self-learning design operating system: it knows
 [![Tailwind](https://img.shields.io/badge/Tailwind-v4-cyan)](tokens/)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
+**Live demos:** https://staurus86.github.io/global-design-skill/
+
 ## Why this exists
 
 AI coding tools can generate UI quickly, but they often ship the same generic hero sections, vague CTAs, missing states, weak mobile behavior, raw colors, inaccessible forms, and handoff gaps.
