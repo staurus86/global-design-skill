@@ -71,34 +71,66 @@
     .ciu-before-note span { display: inline-flex; align-items: center; gap: 4px; }
     .ciu-before-swatch { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
 
-    /* ── AFTER: redesigned compatibility summary ── */
-    .compat-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; overflow: hidden; }
-    .compat-header { padding: var(--space-4); border-bottom: 1px solid var(--color-border); display: grid; grid-template-columns: 1fr auto; gap: var(--space-4); align-items: start; }
-    .compat-kicker { font-size: var(--text-xs); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-text-muted); margin-bottom: var(--space-1); }
-    .compat-title { font-size: var(--text-lg); line-height: 1.25; font-weight: 750; color: var(--color-text); }
-    .compat-copy { margin-top: var(--space-2); font-size: var(--text-sm); line-height: 1.55; color: var(--color-text-secondary); max-width: 58ch; }
-    .compat-score { min-width: 116px; border: 1px solid oklch(from var(--color-success) l c h / 0.3); background: var(--color-success-bg); color: var(--color-success); border-radius: 10px; padding: var(--space-3); text-align: center; }
-    .compat-score-value { display: block; font-size: 25px; font-weight: 800; line-height: 1; }
-    .compat-score-label { display: block; font-size: var(--text-xs); font-weight: 700; margin-top: var(--space-1); }
-    .browser-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--space-2); padding: var(--space-4); }
-    .browser-card { border: 1px solid var(--color-border); border-radius: 10px; padding: var(--space-3); min-height: 98px; display: flex; flex-direction: column; justify-content: space-between; background: oklch(from var(--color-surface) calc(l - 0.015) c h); }
-    .browser-name { font-size: var(--text-sm); font-weight: 700; color: var(--color-text); }
-    .browser-version { font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--space-1); }
-    .support-pill { margin-top: var(--space-3); width: fit-content; border-radius: 999px; padding: 2px var(--space-2); font-size: var(--text-xs); font-weight: 800; }
-    .support-full { background: var(--color-success-bg); color: var(--color-success); }
-    .support-partial { background: oklch(90% 0.08 68); color: oklch(38% 0.12 68); }
-    .compat-footer { border-top: 1px solid var(--color-border); padding: var(--space-3) var(--space-4); display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); background: oklch(from var(--color-surface) calc(l - 0.03) c h); }
-    .compat-note { font-size: var(--text-xs); color: var(--color-text-secondary); line-height: 1.55; }
-    .compat-note strong { color: var(--color-text); }
+    /* ── AFTER: Can I Use table, tightened instead of replaced ── */
+    .compat-card { background: oklch(93% 0.025 88); border: 1px solid oklch(80% 0.035 88); border-radius: 10px; overflow: hidden; color: oklch(22% 0.025 88); }
+    @media (prefers-color-scheme: dark) {
+      .compat-card { background: oklch(20% 0.020 88); border-color: oklch(32% 0.025 88); color: var(--color-text); }
+    }
+    .compat-header { padding: var(--space-4); border-bottom: 1px solid oklch(80% 0.035 88); display: grid; grid-template-columns: 1fr auto; gap: var(--space-4); align-items: start; }
+    @media (prefers-color-scheme: dark) { .compat-header { border-color: oklch(32% 0.025 88); } }
+    .compat-kicker { font-size: var(--text-xs); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: oklch(42% 0.035 88); margin-bottom: var(--space-1); }
+    .compat-title { font-size: 24px; line-height: 1.12; font-weight: 800; color: inherit; }
+    .compat-copy { margin-top: var(--space-2); font-size: var(--text-sm); line-height: 1.5; color: oklch(38% 0.025 88); max-width: 62ch; }
+    @media (prefers-color-scheme: dark) {
+      .compat-kicker { color: oklch(73% 0.035 88); }
+      .compat-copy { color: oklch(78% 0.018 88); }
+    }
+    .compat-score { min-width: 126px; border: 1px solid oklch(from var(--color-success) l c h / 0.35); background: var(--color-success-bg); color: var(--color-success); border-radius: 8px; padding: var(--space-3); text-align: center; }
+    .compat-score-value { display: block; font-size: 26px; font-weight: 850; line-height: 1; }
+    .compat-score-label { display: block; font-size: var(--text-xs); font-weight: 750; margin-top: var(--space-1); }
+    .compat-toolbar { padding: var(--space-3) var(--space-4); display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); flex-wrap: wrap; border-bottom: 1px solid oklch(80% 0.035 88); }
+    @media (prefers-color-scheme: dark) { .compat-toolbar { border-color: oklch(32% 0.025 88); } }
+    .compat-filter { display: inline-flex; align-items: center; gap: var(--space-2); font-size: var(--text-xs); font-weight: 750; color: oklch(35% 0.035 88); }
+    .compat-filter span { border: 1px solid oklch(78% 0.035 88); background: oklch(97% 0.010 88); border-radius: 999px; padding: 3px var(--space-2); }
+    .compat-legend { display: flex; flex-wrap: wrap; gap: var(--space-2); font-size: var(--text-xs); color: oklch(38% 0.025 88); }
+    .compat-legend span { display: inline-flex; align-items: center; gap: var(--space-1); }
+    .legend-dot { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+    @media (prefers-color-scheme: dark) {
+      .compat-filter, .compat-legend { color: oklch(78% 0.018 88); }
+      .compat-filter span { background: oklch(25% 0.020 88); border-color: oklch(38% 0.025 88); }
+    }
+    .compat-table-wrap { overflow-x: auto; padding: var(--space-3) var(--space-4) var(--space-4); }
+    .compat-table { width: 100%; min-width: 760px; border-collapse: separate; border-spacing: 4px; table-layout: fixed; }
+    .compat-table th { font-size: var(--text-xs); line-height: 1.15; font-weight: 800; color: oklch(35% 0.035 88); text-align: center; padding: var(--space-1); }
+    .compat-table th:first-child { width: 86px; text-align: left; color: oklch(42% 0.035 88); }
+    .compat-table td { height: 42px; border-radius: 4px; text-align: center; font-size: var(--text-xs); font-weight: 850; color: oklch(100% 0 0); box-shadow: inset 0 -1px oklch(0% 0 0 / 0.12); }
+    .compat-table .version-label { color: oklch(30% 0.025 88); background: oklch(88% 0.030 88); box-shadow: none; text-align: left; padding-left: var(--space-2); }
+    .compat-table .current-row td { outline: 2px solid oklch(22% 0.025 88 / 0.28); outline-offset: 1px; }
+    .support-full-cell { background: oklch(55% 0.16 145); }
+    .support-partial-cell { background: oklch(70% 0.14 88); color: oklch(24% 0.040 88); }
+    .support-none-cell { background: oklch(50% 0.16 28); }
+    .support-unknown-cell { background: oklch(55% 0.015 88); }
+    @media (prefers-color-scheme: dark) {
+      .compat-table th { color: oklch(78% 0.018 88); }
+      .compat-table th:first-child { color: oklch(72% 0.018 88); }
+      .compat-table .version-label { color: oklch(86% 0.010 88); background: oklch(28% 0.020 88); }
+      .compat-table .current-row td { outline-color: oklch(95% 0.004 88 / 0.28); }
+    }
+    .compat-footer { border-top: 1px solid oklch(80% 0.035 88); padding: var(--space-3) var(--space-4); display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); background: oklch(90% 0.025 88); }
+    .compat-note { font-size: var(--text-xs); color: oklch(35% 0.025 88); line-height: 1.55; }
+    .compat-note strong { color: oklch(20% 0.025 88); }
+    @media (prefers-color-scheme: dark) {
+      .compat-footer { background: oklch(17% 0.018 88); border-color: oklch(32% 0.025 88); }
+      .compat-note { color: oklch(78% 0.018 88); }
+      .compat-note strong { color: var(--color-text); }
+    }
     @media (max-width: 720px) {
       .compat-header { grid-template-columns: 1fr; }
       .compat-score { text-align: left; }
-      .browser-grid { grid-template-columns: repeat(2, 1fr); }
       .compat-footer { grid-template-columns: 1fr; }
     }
     @media (max-width: 420px) {
       .page-header { padding-inline: var(--space-4); }
-      .browser-grid { grid-template-columns: 1fr; }
     }
 
     /* ── Skeleton ── */
@@ -154,43 +186,92 @@
   <div class="component-wrapper" id="component-wrapper">
     <div aria-live="polite" aria-atomic="true">
       <div id="state-after" class="component-state">
-        <section class="compat-card" aria-label="CSS container queries compatibility summary">
+        <section class="compat-card" aria-label="CSS container queries compatibility table">
           <div class="compat-header">
             <div>
               <div class="compat-kicker">Feature support</div>
               <h2 class="compat-title">CSS Container Queries</h2>
-              <p class="compat-copy">Supported in current evergreen browsers. The decision point is clear first; per-browser detail follows only where it changes implementation risk.</p>
+              <p class="compat-copy">Same dense compatibility matrix, but with clearer browser grouping, a current-support row, text labels in every cell, and caveats kept next to the data.</p>
             </div>
             <div class="compat-score" aria-label="Global usage support 93.7 percent">
               <span class="compat-score-value">93.7%</span>
               <span class="compat-score-label">global support</span>
             </div>
           </div>
-          <div class="browser-grid" aria-label="Browser support by engine">
-            <div class="browser-card">
-              <div><div class="browser-name">Chrome</div><div class="browser-version">105+</div></div>
-              <span class="support-pill support-full">Full</span>
+          <div class="compat-toolbar">
+            <div class="compat-filter" aria-label="Selected compatibility view">
+              <span>Current + first supported</span>
+              <span>Desktop and mobile</span>
             </div>
-            <div class="browser-card">
-              <div><div class="browser-name">Edge</div><div class="browser-version">105+</div></div>
-              <span class="support-pill support-full">Full</span>
-            </div>
-            <div class="browser-card">
-              <div><div class="browser-name">Firefox</div><div class="browser-version">110+</div></div>
-              <span class="support-pill support-full">Full</span>
-            </div>
-            <div class="browser-card">
-              <div><div class="browser-name">Safari</div><div class="browser-version">16.0+</div></div>
-              <span class="support-pill support-full">Full</span>
-            </div>
-            <div class="browser-card">
-              <div><div class="browser-name">Samsung</div><div class="browser-version">20+</div></div>
-              <span class="support-pill support-partial">Verify</span>
+            <div class="compat-legend" aria-label="Support legend">
+              <span><i class="legend-dot support-full-cell"></i> Full</span>
+              <span><i class="legend-dot support-partial-cell"></i> Partial / verify</span>
+              <span><i class="legend-dot support-none-cell"></i> No support</span>
             </div>
           </div>
+          <div class="compat-table-wrap">
+            <table class="compat-table">
+              <thead>
+                <tr>
+                  <th>Range</th>
+                  <th>Chrome</th>
+                  <th>Edge</th>
+                  <th>Firefox</th>
+                  <th>Safari</th>
+                  <th>Opera</th>
+                  <th>iOS Safari</th>
+                  <th>Chrome Android</th>
+                  <th>Samsung</th>
+                  <th>Firefox Android</th>
+                  <th>IE</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="version-label">legacy</td>
+                  <td class="support-none-cell">100</td>
+                  <td class="support-none-cell">100</td>
+                  <td class="support-none-cell">108</td>
+                  <td class="support-none-cell">15.6</td>
+                  <td class="support-none-cell">86</td>
+                  <td class="support-none-cell">15.6</td>
+                  <td class="support-none-cell">100</td>
+                  <td class="support-none-cell">18</td>
+                  <td class="support-none-cell">108</td>
+                  <td class="support-none-cell">11</td>
+                </tr>
+                <tr>
+                  <td class="version-label">first</td>
+                  <td class="support-full-cell">105+</td>
+                  <td class="support-full-cell">105+</td>
+                  <td class="support-partial-cell">109</td>
+                  <td class="support-full-cell">16.0+</td>
+                  <td class="support-full-cell">91+</td>
+                  <td class="support-full-cell">16.0+</td>
+                  <td class="support-full-cell">105+</td>
+                  <td class="support-partial-cell">19</td>
+                  <td class="support-partial-cell">109</td>
+                  <td class="support-none-cell">-</td>
+                </tr>
+                <tr class="current-row">
+                  <td class="version-label">current</td>
+                  <td class="support-full-cell">126</td>
+                  <td class="support-full-cell">126</td>
+                  <td class="support-full-cell">126</td>
+                  <td class="support-full-cell">18.0</td>
+                  <td class="support-full-cell">112</td>
+                  <td class="support-full-cell">18.0</td>
+                  <td class="support-full-cell">126</td>
+                  <td class="support-full-cell">25</td>
+                  <td class="support-full-cell">126</td>
+                  <td class="support-none-cell">-</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
           <div class="compat-footer">
-            <p class="compat-note"><strong>Implementation note:</strong> add a non-container fallback for legacy embedded webviews and enterprise Chromium forks.</p>
-            <p class="compat-note"><strong>Reading order:</strong> decision summary, browser cards, then caveats. No color-only dependency.</p>
+            <p class="compat-note"><strong>Implementation note:</strong> safe for evergreen browsers; keep a simple fallback for legacy embedded webviews and enterprise Chromium forks.</p>
+            <p class="compat-note"><strong>What changed:</strong> the table stays dense, but row labels, legend, and current-row emphasis reduce decoding time.</p>
           </div>
         </section>
       </div>
@@ -242,27 +323,27 @@
     <thead><tr><th>Change</th><th>Before</th><th>After</th><th>Principle</th></tr></thead>
     <tbody>
       <tr>
-        <td>Decision layer</td>
-        <td class="before">Dense version matrix makes the user decode support before understanding the answer</td>
-        <td class="after">Global support score and short conclusion lead the component</td>
-        <td><span class="principle">operating-principles §1 (one focal point); rules/11-data-tables.md (summary before raw table)</span></td>
+        <td>Core format</td>
+        <td class="before">Dense compatibility matrix is immediately recognisable and information-rich</td>
+        <td class="after">The matrix remains the main component; only header, legend, row labels, and emphasis are tightened</td>
+        <td><span class="principle">operating-principles §2 (preserve decision-critical context); rules/11-data-tables.md (do not hide useful density)</span></td>
       </tr>
       <tr>
-        <td>Browser detail</td>
-        <td class="before">Ten columns require horizontal scanning and colour memorisation</td>
-        <td class="after">Five browser cards expose current implementation risk with labels, versions, and text states</td>
-        <td><span class="principle">operating-principles §2 (only context that changes decisions); WCAG 1.4.1 (not colour alone)</span></td>
+        <td>Current support</td>
+        <td class="before">Supported, partial, and unsupported cells are all visually equal after the user learns the colour code</td>
+        <td class="after">Current row gets a visible outline and the global support score stays next to the table</td>
+        <td><span class="principle">operating-principles §1 (one focal row); WCAG 1.4.1 (not colour alone)</span></td>
       </tr>
       <tr>
         <td>Mobile layout</td>
         <td class="before">Compatibility table needs internal horizontal scroll on narrow screens</td>
-        <td class="after">Browser cards collapse to 2 columns, then 1 column at 420px</td>
+        <td class="after">Table keeps internal horizontal scroll, so page layout stays stable while density is preserved</td>
         <td><span class="principle">quality-gates Gate 7 (responsive, no page overflow)</span></td>
       </tr>
       <tr>
         <td>Caveats</td>
         <td class="before">Notes are detached from the decision and easy to miss</td>
-        <td class="after">Implementation caveat sits in the footer as a secondary decision band</td>
+        <td class="after">Implementation caveat sits directly under the matrix as a secondary decision band</td>
         <td><span class="principle">operating-principles §2 (secondary zone for secondary facts)</span></td>
       </tr>
       <tr>
