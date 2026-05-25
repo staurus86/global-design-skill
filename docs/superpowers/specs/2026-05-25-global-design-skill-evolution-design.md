@@ -45,6 +45,7 @@ global-design-skill/
 │   ├── travel.md
 │   ├── tech-saas.md
 │   ├── non-profit.md
+│   ├── government.md
 │   └── entertainment.md
 │
 ├── patterns/states/                   Phase 1
@@ -166,15 +167,16 @@ stale_after_days: 90
 | `real-estate.md` | Real Estate | Agencies, developers, rentals | — |
 | `travel.md` | Travel & Hospitality | Hotels, tours, restaurants | — |
 | `tech-saas.md` | Tech & Startups | AI SaaS, hardware, IoT, developer tools | `b2b-products.md` for enterprise SaaS |
-| `non-profit.md` | Non-profit & Civic | NGOs, foundations (sub-section: government portals) | — |
+| `non-profit.md` | Non-profit | NGOs, foundations, charities | `government.md` for portals |
+| `government.md` | Government & Civic | Citizen portals, public services, e-gov | `non-profit.md` |
 | `entertainment.md` | Entertainment & Culture | Games (sub: casual/AAA), streaming, events, sports | — |
 
 **Disambiguation rules (b2b-products vs tech-saas):**  
 Use `tech-saas.md` when the primary buyer is a developer or tech-savvy individual and the product is software. Use `b2b-products.md` when the buyer is procurement/engineering and the product is physical or requires RFQ.
 
-**`non-profit.md`** covers both NGOs and government portals as sub-sections, with distinct rules for each (donor-focused vs citizen-focused). Split into separate files only if content exceeds 500 lines.
+**`non-profit.md` and `government.md`** are separate files from the start — NGOs and government portals have opposing conversion paths (donate/volunteer vs find-service/submit-form) and different trust signals. Keeping them in one file would create a false sector at classification time.
 
-**`entertainment.md`** documents sub-niche rules inline: casual games vs AAA games have different conversion paths (free-to-play store vs pre-order), streaming vs live events have different urgency patterns.
+**`entertainment.md`** documents sub-niche rules inline for MVP. However, `sector_classifier.py` returns only `entertainment` — it cannot distinguish a game from a streaming service without `sub_niche`. To support this, `RequestAnalysis` and `knowledge_base.json` both carry a `sub_niche` field (see Phase 3 schema and Phase 4 `perception.py`). When `sub_niche` is known, `get_or_learn_sector` passes it to the scraper, which uses it to refine search queries (e.g., `"casual game website design"` vs `"streaming service landing page"`).
 
 **Integration:** `industries/_index.md` is referenced in `integrations/claude-code/CLAUDE.md` — AI reads the relevant sector file on any business-context request.
 
@@ -345,8 +347,10 @@ JSON storage at `~/.global-design-skill/knowledge/`. Storage directory created w
 {
   "sector": "b2b-products",
   "niche": "industrial-pumps",
+  "sub_niche": null,
   "version": "1.0.0",
   "source": "learned",
+  "sensitive": false,
   "confidence_score": 0.85,
   "usage_count": 0,
   "success_rate": 0.0,
@@ -354,7 +358,9 @@ JSON storage at `~/.global-design-skill/knowledge/`. Storage directory created w
   "last_updated": "2026-05-25T00:00:00Z",
   "stale_after_days": 90,
   "suspicion_flag": false,
+  "suspicion_resolved_at": null,
   "patterns": { "layout": [], "components": [], "visual": [], "interaction": [] },
+  "composite_patterns": [],
   "rules": {
     "required_elements": [],
     "banned_patterns": [],
@@ -362,10 +368,41 @@ JSON storage at `~/.global-design-skill/knowledge/`. Storage directory created w
     "conversion_elements": []
   },
   "references": [
-    {"url": "...", "quality_score": 0.9, "scraped_at": "2026-05-25T00:00:00Z"}
+    {"url": "...", "quality_score": 0.9, "scraped_at": "2026-05-25T00:00:00Z", "active": true}
   ]
 }
 ```
+
+**`sub_niche`:** `null` for single-niche sectors; populated for multi-niche sectors like `entertainment` (values: `casual-games`, `aaa-games`, `streaming`, `live-events`). Used by `ethical_scraper.py` to refine search queries.
+
+**`sensitive`:** `false` by default. Set to `true` by the user if the knowledge entry contains competitor data or other information they don't want readable at a glance. Reserved field — encryption (`encrypt_knowledge = true`) is planned for v2 but out of scope for v1. Marking a file sensitive does not yet encrypt it; it only adds a header warning when the file is read.
+
+**`composite_patterns`:** array of generated pattern combinations from `evolution.py`. Each entry:
+```json
+{
+  "name": "configurator_rfq_combo",
+  "components": ["product-configurator", "rfq-form"],
+  "source_patterns": ["product-configurator", "rfq-form"],
+  "success_rate": 0.0,
+  "usage_count": 0,
+  "generated_at": "2026-05-25T00:00:00Z"
+}
+```
+Composite patterns live inside the niche's knowledge file (not merged into `industries/*.md`) and are treated as weighted options alongside atomic patterns in `cognition.py`.
+
+**`success_rate` formula:**
+```
+success_rate = (Σ rating_i / 5) / total_interactions
+             where rating_i ∈ {explicit rating} or {implicit_score}
+
+implicit_score:
+  - revision_count == 0 → 5.0
+  - revision_count == 1 → 4.0
+  - revision_count == 2 → 3.0
+  - revision_count >= 3 → 2.0
+  - abandoned == true   → 1.0
+```
+Updated in `feedback_engine.py` after every interaction. Minimum 5 interactions before `effectiveness_score` is trusted by `evolution.py`.
 
 ### 2 New MCP Tools (extends Phase 2)
 
@@ -413,6 +450,7 @@ class RequestAnalysis:
     intent: Literal["create", "improve", "audit", "learn", "compare"]
     sector: str
     niche: str
+    sub_niche: str | None  # e.g. "casual-games" within "entertainment"; None if not applicable
     context: dict    # has_existing_design, has_reference, has_constraints
     emotions: dict   # urgent, frustrated, confused
     constraints: dict  # budget, timeline, tech_stack, style
@@ -458,6 +496,16 @@ reset_weights(sector: str = None) -> str
 
 list_learned_niches() -> str
 # Returns all niches in knowledge_base with confidence + staleness info
+
+resolve_suspicion(sector: str, niche: str, resolution: str) -> str
+# resolution: "accept_learned" | "keep_static" | "merge"
+# accept_learned → clears suspicion_flag, sets source="learned+validated",
+#                  records suspicion_resolved_at timestamp
+# keep_static    → clears suspicion_flag, discards learned divergences,
+#                  pins rules to industries/*.md version
+# merge          → opens both rule sets side-by-side for manual editing,
+#                  then clears flag after save
+# All resolutions are logged to evolution_log/ with the chosen resolution type
 ```
 
 **`evolution.py` — Periodic Self-Improvement**
