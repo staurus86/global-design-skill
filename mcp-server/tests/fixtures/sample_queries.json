@@ -1,52 +1,252 @@
 [
-  {"query": "сайт для производителя промышленных насосов", "expected_sector": "b2b-products", "min_confidence": 0.7},
-  {"query": "industrial pump manufacturer website", "expected_sector": "b2b-products", "min_confidence": 0.7},
-  {"query": "магазин велосипедов онлайн", "expected_sector": "b2c-products", "min_confidence": 0.7},
-  {"query": "online bicycle shop", "expected_sector": "b2c-products", "min_confidence": 0.7},
-  {"query": "сайт для таролога", "expected_sector": "services", "min_confidence": 0.7},
-  {"query": "tarot reader booking website", "expected_sector": "services", "min_confidence": 0.7},
-  {"query": "новостной портал", "expected_sector": "content-media", "min_confidence": 0.6},
-  {"query": "online news magazine", "expected_sector": "content-media", "min_confidence": 0.6},
-  {"query": "курсы программирования онлайн", "expected_sector": "education", "min_confidence": 0.7},
-  {"query": "online coding bootcamp", "expected_sector": "education", "min_confidence": 0.7},
-  {"query": "стоматологическая клиника", "expected_sector": "health", "min_confidence": 0.7},
-  {"query": "dental clinic website", "expected_sector": "health", "min_confidence": 0.7},
-  {"query": "инвестиционная платформа", "expected_sector": "finance", "min_confidence": 0.7},
-  {"query": "investment platform fintech", "expected_sector": "finance", "min_confidence": 0.7},
-  {"query": "агентство недвижимости", "expected_sector": "real-estate", "min_confidence": 0.7},
-  {"query": "real estate agency website", "expected_sector": "real-estate", "min_confidence": 0.7},
-  {"query": "отель в центре города", "expected_sector": "travel", "min_confidence": 0.7},
-  {"query": "boutique hotel booking", "expected_sector": "travel", "min_confidence": 0.7},
-  {"query": "SaaS платформа для аналитики", "expected_sector": "tech-saas", "min_confidence": 0.7},
-  {"query": "analytics SaaS tool for developers", "expected_sector": "tech-saas", "min_confidence": 0.7},
-  {"query": "благотворительный фонд помощи детям", "expected_sector": "non-profit", "min_confidence": 0.6},
-  {"query": "children's charity foundation", "expected_sector": "non-profit", "min_confidence": 0.6},
-  {"query": "государственный портал госуслуг", "expected_sector": "government", "min_confidence": 0.6},
-  {"query": "government citizen services portal", "expected_sector": "government", "min_confidence": 0.6},
-  {"query": "мобильная игра казуальная", "expected_sector": "entertainment", "min_confidence": 0.6},
-  {"query": "casual mobile game landing page", "expected_sector": "entertainment", "min_confidence": 0.6},
-  {"query": "стриминговый сервис фильмы", "expected_sector": "entertainment", "min_confidence": 0.6},
-  {"query": "streaming video service subscription", "expected_sector": "entertainment", "min_confidence": 0.6},
-  {"query": "производитель станков ЧПУ", "expected_sector": "b2b-products", "min_confidence": 0.7},
-  {"query": "CNC machine manufacturer B2B", "expected_sector": "b2b-products", "min_confidence": 0.7},
-  {"query": "интернет-магазин электроники", "expected_sector": "b2c-products", "min_confidence": 0.7},
-  {"query": "electronics ecommerce store", "expected_sector": "b2c-products", "min_confidence": 0.7},
-  {"query": "фитнес-тренер персональные тренировки", "expected_sector": "services", "min_confidence": 0.7},
-  {"query": "personal trainer fitness coaching", "expected_sector": "services", "min_confidence": 0.7},
-  {"query": "онлайн университет дистанционное обучение", "expected_sector": "education", "min_confidence": 0.7},
-  {"query": "distance learning online university", "expected_sector": "education", "min_confidence": 0.7},
-  {"query": "страховая компания полисы ОСАГО", "expected_sector": "finance", "min_confidence": 0.6},
-  {"query": "car insurance policy comparison", "expected_sector": "finance", "min_confidence": 0.6},
-  {"query": "продажа квартир новостройки", "expected_sector": "real-estate", "min_confidence": 0.7},
-  {"query": "new apartment sales developer", "expected_sector": "real-estate", "min_confidence": 0.7},
-  {"query": "ресторан доставка еды", "expected_sector": "travel", "min_confidence": 0.6},
-  {"query": "restaurant food delivery website", "expected_sector": "travel", "min_confidence": 0.6},
-  {"query": "API инструмент для разработчиков", "expected_sector": "tech-saas", "min_confidence": 0.7},
-  {"query": "developer API tool documentation site", "expected_sector": "tech-saas", "min_confidence": 0.7},
-  {"query": "экологическая НКО посадка деревьев", "expected_sector": "non-profit", "min_confidence": 0.6},
-  {"query": "environmental NGO tree planting", "expected_sector": "non-profit", "min_confidence": 0.6},
-  {"query": "муниципальный сайт администрации", "expected_sector": "government", "min_confidence": 0.6},
-  {"query": "municipal government administration website", "expected_sector": "government", "min_confidence": 0.6},
-  {"query": "AAA видеоигра шутер", "expected_sector": "entertainment", "min_confidence": 0.6},
-  {"query": "AAA game first-person shooter launch site", "expected_sector": "entertainment", "min_confidence": 0.6}
+  {
+    "query": "\u0441\u0430\u0439\u0442 \u0434\u043b\u044f \u043f\u0440\u043e\u0438\u0437\u0432\u043e\u0434\u0438\u0442\u0435\u043b\u044f \u043f\u0440\u043e\u043c\u044b\u0448\u043b\u0435\u043d\u043d\u044b\u0445 \u043d\u0430\u0441\u043e\u0441\u043e\u0432",
+    "expected_sector": "b2b-products",
+    "min_confidence": 0.7
+  },
+  {
+    "query": "industrial pump manufacturer website",
+    "expected_sector": "b2b-products",
+    "min_confidence": 0.7
+  },
+  {
+    "query": "\u043c\u0430\u0433\u0430\u0437\u0438\u043d \u0432\u0435\u043b\u043e\u0441\u0438\u043f\u0435\u0434\u043e\u0432 \u043e\u043d\u043b\u0430\u0439\u043d",
+    "expected_sector": "b2c-products",
+    "min_confidence": 0.7
+  },
+  {
+    "query": "online bicycle shop",
+    "expected_sector": "b2c-products",
+    "min_confidence": 0.7
+  },
+  {
+    "query": "\u0441\u0430\u0439\u0442 \u0434\u043b\u044f \u0442\u0430\u0440\u043e\u043b\u043e\u0433\u0430",
+    "expected_sector": "services",
+    "min_confidence": 0.7
+  },
+  {
+    "query": "tarot reader booking website",
+    "expected_sector": "services",
+    "min_confidence": 0.7
+  },
+  {
+    "query": "\u043d\u043e\u0432\u043e\u0441\u0442\u043d\u043e\u0439 \u043f\u043e\u0440\u0442\u0430\u043b",
+    "expected_sector": "content-media",
+    "min_confidence": 0.6
+  },
+  {
+    "query": "online news magazine",
+    "expected_sector": "content-media",
+    "min_confidence": 0.6
+  },
+  {
+    "query": "\u043a\u0443\u0440\u0441\u044b \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u044f \u043e\u043d\u043b\u0430\u0439\u043d",
+    "expected_sector": "education",
+    "min_confidence": 0.7
+  },
+  {
+    "query": "online coding bootcamp",
+    "expected_sector": "education",
+    "min_confidence": 0.7
+  },
+  {
+    "query": "\u0441\u0442\u043e\u043c\u0430\u0442\u043e\u043b\u043e\u0433\u0438\u0447\u0435\u0441\u043a\u0430\u044f \u043a\u043b\u0438\u043d\u0438\u043a\u0430",
+    "expected_sector": "health",
+    "min_confidence": 0.7
+  },
+  {
+    "query": "dental clinic website",
+    "expected_sector": "health",
+    "min_confidence": 0.7
+  },
+  {
+    "query": "\u0438\u043d\u0432\u0435\u0441\u0442\u0438\u0446\u0438\u043e\u043d\u043d\u0430\u044f \u043f\u043b\u0430\u0442\u0444\u043e\u0440\u043c\u0430",
+    "expected_sector": "finance",
+    "min_confidence": 0.7
+  },
+  {
+    "query": "investment platform fintech",
+    "expected_sector": "finance",
+    "min_confidence": 0.7
+  },
+  {
+    "query": "\u0430\u0433\u0435\u043d\u0442\u0441\u0442\u0432\u043e \u043d\u0435\u0434\u0432\u0438\u0436\u0438\u043c\u043e\u0441\u0442\u0438",
+    "expected_sector": "real-estate",
+    "min_confidence": 0.7
+  },
+  {
+    "query": "real estate agency website",
+    "expected_sector": "real-estate",
+    "min_confidence": 0.7
+  },
+  {
+    "query": "\u043e\u0442\u0435\u043b\u044c \u0432 \u0446\u0435\u043d\u0442\u0440\u0435 \u0433\u043e\u0440\u043e\u0434\u0430",
+    "expected_sector": "travel",
+    "min_confidence": 0.7
+  },
+  {
+    "query": "boutique hotel booking",
+    "expected_sector": "travel",
+    "min_confidence": 0.7
+  },
+  {
+    "query": "SaaS \u043f\u043b\u0430\u0442\u0444\u043e\u0440\u043c\u0430 \u0434\u043b\u044f \u0430\u043d\u0430\u043b\u0438\u0442\u0438\u043a\u0438",
+    "expected_sector": "tech-saas",
+    "min_confidence": 0.7
+  },
+  {
+    "query": "analytics SaaS tool for developers",
+    "expected_sector": "tech-saas",
+    "min_confidence": 0.7
+  },
+  {
+    "query": "\u0431\u043b\u0430\u0433\u043e\u0442\u0432\u043e\u0440\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u0444\u043e\u043d\u0434 \u043f\u043e\u043c\u043e\u0449\u0438 \u0434\u0435\u0442\u044f\u043c",
+    "expected_sector": "non-profit",
+    "min_confidence": 0.6
+  },
+  {
+    "query": "children's charity foundation",
+    "expected_sector": "non-profit",
+    "min_confidence": 0.6
+  },
+  {
+    "query": "\u0433\u043e\u0441\u0443\u0434\u0430\u0440\u0441\u0442\u0432\u0435\u043d\u043d\u044b\u0439 \u043f\u043e\u0440\u0442\u0430\u043b \u0433\u043e\u0441\u0443\u0441\u043b\u0443\u0433",
+    "expected_sector": "government",
+    "min_confidence": 0.6
+  },
+  {
+    "query": "government citizen services portal",
+    "expected_sector": "government",
+    "min_confidence": 0.6
+  },
+  {
+    "query": "\u043c\u043e\u0431\u0438\u043b\u044c\u043d\u0430\u044f \u0438\u0433\u0440\u0430 \u043a\u0430\u0437\u0443\u0430\u043b\u044c\u043d\u0430\u044f",
+    "expected_sector": "entertainment",
+    "min_confidence": 0.6
+  },
+  {
+    "query": "casual mobile game landing page",
+    "expected_sector": "entertainment",
+    "min_confidence": 0.6
+  },
+  {
+    "query": "\u0441\u0442\u0440\u0438\u043c\u0438\u043d\u0433\u043e\u0432\u044b\u0439 \u0441\u0435\u0440\u0432\u0438\u0441 \u0444\u0438\u043b\u044c\u043c\u044b",
+    "expected_sector": "entertainment",
+    "min_confidence": 0.6
+  },
+  {
+    "query": "streaming video service subscription",
+    "expected_sector": "entertainment",
+    "min_confidence": 0.6
+  },
+  {
+    "query": "\u043f\u0440\u043e\u0438\u0437\u0432\u043e\u0434\u0438\u0442\u0435\u043b\u044c \u0441\u0442\u0430\u043d\u043a\u043e\u0432 \u0427\u041f\u0423",
+    "expected_sector": "b2b-products",
+    "min_confidence": 0.7
+  },
+  {
+    "query": "CNC machine manufacturer B2B",
+    "expected_sector": "b2b-products",
+    "min_confidence": 0.7
+  },
+  {
+    "query": "\u0438\u043d\u0442\u0435\u0440\u043d\u0435\u0442-\u043c\u0430\u0433\u0430\u0437\u0438\u043d \u044d\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u0438\u043a\u0438",
+    "expected_sector": "b2c-products",
+    "min_confidence": 0.7
+  },
+  {
+    "query": "electronics ecommerce store",
+    "expected_sector": "b2c-products",
+    "min_confidence": 0.7
+  },
+  {
+    "query": "\u0444\u0438\u0442\u043d\u0435\u0441-\u0442\u0440\u0435\u043d\u0435\u0440 \u043f\u0435\u0440\u0441\u043e\u043d\u0430\u043b\u044c\u043d\u044b\u0435 \u0442\u0440\u0435\u043d\u0438\u0440\u043e\u0432\u043a\u0438",
+    "expected_sector": "services",
+    "min_confidence": 0.7
+  },
+  {
+    "query": "personal trainer fitness coaching",
+    "expected_sector": "services",
+    "min_confidence": 0.7
+  },
+  {
+    "query": "\u043e\u043d\u043b\u0430\u0439\u043d \u0443\u043d\u0438\u0432\u0435\u0440\u0441\u0438\u0442\u0435\u0442 \u0434\u0438\u0441\u0442\u0430\u043d\u0446\u0438\u043e\u043d\u043d\u043e\u0435 \u043e\u0431\u0443\u0447\u0435\u043d\u0438\u0435",
+    "expected_sector": "education",
+    "min_confidence": 0.7
+  },
+  {
+    "query": "distance learning online university",
+    "expected_sector": "education",
+    "min_confidence": 0.7
+  },
+  {
+    "query": "\u0441\u0442\u0440\u0430\u0445\u043e\u0432\u0430\u044f \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u044f \u043f\u043e\u043b\u0438\u0441\u044b \u041e\u0421\u0410\u0413\u041e",
+    "expected_sector": "finance",
+    "min_confidence": 0.6
+  },
+  {
+    "query": "car insurance policy comparison",
+    "expected_sector": "finance",
+    "min_confidence": 0.6
+  },
+  {
+    "query": "\u043f\u0440\u043e\u0434\u0430\u0436\u0430 \u043a\u0432\u0430\u0440\u0442\u0438\u0440 \u043d\u043e\u0432\u043e\u0441\u0442\u0440\u043e\u0439\u043a\u0438",
+    "expected_sector": "real-estate",
+    "min_confidence": 0.7
+  },
+  {
+    "query": "new apartment sales developer",
+    "expected_sector": "real-estate",
+    "min_confidence": 0.7
+  },
+  {
+    "query": "\u0440\u0435\u0441\u0442\u043e\u0440\u0430\u043d \u0434\u043e\u0441\u0442\u0430\u0432\u043a\u0430 \u0435\u0434\u044b",
+    "expected_sector": "travel",
+    "min_confidence": 0.6
+  },
+  {
+    "query": "restaurant food delivery website",
+    "expected_sector": "travel",
+    "min_confidence": 0.6
+  },
+  {
+    "query": "API \u0438\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442 \u0434\u043b\u044f \u0440\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u0447\u0438\u043a\u043e\u0432",
+    "expected_sector": "tech-saas",
+    "min_confidence": 0.7
+  },
+  {
+    "query": "developer API tool documentation site",
+    "expected_sector": "tech-saas",
+    "min_confidence": 0.7
+  },
+  {
+    "query": "\u044d\u043a\u043e\u043b\u043e\u0433\u0438\u0447\u0435\u0441\u043a\u0430\u044f \u041d\u041a\u041e \u043f\u043e\u0441\u0430\u0434\u043a\u0430 \u0434\u0435\u0440\u0435\u0432\u044c\u0435\u0432",
+    "expected_sector": "non-profit",
+    "min_confidence": 0.6
+  },
+  {
+    "query": "environmental NGO tree planting",
+    "expected_sector": "non-profit",
+    "min_confidence": 0.6
+  },
+  {
+    "query": "\u043c\u0443\u043d\u0438\u0446\u0438\u043f\u0430\u043b\u044c\u043d\u044b\u0439 \u0441\u0430\u0439\u0442 \u0430\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u0438",
+    "expected_sector": "government",
+    "min_confidence": 0.6
+  },
+  {
+    "query": "municipal government administration website",
+    "expected_sector": "government",
+    "min_confidence": 0.6
+  },
+  {
+    "query": "AAA \u0432\u0438\u0434\u0435\u043e\u0438\u0433\u0440\u0430 \u0448\u0443\u0442\u0435\u0440",
+    "expected_sector": "entertainment",
+    "min_confidence": 0.6
+  },
+  {
+    "query": "AAA game first-person shooter launch site",
+    "expected_sector": "entertainment",
+    "min_confidence": 0.6
+  }
 ]
