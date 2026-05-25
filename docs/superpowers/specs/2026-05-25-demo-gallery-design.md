@@ -79,10 +79,13 @@ No build tooling. Each file is self-contained HTML+CSS+JS. No external dependenc
 ```markdown
 | Change | Before | After | Principle |
 |--------|--------|-------|-----------|
-| Image position | Inside body block | Fixed 16:9 at top | Hierarchy §2, CLS Gate 7 |
-| CTA | Plain text link | Pill button, accent fill | Gate 4 — all states |
+| Image position | Inside body block, no aspect-ratio | Fixed 16:9 at top | operating-principles §2 (one focal point), quality-gates Gate 7 (CLS = 0) |
+| CTA | Plain `<a>` link, visually indistinct | Pill button, accent fill, arrow icon | rules/14-landing-pages.md → CTA formula (specific label, primary visual weight) |
+| Vote widget | Single number | [▲ score ▼] contained group | operating-principles §7 (Fitts — primary action large), quality-gates Gate 4 (all states: hover/focus/active) |
 ...
 ```
+
+**Note on Gate 4:** Gate 4 = "all interactive states designed" (idle/hover/active/focus/disabled). Cite Gate 4 only when the change adds a missing state. For CTA *style* changes, cite the relevant rule file instead.
 
 ### Token legend
 
@@ -96,8 +99,8 @@ All demos embed the same token block inline (no external CSS, no build step). Th
 
 **Token update protocol:** `demo/tokens.css` is the single source of truth (not loaded by browsers — exists only as a reference). To update a token across all files, run:
 ```bash
-# Example: update --color-accent in all demo files
-grep -rl "\-\-color-accent:" demo/ | xargs sed -i 's/--color-accent: oklch(52% 0.20 258)/--color-accent: oklch(NEW)/g'
+# Portable form — works on macOS (sed -i requires argument) and Linux
+sed -i'' 's/--color-accent: oklch(52% 0.20 258)/--color-accent: oklch(NEW)/g' demo/*.html
 ```
 Document this in `demo/README.md`. Never edit token values in individual demo files directly.
 
@@ -175,7 +178,23 @@ Document this in `demo/README.md`. Never edit token values in individual demo fi
 ### Filter tabs
 
 "All" | "Wave 1" | "Wave 2" | "Wave 3"  
-Client-side JS filter — no page reload. Cards not matching the active filter get `opacity: 0; transform: scale(0.96); pointer-events: none` with `transition: opacity 150ms, transform 150ms` — not `display: none` (would block transition).
+Client-side JS filter — no page reload. Two-phase hide to avoid empty grid cells:
+
+1. **Fade out:** add class `.card--hidden` → `opacity: 0; transform: scale(0.96); pointer-events: none; transition: opacity 150ms, transform 150ms`
+2. **Remove from flow:** `transitionend` handler sets `display: none` after transition completes
+
+Show is the reverse: `display: grid` (or `display: block`) first, then remove `.card--hidden` on the next frame so the browser has a chance to paint before the transition starts (`requestAnimationFrame` + `requestAnimationFrame` double-raf, or `setTimeout(0)`).
+
+```js
+function hideCard(card) {
+  card.classList.add('card--hidden');
+  card.addEventListener('transitionend', () => { card.style.display = 'none'; }, { once: true });
+}
+function showCard(card) {
+  card.style.display = '';
+  requestAnimationFrame(() => requestAnimationFrame(() => card.classList.remove('card--hidden')));
+}
+```
 
 ### Difficulty badges
 
@@ -203,7 +222,7 @@ Every demo file must pass before it ships:
 | **Dark mode** | Both Before and After render in dark mode without broken contrast. |
 | **Responsive** | No horizontal overflow at 390px, 768px, 1280px. |
 | **Accessibility** | All interactive elements have `aria-label`. Focus ring visible. Touch targets ≥ 44×44px. |
-| **Performance** | No layout shift during Before/After toggle. `aspect-ratio` locked on component container so height doesn't jump between states. |
+| **Performance** | No layout shift during Before/After toggle. Component wrapper uses `min-height: max(var(--before-h), var(--after-h))` — not `aspect-ratio`, which would distort whichever state is shorter. Heights measured via JS on first render and set as CSS custom properties on the wrapper. |
 | **Change log** | Every visible change is documented with the principle or gate it addresses. |
 
 ---
