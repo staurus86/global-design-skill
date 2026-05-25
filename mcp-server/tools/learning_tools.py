@@ -136,5 +136,61 @@ def reset_weights(sector: str = None) -> str:
     })
 
 
+def resolve_suspicion(sector: str, niche: str, resolution: str) -> str:
+    """
+    Clear suspicion_flag on a knowledge entry.
+    resolution: "accept_learned" | "keep_static" | "merge"
+    """
+    valid = {"accept_learned", "keep_static", "merge"}
+    if resolution not in valid:
+        return json.dumps({"error": f"resolution must be one of {sorted(valid)}"})
+
+    try:
+        import sedi.local_store as _local_store
+        _local_store.init_store()
+        kb_path = _local_store.STORE_ROOT / "knowledge" / f"{sector}__{niche}.json"
+        if not kb_path.exists():
+            return json.dumps({"error": "niche not found in knowledge base"})
+
+        data = json.loads(kb_path.read_text())
+        data["suspicion_flag"] = False
+        data["suspicion_resolved_at"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
+
+        if resolution == "accept_learned":
+            data["source"] = "learned+validated"
+        elif resolution == "keep_static":
+            data["source"] = "static"
+
+        kb_path.write_text(json.dumps(data, indent=2))
+
+        try:
+            from sedi.evolution import log_evolution_event
+            log_evolution_event("suspicion_resolved", {
+                "sector": sector, "niche": niche, "resolution": resolution
+            })
+        except Exception:
+            pass
+
+        return json.dumps({
+            "status": "ok",
+            "sector": sector,
+            "niche": niche,
+            "resolution": resolution,
+            "suspicion_flag": False,
+            "source": data["source"],
+        })
+    except Exception as exc:
+        return json.dumps({"error": str(exc)})
+
+
+def reset_weights_tool(sector: str = None) -> str:
+    """Reset pattern weights to 1.0 for a sector or globally."""
+    try:
+        from sedi.feedback_engine import reset_weights as _fw_reset
+        return _fw_reset(sector=sector)
+    except Exception as exc:
+        return json.dumps({"error": str(exc)})
+
+
 def _now() -> str:
     return datetime.datetime.utcnow().isoformat() + "Z"

@@ -80,6 +80,8 @@ def main():
         list_learned_niches as _list_learned_niches,
         forget_niche as _forget_niche,
         reset_weights as _reset_weights,
+        resolve_suspicion as _resolve_suspicion,
+        reset_weights_tool as _reset_weights_tool,
     )
 
     @mcp.tool()
@@ -107,6 +109,17 @@ def main():
     def reset_weights_tool(sector: str | None = None) -> str:
         """Reset pattern weights to neutral (Phase 4 feature)."""
         return _reset_weights(sector)
+
+    @mcp.tool()
+    def resolve_suspicion_tool(sector: str, niche: str, resolution: str) -> str:
+        """Clear suspicion flag on a knowledge entry.
+        resolution: accept_learned | keep_static | merge"""
+        return _resolve_suspicion(sector, niche, resolution)
+
+    @mcp.tool()
+    def reset_weights_real_tool(sector: str | None = None) -> str:
+        """Reset pattern weights to 1.0 for a sector or globally."""
+        return _reset_weights_tool(sector)
 
     mcp.run()
 
