@@ -217,8 +217,14 @@ def get_sector_context(sector: str, niche: str | None = None) -> str:
     fm_match = re.match(r"^---\n(.*?)\n---\n", text, re.DOTALL)
     frontmatter = {}
     if fm_match:
+        import datetime
         import yaml
-        frontmatter = yaml.safe_load(fm_match.group(1)) or {}
+        raw_fm = yaml.safe_load(fm_match.group(1)) or {}
+        # Convert non-JSON-serializable types (e.g. date) to strings
+        frontmatter = {
+            k: v.isoformat() if isinstance(v, (datetime.date, datetime.datetime)) else v
+            for k, v in raw_fm.items()
+        }
 
     # Extract each section
     sections: dict[str, str] = {}
