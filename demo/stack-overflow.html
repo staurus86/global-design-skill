@@ -15,6 +15,8 @@
       --color-text-muted:     oklch(60% 0.008 258);
       --color-accent:         oklch(52% 0.20 258);
       --color-accent-hover:   oklch(45% 0.21 258);
+      --color-success:    oklch(45% 0.15 145);
+      --color-success-bg: oklch(56% 0.17 145 / 0.12);
       --space-1: 4px;  --space-2: 8px;  --space-3: 12px; --space-4: 16px;
       --space-5: 20px; --space-6: 24px; --space-8: 32px; --space-10: 40px;
       --text-xs: 11px; --text-sm: 13px; --text-base: 15px;
@@ -32,6 +34,8 @@
         --color-text-muted:     oklch(55% 0.006 258);
         --color-accent:         oklch(65% 0.20 258);
         --color-accent-hover:   oklch(72% 0.20 258);
+        --color-success:    oklch(70% 0.12 145);
+        --color-success-bg: oklch(56% 0.17 145 / 0.15);
       }
     }
 
@@ -153,7 +157,7 @@
     .so-footer {
       display: flex; align-items: center; justify-content: space-between;
       padding: var(--space-3) var(--space-4); border-top: 1px solid var(--color-border);
-      background: oklch(from var(--color-bg) l c h / 0.6);
+      background: oklch(from var(--color-surface) calc(l - 0.03) c h);
     }
     .so-meta { display: flex; align-items: center; gap: var(--space-2); font-size: var(--text-sm); }
     .so-avatar {
@@ -167,12 +171,9 @@
     .so-views { color: var(--color-text-muted); }
     .so-answers-badge {
       display: flex; align-items: center; gap: var(--space-1);
-      background: oklch(56% 0.17 145 / 0.12); border: 1px solid oklch(56% 0.17 145 / 0.4);
-      color: oklch(35% 0.12 145); border-radius: 6px; padding: var(--space-1) var(--space-3);
+      background: var(--color-success-bg); border: 1px solid oklch(from var(--color-success) l c h / 0.4);
+      color: var(--color-success); border-radius: 6px; padding: var(--space-1) var(--space-3);
       font-size: var(--text-sm); font-weight: 600;
-    }
-    @media (prefers-color-scheme: dark) {
-      .so-answers-badge { color: oklch(70% 0.12 145); background: oklch(56% 0.17 145 / 0.15); border-color: oklch(56% 0.17 145 / 0.4); }
     }
     .so-answers-icon { font-size: var(--text-md); }
 
