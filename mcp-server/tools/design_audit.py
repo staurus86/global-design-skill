@@ -86,11 +86,4 @@ def get_quick_diagnosis(
         "sector": sector,
         "pattern": f"industries/{sector}.md",
         "rationale": RATIONALE_MAP.get(sector, "Apply generic design rules."),
-        "inputs": {
-            "who_pays": who_pays,
-            "decision_type": decision_type,
-            "risk_level": risk_level,
-            "choice_type": choice_type,
-            "user_value": user_value,
-        },
     })

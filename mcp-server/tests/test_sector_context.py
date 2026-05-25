@@ -8,6 +8,7 @@ import pytest
 # Add mcp-server directory to Python path for imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
+from tools.design_audit import get_quick_diagnosis
 from tools.industry_rules import check_banned_patterns
 from tools.sector_context import get_sector_context, list_sectors
 
@@ -64,3 +65,20 @@ def test_list_sectors_each_has_required_fields():
     for item in result:
         assert "sector" in item
         assert "file" in item
+
+
+def test_get_quick_diagnosis_returns_sector():
+    result = json.loads(get_quick_diagnosis(
+        who_pays="business",
+        decision_type="rational",
+        risk_level="high",
+        choice_type="general",
+        user_value="save-money",
+    ))
+    assert "sector" in result
+    assert "pattern" in result
+    assert "rationale" in result
+    assert result["sector"] == "b2b-products"
+    assert result["pattern"] == "industries/b2b-products.md"
+    # Verify no extra keys beyond the spec-required 3
+    assert set(result.keys()) == {"sector", "pattern", "rationale"}
