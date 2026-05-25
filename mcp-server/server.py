@@ -74,6 +74,40 @@ def main():
         """
         return get_quick_diagnosis(who_pays, decision_type, risk_level, choice_type, user_value)
 
+    from tools.learning_tools import (
+        learn_from_reference as _learn_from_reference,
+        get_or_learn_sector as _get_or_learn_sector,
+        list_learned_niches as _list_learned_niches,
+        forget_niche as _forget_niche,
+        reset_weights as _reset_weights,
+    )
+
+    @mcp.tool()
+    def learn_from_reference_tool(url: str, sector: str | None = None, niche: str | None = None) -> str:
+        """Scrape a reference URL, extract design patterns, save to knowledge base."""
+        return _learn_from_reference(url, sector, niche)
+
+    @mcp.tool()
+    def get_or_learn_sector_tool(sector: str, niche: str) -> str:
+        """Get sector context from static files or knowledge base.
+        Returns action hint if niche is unknown."""
+        return _get_or_learn_sector(sector, niche)
+
+    @mcp.tool()
+    def list_learned_niches_tool() -> str:
+        """List all niches in the local knowledge base."""
+        return _list_learned_niches()
+
+    @mcp.tool()
+    def forget_niche_tool(sector: str, niche: str) -> str:
+        """Delete a learned niche from the local knowledge base."""
+        return _forget_niche(sector, niche)
+
+    @mcp.tool()
+    def reset_weights_tool(sector: str | None = None) -> str:
+        """Reset pattern weights to neutral (Phase 4 feature)."""
+        return _reset_weights(sector)
+
     mcp.run()
 
 
