@@ -171,6 +171,22 @@ Global Design Skill =
 
 ---
 
+## Real-World Result
+
+Tested on a live Russian SEO tools directory (393 tools, real production traffic). Prompt: **"сделай дизайн лучше"** ("make the design better").
+
+| Before | After |
+|--------|-------|
+| ![Before](docs/assets/before.png) | ![After](docs/assets/after.png) |
+
+**What changed in one pass:**
+- Plain text hero → editorial split layout with floating dashboard mockup
+- No social proof → three hard stats (393 tools · 45 categories · 6 groups) with live update timestamp
+- Flat color background → depth with layered UI elements
+- Search bar as afterthought → search as the visual anchor of the hero
+
+---
+
 ## Best For
 
 - AI-assisted frontend teams that want fewer generic layouts
