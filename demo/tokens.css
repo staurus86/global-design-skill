@@ -1,0 +1,38 @@
+/* demo/tokens.css — single source of truth for demo design tokens.
+   NOT loaded by browsers. Exists for reference and sed-based sync only.
+   Update protocol: sed -i'' 's/--color-accent: oklch(52% 0.20 258)/--color-accent: oklch(NEW)/g' demo/*.html
+*/
+:root {
+  --color-bg:             oklch(96% 0.004 258);
+  --color-surface:        oklch(100% 0 0);
+  --color-border:         oklch(90% 0.006 258);
+  --color-text:           oklch(17% 0.012 258);
+  --color-text-secondary: oklch(42% 0.012 258);
+  --color-text-muted:     oklch(60% 0.008 258);
+  --color-accent:         oklch(52% 0.20 258);
+  --color-accent-hover:   oklch(45% 0.21 258);
+
+  --space-1: 4px;  --space-2: 8px;  --space-3: 12px; --space-4: 16px;
+  --space-5: 20px; --space-6: 24px; --space-8: 32px; --space-10: 40px;
+
+  --text-xs: 11px; --text-sm: 13px; --text-base: 15px;
+  --text-md: 17px; --text-lg: 19px;
+  --text-xl:  clamp(20px, 2.3vw + 0.5rem, 26px);
+  --text-2xl: clamp(26px, 3.5vw + 0.5rem, 36px);
+
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --t-fast: 140ms; --t-base: 210ms; --t-slow: 320ms;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg:             oklch(13% 0.010 258);
+    --color-surface:        oklch(17% 0.010 258);
+    --color-border:         oklch(26% 0.010 258);
+    --color-text:           oklch(94% 0.004 258);
+    --color-text-secondary: oklch(72% 0.008 258);
+    --color-text-muted:     oklch(55% 0.006 258);
+    --color-accent:         oklch(65% 0.20 258);
+    --color-accent-hover:   oklch(72% 0.20 258);
+  }
+}
