@@ -15,21 +15,6 @@ Not another prompt collection. A self-learning design operating system: it knows
 
 **Live demos:** https://staurus86.github.io/global-design-skill/
 
-## Why this exists
-
-AI coding tools can generate UI quickly, but they often ship the same generic hero sections, vague CTAs, missing states, weak mobile behavior, raw colors, inaccessible forms, and handoff gaps.
-
-Global Design Skill gives the agent a reusable design operating system. It forces every output to answer:
-
-- who the interface is for
-- what metric it serves
-- which layout, grid, states, and tokens to use
-- how it works on mobile
-- how accessibility is specified
-- how a developer can implement it without asking follow-up questions
-
-Current v1.6.0 includes **SEDI (Self-Evolving Design Intelligence)**: the skill detects your business sector automatically (B2B SaaS, e-commerce, health, finance, and 10 more), applies sector-specific banned patterns and required elements, learns from reference sites you point it at, and refines its pattern weights based on revision count. The more you use it, the more accurate it becomes — and all of that stays on your machine.
-
 ## Install in 30 seconds
 
 ```bash
@@ -61,6 +46,23 @@ cp path/to/global-design-skill/integrations/github-copilot/copilot-instructions.
 ```
 
 More install options: [install.md](install.md).
+
+---
+
+## Why this exists
+
+AI coding tools can generate UI quickly, but they often ship the same generic hero sections, vague CTAs, missing states, weak mobile behavior, raw colors, inaccessible forms, and handoff gaps.
+
+Global Design Skill gives the agent a reusable design operating system. It forces every output to answer:
+
+- who the interface is for
+- what metric it serves
+- which layout, grid, states, and tokens to use
+- how it works on mobile
+- how accessibility is specified
+- how a developer can implement it without asking follow-up questions
+
+Current v1.6.0 includes **SEDI (Self-Evolving Design Intelligence)**: the skill detects your business sector automatically (B2B SaaS, e-commerce, health, finance, and 10 more), applies sector-specific banned patterns and required elements, learns from reference sites you point it at, and refines its pattern weights based on revision count. The more you use it, the more accurate it becomes — and all of that stays on your machine.
 
 ## Start here
 
