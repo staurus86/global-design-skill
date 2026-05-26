@@ -254,7 +254,8 @@ global-design-skill/
 │   ├── 06-components.md            ├── 14-landing-pages.md
 │   ├── 07-accessibility.md         ├── 15-iconography.md
 │   ├── 08-performance.md           ├── 16-design-for-seo.md
-│   └── 17-motion-react.md          ← motion/react v12 (scroll, stagger, exit)
+│   ├── 17-motion-react.md          ← motion/react v12 (scroll, stagger, exit)
+│   └── 18-css-framework-selection.md ← Bootstrap / Bulma / UnoCSS / Panda CSS / Open Props router
 │
 ├── patterns/
 │   ├── marketing-blocks/           ← 9 landing page section files
@@ -419,6 +420,7 @@ global-design-skill/
 | **CSS** | Nesting, `:has()`, `@property`, `@starting-style`, Popover API, Anchor Positioning, Scroll-driven Animations, View Transitions Level 2 |
 | **CSS 2026** | `sibling-index()` / `sibling-count()` stagger, `@container scroll-state()` sticky/scroll, `text-box` baseline trim, typed `attr()` token bridging |
 | **Colors** | OKLCH throughout — `oklch(65% 0.22 258)` not hex |
+| **CSS Frameworks** | Tailwind v4 (default), Bootstrap 5.3, Bulma 1.0, UnoCSS, Panda CSS, Open Props — auto-detected from `package.json` |
 | **Tailwind** | v4 — `@theme {}` in CSS, no `tailwind.config.js` |
 | **React** | 19 — `useActionState`, `useOptimistic`, `useFormStatus`, ref as prop |
 | **Next.js** | 15 — `await cookies()`, `"use cache"`, Turbopack |
