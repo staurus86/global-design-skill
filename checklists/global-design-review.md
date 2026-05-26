@@ -218,5 +218,36 @@ Check these explicitly — any `✓` is an automatic fail:
 
 ---
 
-*Checklist version: global-design-skill v1.0 — `checklists/global-design-review.md`*
-*Related: `agents/design-critic.md`, `agents/frontend-handoff-reviewer.md`*
+---
+
+## Pre-Delivery Sanity Tests
+
+Run these three tests after completing any design work. They catch problems that checklists miss.
+
+### Squint Test
+Squint your eyes until the page is blurry. Can you still identify:
+- The primary headline?
+- The main CTA?
+- The section boundaries?
+
+If not — the visual hierarchy is broken. Something has equal weight that shouldn't.
+
+### Remove-One-Element Test
+For every section, mentally remove one element. Does the section still work?
+- If yes → that element was probably unnecessary. Remove it.
+- If no → the element is load-bearing. Keep it.
+
+Apply this to: decorative icons, subheadings, background textures, secondary CTAs, badge labels, illustration details.
+
+### 3-Second Mobile Test
+Load the page on a 390px viewport. In 3 seconds, can a visitor answer:
+- What is this?
+- What am I supposed to do?
+- Do I trust this?
+
+If any answer is unclear in 3 seconds — the above-the-fold is not doing its job.
+
+---
+
+*Checklist version: global-design-skill v1.6 — `checklists/global-design-review.md`*
+*Related: `agents/design-critic.md`, `agents/frontend-handoff-reviewer.md`, `rules/00-escalation-protocol.md`*

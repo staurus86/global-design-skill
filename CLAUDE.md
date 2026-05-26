@@ -16,11 +16,14 @@ Do **not** use for pure backend, SQL, server config, data analysis — unless UI
 
 | Task | Resource |
 |---|---|
+| Interpret user request depth first | `rules/00-escalation-protocol.md` |
 | Landing page from scratch | `blueprints/landing-page-from-scratch.md` |
 | Existing page redesign | `blueprints/redesign-existing-page.md` |
 | Full UI audit | `checklists/global-design-review.md` |
 | Developer handoff | `templates/specs/frontend-tz.md` |
 | Accessibility review | `agents/accessibility-auditor.md` + `rules/07-accessibility.md` |
+| Animation (scroll, transitions, stagger) | `rules/17-motion-react.md` |
+| Ready-made React components | `integrations/21st-dev/guide.md` |
 | Industry-specific rules | `GlobalDesignSkill:get_sector_context` (MCP tool) |
 | Unknown niche | `GlobalDesignSkill:learn_from_reference` (MCP tool) |
 
