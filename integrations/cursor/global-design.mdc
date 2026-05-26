@@ -1,10 +1,9 @@
-# Cursor Rules — global-design-skill
-
-Copy the block below into `.cursorrules` at your project root (or into Cursor's "Rules for AI" setting).
-
+---
+description: Global Design Skill — sector-aware UI/UX design rules enforcing OKLCH colors, typography, animation, accessibility, performance, and layout standards
+globs: ["**/*.tsx", "**/*.jsx", "**/*.ts", "**/*.css", "**/*.html"]
+alwaysApply: true
 ---
 
-```
 You are working on a project that follows the global-design-skill design system. Apply these rules to every UI suggestion, code generation, and review.
 
 ## COLORS
@@ -81,36 +80,3 @@ Use CSS custom properties from tokens.css:
 - Shadows: var(--shadow-md) not box-shadow: 0 4px 8px ...
 - Duration: var(--duration-fast) not 150ms
 - Easing: var(--ease-smooth) not ease-in-out
-```
-
----
-
-## Usage Notes
-
-**Option A — `.cursorrules` file** (project-level):
-1. Create `.cursorrules` in your project root
-2. Copy the content between the triple-backtick block above
-3. Cursor automatically loads it for every chat in that project
-
-**Option B — Cursor Settings** (global):
-1. Open Cursor → Settings → Features → Rules for AI
-2. Paste the block there to apply to all projects
-
-**Option D — `.cursor/rules/` file** (Cursor 0.43+, new format):
-1. Create `.cursor/rules/` directory in your project root
-2. Copy `global-design.mdc` from this directory into `.cursor/rules/`
-3. Cursor automatically loads all `.mdc` rules from that folder
-
-```bash
-mkdir -p .cursor/rules
-cp path/to/global-design-skill/integrations/cursor/global-design.mdc .cursor/rules/
-```
-
-**Option C — `@docs` reference**:
-If you've indexed the global-design-skill repository in Cursor:
-- Use `@global-design-skill` in chat to pull specific rules
-- Reference specific files: `@rules/04-color.md` for color questions
-
----
-
-*Source: global-design-skill — `integrations/cursor/cursor-rules.md`*

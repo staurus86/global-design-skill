@@ -35,6 +35,11 @@ cat path/to/global-design-skill/integrations/claude-code/CLAUDE.md >> CLAUDE.md
 ### Cursor
 
 ```bash
+# Cursor 0.43+ (new format)
+mkdir -p .cursor/rules
+cp path/to/global-design-skill/integrations/cursor/global-design.mdc .cursor/rules/
+
+# Cursor legacy (.cursorrules)
 cp path/to/global-design-skill/integrations/cursor/cursor-rules.md .cursorrules
 ```
 
