@@ -310,6 +310,62 @@ For media containers before image loads:
 [ ] No content wider than its container
 ```
 
+---
+
+## CSS 2026 — @container scroll-state()
+
+Scroll-state container queries (Chrome stable) let you style elements based on their scroll position — no JavaScript scroll listeners needed.
+
+**Sticky header shadow on lock:**
+```css
+/* Mark the container as scroll-state queryable */
+.navbar {
+  container-type: scroll-state;
+  position: sticky;
+  top: 0;
+}
+
+/* Apply shadow only when stuck */
+@container scroll-state(stuck: top) {
+  .navbar-inner {
+    box-shadow: var(--shadow-md);
+    background: oklch(from var(--color-surface) l c h / 0.9);
+    backdrop-filter: blur(12px);
+  }
+}
+```
+
+**Show scroll hint only when content overflows:**
+```css
+.scroll-container {
+  container-type: scroll-state;
+  overflow-x: auto;
+}
+
+.scroll-hint {
+  opacity: 0;
+  transition: opacity 200ms;
+}
+
+@container scroll-state(scrollable: inline) {
+  .scroll-hint { opacity: 1; }
+}
+```
+
+**Hide header on scroll down, show on scroll up:**
+```css
+.header {
+  container-type: scroll-state;
+  transition: translate 300ms ease;
+}
+
+@container scroll-state(scrolled: top) {
+  .header { translate: 0 -100%; }
+}
+```
+
+**Progressive enhancement:** Wrap scroll-state rules in `@supports` if broad compatibility is required. Elements render normally without the query applied.
+
 ## Related Files
 
 - `rules/01-visual-hierarchy.md` — visual rank within layouts

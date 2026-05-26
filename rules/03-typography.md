@@ -287,5 +287,29 @@ Variable fonts allow smooth transitions between weights. Used deliberately, this
 
 ---
 
-*Rule version: global-design-skill v1.0 — `rules/03-typography.md`*
+---
+
+## CSS 2026 — text-box: Pixel-Perfect Baseline Alignment
+
+`text-box` (Chrome stable) removes invisible half-leading above cap height and below the alphabetic baseline. Use it in hero headings and pricing figures where alignment with adjacent elements must be exact.
+
+```css
+/* Remove half-leading above cap and below baseline */
+h1, h2, .price-figure {
+  text-box: trim-both cap alphabetic;
+}
+
+/* Trim only top (common for first element in a section) */
+.section-eyebrow {
+  text-box: trim-start cap;
+}
+```
+
+**Result:** The rendered text box starts exactly at the capital letter's top edge and ends at the alphabetic baseline — no invisible whitespace to compensate for with negative margins.
+
+**Progressive enhancement:** Browsers that don't support `text-box` fall back gracefully to standard spacing. No polyfill needed.
+
+---
+
+*Rule version: global-design-skill v1.6 — `rules/03-typography.md`*
 *Related: `references/typography.md`, `tokens/tokens.css` typography section, `patterns/marketing-blocks/hero-sections.md`*

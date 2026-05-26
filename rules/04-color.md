@@ -258,5 +258,51 @@ Choosing colors without a strategy leads to inconsistent application. Pick one s
 
 ---
 
-*Rule version: global-design-skill v1.0 — `rules/04-color.md`*
+---
+
+## CSS 2026 — Typed attr() for Token Bridging
+
+Typed `attr()` (Chrome stable) lets HTML attributes pass type-safe values directly to CSS. Use it to drive color themes, grid columns, and layout variants from data attributes — keeping design logic in CSS rather than inline styles or JavaScript.
+
+**Theme colors from data attributes:**
+```html
+<div data-theme-bg="oklch(15% 0.02 250)" data-theme-accent="oklch(65% 0.18 250)">
+```
+```css
+.themed-section {
+  background: attr(data-theme-bg color, var(--color-surface));
+  --color-accent-local: attr(data-theme-accent color, var(--color-accent));
+}
+```
+
+**Dynamic grid columns from markup:**
+```html
+<ul data-columns="4">
+```
+```css
+ul[data-columns] {
+  --_cols: attr(data-columns number, 3);
+  display: grid;
+  grid-template-columns: repeat(var(--_cols), 1fr);
+}
+```
+
+**Enum validation with fallback:**
+```css
+[data-align] {
+  text-align: attr(data-align type(left | center | right), left);
+}
+```
+
+**When to use typed attr() vs CSS custom properties:**
+
+| Scenario | Use |
+|---|---|
+| Value set once per component in markup | `attr()` |
+| Value changes dynamically via JS | CSS custom property via `style` attribute |
+| Value shared across multiple CSS properties | CSS custom property in `:root` or component scope |
+
+---
+
+*Rule version: global-design-skill v1.6 — `rules/04-color.md`*
 *Related: `tokens/tokens.css` color section, `tokens/tokens-dark.css`, `recipes/add-dark-mode.md`, `references/color-alchemy.md`*

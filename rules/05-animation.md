@@ -414,5 +414,35 @@ async function navigate(url: string) {
 
 ---
 
-*Rule version: global-design-skill v1.0 — `rules/05-animation.md`*
-*Related: `references/motion-systems.md`, `references/motion-dev.md`, `tokens/tokens.css`, `patterns/product-ui/loading-states.md`*
+---
+
+## CSS 2026 — Stagger Without JavaScript
+
+`sibling-index()` and `sibling-count()` are now Baseline (Chrome + Safari stable). Use them to stagger list animations purely in CSS — no `motion/react` needed for simple sequential reveals.
+
+```css
+/* CSS stagger — no JS required */
+li {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition-delay: calc((sibling-index() - 1) * 80ms);
+
+  @starting-style {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+```
+
+**When to use CSS stagger vs motion/react:**
+
+| Scenario | Use |
+|---|---|
+| Static list, no interaction | CSS `sibling-index()` |
+| Interactive list (drag, filter, sort) | `motion/react` variants |
+| List exits / removes items | `motion/react` + `AnimatePresence` |
+| Scroll-triggered with complex easing | `motion/react` `whileInView` |
+
+---
+
+*Rule version: global-design-skill v1.6 — `rules/05-animation.md`*
+*Related: `rules/17-motion-react.md`, `references/motion-systems.md`, `references/motion-dev.md`, `tokens/tokens.css`, `patterns/product-ui/loading-states.md`*

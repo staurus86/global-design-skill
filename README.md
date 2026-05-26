@@ -11,6 +11,7 @@ Not another prompt collection. A self-learning design operating system: it knows
 [![React](https://img.shields.io/badge/React-19-blue)](rules/)
 [![Next.js](https://img.shields.io/badge/Next.js-15-black)](rules/)
 [![Tailwind](https://img.shields.io/badge/Tailwind-v4-cyan)](tokens/)
+[![Motion](https://img.shields.io/badge/motion%2Freact-v12-purple)](rules/17-motion-react.md)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
 **Live demos:** https://staurus86.github.io/global-design-skill/
@@ -410,11 +411,12 @@ global-design-skill/
 | Area | Standard |
 |---|---|
 | **CSS** | Nesting, `:has()`, `@property`, `@starting-style`, Popover API, Anchor Positioning, Scroll-driven Animations, View Transitions Level 2 |
+| **CSS 2026** | `sibling-index()` / `sibling-count()` stagger, `@container scroll-state()` sticky/scroll, `text-box` baseline trim, typed `attr()` token bridging |
 | **Colors** | OKLCH throughout — `oklch(65% 0.22 258)` not hex |
 | **Tailwind** | v4 — `@theme {}` in CSS, no `tailwind.config.js` |
 | **React** | 19 — `useActionState`, `useOptimistic`, `useFormStatus`, ref as prop |
 | **Next.js** | 15 — `await cookies()`, `"use cache"`, Turbopack |
-| **Motion** | `motion/react` — `useAnimate`, `useInView`, `animateView()` |
+| **Motion** | `motion/react` v12 — `whileInView`, `useScroll`, `AnimatePresence`, `useReducedMotion`, OKLCH color support |
 | **GSAP** | `useGSAP` from `@gsap/react`, `contextSafe()` |
 | **TypeScript** | 5.x — `satisfies`, `const` type params, template literal types |
 | **Accessibility** | WCAG 2.2 AA — 4.5:1 contrast, 44px touch targets, focus-visible |
