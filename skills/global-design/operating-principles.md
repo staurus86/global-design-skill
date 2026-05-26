@@ -4,7 +4,7 @@
 
 ---
 
-## 1. Снимай неопределённость первым
+## 1. Resolve ambiguity first
 
 Design is mostly a question-answering activity. The first job is to surface and resolve unknowns, not to produce visuals.
 
@@ -14,7 +14,7 @@ Before producing anything: what type of interface, who uses it, what business go
 
 ---
 
-## 2. Один фокус на экране
+## 2. One focus per viewport
 
 Every screen section has one primary job. One headline. One primary action. One data point that matters most.
 

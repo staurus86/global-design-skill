@@ -223,5 +223,5 @@ Load when the task involves finding, studying, or referencing real-world example
 
 ---
 
-*Routing version: global-design-skill v1.0 — `skills/global-design/task-routing.md`*  
-*Updated: 2026-05-20*
+*Routing version: global-design-skill v1.6.0 — `skills/global-design/task-routing.md`*  
+*Updated: 2026-05-26*

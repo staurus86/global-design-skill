@@ -2,6 +2,7 @@
 name: global-design-skill
 version: 1.6.0
 version_schema: semver
+license: MIT
 author: global-design-skill
 tags: [design, ui-ux, react, nextjs, tailwind, accessibility, frontend, design-system]
 created: 2024-09-01
@@ -75,7 +76,7 @@ Quick routing table — apply the Decision Pipeline for any task type. Full pack
 | UI review / audit | Banned Patterns + Quality Gates (in this file) | `checklists/ui-review.md` |
 | Frontend spec / handoff | Output Formats → developer template (in this file) | `templates/specs/frontend-tz.md` |
 
-> **Standalone mode:** The Decision Pipeline, Design Tokens, Quality Gates, Banned Patterns, and Technology Standards in this file are sufficient for correct, handoff-ready output. Blueprint and pattern files (available in the [full package](https://github.com/staurus86/global-design-skill)) provide deeper step-by-step protocols for complex builds.
+> **Standalone mode:** Inline sections listed above are sufficient for correct, handoff-ready output. Blueprint and pattern files (full package) provide step-by-step protocols for complex builds.
 
 ---
 
