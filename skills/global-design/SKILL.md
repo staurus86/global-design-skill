@@ -1,18 +1,29 @@
 ---
 name: global-design-skill
 version: 1.6.0
+version_schema: semver
+package: https://github.com/staurus86/global-design-skill
+requires:
+  - blueprints/
+  - patterns/
+  - references/
+  - checklists/
+  - rules/
+  - templates/
+  - agents/
+standalone: partial — all sections below are self-sufficient; require: files expand each domain
 description: >
-  Design operating system. Use for any UI/UX task: building websites, landing pages,
-  SaaS apps, admin panels, dashboards, forms, design systems, or frontend handoff specs.
-  Covers UX architecture, information architecture, layout, typography, color (OKLCH),
-  tokens, components, states, accessibility, performance, responsive design, and
-  preparing implementation-ready specs for developers. Works with React 19, Next.js 15,
-  Tailwind v4, Motion, GSAP. Standards: CSS 2026 Baseline, WCAG 2.2 AA.
+  Design operating system for any UI/UX task: websites, landing pages, SaaS apps,
+  admin panels, dashboards, forms, design systems, frontend handoff specs.
+  Self-contained: inline tokens, quality gates, banned patterns, and technology standards
+  cover 90% of tasks. Requires full package for deep domain references (blueprints,
+  patterns, checklists). React 19, Next.js 15, Tailwind v4, Motion, GSAP.
+  Standards: CSS 2026 Baseline, WCAG 2.2 AA.
 ---
 
 # Global Design Skill
 
-> **Path convention:** This file lives at `skills/global-design/SKILL.md`. All `../../` paths resolve to the repo root — e.g. `../../blueprints/` = `blueprints/` at repo root.
+> **Package skill:** Part of [global-design-skill](https://github.com/staurus86/global-design-skill). Inline sections (tokens, quality gates, banned patterns, tech standards) are self-sufficient for ~90% of tasks. `../../blueprints/`, `../../patterns/`, `../../references/` expand each domain and are available when the full repo is installed. All `../../` paths resolve from this file's location (`skills/global-design/`) to repo root.
 
 You are a senior design system architect, UX strategist, and product design reviewer.
 
@@ -59,7 +70,9 @@ Quick routing table:
 | Frontend spec / ТЗ | `../../templates/specs/frontend-tz.md` |
 | Find real design references | `../../agents/reference-hunter.md` |
 
-Full routing with all file combinations → `task-routing.md`
+Full routing with all file combinations → `task-routing.md` (same directory)
+
+> **Fallback:** If referenced blueprint or pattern files are unavailable, apply the inline Decision Pipeline, Design Tokens, Quality Gates, Banned Patterns, and Technology Standards in this file — they are sufficient to produce correct, handoff-ready output for most task types.
 
 ---
 
@@ -317,15 +330,151 @@ type ColorToken  = `--color-${string}`
 
 ---
 
+## Design Tokens (Core)
+
+Use these when no project token system exists, or as the reference palette. Full token file: `../../tokens/tokens.css`.
+
+### Color — OKLCH Primitive Palette
+
+```css
+:root {
+  /* Accent (hue 258 = electric blue) */
+  --color-accent-50:  oklch(97% 0.04 258);
+  --color-accent-100: oklch(93% 0.07 258);
+  --color-accent-300: oklch(80% 0.15 258);
+  --color-accent-500: oklch(65% 0.22 258);  /* primary accent */
+  --color-accent-700: oklch(48% 0.20 258);
+  --color-accent-900: oklch(28% 0.12 258);
+
+  /* Neutral (hue-tinted toward accent) */
+  --color-neutral-0:    oklch(100% 0.002 258);  /* white */
+  --color-neutral-100:  oklch(97%  0.007 258);
+  --color-neutral-400:  oklch(72%  0.010 258);
+  --color-neutral-700:  oklch(32%  0.012 258);
+  --color-neutral-900:  oklch(15%  0.013 258);
+  --color-neutral-1000: oklch(8%   0.015 258);  /* near-black */
+
+  /* Status */
+  --color-success: oklch(55% 0.18 145);
+  --color-warning: oklch(65% 0.18 75);
+  --color-error:   oklch(52% 0.22 25);
+
+  /* Semantic — map to primitives in your theme */
+  --color-bg:           var(--color-neutral-0);
+  --color-surface:      var(--color-neutral-100);
+  --color-text:         var(--color-neutral-1000);
+  --color-text-muted:   var(--color-neutral-700);
+  --color-border:       var(--color-neutral-200);
+  --color-accent:       var(--color-accent-500);
+}
+```
+
+### Typography — Fluid Type Scale
+
+```css
+:root {
+  --text-xs:   clamp(0.69rem,  0.66rem + 0.14vw, 0.75rem);
+  --text-sm:   clamp(0.83rem,  0.78rem + 0.24vw, 0.94rem);
+  --text-base: clamp(1rem,     0.93rem + 0.34vw, 1.19rem);
+  --text-lg:   clamp(1.2rem,   1.11rem + 0.47vw, 1.5rem);
+  --text-xl:   clamp(1.44rem,  1.31rem + 0.65vw, 1.88rem);
+  --text-2xl:  clamp(1.73rem,  1.54rem + 0.92vw, 2.34rem);
+  --text-3xl:  clamp(2.07rem,  1.82rem + 1.28vw, 2.93rem);
+  --text-4xl:  clamp(2.49rem,  2.14rem + 1.76vw, 3.66rem);
+  --text-5xl:  clamp(2.99rem,  2.52rem + 2.37vw, 4.58rem);
+
+  --font-sans:    system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: var(--font-sans);  /* override with brand font */
+  --font-mono:    "Cascadia Code", "Fira Code", ui-monospace, monospace;
+
+  --leading-tight:  1.15;
+  --leading-normal: 1.5;
+  --leading-loose:  1.75;
+}
+```
+
+### Spacing — 4px Grid
+
+```css
+:root {
+  --space-1:  0.25rem;  /*  4px */
+  --space-2:  0.5rem;   /*  8px */
+  --space-3:  0.75rem;  /* 12px */
+  --space-4:  1rem;     /* 16px */
+  --space-6:  1.5rem;   /* 24px */
+  --space-8:  2rem;     /* 32px */
+  --space-10: 2.5rem;   /* 40px */
+  --space-12: 3rem;     /* 48px */
+  --space-16: 4rem;     /* 64px */
+  --space-20: 5rem;     /* 80px */
+  --space-24: 6rem;     /* 96px */
+  --space-32: 8rem;     /* 128px */
+
+  /* Semantic */
+  --space-section: var(--space-24);  /* between page sections */
+  --space-group:   var(--space-16);  /* between related blocks */
+  --space-element: var(--space-6);   /* between elements in a block */
+}
+```
+
+### Border Radius & Shadows
+
+```css
+:root {
+  --radius-sm: 0.25rem;   /*  4px */
+  --radius-md: 0.5rem;    /*  8px */
+  --radius-lg: 0.75rem;   /* 12px */
+  --radius-xl: 1rem;      /* 16px */
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 1px 2px oklch(0% 0 0 / 0.06), 0 1px 3px oklch(0% 0 0 / 0.10);
+  --shadow-md: 0 4px 6px oklch(0% 0 0 / 0.07), 0 2px 4px oklch(0% 0 0 / 0.06);
+  --shadow-lg: 0 10px 15px oklch(0% 0 0 / 0.10), 0 4px 6px oklch(0% 0 0 / 0.05);
+}
+```
+
+---
+
+## Quality Gates
+
+A design is "done" only when it passes all gates for its type. Full criteria: `quality-gates.md` (same directory).
+
+| Gate | Landing | SaaS | Admin | Component |
+|---|---|---|---|---|
+| 1 Problem Definition | Required | Required | Required | Required |
+| 2 Information Architecture | Required | Required | Required | — |
+| 3 Design System | Required | Required | Required | Required |
+| 4 States | Required | Required | Required | Required |
+| 5 Responsive | Required | Required | Required | Required |
+| 6 Accessibility | Required | Required | Required | Required |
+| 7 Performance | Required | Recommended | Recommended | — |
+| 8 Frontend Readiness | Required | Required | Required | Required |
+
+**Gate 1 — Problem Definition:** User defined (role, device, context). Business goal stated as measurable outcome. Success metric exists. Scope is clear. *Blocked: no design work proceeds without this.*
+
+**Gate 3 — Design System:** Colors in OKLCH. Type scale with `clamp()`. Spacing on 4px grid. All values as CSS custom properties — no raw values in components.
+
+**Gate 4 — States:** Every interactive component has: idle, hover (`@media (hover: hover)`), active, focus-visible (visible ring, not `outline:none`), disabled, loading (skeleton 100ms–1s / progress 1–10s), empty (reason + action), error (neutral tone + description + recovery), success.
+
+**Gate 5 — Responsive:** Base at 390px. No horizontal scroll. Touch targets ≥ 44×44px. `min-height: 100dvh` not `100vh`. Text readable at 200% zoom.
+
+**Gate 6 — Accessibility:** Contrast 4.5:1 normal text, 3:1 large text and UI. All interactive elements keyboard-navigable. Focus-visible on all. All form inputs have visible labels. `prefers-reduced-motion` supported.
+
+**Gate 7 — Performance:** LCP element has `fetchpriority="high"`, not lazy-loaded. All images have `width`/`height`. No `scroll` listeners for animation. Lighthouse Performance ≥ 88 mobile.
+
+**Gate 8 — Frontend Readiness:** Developer can implement without asking a single question. Every state has exact visual behavior. Token names specified. Breakpoints in `px`. Prohibited approaches explicit.
+
+---
+
 ## Design Principles
 
 See `operating-principles.md` for the full list. Core ten (same directory):
 
-1. **Снимай неопределённость** — define what to build before how it looks
-2. **Один фокус на экране** — one primary action, one primary message per viewport
+1. **Resolve ambiguity first** — define what to build before how it looks
+2. **One focus per viewport** — one primary action, one primary message per screen
 3. **Mobile-first, not mobile-as-afterthought** — base styles at 390px, expand up
-4. **Состояния обязательны** — loading / empty / error for every interactive component
-5. **Токены, не значения** — `var(--color-accent)` not `oklch(65% 0.22 258)` in components
+4. **States are mandatory** — loading / empty / error for every interactive component
+5. **Tokens, not raw values** — `var(--color-accent)` not `oklch(65% 0.22 258)` in components
 6. **Hierarchy through space, not decoration** — whitespace is a layout tool, not filler
 7. **Accessibility is not a layer** — it's built in from the first grid line
 8. **Measure twice, cut once** — ask one clarifying question rather than build wrong
