@@ -2,6 +2,10 @@
 name: global-design-skill
 version: 1.6.0
 version_schema: semver
+author: global-design-skill
+tags: [design, ui-ux, react, nextjs, tailwind, accessibility, frontend, design-system]
+created: 2024-09-01
+updated: 2026-05-26
 package: https://github.com/staurus86/global-design-skill
 requires:
   - blueprints/
@@ -11,19 +15,19 @@ requires:
   - rules/
   - templates/
   - agents/
-standalone: "partial — inline sections cover 90% of tasks; full package adds blueprints, patterns, references"
+standalone: "partial — inline sections cover most common tasks; full package adds blueprints, patterns, references"
 description: >
   Design operating system for any UI/UX task: websites, landing pages, SaaS apps,
   admin panels, dashboards, forms, design systems, frontend handoff specs.
   Self-contained: inline tokens, quality gates, banned patterns, and technology standards
-  cover 90% of tasks. Requires full package for deep domain references (blueprints,
+  cover most common tasks without external files. Requires full package for deep domain references (blueprints,
   patterns, checklists). React 19, Next.js 15, Tailwind v4, Motion, GSAP.
   Standards: CSS 2026 Baseline, WCAG 2.2 AA.
 ---
 
 # Global Design Skill
 
-> **Package skill:** Part of [global-design-skill](https://github.com/staurus86/global-design-skill). The inline Decision Pipeline, Design Tokens, Quality Gates, Banned Patterns, and Technology Standards in this file are self-sufficient for ~90% of design tasks. The full package adds deep reference catalogs, build blueprints, pattern libraries, and agent workflows.
+> **Package skill:** Part of [global-design-skill](https://github.com/staurus86/global-design-skill). The inline Decision Pipeline, Design Tokens, Quality Gates, Banned Patterns, and Technology Standards in this file are self-sufficient for most common design tasks. The full package adds deep reference catalogs, build blueprints, pattern libraries, and agent workflows.
 >
 > **Inline (works standalone):** Decision Pipeline · Design Tokens · Quality Gates · Banned Patterns · Technology Standards · Output Formats
 >
@@ -46,6 +50,8 @@ For every task, resolve these before any code or visuals:
 4. **What does "done" look like?** (concrete acceptance criteria — see Quality Gates section in this file)
 
 If any of these is unclear — ask. One targeted question beats an hour of wrong work.
+
+**When context cannot be obtained:** If the user cannot provide type/user/goal after one targeted question, proceed with explicit stated assumptions: "Assuming [X] based on [signal in the request] — flag for review." Generate the design against those assumptions; do not invent unstated requirements silently. Offer to revise once real context arrives.
 
 ---
 
@@ -130,7 +136,14 @@ For any task involving motion, animation, or visual atmosphere, answer these bef
 
 **Step 4 — Always check before shipping**
 
-Verify against the **Motion** rules in Banned Patterns (in this file) and Gate 7 in Quality Gates (in this file). Full effects checklist: `checklists/wow-effects-checklist.md` (full package).
+| Check | Pass | Fail → Action |
+|---|---|---|
+| `prefers-reduced-motion` | All animations disabled | Wrap every animation in `@media (prefers-reduced-motion: no-preference)` |
+| Layout shift (CLS) | No shift from late effects | Animate only `transform`/`opacity`; add `will-change: transform` |
+| GPU compositing | No `top`/`left` animation | Replace with `translateX`/`translateY` |
+| Mobile overflow | No horizontal scroll at 390px | Constrain effect container with `overflow: hidden` |
+| Performance | Lighthouse ≥ 88 mobile | Defer heavy scripts; reduce Three.js bundle |
+| Interactive feedback | Response ≤ 400ms | Separate hover/click animations from scroll-driven ones |
 
 ---
 
