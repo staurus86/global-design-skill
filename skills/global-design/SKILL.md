@@ -11,7 +11,7 @@ requires:
   - rules/
   - templates/
   - agents/
-standalone: partial — all sections below are self-sufficient; require: files expand each domain
+standalone: "partial — inline sections cover 90% of tasks; full package adds blueprints, patterns, references"
 description: >
   Design operating system for any UI/UX task: websites, landing pages, SaaS apps,
   admin panels, dashboards, forms, design systems, frontend handoff specs.
