@@ -16,6 +16,7 @@ Goal: [one measurable outcome — signups, trials, purchases]
 Primary CTA: [exact label + destination]
 Offer: [what the user gets + at what cost/commitment]
 Differentiator: [one thing this does that alternatives don't]
+CSS framework:  [Tailwind / Bootstrap / Bulma / UnoCSS / Panda CSS / Open Props]
 ```
 
 **Blocked until answered:**

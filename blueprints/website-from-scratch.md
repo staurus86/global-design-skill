@@ -15,6 +15,7 @@ Primary conversion goal: [trial / contact / purchase / newsletter / download]
 Content volume: [landing-only / 5-10 pages / 20+ pages with blog]
 SEO priority: [low / medium / high — determines content architecture]
 Brand maturity: [new brand / established brand with guidelines]
+CSS framework:  [Tailwind / Bootstrap / Bulma / UnoCSS / Panda CSS / Open Props]
 ```
 
 **Blocked until answered:**

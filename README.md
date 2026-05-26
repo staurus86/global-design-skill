@@ -244,7 +244,7 @@ global-design-skill/
 │   ├── portfolio-from-scratch.md   ← Work grid, about, contact, anti-patterns
 │   └── onboarding-flow-from-scratch.md ← Signup → aha moment → checklist
 │
-├── rules/                          ← 18 domain rules files
+├── rules/                          ← 19 domain rules files
 │   ├── 00-escalation-protocol.md   ← Intent-to-depth mapping (read first)
 │   ├── 01-visual-hierarchy.md      ├── 09-responsive.md
 │   ├── 02-layout-and-grid.md       ├── 10-forms.md
@@ -385,7 +385,13 @@ global-design-skill/
 │   │                             → feedback → evolution
 │   └── local_store/            ← ~/.global-design-skill/ (local only, no telemetry)
 │
-├── integrations/                   ← 9 AI tool configuration files
+├── integrations/                   ← 14 AI tool + framework configuration files
+│   ├── frameworks/                 ← CSS framework profiles (5 frameworks)
+│   │   ├── bootstrap/profile.md   ← Bootstrap 5.3 OKLCH adaptation
+│   │   ├── bulma/profile.md       ← Bulma 1.0 CSS-only
+│   │   ├── open-props/profile.md  ← Token layer, any stack
+│   │   ├── unocss/profile.md      ← Tailwind-compatible atomic CSS
+│   │   └── panda-css/profile.md   ← Type-safe React/Next.js
 │   ├── claude-code/CLAUDE.md       ← Paste-ready CLAUDE.md snippet
 │   ├── cursor/cursor-rules.md      ← .cursorrules content (legacy)
 │   ├── cursor/global-design.mdc    ← .cursor/rules/ content (Cursor 0.43+)

@@ -16,6 +16,7 @@ Do **not** use for pure backend, SQL, server config, data analysis — unless UI
 
 | Task | Resource |
 |---|---|
+| CSS framework detection (run first) | `rules/18-css-framework-selection.md` |
 | Interpret user request depth first | `rules/00-escalation-protocol.md` |
 | Landing page from scratch | `blueprints/landing-page-from-scratch.md` |
 | Existing page redesign | `blueprints/redesign-existing-page.md` |
