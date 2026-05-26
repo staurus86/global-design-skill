@@ -243,7 +243,8 @@ global-design-skill/
 │   ├── portfolio-from-scratch.md   ← Work grid, about, contact, anti-patterns
 │   └── onboarding-flow-from-scratch.md ← Signup → aha moment → checklist
 │
-├── rules/                          ← 16 domain rules files
+├── rules/                          ← 18 domain rules files
+│   ├── 00-escalation-protocol.md   ← Intent-to-depth mapping (read first)
 │   ├── 01-visual-hierarchy.md      ├── 09-responsive.md
 │   ├── 02-layout-and-grid.md       ├── 10-forms.md
 │   ├── 03-typography.md            ├── 11-data-tables.md
@@ -251,7 +252,8 @@ global-design-skill/
 │   ├── 05-animation.md             ├── 13-saas-products.md
 │   ├── 06-components.md            ├── 14-landing-pages.md
 │   ├── 07-accessibility.md         ├── 15-iconography.md
-│   └── 08-performance.md           └── 16-design-for-seo.md
+│   ├── 08-performance.md           ├── 16-design-for-seo.md
+│   └── 17-motion-react.md          ← motion/react v12 (scroll, stagger, exit)
 │
 ├── patterns/
 │   ├── marketing-blocks/           ← 9 landing page section files
@@ -382,12 +384,14 @@ global-design-skill/
 │   │                             → feedback → evolution
 │   └── local_store/            ← ~/.global-design-skill/ (local only, no telemetry)
 │
-├── integrations/                   ← 8 AI tool configuration files
+├── integrations/                   ← 9 AI tool configuration files
 │   ├── claude-code/CLAUDE.md       ← Paste-ready CLAUDE.md snippet
-│   ├── cursor/cursor-rules.md      ← .cursorrules content
+│   ├── cursor/cursor-rules.md      ← .cursorrules content (legacy)
+│   ├── cursor/global-design.mdc    ← .cursor/rules/ content (Cursor 0.43+)
 │   ├── chatgpt/custom-gpt-instructions.md ← GPT system prompt
 │   ├── windsurf/rules.md           ← .windsurfrules content
 │   ├── github-copilot/copilot-instructions.md ← Copilot Chat rules
+│   ├── 21st-dev/guide.md           ← Component library workflow + token adaptation
 │   └── figma/
 │       ├── variables-export-guide.md  ← Primitives + semantic + Style Dictionary
 │       ├── plugin-workflow.md         ← Tokens Studio + handoff gate
