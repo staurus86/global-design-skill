@@ -23,7 +23,7 @@ description: >
 
 # Global Design Skill
 
-> **Package skill:** Part of [global-design-skill](https://github.com/staurus86/global-design-skill). Inline sections (tokens, quality gates, banned patterns, tech standards) are self-sufficient for ~90% of tasks. `../../blueprints/`, `../../patterns/`, `../../references/` expand each domain and are available when the full repo is installed. All `../../` paths resolve from this file's location (`skills/global-design/`) to repo root.
+> **Package skill:** Part of [global-design-skill](https://github.com/staurus86/global-design-skill). The inline Decision Pipeline, Design Tokens, Quality Gates, Banned Patterns, and Technology Standards in this file are self-sufficient for ~90% of design tasks. The full package adds deep reference catalogs, build blueprints, pattern libraries, and agent workflows.
 
 You are a senior design system architect, UX strategist, and product design reviewer.
 
@@ -39,7 +39,7 @@ For every task, resolve these before any code or visuals:
 1. **What type of interface?** (landing / SaaS app / admin / dashboard / form / component)
 2. **Who is the user?** (role, context, device, ambient light, emotional state)
 3. **What is the business goal?** (conversion / retention / efficiency / trust)
-4. **What does "done" look like?** (concrete acceptance criteria from `quality-gates.md`)
+4. **What does "done" look like?** (concrete acceptance criteria — see Quality Gates section in this file)
 
 If any of these is unclear — ask. One targeted question beats an hour of wrong work.
 
@@ -47,32 +47,25 @@ If any of these is unclear — ask. One targeted question beats an hour of wrong
 
 ## Task Routing
 
-Before doing any design work, check `task-routing.md` to load the right modules.
+Quick routing table — apply the Decision Pipeline for any task type. Full package adds step-by-step build protocols for each type.
 
-Quick routing table:
+| Task type | Inline approach | Full-package protocol |
+|---|---|---|
+| Landing page / marketing site | Decision Pipeline → Lead gen conversion focus | `blueprints/landing-page-from-scratch.md` |
+| Interactive landing page (wow/effects) | Effects Decision Block + Motion standards | `blueprints/interactive-landing-page.md` |
+| SaaS product / app | Decision Pipeline → Retention + task efficiency | `blueprints/saas-app-from-scratch.md` |
+| Admin panel / back-office | Decision Pipeline → Density + keyboard nav | `blueprints/admin-panel-from-scratch.md` |
+| Pricing page | Decision Pipeline → Trust + clarity focus | `blueprints/pricing-page-from-scratch.md` |
+| Onboarding flow | Decision Pipeline → Activation + aha moment | `blueprints/onboarding-flow-from-scratch.md` |
+| Portfolio site | Decision Pipeline → Credibility + work showcase | `blueprints/portfolio-from-scratch.md` |
+| Redesign / improvement | Banned Patterns audit → targeted fixes | `blueprints/redesign-existing-page.md` |
+| Website from scratch | Decision Pipeline → full IA → blueprints | `blueprints/website-from-scratch.md` |
+| Animations / motion | Effects Decision Block (in this file) | `patterns/effects/` directory |
+| UI block / component | Quality Gates → States → Tokens | `patterns/` directory |
+| UI review / audit | Banned Patterns + Quality Gates (in this file) | `checklists/ui-review.md` |
+| Frontend spec / handoff | Output Formats → developer template (in this file) | `templates/specs/frontend-tz.md` |
 
-| If the task involves... | Primary resource |
-|---|---|
-| Landing page / marketing site | `../../blueprints/landing-page-from-scratch.md` |
-| Landing page with wow / interactive effects | `../../blueprints/interactive-landing-page.md` |
-| SaaS product / app | `../../blueprints/saas-app-from-scratch.md` |
-| Admin panel / back-office | `../../blueprints/admin-panel-from-scratch.md` |
-| Pricing page | `../../blueprints/pricing-page-from-scratch.md` |
-| Onboarding flow | `../../blueprints/onboarding-flow-from-scratch.md` |
-| Portfolio site | `../../blueprints/portfolio-from-scratch.md` |
-| Redesign / improvement | `../../blueprints/redesign-existing-page.md` |
-| Website from scratch | `../../blueprints/website-from-scratch.md` |
-| Animations / parallax / 3D / motion | `../../patterns/effects/` directory |
-| Specific UI block | `../../patterns/` directory |
-| Improve existing UI | `../../recipes/` directory |
-| UI review / audit | `../../checklists/ui-review.md` |
-| Effects / motion audit | `../../checklists/wow-effects-checklist.md` |
-| Frontend spec / ТЗ | `../../templates/specs/frontend-tz.md` |
-| Find real design references | `../../agents/reference-hunter.md` |
-
-Full routing with all file combinations → `task-routing.md` (same directory)
-
-> **Fallback:** If referenced blueprint or pattern files are unavailable, apply the inline Decision Pipeline, Design Tokens, Quality Gates, Banned Patterns, and Technology Standards in this file — they are sufficient to produce correct, handoff-ready output for most task types.
+> **Standalone mode:** The Decision Pipeline, Design Tokens, Quality Gates, Banned Patterns, and Technology Standards in this file are sufficient for correct, handoff-ready output. Blueprint and pattern files (available in the [full package](https://github.com/staurus86/global-design-skill)) provide deeper step-by-step protocols for complex builds.
 
 ---
 
@@ -92,7 +85,7 @@ For any design task, follow this order. Do not skip steps.
 9. RESPONSIVE → Mobile-first. Test at 390px, 768px, 1280px
 10. A11Y     → Contrast, keyboard, ARIA, focus management
 11. HANDOFF  → Can a developer implement this without guessing?
-12. VERIFY   → Does output pass quality-gates.md?
+12. VERIFY   → Does output pass all Quality Gates? (see Quality Gates section in this file)
 ```
 
 ---
@@ -105,22 +98,22 @@ For any task involving motion, animation, or visual atmosphere, answer these bef
 
 | Signal | Answer |
 |---|---|
-| User explicitly requests "wow", animations, parallax, 3D | Yes — load `../../patterns/effects/` |
-| Interactive landing page, portfolio, agency | Yes — load `../../blueprints/interactive-landing-page.md` |
-| Standard B2B SaaS form-first page | No — skip effects, use `../../blueprints/landing-page-from-scratch.md` |
+| User explicitly requests "wow", animations, parallax, 3D | Yes — use Effect Type table below |
+| Interactive landing page, portfolio, agency | Yes — use Effect Type table below |
+| Standard B2B SaaS form-first page | No — skip effects, apply Decision Pipeline for conversion focus |
 | Admin panel, data table, dashboard | No — performance matters more than wow |
 
-**Step 2 — Select effect type**
+**Step 2 — Select effect type and implementation approach**
 
-| Goal | Pattern file |
-|---|---|
-| Atmosphere (grain, mesh, spotlight, glow) | `../../patterns/effects/visual-effects.md` |
-| Depth / multi-layer scroll | `../../patterns/effects/parallax-system.md` |
-| Text reveals, scramble, typewriter, marquee | `../../patterns/effects/text-animations.md` |
-| Pinned scroll, horizontal gallery, progress bar | `../../patterns/effects/scroll-experiences.md` |
-| Hover tilt, magnetic button, link underline | `../../patterns/effects/hover-effects.md` |
-| Custom cursor, blend mode, trail | `../../patterns/effects/cursor-effects.md` |
-| CSS 3D, card flip, product tilt, Three.js, Spline | `../../patterns/effects/3d-effects.md` |
+| Goal | Implementation | Full-package pattern |
+|---|---|---|
+| Atmosphere (grain, mesh, spotlight, glow) | CSS `backdrop-filter`, `radial-gradient`, SVG `feTurbulence` | `patterns/effects/visual-effects.md` |
+| Depth / multi-layer scroll | GSAP ScrollTrigger with `parallax` or CSS `animation-timeline: scroll()` | `patterns/effects/parallax-system.md` |
+| Text reveals, scramble, typewriter, marquee | GSAP SplitText or CSS `@keyframes` with `clip-path` | `patterns/effects/text-animations.md` |
+| Pinned scroll, horizontal gallery, progress bar | GSAP ScrollTrigger `pin: true` or CSS scroll-driven | `patterns/effects/scroll-experiences.md` |
+| Hover tilt, magnetic button, link underline | CSS `transform` on `:hover` or Motion `useMotionValue` | `patterns/effects/hover-effects.md` |
+| Custom cursor, blend mode, trail | CSS `mix-blend-mode`, JS `mousemove` + RAF | `patterns/effects/cursor-effects.md` |
+| CSS 3D, card flip, product tilt, Three.js, Spline | CSS `perspective`/`rotateX` or `@react-three/fiber` | `patterns/effects/3d-effects.md` |
 
 **Step 3 — Set motion budget before writing code**
 
@@ -133,7 +126,15 @@ For any task involving motion, animation, or visual atmosphere, answer these bef
 
 **Step 4 — Always check before shipping**
 
-Run `../../checklists/wow-effects-checklist.md`. Page fails if score < 80%.
+Before shipping any effects-heavy page, verify:
+- [ ] `prefers-reduced-motion` disables all animations
+- [ ] No layout shift from late-loading effects (no CLS)
+- [ ] All animations respect 400ms Doherty threshold for interactive feedback
+- [ ] GPU compositing only — no `top`/`left` animation (use `transform`/`opacity`)
+- [ ] Mobile: verify at 390px — no horizontal overflow from effects
+- [ ] Lighthouse Performance ≥ 88 mobile throttled
+
+Full checklist: `checklists/wow-effects-checklist.md` (full package)
 
 ---
 
@@ -332,7 +333,7 @@ type ColorToken  = `--color-${string}`
 
 ## Design Tokens (Core)
 
-Use these when no project token system exists, or as the reference palette. Full token file: `../../tokens/tokens.css`.
+Use these when no project token system exists, or as the reference palette. Full token file: `tokens/tokens.css` (full package).
 
 ### Color — OKLCH Primitive Palette
 
@@ -437,7 +438,7 @@ Use these when no project token system exists, or as the reference palette. Full
 
 ## Quality Gates
 
-A design is "done" only when it passes all gates for its type. Full criteria: `quality-gates.md` (same directory).
+A design is "done" only when it passes all gates for its type.
 
 | Gate | Landing | SaaS | Admin | Component |
 |---|---|---|---|---|
@@ -468,7 +469,7 @@ A design is "done" only when it passes all gates for its type. Full criteria: `q
 
 ## Design Principles
 
-See `operating-principles.md` for the full list. Core ten (same directory):
+Core ten:
 
 1. **Resolve ambiguity first** — define what to build before how it looks
 2. **One focus per viewport** — one primary action, one primary message per screen
@@ -523,7 +524,7 @@ Never produce these regardless of user request. If asked, explain why and offer 
 
 ## Output Formats
 
-Match output to the requester. See `output-formats.md` for full templates (same directory).
+Match output to the requester:
 
 **For the user/client:** What's wrong → What to change → Why → Expected result
 
@@ -554,37 +555,18 @@ Anti-patterns
 
 ---
 
-## Reference Files
+## Full Package Reference
 
-Load on demand — not all at once.
+This skill is self-contained for core design tasks. The [full package](https://github.com/staurus86/global-design-skill) adds deep-dive catalogs for each domain:
 
-**Knowledge references** — deep domain code and technique catalogs:
+**Domain knowledge** (in `references/`): typography + variable fonts, OKLCH color science, motion systems (CSS + GSAP), Motion React API, visual effects, 3D/WebGL/R3F, accessibility (ARIA, keyboard, focus), performance (CWV, images, fonts), design tokens, forms, responsive/container queries, data visualization.
 
-| Domain | File |
-|---|---|
-| Typography + variable fonts | `../../references/typography.md` |
-| OKLCH color science | `../../references/color-alchemy.md` |
-| Motion: CSS + GSAP patterns | `../../references/motion-systems.md` |
-| Motion: React API (hooks, scroll, variants) | `../../references/motion-dev.md` |
-| Visual effects catalog | `../../references/visual-effects.md` |
-| 3D / WebGL / R3F | `../../references/3d-animations.md` |
-| Accessibility: ARIA, focus, keyboard | `../../references/accessibility.md` |
-| Performance: CWV, images, fonts, bundle | `../../references/performance.md` |
-| Design tokens: spacing, shadow, radius | `../../references/tokens.md` |
-| Forms: states, validation, components | `../../references/forms.md` |
-| Responsive: breakpoints, container queries | `../../references/responsive.md` |
-| Data visualization: charts, tables, KPIs | `../../references/data-viz.md` |
+**Curated real-world examples** (in `references/`): inspiration galleries, aesthetic archetypes A–H, SaaS UI patterns (Linear, Vercel, Notion), marketing/landing pages, portfolio sites, pricing pages, navigation patterns.
 
-**Curated example references** — real-world production sites to study:
+**Build protocols** (in `blueprints/`): step-by-step guides for landing pages, interactive landing pages, SaaS apps, admin panels, pricing pages, onboarding flows, portfolios, redesigns, full websites.
 
-| Need | File |
-|---|---|
-| Site galleries, inspiration sources | `../../references/inspiration-sites.md` |
-| Real examples per aesthetic archetype A–H | `../../references/aesthetic-archetypes.md` |
-| SaaS UI patterns in production (Linear, Vercel, Notion…) | `../../references/saas-ui-examples.md` |
-| Best marketing / landing pages | `../../references/marketing-sites.md` |
-| Best portfolio sites, annotated | `../../references/portfolios.md` |
-| Best pricing pages | `../../references/pricing-pages.md` |
-| Navigation in real products | `../../references/navigation-examples.md` |
+**Pattern library** (in `patterns/`): visual effects (grain, mesh, glow), parallax, text animations, scroll experiences, hover effects, cursor effects, 3D effects, marketing blocks, product UI, admin UI, navigation, states.
 
-For visual effects implementation code, use `../../patterns/effects/` directly. For design domain rules, use the `../../rules/` directory.
+**Rules catalog** (in `rules/`): 19 rules covering visual hierarchy, layout, typography, color, animation, components, accessibility, performance, responsive, forms, data tables, admin panels, SaaS, landing pages, iconography, SEO, motion/react, CSS framework selection.
+
+Install: `git clone https://github.com/staurus86/global-design-skill` — then follow `install.md`.
