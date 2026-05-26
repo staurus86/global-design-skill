@@ -6,7 +6,7 @@ Turn Claude Code, Cursor, Codex, ChatGPT, Windsurf, and GitHub Copilot into a st
 
 Not another prompt collection. A self-learning design operating system: it knows sector-specific rules for 13 industries, learns from reference sites you point it at, and calibrates its pattern weights based on your feedback. All local, no telemetry.
 
-[![Version](https://img.shields.io/badge/version-1.6.0-blue)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-1.7.0-blue)](CHANGELOG.md)
 [![Standards](https://img.shields.io/badge/CSS-2026%20Baseline-green)](rules/)
 [![React](https://img.shields.io/badge/React-19-blue)](rules/)
 [![Next.js](https://img.shields.io/badge/Next.js-15-black)](rules/)
@@ -68,7 +68,7 @@ Global Design Skill gives the agent a reusable design operating system. It force
 - how accessibility is specified
 - how a developer can implement it without asking follow-up questions
 
-Current v1.6.0 includes **SEDI (Self-Evolving Design Intelligence)**: the skill detects your business sector automatically (B2B SaaS, e-commerce, health, finance, and 10 more), applies sector-specific banned patterns and required elements, learns from reference sites you point it at, and refines its pattern weights based on revision count. The more you use it, the more accurate it becomes — and all of that stays on your machine.
+Current v1.7.0 includes **SEDI (Self-Evolving Design Intelligence)**: the skill detects your business sector automatically (B2B SaaS, e-commerce, health, finance, and 10 more), applies sector-specific banned patterns and required elements, learns from reference sites you point it at, and refines its pattern weights based on revision count. The more you use it, the more accurate it becomes — and all of that stays on your machine.
 
 ## Start here
 

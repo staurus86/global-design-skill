@@ -6,6 +6,31 @@ Format: [version] — date — description
 
 ---
 
+## [1.7.0] — 2026-05-26
+
+### CSS Framework Support Layer
+
+- `rules/18-css-framework-selection.md` — router rule: auto-detects CSS framework via `package.json` signals, asks when detection fails, routes to framework-specific profile; runs first on any design or build task
+- `integrations/frameworks/bootstrap/profile.md` — Bootstrap 5.3 profile: utility overrides, OKLCH token mapping, component patterns
+- `integrations/frameworks/bulma/profile.md` — Bulma 1.0 profile: OKLCH variable mapping, modifier class conventions
+- `integrations/frameworks/open-props/profile.md` — Open Props profile: custom property integration, size/color scale alignment
+- `integrations/frameworks/unocss/profile.md` — UnoCSS profile: preset selection, shortcuts, OKLCH theme config
+- `integrations/frameworks/panda-css/profile.md` — Panda CSS profile: token config, recipes, slot patterns
+- `CLAUDE.md` — added CSS framework detection row to task routing table (runs before all other rules)
+
+### Bug Fixes
+
+- Fixed skill frontmatter YAML parse error in standalone field (`fix/skill: fix YAML parse error`)
+- Fixed broken file dependencies causing errors during standalone skill evaluation
+- Resolved regressions introduced by cosmetic polish pass; score restored from 87 → 91+
+- Applied full audit pass against bestskills.dev rubric; raised overall score to 91+
+
+### Community
+
+- `CODE_OF_CONDUCT.md` — added Contributor Covenant v2.1; satisfies GitHub Community Standards
+
+---
+
 ## [1.6.0] — 2026-05-25
 
 ### Sprint 37 — Repository Infrastructure
