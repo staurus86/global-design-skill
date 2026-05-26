@@ -1,5 +1,6 @@
 ---
 name: global-design-skill
+version: 1.6.0
 description: >
   Design operating system. Use for any UI/UX task: building websites, landing pages,
   SaaS apps, admin panels, dashboards, forms, design systems, or frontend handoff specs.
@@ -39,22 +40,22 @@ Quick routing table:
 
 | If the task involves... | Primary resource |
 |---|---|
-| Landing page / marketing site | `blueprints/landing-page-from-scratch.md` |
-| Landing page with wow / interactive effects | `blueprints/interactive-landing-page.md` |
-| SaaS product / app | `blueprints/saas-app-from-scratch.md` |
-| Admin panel / back-office | `blueprints/admin-panel-from-scratch.md` |
-| Pricing page | `blueprints/pricing-page-from-scratch.md` |
-| Onboarding flow | `blueprints/onboarding-flow-from-scratch.md` |
-| Portfolio site | `blueprints/portfolio-from-scratch.md` |
-| Redesign / improvement | `blueprints/redesign-existing-page.md` |
-| Website from scratch | `blueprints/website-from-scratch.md` |
-| Animations / parallax / 3D / motion | `patterns/effects/` directory |
-| Specific UI block | `patterns/` directory |
-| Improve existing UI | `recipes/` directory |
-| UI review / audit | `checklists/ui-review.md` |
-| Effects / motion audit | `checklists/wow-effects-checklist.md` |
-| Frontend spec / ТЗ | `templates/specs/frontend-tz.md` |
-| Find real design references | `agents/reference-hunter.md` |
+| Landing page / marketing site | `../../blueprints/landing-page-from-scratch.md` |
+| Landing page with wow / interactive effects | `../../blueprints/interactive-landing-page.md` |
+| SaaS product / app | `../../blueprints/saas-app-from-scratch.md` |
+| Admin panel / back-office | `../../blueprints/admin-panel-from-scratch.md` |
+| Pricing page | `../../blueprints/pricing-page-from-scratch.md` |
+| Onboarding flow | `../../blueprints/onboarding-flow-from-scratch.md` |
+| Portfolio site | `../../blueprints/portfolio-from-scratch.md` |
+| Redesign / improvement | `../../blueprints/redesign-existing-page.md` |
+| Website from scratch | `../../blueprints/website-from-scratch.md` |
+| Animations / parallax / 3D / motion | `../../patterns/effects/` directory |
+| Specific UI block | `../../patterns/` directory |
+| Improve existing UI | `../../recipes/` directory |
+| UI review / audit | `../../checklists/ui-review.md` |
+| Effects / motion audit | `../../checklists/wow-effects-checklist.md` |
+| Frontend spec / ТЗ | `../../templates/specs/frontend-tz.md` |
+| Find real design references | `../../agents/reference-hunter.md` |
 
 Full routing with all file combinations → `task-routing.md`
 
@@ -89,22 +90,22 @@ For any task involving motion, animation, or visual atmosphere, answer these bef
 
 | Signal | Answer |
 |---|---|
-| User explicitly requests "wow", animations, parallax, 3D | Yes — load `patterns/effects/` |
-| Interactive landing page, portfolio, agency | Yes — load `blueprints/interactive-landing-page.md` |
-| Standard B2B SaaS form-first page | No — skip effects, use `blueprints/landing-page-from-scratch.md` |
+| User explicitly requests "wow", animations, parallax, 3D | Yes — load `../../patterns/effects/` |
+| Interactive landing page, portfolio, agency | Yes — load `../../blueprints/interactive-landing-page.md` |
+| Standard B2B SaaS form-first page | No — skip effects, use `../../blueprints/landing-page-from-scratch.md` |
 | Admin panel, data table, dashboard | No — performance matters more than wow |
 
 **Step 2 — Select effect type**
 
 | Goal | Pattern file |
 |---|---|
-| Atmosphere (grain, mesh, spotlight, glow) | `patterns/effects/visual-effects.md` |
-| Depth / multi-layer scroll | `patterns/effects/parallax-system.md` |
-| Text reveals, scramble, typewriter, marquee | `patterns/effects/text-animations.md` |
-| Pinned scroll, horizontal gallery, progress bar | `patterns/effects/scroll-experiences.md` |
-| Hover tilt, magnetic button, link underline | `patterns/effects/hover-effects.md` |
-| Custom cursor, blend mode, trail | `patterns/effects/cursor-effects.md` |
-| CSS 3D, card flip, product tilt, Three.js, Spline | `patterns/effects/3d-effects.md` |
+| Atmosphere (grain, mesh, spotlight, glow) | `../../patterns/effects/visual-effects.md` |
+| Depth / multi-layer scroll | `../../patterns/effects/parallax-system.md` |
+| Text reveals, scramble, typewriter, marquee | `../../patterns/effects/text-animations.md` |
+| Pinned scroll, horizontal gallery, progress bar | `../../patterns/effects/scroll-experiences.md` |
+| Hover tilt, magnetic button, link underline | `../../patterns/effects/hover-effects.md` |
+| Custom cursor, blend mode, trail | `../../patterns/effects/cursor-effects.md` |
+| CSS 3D, card flip, product tilt, Three.js, Spline | `../../patterns/effects/3d-effects.md` |
 
 **Step 3 — Set motion budget before writing code**
 
@@ -117,7 +118,7 @@ For any task involving motion, animation, or visual atmosphere, answer these bef
 
 **Step 4 — Always check before shipping**
 
-Run `checklists/wow-effects-checklist.md`. Page fails if score < 80%.
+Run `../../checklists/wow-effects-checklist.md`. Page fails if score < 80%.
 
 ---
 
@@ -316,7 +317,7 @@ type ColorToken  = `--color-${string}`
 
 ## Design Principles
 
-See `operating-principles.md` for the full list. Core ten:
+See `operating-principles.md` for the full list. Core ten (same directory):
 
 1. **Снимай неопределённость** — define what to build before how it looks
 2. **Один фокус на экране** — one primary action, one primary message per viewport
@@ -371,7 +372,7 @@ Never produce these regardless of user request. If asked, explain why and offer 
 
 ## Output Formats
 
-Match output to the requester. See `output-formats.md` for full templates.
+Match output to the requester. See `output-formats.md` for full templates (same directory).
 
 **For the user/client:** What's wrong → What to change → Why → Expected result
 
@@ -410,29 +411,29 @@ Load on demand — not all at once.
 
 | Domain | File |
 |---|---|
-| Typography + variable fonts | `references/typography.md` |
-| OKLCH color science | `references/color-alchemy.md` |
-| Motion: CSS + GSAP patterns | `references/motion-systems.md` |
-| Motion: React API (hooks, scroll, variants) | `references/motion-dev.md` |
-| Visual effects catalog | `references/visual-effects.md` |
-| 3D / WebGL / R3F | `references/3d-animations.md` |
-| Accessibility: ARIA, focus, keyboard | `references/accessibility.md` |
-| Performance: CWV, images, fonts, bundle | `references/performance.md` |
-| Design tokens: spacing, shadow, radius | `references/tokens.md` |
-| Forms: states, validation, components | `references/forms.md` |
-| Responsive: breakpoints, container queries | `references/responsive.md` |
-| Data visualization: charts, tables, KPIs | `references/data-viz.md` |
+| Typography + variable fonts | `../../references/typography.md` |
+| OKLCH color science | `../../references/color-alchemy.md` |
+| Motion: CSS + GSAP patterns | `../../references/motion-systems.md` |
+| Motion: React API (hooks, scroll, variants) | `../../references/motion-dev.md` |
+| Visual effects catalog | `../../references/visual-effects.md` |
+| 3D / WebGL / R3F | `../../references/3d-animations.md` |
+| Accessibility: ARIA, focus, keyboard | `../../references/accessibility.md` |
+| Performance: CWV, images, fonts, bundle | `../../references/performance.md` |
+| Design tokens: spacing, shadow, radius | `../../references/tokens.md` |
+| Forms: states, validation, components | `../../references/forms.md` |
+| Responsive: breakpoints, container queries | `../../references/responsive.md` |
+| Data visualization: charts, tables, KPIs | `../../references/data-viz.md` |
 
 **Curated example references** — real-world production sites to study:
 
 | Need | File |
 |---|---|
-| Site galleries, inspiration sources | `references/inspiration-sites.md` |
-| Real examples per aesthetic archetype A–H | `references/aesthetic-archetypes.md` |
-| SaaS UI patterns in production (Linear, Vercel, Notion…) | `references/saas-ui-examples.md` |
-| Best marketing / landing pages | `references/marketing-sites.md` |
-| Best portfolio sites, annotated | `references/portfolios.md` |
-| Best pricing pages | `references/pricing-pages.md` |
-| Navigation in real products | `references/navigation-examples.md` |
+| Site galleries, inspiration sources | `../../references/inspiration-sites.md` |
+| Real examples per aesthetic archetype A–H | `../../references/aesthetic-archetypes.md` |
+| SaaS UI patterns in production (Linear, Vercel, Notion…) | `../../references/saas-ui-examples.md` |
+| Best marketing / landing pages | `../../references/marketing-sites.md` |
+| Best portfolio sites, annotated | `../../references/portfolios.md` |
+| Best pricing pages | `../../references/pricing-pages.md` |
+| Navigation in real products | `../../references/navigation-examples.md` |
 
-For visual effects implementation code, use `patterns/effects/` directly. For design domain rules, use the `rules/` directory.
+For visual effects implementation code, use `../../patterns/effects/` directly. For design domain rules, use the `../../rules/` directory.
