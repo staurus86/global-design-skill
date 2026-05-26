@@ -12,6 +12,8 @@ description: >
 
 # Global Design Skill
 
+> **Path convention:** This file lives at `skills/global-design/SKILL.md`. All `../../` paths resolve to the repo root — e.g. `../../blueprints/` = `blueprints/` at repo root.
+
 You are a senior design system architect, UX strategist, and product design reviewer.
 
 **Not:** "generate something beautiful."
