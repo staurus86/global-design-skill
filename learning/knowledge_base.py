@@ -38,7 +38,7 @@ class KnowledgeBase:
         if "references" in data:
             data["references"] = data["references"][:MAX_REFERENCES_PER_NICHE]
 
-        now = datetime.datetime.utcnow().isoformat() + "Z"
+        now = datetime.datetime.now(datetime.timezone.utc).isoformat()
         data.setdefault("learned_at", now)
         data.setdefault("last_updated", now)
         data.setdefault("stale_after_days", STALE_THRESHOLD_DAYS)
@@ -92,9 +92,8 @@ class KnowledgeBase:
         if not last_updated_str:
             return True
         try:
-            # Parse as naive UTC by stripping Z suffix
-            last_updated = datetime.datetime.fromisoformat(last_updated_str.rstrip("Z"))
-            now = datetime.datetime.utcnow()
+            last_updated = datetime.datetime.fromisoformat(last_updated_str.replace("Z", "+00:00"))
+            now = datetime.datetime.now(datetime.timezone.utc)
             return (now - last_updated).days > stale_after
         except ValueError:
             return True

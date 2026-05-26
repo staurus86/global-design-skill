@@ -173,10 +173,11 @@ def main():
     @mcp.resource("gds://rules/{name}", mime_type="text/markdown")
     def get_rule_resource(name: str) -> str:
         """A design rule file by short name (without .md).
-        Available: 01-visual-hierarchy | 02-layout-and-grid | 03-typography | 04-color |
-        05-animation | 06-components | 07-accessibility | 08-performance | 09-responsive |
-        10-forms | 11-data-tables | 12-admin-panels | 13-saas-products | 14-landing-pages |
-        15-iconography | 16-design-for-seo"""
+        Available: 00-escalation-protocol | 01-visual-hierarchy | 02-layout-and-grid |
+        03-typography | 04-color | 05-animation | 06-components | 07-accessibility |
+        08-performance | 09-responsive | 10-forms | 11-data-tables | 12-admin-panels |
+        13-saas-products | 14-landing-pages | 15-iconography | 16-design-for-seo |
+        17-motion-react | 18-css-framework-selection"""
         return _read_repo_file(f"rules/{name}.md")
 
     @mcp.resource("gds://industries/{sector}", mime_type="text/markdown")

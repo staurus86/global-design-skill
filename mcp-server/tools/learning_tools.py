@@ -142,16 +142,6 @@ def forget_niche(sector: str, niche: str) -> str:
     return json.dumps({"deleted": True, "sector": sector, "niche": niche})
 
 
-def reset_weights(sector: str = None) -> str:
-    """Reset pattern weights to neutral (Phase 4 feature stub)."""
-    return json.dumps({
-        "status": "weights_reset_pending",
-        "note": "Weight reset is implemented in Phase 4 (sedi/feedback_engine.py). "
-                "Complete Phase 4 to use this tool.",
-        "sector": sector,
-    })
-
-
 def resolve_suspicion(sector: str, niche: str, resolution: str) -> str:
     """
     Clear suspicion_flag on a knowledge entry.
@@ -209,4 +199,4 @@ def reset_weights_tool(sector: str = None) -> str:
 
 
 def _now() -> str:
-    return datetime.datetime.utcnow().isoformat() + "Z"
+    return datetime.datetime.now(datetime.timezone.utc).isoformat()
