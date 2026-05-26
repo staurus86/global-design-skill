@@ -24,6 +24,10 @@ description: >
 # Global Design Skill
 
 > **Package skill:** Part of [global-design-skill](https://github.com/staurus86/global-design-skill). The inline Decision Pipeline, Design Tokens, Quality Gates, Banned Patterns, and Technology Standards in this file are self-sufficient for ~90% of design tasks. The full package adds deep reference catalogs, build blueprints, pattern libraries, and agent workflows.
+>
+> **Inline (works standalone):** Decision Pipeline · Design Tokens · Quality Gates · Banned Patterns · Technology Standards · Output Formats
+>
+> **Requires full package:** `blueprints/` build protocols · `patterns/` component library · `references/` domain catalogs · `rules/` detailed rules · `checklists/` full review checklists
 
 You are a senior design system architect, UX strategist, and product design reviewer.
 
@@ -126,15 +130,7 @@ For any task involving motion, animation, or visual atmosphere, answer these bef
 
 **Step 4 — Always check before shipping**
 
-Before shipping any effects-heavy page, verify:
-- [ ] `prefers-reduced-motion` disables all animations
-- [ ] No layout shift from late-loading effects (no CLS)
-- [ ] All animations respect 400ms Doherty threshold for interactive feedback
-- [ ] GPU compositing only — no `top`/`left` animation (use `transform`/`opacity`)
-- [ ] Mobile: verify at 390px — no horizontal overflow from effects
-- [ ] Lighthouse Performance ≥ 88 mobile throttled
-
-Full checklist: `checklists/wow-effects-checklist.md` (full package)
+Verify against the **Motion** rules in Banned Patterns (in this file) and Gate 7 in Quality Gates (in this file). Full effects checklist: `checklists/wow-effects-checklist.md` (full package).
 
 ---
 
@@ -145,6 +141,8 @@ Use these — not legacy alternatives.
 ### CSS
 
 ```css
+/* File: app/globals.css (or styles/tokens.css) */
+
 /* OKLCH for all colors */
 --color-accent: oklch(65% 0.22 258);
 --color-base:   oklch(9%  0.012 258);
@@ -197,6 +195,8 @@ dialog {
 ### Tailwind v4
 
 ```css
+/* File: app/globals.css */
+
 /* No tailwind.config.js — everything in CSS */
 @import "tailwindcss";
 
@@ -219,6 +219,8 @@ dialog {
 ### React 19
 
 ```tsx
+/* File: components/Input.tsx (any component file) */
+
 /* ref as regular prop — no forwardRef needed */
 function Input({ ref, ...props }: Props & { ref?: Ref<HTMLInputElement> }) {
   return <input ref={ref} {...props} />
@@ -246,6 +248,8 @@ function Submit() {
 ### Next.js 15
 
 ```tsx
+/* File: app/[id]/page.tsx (Server Component) */
+
 /* Async APIs — must await (breaking change from v14) */
 const cookieStore = await cookies()
 const headersList = await headers()
@@ -266,6 +270,8 @@ async function getData() {
 ### Motion (`motion/react`)
 
 ```tsx
+/* File: components/Section.tsx */
+
 import { motion, AnimatePresence, useScroll, useAnimate, useInView } from 'motion/react'
 import { animate, spring } from 'motion'
 
@@ -288,6 +294,8 @@ import { animateView } from 'motion'
 ### GSAP
 
 ```tsx
+/* File: components/Hero.tsx */
+
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
@@ -314,6 +322,8 @@ function Hero() {
 ### TypeScript 5
 
 ```typescript
+/* File: lib/tokens.ts (or any .ts / .tsx file) */
+
 /* satisfies — validate without widening */
 const tokens = {
   accent: 'oklch(65% 0.22 258)',
@@ -506,6 +516,9 @@ Never produce these regardless of user request. If asked, explain why and offer 
 - `window.addEventListener('scroll')` for animations (use CSS scroll-driven or ScrollTrigger)
 - `h-screen` / `height: 100vh` — always `min-height: 100dvh`
 - No `prefers-reduced-motion` support
+- Animating `top`/`left` instead of `transform`/`opacity` (forces layout recalc, kills GPU compositing)
+- Effects that cause layout shift (CLS) — animate only composited properties
+- Effects visible at 390px that cause horizontal overflow
 
 **Copy:**
 - "Seamless", "Elevate", "Unleash", "Next-Gen", "Empower", "Revolutionize"
@@ -552,6 +565,20 @@ Logic
 Verification
 Anti-patterns
 ```
+
+---
+
+## Scope Boundaries
+
+**This skill covers:** Web UI/UX for React/Next.js stacks — landing pages, SaaS apps, admin panels, dashboards, forms, design systems, component specs, developer handoff specs, motion/animation on web.
+
+**Out of scope** (use a domain-specific tool for these):
+- Native mobile UI (iOS UIKit, Android Compose, React Native platform specifics)
+- Backend architecture, API design, database schema
+- Brand identity: logo design, illustration style, photography direction
+- Video production, motion graphics outside browser context
+- Email template design (different rendering constraints)
+- Print design
 
 ---
 
