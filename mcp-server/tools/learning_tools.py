@@ -79,13 +79,30 @@ def learn_from_reference(url: str, sector: str = None, niche: str = None) -> str
 
 
 def get_or_learn_sector(sector: str, niche: str) -> str:
-    """Get sector context from static files or knowledge base.
+    """Get sector context from static files merged with knowledge base.
 
-    Priority: industries/*.md -> knowledge_base -> "not found, run learn_from_reference"
-    Returns JSON: {source, sector, niche, context}
+    Priority: static (base) + learned (augment) > static only > learned only > not found.
+    When both static and learned data exist, learned patterns are returned alongside
+    the static context so agents can apply niche-specific refinements on top of
+    the base sector rules.
+    Returns JSON: {source, sector, niche, context, [learned_patterns, learned_rules]}
     """
     static = json.loads(get_sector_context(sector))
+    learned = _kb.get(sector, niche)
+
     if "error" not in static:
+        if learned:
+            stale = _kb.is_stale(sector, niche)
+            return json.dumps({
+                "source": "static+learned" + ("_stale" if stale else ""),
+                "sector": sector,
+                "niche": niche,
+                "stale": stale,
+                "context": static,
+                "learned_patterns": learned.get("patterns", {}),
+                "learned_rules": learned.get("rules", {}),
+                "confidence_score": learned.get("confidence_score", 0),
+            })
         return json.dumps({
             "source": "static",
             "sector": sector,
@@ -93,7 +110,6 @@ def get_or_learn_sector(sector: str, niche: str) -> str:
             "context": static,
         })
 
-    learned = _kb.get(sector, niche)
     if learned:
         stale = _kb.is_stale(sector, niche)
         return json.dumps({
@@ -148,7 +164,7 @@ def resolve_suspicion(sector: str, niche: str, resolution: str) -> str:
     try:
         import sedi.local_store as _local_store
         _local_store.init_store()
-        kb_path = _local_store.STORE_ROOT / "knowledge" / f"{sector}__{niche}.json"
+        kb_path = _local_store.STORE_ROOT / "knowledge" / sector / f"{niche}.json"
         if not kb_path.exists():
             return json.dumps({"error": "niche not found in knowledge base"})
 

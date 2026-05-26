@@ -60,7 +60,7 @@ def check_stale_niches() -> list[dict]:
         return []
     stale = []
     now = datetime.now(timezone.utc)
-    for f in knowledge_dir.glob("*.json"):
+    for f in knowledge_dir.glob("**/*.json"):
         try:
             data = json.loads(f.read_text())
         except (json.JSONDecodeError, OSError):

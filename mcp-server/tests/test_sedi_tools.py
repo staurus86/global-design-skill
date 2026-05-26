@@ -17,7 +17,8 @@ def test_resolve_suspicion_accept_learned():
         with patch("sedi.local_store.STORE_ROOT", store):
             from sedi.local_store import init_store
             init_store()
-            kb_path = store / "knowledge" / "b2b-products__industrial-pumps.json"
+            kb_path = store / "knowledge" / "b2b-products" / "industrial-pumps.json"
+            kb_path.parent.mkdir(parents=True, exist_ok=True)
             kb_path.write_text(json.dumps({
                 "sector": "b2b-products", "niche": "industrial-pumps",
                 "suspicion_flag": True, "source": "learned",
@@ -35,7 +36,8 @@ def test_resolve_suspicion_keep_static():
         with patch("sedi.local_store.STORE_ROOT", store):
             from sedi.local_store import init_store
             init_store()
-            kb_path = store / "knowledge" / "finance__crypto.json"
+            kb_path = store / "knowledge" / "finance" / "crypto.json"
+            kb_path.parent.mkdir(parents=True, exist_ok=True)
             kb_path.write_text(json.dumps({
                 "sector": "finance", "niche": "crypto",
                 "suspicion_flag": True, "source": "learned",
