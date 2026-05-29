@@ -6,6 +6,45 @@ Format: [version] — date — description
 
 ---
 
+## [1.8.0] — 2026-05-29
+
+### HyperFrames Integration
+
+- `integrations/hyperframes/guide.md` — HTML-to-MP4 video workflow: composition structure, `data-start`/`data-duration` attributes, OKLCH token compatibility, animation adapter matrix (CSS ✅ GSAP ✅ motion/react ❌ scroll-driven ❌), 10-point pre-render checklist
+- `CLAUDE.md` — added routing row for HTML design → MP4 video tasks (product demo, social content, changelog animation)
+
+### Skill Compliance — Anthropic Official Guide
+
+- `skills/global-design/SKILL.md` — restructured frontmatter: `version`, `author`, `tags`, `requires`, `standalone` moved under `metadata:` per Anthropic skill spec Reference B
+- `skills/global-design/SKILL.md` — `description` rewritten to include explicit "Use when..." trigger phrases per WHAT+WHEN requirement; ~530 chars, within 1024 limit
+- `skills/global-design/SKILL.md` — Scope Boundaries updated: HyperFrames HTML-to-video noted as exception to "no video production" rule
+
+### Industry Sector Depth (9 sectors expanded)
+
+Each of the following files received: OKLCH Design System palette, Key Component Patterns with HTML examples, Copy & Messaging table, Design References.
+
+- `industries/health.md` — provider card pattern, appointment booking flow, emergency notice, trust bar, clinical color system
+- `industries/finance.md` — fee comparison table, interactive calculator, security/compliance trust bar, account comparison cards, tabular-nums typography rule
+- `industries/non-profit.md` — impact counter with count-up animation, donation form (monthly/one-time toggle), campaign progress bar, beneficiary story card, warm OKLCH palette
+- `industries/real-estate.md` — property card, full-screen gallery, map+neighbourhood panel, viewing booking widget, mortgage estimator, premium neutral palette
+- `industries/travel.md` — date picker/availability calendar, price breakdown panel, review display with sub-scores, real-data scarcity notice, sticky mobile booking bar
+- `industries/government.md` — GDS-pattern step form, service start page, eligibility checker, document checklist, status tracker, plain language copy rules, GOV.UK color system
+- `industries/entertainment.md` — trailer hero with muted autoplay, ticket purchase widget, countdown timer, streaming content grid, dark + neon palette per sub-niche
+- `industries/education.md` — course hero, curriculum accordion, outcome stats block, pricing + payment plans, aspirational color system
+- `industries/services.md` — practitioner hero, service tier cards, process timeline, testimonial card with photo, booking calendar widget, personal brand palette
+
+### Agent Examples (2 agents)
+
+- `agents/design-director.md` — 3 full example reviews added: REJECT (B2B SaaS generic hero), PASS (health clinic trust-first design), REVISE (e-commerce premium brand without identity)
+- `agents/ux-architect.md` — 3 full example reviews added: SaaS onboarding flow blocker (60% abandonment root cause), e-commerce checkout IA (78% cart abandonment fix), admin panel missing states audit
+
+### Repository Maintenance
+
+- `README.md` — integrations count corrected 14 → 16; `hyperframes/guide.md` added to repository structure tree
+- `manifest.yaml` — hyperframes integration reference added
+
+---
+
 ## [1.7.0] — 2026-05-26
 
 ### CSS Framework Support Layer
