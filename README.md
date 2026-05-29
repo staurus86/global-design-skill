@@ -255,7 +255,8 @@ global-design-skill/
 │   ├── 07-accessibility.md         ├── 15-iconography.md
 │   ├── 08-performance.md           ├── 16-design-for-seo.md
 │   ├── 17-motion-react.md          ← motion/react v12 (scroll, stagger, exit)
-│   └── 18-css-framework-selection.md ← Bootstrap / Bulma / UnoCSS / Panda CSS / Open Props router
+│   ├── 18-css-framework-selection.md ← Bootstrap / Bulma / UnoCSS / Panda CSS / Open Props router
+│   └── 19-contrast-standards.md   ← WCAG AA/AAA, APCA, surface stacking, dark mode ceiling, fix workflow
 │
 ├── patterns/
 │   ├── marketing-blocks/           ← 9 landing page section files
@@ -429,7 +430,7 @@ global-design-skill/
 | **Motion** | `motion/react` v12 — `whileInView`, `useScroll`, `AnimatePresence`, `useReducedMotion`, OKLCH color support |
 | **GSAP** | `useGSAP` from `@gsap/react`, `contextSafe()` |
 | **TypeScript** | 5.x — `satisfies`, `const` type params, template literal types |
-| **Accessibility** | WCAG 2.2 AA — 4.5:1 contrast, 44px touch targets, focus-visible |
+| **Accessibility** | WCAG 2.2 AA — 4.5:1 contrast, 44px touch targets, focus-visible — full contrast standards in `rules/19-contrast-standards.md` |
 
 ---
 

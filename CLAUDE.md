@@ -23,6 +23,7 @@ Do **not** use for pure backend, SQL, server config, data analysis — unless UI
 | Full UI audit | `checklists/global-design-review.md` |
 | Developer handoff | `templates/specs/frontend-tz.md` |
 | Accessibility review | `agents/accessibility-auditor.md` + `rules/07-accessibility.md` |
+| Contrast audit / fix (text, blocks, sections, dark mode) | `rules/19-contrast-standards.md` |
 | Animation (scroll, transitions, stagger) | `rules/17-motion-react.md` |
 | Ready-made React components | `integrations/21st-dev/guide.md` |
 | HTML design → MP4 video (product demo, social, changelog) | `integrations/hyperframes/guide.md` |

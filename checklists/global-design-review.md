@@ -21,19 +21,28 @@
 
 ---
 
-## 2. Color
+## 2. Color & Contrast
 
 | # | Check | Priority | Status |
 |---|---|---|---|
 | 2.1 | All colors use CSS custom properties — no raw hex values | CRITICAL | |
 | 2.2 | All colors defined in OKLCH | CRITICAL | |
-| 2.3 | Color contrast ratio ≥ 4.5:1 for normal text (WCAG AA) | CRITICAL | |
-| 2.4 | Color contrast ratio ≥ 3:1 for large text (≥ 18px bold or ≥ 24px) | CRITICAL | |
+| 2.3 | Text contrast ≥ 4.5:1 for normal text (< 24px regular, < 18.7px bold) — WCAG AA | CRITICAL | |
+| 2.4 | Text contrast ≥ 3:1 for large text (≥ 24px regular or ≥ 18.7px bold) | CRITICAL | |
 | 2.5 | Color is not the only differentiator (add label/icon/pattern) | CRITICAL | |
-| 2.6 | Accent color occupies ≤ 15% of visible surface area | IMPORTANT | |
-| 2.7 | All neutrals are tinted toward the accent hue — no pure gray | IMPORTANT | |
-| 2.8 | Dark/light mode: all colors switch correctly via CSS variables | IMPORTANT | |
-| 2.9 | Tested in grayscale — hierarchy still clear without color | NICE | |
+| 2.6 | Contrast measured against the immediate block background, not page background | CRITICAL | |
+| 2.7 | Placeholder text contrast ≥ 4.5:1 (not exempt like disabled states) | CRITICAL | |
+| 2.8 | Focus ring contrast ≥ 3:1 against both the background and the focused element | CRITICAL | |
+| 2.9 | Dark mode body text contrast ≤ 15:1 — no pure white text on dark surfaces | IMPORTANT | |
+| 2.10 | Gradient backgrounds: contrast verified at the worst-contrast sampling point | IMPORTANT | |
+| 2.11 | Adjacent sections: ΔL ≥ 4 OR a visible 1px border at 3:1 on both sides | IMPORTANT | |
+| 2.12 | Card/block on page background: ≥ 1.5:1 contrast OR border defines the boundary | IMPORTANT | |
+| 2.13 | Accent color occupies ≤ 15% of visible surface area | IMPORTANT | |
+| 2.14 | All neutrals are tinted toward the accent hue — no pure gray | IMPORTANT | |
+| 2.15 | Dark/light mode: all colors switch correctly via CSS variables | IMPORTANT | |
+| 2.16 | Tested in grayscale — hierarchy still clear without color | NICE | |
+
+> Full contrast standards and fix workflow: `rules/19-contrast-standards.md`
 
 **BANNED colors (immediate fail):**
 - [ ] No purple-to-indigo gradient on white background
