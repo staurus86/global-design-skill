@@ -386,7 +386,7 @@ global-design-skill/
 │   │                             → feedback → evolution
 │   └── local_store/            ← ~/.global-design-skill/ (local only, no telemetry)
 │
-├── integrations/                   ← 14 AI tool + framework configuration files
+├── integrations/                   ← 16 AI tool + framework configuration files
 │   ├── frameworks/                 ← CSS framework profiles (5 frameworks)
 │   │   ├── bootstrap/profile.md   ← Bootstrap 5.3 OKLCH adaptation
 │   │   ├── bulma/profile.md       ← Bulma 1.0 CSS-only
@@ -400,6 +400,7 @@ global-design-skill/
 │   ├── windsurf/rules.md           ← .windsurfrules content
 │   ├── github-copilot/copilot-instructions.md ← Copilot Chat rules
 │   ├── 21st-dev/guide.md           ← Component library workflow + token adaptation
+│   ├── hyperframes/guide.md        ← HTML design → MP4 video (product demo, social, changelog)
 │   └── figma/
 │       ├── variables-export-guide.md  ← Primitives + semantic + Style Dictionary
 │       ├── plugin-workflow.md         ← Tokens Studio + handoff gate

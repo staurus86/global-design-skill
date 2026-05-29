@@ -80,6 +80,7 @@ integrations:
   windsurf: integrations/windsurf/rules.md
   github_copilot: integrations/github-copilot/copilot-instructions.md
   figma: integrations/figma/figma-handoff-checklist.md
+  hyperframes: integrations/hyperframes/guide.md
 
 tokens:
   - tokens/design-tokens.json
