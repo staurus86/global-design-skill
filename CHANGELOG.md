@@ -6,6 +6,27 @@ Format: [version] — date — description
 
 ---
 
+## [1.9.0] — 2026-05-29
+
+### Behavioral Design Reference
+
+- `references/behavioral-design.md` — 29 cognitive biases mapped to UI/UX design decisions. Sourced from full scan of keepsimple.io/uxcore (105 biases reviewed; 29 directly applicable to interface design selected). Organized by design task:
+  - **Pricing pages:** Anchoring effect, Decoy effect, Contrast effect, Mental accounting, Hyperbolic discounting, Less-is-better effect
+  - **CTAs & copy:** Framing effect, Loss aversion, Self-reference effect, Illusory truth effect, Curse of knowledge, Negativity bias
+  - **Navigation & IA:** Magical Number 7±2, Serial-position effect, Ambiguity effect, Unit bias
+  - **Trust & social proof:** Halo effect, Bandwagon effect, Authority bias, Confirmation bias, Mere-exposure effect
+  - **Onboarding & retention:** Peak-end rule, IKEA effect, Endowment effect, Escalation of commitment, Reactance
+  - **Visual hierarchy:** Von Restorff effect, Picture superiority effect, Processing difficulty effect
+  - Each entry includes: definition, where to apply in UI, HTML/code example, "why it works" one-liner
+  - Quick reference table: 15 design tasks → applicable biases
+
+### Repository Maintenance
+
+- `README.md` — references count updated 19 → 20; `behavioral-design.md` added to repository structure tree
+- `skills/global-design/SKILL.md` — Full Package Reference section updated to mention behavioral design reference
+
+---
+
 ## [1.8.0] — 2026-05-29
 
 ### HyperFrames Integration
