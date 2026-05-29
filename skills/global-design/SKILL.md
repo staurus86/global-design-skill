@@ -595,7 +595,7 @@ Anti-patterns
 
 This skill is self-contained for core design tasks. The [full package](https://github.com/staurus86/global-design-skill) adds deep-dive catalogs for each domain:
 
-**Domain knowledge** (in `references/`): typography + variable fonts, OKLCH color science, motion systems (CSS + GSAP), Motion React API, visual effects, 3D/WebGL/R3F, accessibility (ARIA, keyboard, focus), performance (CWV, images, fonts), design tokens, forms, responsive/container queries, data visualization.
+**Domain knowledge** (in `references/`): typography + variable fonts, OKLCH color science, motion systems (CSS + GSAP), Motion React API, visual effects, 3D/WebGL/R3F, accessibility (ARIA, keyboard, focus), performance (CWV, images, fonts), design tokens, forms, responsive/container queries, data visualization, behavioral design (29 cognitive biases mapped to pricing, CTAs, navigation, trust, onboarding, error states).
 
 **Curated real-world examples** (in `references/`): inspiration galleries, aesthetic archetypes A–H, SaaS UI patterns (Linear, Vercel, Notion), marketing/landing pages, portfolio sites, pricing pages, navigation patterns.
 
