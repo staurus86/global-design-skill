@@ -64,3 +64,86 @@ Security + regulatory trust → Products → Calculator → Fees → Support →
 ## Disambiguation
 - Corporate treasury or enterprise finance tool → also apply `b2b-products.md`
 - Crypto exchange → this file applies; add disclaimer requirements
+
+---
+
+## Design System for This Sector
+
+### Color Strategy
+
+Conservative, institutional. Primary: deep navy or teal. Accent: understated green (returns/positive) or gold (premium tier). Never playful, never pastel.
+
+```css
+/* Finance — institutional trust */
+--color-bg:       oklch(99% 0.002 250);   /* near-white, neutral tint */
+--color-accent:   oklch(38% 0.12 255);   /* deep institutional blue */
+--color-accent-2: oklch(50% 0.14 160);   /* trust green — positive movement */
+--color-text:     oklch(14% 0.005 250);  /* near-black, authoritative */
+--color-positive: oklch(50% 0.18 145);   /* profit/positive */
+--color-negative: oklch(50% 0.20 25);    /* loss/negative — never pure red */
+--color-border:   oklch(88% 0.005 250);  /* structural, clean */
+```
+
+Dark mode for trading/dashboard: `oklch(14% 0.02 255)` base — reduces eye strain for long sessions.
+
+### Typography
+- Numbers: `font-variant-numeric: tabular-nums` — critical for price column alignment.
+- Legal / small print: never below 12px, never below 3:1 contrast ratio.
+- Account numbers: monospace, letter-spaced 0.08em.
+- Rates and percentages: bold, prominent — never buried in body text.
+
+### Spacing & Density
+Comparison-heavy sector — support side-by-side layout at 1280px. Fee tables: sticky first column on mobile. Dashboard: tighter density than marketing pages, but never cramped on financial figures.
+
+---
+
+## Key Component Patterns
+
+### Fee Comparison Table
+```
+| Feature       | Basic (Free) | Pro (£9/mo) | Business (£29/mo) |
+|---------------|:---:|:---:|:---:|
+| Accounts      | 1   | 5   | Unlimited |
+| Transfer fee  | 1.5%| 0.8%| 0.3%      |
+| Support       | Email | Chat | Dedicated |
+```
+Rules: highlight recommended tier, sticky first column on mobile horizontal scroll, all fees visible before sign-up.
+
+### Interactive Calculator
+- Inputs: large sliders or number inputs — not small text fields.
+- Results: update in real-time without submit button.
+- Assumptions section: clearly listed below result.
+- Disclaimer: "This is an estimate, not financial advice" — readable, not hidden.
+
+### Security & Compliance Trust Bar
+```
+[Bank-grade encryption] [FCA Regulated] [FSCS Protected £85k] [SOC 2 Type II] [2FA supported]
+```
+Position: hero section, between headline and primary CTA. Not footer-only.
+
+### Account Comparison Cards
+- Max 3 tiers visible without scrolling.
+- Badge "Most popular" on middle tier.
+- Difference callout: "+Unlimited transfers" between tiers.
+- CTA: "Open [Tier] account" — specific, not generic "Sign up".
+
+---
+
+## Copy & Messaging Patterns
+
+| Context | Pattern | Example |
+|---|---|---|
+| Headline | `[Outcome] with [Differentiator]` | "Invest smarter with 0.3% fees" |
+| CTA | Account-action | "Open account" / "Start investing" — not "Join now" |
+| Trust | AUM or customer count | "2.4 million customers trust us with £18bn" |
+| Fees | Monthly-first | "£9/month — cancel anytime" |
+| Regulatory | Always visible | "[Company] is authorised by [Body], reg. [Number]" |
+
+**Never:** "Guaranteed returns", countdown timers, approximate rounding on fee schedules.
+
+---
+
+## Design References
+- Monzo (monzo.com) — card-first UX, clean onboarding, progressive disclosure
+- Wise (wise.com) — fee transparency table, real-time calculator
+- Revolut — dark mode dashboard, multi-currency display pattern

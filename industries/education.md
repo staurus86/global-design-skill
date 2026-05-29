@@ -63,3 +63,127 @@ Outcome headline → Who it's for → Curriculum → Instructor → Student stor
 ## Disambiguation
 - Corporate training sold to procurement → also apply `b2b-products.md` rules
 - Editorial blog that also sells courses → this file applies to course pages only
+
+---
+
+## Design System for This Sector
+
+### Color Strategy
+
+Aspirational and trustworthy — blends professional credibility with approachable warmth. Primary: deep blue or teal (knowledge, authority). Accent: energetic but not aggressive — orange or warm green for progress/CTA.
+
+```css
+/* Education — aspirational, credible */
+--color-bg:         oklch(99% 0.003 250); /* near-white */
+--color-accent:     oklch(48% 0.18 255); /* deep learning blue */
+--color-accent-2:   oklch(68% 0.20 55);  /* warm amber — progress, CTA */
+--color-text:       oklch(16% 0.008 250);/* near-black */
+--color-muted:      oklch(52% 0.010 250);/* secondary text */
+--color-progress:   oklch(55% 0.18 145); /* green — completion, progress */
+--color-cert:       oklch(72% 0.15 80);  /* gold — certificate, achievement */
+--color-border:     oklch(88% 0.005 250);/* clean structural */
+```
+
+### Typography
+- Course title: bold, generous — this is the product name.
+- Instructor name: slightly styled — personal credibility is the trust anchor.
+- Outcome stats (job placement, salary uplift): large, bold — these close the sale.
+- Curriculum items: medium weight, scannable — learners preview before buying.
+
+### Progress Indicators
+Progress is core to the education experience — use consistently: course completion bars, module unlock states, certificate progress, lesson count "14/22 lessons complete".
+
+---
+
+## Key Component Patterns
+
+### Course Hero
+```html
+<section class="course-hero">
+  <div class="course-info">
+    <span class="eyebrow">Full-stack Development · 12 weeks</span>
+    <h1>React & Node.js Bootcamp</h1>
+    <p class="outcome">87% of graduates hired within 3 months · avg salary £52,000</p>
+    <div class="meta">
+      <span>⭐ 4.8 (2,340 reviews)</span>
+      <span>👥 14,200 enrolled</span>
+      <span>🏆 Certificate included</span>
+    </div>
+    <div class="pricing">
+      <span class="price">£1,490</span>
+      <span class="installment">or 3 × £530</span>
+    </div>
+    <a href="/enroll" class="btn-enroll">Enroll now — starts Feb 3</a>
+    <a href="/free-lesson" class="btn-preview">Watch free lesson first</a>
+  </div>
+  <div class="instructor-card">
+    <img src="instructor.jpg" alt="Sarah Mills">
+    <h3>Sarah Mills</h3>
+    <p>Former Google engineer · 8 years teaching</p>
+  </div>
+</section>
+```
+
+### Curriculum Accordion
+```html
+<section class="curriculum">
+  <h2>What you'll learn <span class="meta">22 modules · 48 hours of content</span></h2>
+  <details class="module">
+    <summary>
+      <span class="module-num">Module 1</span>
+      <span class="module-title">JavaScript Fundamentals</span>
+      <span class="module-meta">4 lessons · 3h 20m</span>
+    </summary>
+    <ul>
+      <li>Variables, types, and scope <span class="duration">45 min</span></li>
+      <li>Functions and closures <span class="duration">55 min</span></li>
+    </ul>
+  </details>
+</section>
+```
+Show first 3 modules open, rest collapsed. Preview lesson CTA inside accordion.
+
+### Outcome Stats Block
+The highest-converting element for considered purchases.
+```
+[87%]              [£52k]             [3 months]
+graduates hired    avg starting       median time
+within 3 months    salary             to first job
+
+Based on survey of 847 graduates, 2024 cohort. [Methodology →]
+```
+Source must be cited. Never fabricate.
+
+### Pricing + Payment Plans
+```
+Full payment:     £1,490  [Save £150]
+3 instalments:    £530 × 3
+Monthly plan:     £199/mo × 8
+
+[Enroll now]   [Try free for 7 days]
+
+✓ 30-day money-back guarantee
+✓ Lifetime access to materials
+✓ Certificate on completion
+```
+
+---
+
+## Copy & Messaging Patterns
+
+| Context | Pattern | Example |
+|---|---|---|
+| Headline | Outcome + timeframe | "Become a React developer in 12 weeks" |
+| CTA | Low-risk entry | "Try free lesson" before "Enroll" |
+| Outcomes | Specific data | "87% hired in 3 months (2024 cohort, n=847)" |
+| Guarantee | Clear terms | "30-day full refund, no questions asked" |
+| Instructor | Credentials first | "Former [Company] engineer, [N] years teaching" |
+
+**Never:** countdown timers on evergreen courses, "only 3 spots left" on digital products, income guarantees without FTC/ASA compliant framing.
+
+---
+
+## Design References
+- Coursera — course hero, curriculum accordion, outcome stats
+- Lambda School / BloomTech — bootcamp conversion patterns, ISA framing
+- Brilliant (brilliant.org) — interactive learning UI, progress gamification

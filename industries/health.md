@@ -65,3 +65,95 @@ Trust signals → Services → Provider profiles → Location + hours → Bookin
 - Wellness coach, yoga studio, or non-clinical practitioner → use `services.md`
 - Health insurance product → use `finance.md`
 - Medical device or equipment sold B2B → use `b2b-products.md`
+
+---
+
+## Design System for This Sector
+
+### Color Strategy
+
+Calming, clinical, trustworthy. Avoid red (triggers emergency associations), orange (too casual), pure black.
+
+```css
+/* Health — clinical calm */
+--color-bg:       oklch(99% 0.003 200);   /* near-white with cool tint */
+--color-accent:   oklch(55% 0.14 200);   /* calm teal-blue */
+--color-accent-2: oklch(68% 0.10 165);   /* soft green — healing */
+--color-text:     oklch(18% 0.008 240);  /* near-black, blue undertone */
+--color-muted:    oklch(55% 0.010 220);  /* secondary text */
+--color-warning:  oklch(62% 0.16 75);    /* amber — never red for health alerts */
+--color-border:   oklch(90% 0.006 200);  /* very light, clinical */
+```
+
+### Typography
+- Headlines: clean, authoritative — DM Sans, Source Sans, Nunito Sans. Never decorative or script.
+- Body: min 16px, `line-height: 1.65` — medical text must be easy to re-read under stress.
+- Provider names: slightly larger and bolder — patients scan for names first.
+- Medical terms: always followed by a plain-language parenthetical on first use.
+
+### Spacing & Density
+Open, generous — density signals stress, openness signals calm. Max content width 720px for reading-heavy sections. Card padding minimum `var(--space-6)` on all sides.
+
+---
+
+## Key Component Patterns
+
+### Provider Card
+Credentials and license must appear before the booking CTA. Never anonymous.
+
+```html
+<div class="provider-card">
+  <img src="dr-chen.jpg" alt="Dr. Sarah Chen" width="96" height="96">
+  <div class="provider-info">
+    <span class="eyebrow">Cardiologist · 18 yrs experience</span>
+    <h3>Dr. Sarah Chen</h3>
+    <p class="credentials">MD, FRCP · Licensed NY, NJ · Lic. #12345</p>
+    <p class="availability">Next available: <strong>Tomorrow, 9 am</strong></p>
+    <a href="/book/dr-chen" class="btn-primary">Book appointment</a>
+  </div>
+</div>
+```
+
+### Appointment Booking Flow
+Multi-step — never single-page overload for health decisions.
+1. Select specialty / service
+2. Select provider (or "Any available")
+3. Pick date + time (calendar — no dropdowns)
+4. Confirm insurance / payment
+5. Summary with cancellation policy before final submit
+
+### Emergency Notice — Always Present
+```html
+<!-- Persistent top-of-page, even on non-emergency pages -->
+<aside class="emergency-notice" role="alert">
+  <strong>Medical emergency?</strong> Call 911 or go to your nearest ER.
+  Do not use this form for urgent conditions.
+</aside>
+```
+Style: amber/teal, not red. `role="alert"` for screen readers.
+
+### Trust Bar (above the fold, before first CTA)
+```
+[Medical licence] · [X years practice] · [HIPAA / GDPR compliant] · [Insurance accepted] · [Secure booking SSL]
+```
+
+---
+
+## Copy & Messaging Patterns
+
+| Context | Pattern | Example |
+|---|---|---|
+| Headline | `[Outcome] for [patient type]` | "Expert cardiac care for active adults" |
+| CTA | Appointment-first | "Book appointment" — not "Claim your slot" |
+| Trust | Specific numbers | "Dr. Chen has treated 4 200+ patients" |
+| Disclaimer | Always visible | "This is not a substitute for professional medical advice." |
+| Error | Empathetic tone | "We couldn't verify your insurance — let's help you check manually." |
+
+**Never:** countdown timers, flash-sale urgency, superlatives without evidence ("world's best").
+
+---
+
+## Design References
+- Cleveland Clinic (clevelandclinic.org) — trust hierarchy, provider card layout
+- One Medical — clean booking flow, anxiety-free design
+- Zocdoc — availability calendar, search-first UX, insurance check pattern
