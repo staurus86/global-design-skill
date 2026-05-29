@@ -6,6 +6,40 @@ Format: [version] — date — description
 
 ---
 
+## [1.9.1] — 2026-05-29
+
+### Contrast Standards Rule (new)
+
+- `rules/19-contrast-standards.md` — full contrast standard covering all three layers of the UI (page background → block/section → text). 13 rules:
+  - **R1** — The contrast triangle: surface separation, text-on-block, adjacent sections — each with its own threshold and upper limit
+  - **R2** — WCAG 2.2 AA/AAA tier table with large text definition and exemptions (disabled, decorative, logos)
+  - **R3** — OKLCH quick-check heuristic (ΔL thresholds) + verified tool list (Polypane, ColorAndFonts, Firefox DevTools)
+  - **R4** — Surface layer stacking: page bg → card → elevated panel, with token examples for light and dark mode
+  - **R5** — Adjacent section separation: ΔL ≥ 4 OR 1px border rule
+  - **R6** — Text on colored blocks: measure against the immediate block background, not page background
+  - **R7** — Gradient backgrounds: worst-point sampling method + scrim overlay technique
+  - **R8** — Dark mode upper bound: halation explanation, comfort range 10:1–15:1, off-white token formula, forbidden pure white
+  - **R9** — Muted, placeholder, and disabled states: placeholder requires 4.5:1 (not exempt); disabled is WCAG-exempt but needs non-color indicator
+  - **R10** — Focus ring contrast: WCAG 2.2 §2.4.11, 3:1 against both bg and element, double-ring technique
+  - **R11** — APCA (WCAG 3.0 preview): Lc threshold table, relationship to WCAG 2.2 AA, tool link
+  - **R12** — Fix workflow: 6-step priority order + L-delta matrices for light and dark mode
+  - **R13** — Automated checking: axe-core CI command, Playwright integration
+  - Eye comfort section: line-height, line-length, letter-spacing, anti-aliasing interaction with contrast
+
+- `checklists/global-design-review.md` — Color section expanded from 9 to 16 checks:
+  - 2.6: text contrast measured against immediate block background
+  - 2.7: placeholder text ≥ 4.5:1
+  - 2.8: focus ring ≥ 3:1 on both sides
+  - 2.9: dark mode body text ≤ 15:1 upper bound
+  - 2.10: gradient backgrounds sampled at worst-contrast point
+  - 2.11: adjacent sections — ΔL ≥ 4 or visible border
+  - 2.12: card/block on page bg — ≥ 1.5:1 or border defines boundary
+
+- `CLAUDE.md` — added routing row: "Contrast audit / fix" → `rules/19-contrast-standards.md`
+- `README.md` — rule 19 added to repository structure tree
+
+---
+
 ## [1.9.0] — 2026-05-29
 
 ### Behavioral Design Reference
