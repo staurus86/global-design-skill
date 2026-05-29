@@ -25,6 +25,7 @@ Do **not** use for pure backend, SQL, server config, data analysis — unless UI
 | Accessibility review | `agents/accessibility-auditor.md` + `rules/07-accessibility.md` |
 | Animation (scroll, transitions, stagger) | `rules/17-motion-react.md` |
 | Ready-made React components | `integrations/21st-dev/guide.md` |
+| HTML design → MP4 video (product demo, social, changelog) | `integrations/hyperframes/guide.md` |
 | Industry-specific rules | `GlobalDesignSkill:get_sector_context` (MCP tool) |
 | Unknown niche | `GlobalDesignSkill:learn_from_reference` (MCP tool) |
 

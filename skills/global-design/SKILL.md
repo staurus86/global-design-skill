@@ -1,29 +1,24 @@
 ---
 name: global-design-skill
-version: 1.7.0
-version_schema: semver
+description: "Design operating system for web UI/UX tasks. Use when user asks to design, build, redesign, or audit UI: landing pages, SaaS products, admin panels, dashboards, components, forms, animations, color systems, typography, developer handoff specs. Trigger phrases: 'design a page', 'build a landing page', 'create a SaaS UI', 'audit my design', 'review the UI', 'create a component', 'frontend spec', 'improve the interface', 'color tokens', 'add animation'. Stack: React 19, Next.js 15, Tailwind v4, motion/react, GSAP. Standards: CSS 2026 Baseline, WCAG 2.2 AA."
 license: MIT
-author: global-design-skill
-tags: [design, ui-ux, react, nextjs, tailwind, accessibility, frontend, design-system]
-created: 2024-09-01
-updated: 2026-05-26
-package: https://github.com/staurus86/global-design-skill
-requires:
-  - blueprints/
-  - patterns/
-  - references/
-  - checklists/
-  - rules/
-  - templates/
-  - agents/
-standalone: "partial — inline sections cover most common tasks; full package adds blueprints, patterns, references"
-description: >
-  Design operating system for any UI/UX task: websites, landing pages, SaaS apps,
-  admin panels, dashboards, forms, design systems, frontend handoff specs.
-  Self-contained: inline tokens, quality gates, banned patterns, and technology standards
-  cover most common tasks without external files. Requires full package for deep domain references (blueprints,
-  patterns, checklists). React 19, Next.js 15, Tailwind v4, Motion, GSAP.
-  Standards: CSS 2026 Baseline, WCAG 2.2 AA.
+metadata:
+  version: 1.7.0
+  version_schema: semver
+  author: global-design-skill
+  tags: [design, ui-ux, react, nextjs, tailwind, accessibility, frontend, design-system]
+  created: 2024-09-01
+  updated: 2026-05-26
+  documentation: https://github.com/staurus86/global-design-skill
+  requires:
+    - blueprints/
+    - patterns/
+    - references/
+    - checklists/
+    - rules/
+    - templates/
+    - agents/
+  standalone: "partial — inline sections cover most common tasks; full package adds blueprints, patterns, references"
 ---
 
 # Global Design Skill
@@ -590,7 +585,7 @@ Anti-patterns
 - Native mobile UI (iOS UIKit, Android Compose, React Native platform specifics)
 - Backend architecture, API design, database schema
 - Brand identity: logo design, illustration style, photography direction
-- Video production, motion graphics outside browser context
+- Video production, motion graphics outside browser context (exception: HTML-to-video via HyperFrames — see `integrations/hyperframes/guide.md`)
 - Email template design (different rendering constraints)
 - Print design
 
