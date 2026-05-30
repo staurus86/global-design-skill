@@ -455,6 +455,29 @@ await checkA11y(page, undefined, { runOnly: ['color-contrast'] })
 
 ---
 
+## R14 — `-webkit-text-fill-color` overrides `color`. Audit the rendered fill, not the intent.
+
+A correct `color` does not guarantee visible text. `-webkit-text-fill-color` (the gradient-text technique: `background-clip: text` + `-webkit-text-fill-color: transparent`) **overrides `color`** for the actual painted glyphs. A contrast check that reads only `color` will pass an element whose rendered fill is transparent — i.e. invisible.
+
+**The classic failure (real):** a heading uses gradient text. A redesign neutralises it in light mode (`background: none; -webkit-text-fill-color: currentColor`) but a more specific dark-mode rule (`html.dark .x`) still sets `-webkit-text-fill-color: transparent`. In dark mode the gradient background is gone (so nothing is clipped) but the fill is transparent → **the heading is invisible**, while `color` still computes to a valid light value. A naive audit reports "pass".
+
+```css
+/* Banned (rules/03 R9) — and the trap when half-removed: */
+.heading { background: linear-gradient(...); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+html.dark .heading { ...; -webkit-text-fill-color: transparent; }  /* survives a light-only fix */
+
+/* Correct removal — reset the fill in EVERY theme, matching the specificity that set it transparent: */
+.heading, html.dark .heading {
+  background: none;
+  -webkit-background-clip: border-box; background-clip: border-box;
+  -webkit-text-fill-color: currentColor;   /* fill follows color again */
+}
+```
+
+**Audit rule:** measure contrast against the **rendered fill** — `getComputedStyle(el).webkitTextFillColor` when set, else `color`. Scan for `-webkit-text-fill-color: transparent` in **both** themes. Snippet: `references/live-audit-snippets.md` (B). When you find legacy gradient text, kill it at the source in all modes — a per-mode patch leaves the bug in the un-patched mode.
+
+---
+
 ## Eye Comfort: Beyond the Ratio
 
 Contrast ratio alone does not determine reading comfort. These factors interact with contrast:
@@ -499,10 +522,11 @@ body {
 [ ] Disabled components: non-color indicator present (aria-disabled + cursor)
 [ ] All contrast verified with a tool — not estimated from OKLCH L alone
 [ ] Automated axe-core check passes for color-contrast violations
+[ ] Contrast measured against the rendered fill (`-webkit-text-fill-color`), not just `color` — no invisible gradient-text in any theme (R14)
 [ ] Eye comfort factors: line-height ≥ 1.5, max-width ≤ 75ch, body text not pure black/white
 ```
 
 ---
 
-*Rule version: global-design-skill v1.9.1 — `rules/19-contrast-standards.md`*
+*Rule version: global-design-skill v1.9.8 — `rules/19-contrast-standards.md`*
 *Related: `rules/04-color.md` (OKLCH system), `rules/07-accessibility.md` (ARIA, keyboard), `references/color-alchemy.md` (token building), `checklists/global-design-review.md` section 2*

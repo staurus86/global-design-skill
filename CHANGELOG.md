@@ -6,6 +6,21 @@ Format: [version] — date — description
 
 ---
 
+## [1.9.8] — 2026-05-30
+
+### Verification hardening — lessons from a real redesign
+
+A live redesign (a 393-card SEO catalog) surfaced classes of bugs that passed static review but broke the rendered UI: an invisible dark-mode heading (correct `color`, transparent `-webkit-text-fill-color`), a silently broken list-view toggle, a paid badge hidden under a featured badge, and a contrast audit that gave false positives on gradient backgrounds. Each miss is now encoded into the skill.
+
+- **New `references/live-audit-snippets.md`** — battle-tested browser-console audits that catch these: (A) gradient-aware contrast audit that reads the rendered fill, not just `color`; (B) invisible-text scanner for transparent `-webkit-text-fill-color`; (C) corner-badge overlap detector; (D) theme × view-mode × state exercise protocol with the required combinatorial matrix. Includes a Playwright/agent usage pattern.
+- **`rules/19-contrast-standards.md`** — new **R14**: `-webkit-text-fill-color` overrides `color`; audit the rendered fill, scan both themes for transparent fill, and kill legacy gradient text at the source in every mode (a per-theme patch leaves the bug in the un-patched theme). Acceptance criteria + footer updated.
+- **`checklists/global-design-review.md`** — new **Live Redesign Verification** block: audit both themes, toggle every view mode, exercise empty/filter/keyboard states, run the `themes × view-modes × states × card-tiers × viewports` matrix, and **fix at the system level** ("if it's a bug, it's everywhere").
+- `README.md` references tree → 24; `SKILL.md` version bump.
+
+**Principle distilled:** verify the *rendered* result in *every* mode — a correct screenshot of the default state is not verification.
+
+---
+
 ## [1.9.7] — 2026-05-30
 
 ### "Site as a product" delivery standards + ship-readiness gates

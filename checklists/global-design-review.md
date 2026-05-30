@@ -315,7 +315,28 @@ A site is a product in a real network, not just a visual. Before shipping a real
 - [ ] Long strings + RU/EN · empty state · data-heavy state · load-error · slow network
 - [ ] Keyboard-only pass · hoverless (touch) devices · visual-regression check before release
 
+### Live Redesign Verification (exercise the UI — don't trust the default screenshot)
+
+A redesign is **not** verified by a screenshot of the homepage hero. Bugs hide in states and modes that the default view never shows. Run `references/live-audit-snippets.md` against the rendered DOM, then exercise the full matrix.
+
+- [ ] **Both themes audited** — run the contrast + invisible-text scans in light AND dark (a heading can be visible in light, invisible in dark — `-webkit-text-fill-color`, see `rules/19` R14)
+- [ ] **Every view mode toggled** — grid ↔ list (and any other layout switch); confirm the grid actually reflows, cards don't cram, badges don't stretch
+- [ ] **Empty / no-results state** — type a query that matches nothing; confirm the empty state shows (reason + recovery)
+- [ ] **Every filter exercised** — each quick-filter/category; counts update; combined filters don't break layout
+- [ ] **Keyboard pass** — Tab through; every interactive element shows a visible focus ring
+- [ ] **Combinatorial edge matrix** — the bug is at the intersection, not the homepage:
+
+```
+themes × view-modes × states × card-tiers × viewports
+  light/dark  ·  grid/list  ·  default/filtered/empty/error
+  ·  normal/featured/paid/FEATURED+PAID  ·  390/768/1280
+```
+
+- [ ] **Fix at the system level** — if a defect appears on one instance of a repeated component (one card, one badge), it is in the shared definition → fix the rule, not the instance. "If it's a bug, it's everywhere." Re-scan to confirm the fix is global.
+
+> Lesson encoded here: every item above maps to a real miss — invisible dark headings, a broken list view, a hidden paid badge, a per-instance patch that left the bug elsewhere. Verify the rendered result, in every mode.
+
 ---
 
-*Checklist version: global-design-skill v1.9.7 — `checklists/global-design-review.md`*
+*Checklist version: global-design-skill v1.9.8 — `checklists/global-design-review.md`*
 *Related: `agents/design-critic.md`, `agents/frontend-handoff-reviewer.md`, `rules/00-escalation-protocol.md`*

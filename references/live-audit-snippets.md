@@ -1,0 +1,160 @@
+# Reference — Live Audit Snippets
+
+> Browser-console scripts to verify a **rendered** page — paste into DevTools (or run via Playwright `evaluate`). Built from real redesign failures where screenshotting the default state passed but the live UI was broken. Static review is not enough: a page can have a "correct" `color` and still render invisible text; a view toggle can silently break; a badge can hide behind another. **Run these against the real DOM, in every theme and every view mode.**
+
+Each snippet returns data — it does not change the page (except the exercise protocol, which toggles state).
+
+---
+
+## Why these exist (real failure modes they catch)
+
+| Failure | What looked fine | What was actually wrong |
+|---|---|---|
+| Invisible heading in dark mode | `color` was light (passed a naive contrast check) | `-webkit-text-fill-color: transparent` (leftover gradient-text) overrode `color` → text invisible |
+| Contrast "failures" that weren't | DOM-walk contrast script flagged white-on-dark hero | Hero/cards/footer use **gradient** backgrounds (`background-color: transparent`) → script read the wrong layer |
+| Hidden paid badge | `$` element existed in the DOM | On featured cards, `$` and the "Топ" badge were both absolute top-right → `$` sat under "Топ" |
+| Broken list view | Grid view screenshot looked great | View toggle put the class on the grid itself; the `.list-view .cards-grid` (descendant) rule never matched |
+
+The pattern: **measure the rendered result, not the source intent — and exercise interactive state.**
+
+---
+
+## A. Gradient-aware contrast audit
+
+Naive contrast scripts walk the DOM for a solid `background-color`. Hero/card/footer surfaces are gradients (transparent `background-color`), so the walk hits the wrong layer and reports nonsense. This version also reads the **rendered fill** (`-webkit-text-fill-color`), which overrides `color` for gradient text.
+
+```js
+(() => {
+  const cv = document.createElement('canvas'); cv.width = cv.height = 1;
+  const cx = cv.getContext('2d', { willReadFrequently: true });
+  const rgba = s => { if (!s) return null; cx.clearRect(0,0,1,1); cx.fillStyle='rgba(0,0,0,0)'; try{cx.fillStyle=s;}catch(e){return null;} cx.fillRect(0,0,1,1); const d=cx.getImageData(0,0,1,1).data; return [d[0],d[1],d[2],d[3]/255]; };
+  const stops = s => (!s||s==='none') ? [] : (s.match(/(rgba?\([^)]*\)|oklch\([^)]*\)|oklab\([^)]*\)|#[0-9a-f]{3,8})/gi)||[]).map(rgba).filter(c=>c&&c[3]>0.3);
+  const lum = ([r,g,b]) => { const f=c=>{c/=255;return c<=0.03928?c/12.92:Math.pow((c+0.055)/1.055,2.4);}; return 0.2126*f(r)+0.7152*f(g)+0.0722*f(b); };
+  const ratio = (a,b) => { const x=Math.max(lum(a),lum(b)), y=Math.min(lum(a),lum(b)); return (x+0.05)/(y+0.05); };
+  const bg = el => { let n=el; while(n&&n.nodeType===1){ const cs=getComputedStyle(n); const c=rgba(cs.backgroundColor); if(c&&c[3]>0.5) return c; const g=stops(cs.backgroundImage); if(g.length){ return [...[0,1,2].map(i=>Math.round(g.reduce((s,c)=>s+c[i],0)/g.length)),1]; } n=n.parentElement; } return [15,23,42,1]; };
+  const seen = new Map();
+  for (const el of document.querySelectorAll('h1,h2,h3,h4,p,a,span,strong,li,button')) {
+    if (!el.offsetParent) continue;
+    if (![...el.childNodes].some(n=>n.nodeType===3&&n.textContent.trim().length>1)) continue;
+    const sig = el.tagName+'.'+([...el.classList].slice(0,2).join('.'));
+    if (seen.has(sig)) continue;
+    const cs = getComputedStyle(el);
+    // rendered fill wins over color (gradient text / -webkit-text-fill-color)
+    const fill = cs.webkitTextFillColor && cs.webkitTextFillColor !== 'currentcolor' ? rgba(cs.webkitTextFillColor) : rgba(cs.color);
+    const fg = (fill && fill[3] > 0.05) ? fill : rgba(cs.color);
+    const px = parseFloat(cs.fontSize), bold = parseInt(cs.fontWeight)>=700, large = px>=24 || (bold&&px>=18.66);
+    seen.set(sig, { sig, ratio: +ratio(fg, bg(el)).toFixed(2), need: large?3:4.5, sample: el.textContent.trim().slice(0,24) });
+  }
+  const all = [...seen.values()].sort((a,b)=>a.ratio-b.ratio);
+  console.table(all);
+  return { fails: all.filter(x=>x.ratio < x.need), lowest: all.slice(0,5) };
+})();
+```
+
+**Read it right:** a `fail` with ratio ≈ 1.0 on a gradient surface may still be a false positive — confirm visually. But ratio ≈ 1.0 where the fill is **transparent** is a real invisible-text bug (see B).
+
+---
+
+## B. Invisible-text scanner (transparent `-webkit-text-fill-color`)
+
+Gradient text (`background-clip: text; -webkit-text-fill-color: transparent`) is a banned pattern (`rules/03-typography.md` R9). When it is half-removed — neutralised in one theme but not the other — the text goes **invisible** in the un-fixed theme while `color` still looks correct. This finds every such element.
+
+```js
+(() => {
+  const bad = [], seen = new Set();
+  document.querySelectorAll('*').forEach(el => {
+    if (!el.offsetParent) return;
+    if (![...el.childNodes].some(n=>n.nodeType===3&&n.textContent.trim().length>1)) return;
+    const tf = getComputedStyle(el).webkitTextFillColor;
+    if (tf === 'rgba(0, 0, 0, 0)' || tf === 'transparent' || /\/\s*0\s*\)/.test(tf)) {
+      const sig = el.tagName+'.'+([...el.classList].slice(0,2).join('.'));
+      if (seen.has(sig)) return; seen.add(sig);
+      bad.push({ sig, textFill: tf, color: getComputedStyle(el).color, sample: el.textContent.trim().slice(0,30) });
+    }
+  });
+  console.table(bad);
+  return { invisibleTextTypes: bad.length, items: bad };
+})();
+```
+
+Run in **both** themes. Any hit with no clipped gradient behind it = invisible text. Fix: reset `-webkit-text-fill-color: currentColor` in that theme (match the specificity of the rule that set it transparent), or remove the gradient-text rule entirely.
+
+---
+
+## C. Corner-badge overlap detector
+
+Absolutely-positioned corner badges (`$`, "Топ", "New", status dots) collide when two land in the same corner of the same card — one hides the other. This flags overlapping pairs.
+
+```js
+(() => {
+  const hits = [];
+  document.querySelectorAll('.card, [data-card], article').forEach(card => {
+    const badges = [...card.children, ...card.querySelectorAll(':scope > * > .card-badge')]
+      .filter(el => el.nodeType===1 && getComputedStyle(el).position==='absolute');
+    // include ::after/::before corner pseudo badges by checking computed content
+    const boxes = badges.map(b => ({ el:b, r:b.getBoundingClientRect() })).filter(x=>x.r.width>0);
+    for (let i=0;i<boxes.length;i++) for (let j=i+1;j<boxes.length;j++) {
+      const a=boxes[i].r, b=boxes[j].r;
+      const overlap = !(a.right<b.left||a.left>b.right||a.bottom<b.top||a.top>b.bottom);
+      if (overlap) hits.push({ card: card.querySelector('.card-title,h2,h3')?.textContent.trim().slice(0,24), a: boxes[i].el.className, b: boxes[j].el.className });
+    }
+  });
+  console.table(hits);
+  return { overlappingBadgePairs: hits.length, hits };
+})();
+```
+
+Note: CSS `::before`/`::after` pseudo badges (e.g. a `content:'Топ'` ribbon) are not in the DOM — also check them by reading `getComputedStyle(card, '::after').content` and comparing its `top`/`right` to the real badge's box.
+
+---
+
+## D. State exercise protocol (don't trust the default screenshot)
+
+A redesign is not verified until every interactive mode is exercised. Toggle each, then re-run A, B, C. **The combinatorial matrix is mandatory** — bugs hide at intersections (featured × paid, dark × list-view, empty × filtered).
+
+```js
+// 1. THEME — toggle and re-audit
+document.documentElement.classList.toggle('dark');   // or the project's theme mechanism
+
+// 2. VIEW MODE — exercise every layout toggle
+document.getElementById('listViewHeader')?.click();  // grid → list (and back)
+
+// 3. EMPTY / NO-RESULTS — type a query that matches nothing
+const q = document.querySelector('input[type="text"], input[type="search"]');
+if (q) { q.value = 'zzqx-no-match'; q.dispatchEvent(new Event('input',{bubbles:true})); }
+
+// 4. FILTERS — activate each filter, check counts + empty state
+document.querySelectorAll('.quick-filter-btn,[data-filter]').forEach(b => { /* click, observe */ });
+
+// 5. KEYBOARD FOCUS — Tab through; every interactive element must show a visible ring
+//    (manual: press Tab; or check :focus-visible styles exist for buttons/links/cards)
+```
+
+**The required matrix for a redesign:**
+
+```
+themes:      light, dark
+view modes:  grid, list (and any others)
+states:      default, filtered, empty/no-results, loading, error
+card tiers:  normal, featured, paid, featured+paid
+viewports:   390, 768, 1280
+```
+
+Run A (contrast) and B (invisible text) in **every theme**. Run C (badge overlap) on **featured+paid** cards. Exercise D for **every** toggle. Screenshot the intersections, not just the homepage hero.
+
+---
+
+## How to use in a Playwright/agent workflow
+
+```js
+// pattern: navigate → set state → evaluate(snippet) → assert
+await page.emulateMedia({ colorScheme: 'dark' });           // or add the theme class
+await page.evaluate(() => document.documentElement.classList.add('dark'));
+const invisible = await page.evaluate(/* snippet B */);
+if (invisible.invisibleTextTypes > 0) throw new Error('Invisible text in dark: ' + JSON.stringify(invisible.items));
+```
+
+---
+
+*Reference version: global-design-skill v1.9.8 — `references/live-audit-snippets.md`*
+*Related: `rules/19-contrast-standards.md` (R14 text-fill traps), `checklists/global-design-review.md` (Live Verification), `blueprints/redesign-existing-page.md` (Phase 6), `references/sources.md` (validation tools)*
