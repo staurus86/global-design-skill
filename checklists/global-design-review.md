@@ -284,7 +284,38 @@ Anti-slop has a technical floor beneath the visual ceiling. A nice-looking page 
 
 Full source list and tools: `references/sources.md`.
 
+### Ship-Readiness Product Gates
+
+A site is a product in a real network, not just a visual. Before shipping a real page (not a mockup), clear the product gates that apply. Standards for each live in `references/sources.md`.
+
+**Security** (apply to every shipped template)
+- [ ] HTTPS + HSTS; a Content-Security-Policy is set (no unrestricted inline scripts)
+- [ ] `Referrer-Policy` + `Permissions-Policy` set; cross-origin (CORS/COOP/CORP) deliberate
+- [ ] External scripts are trusted + minimal; forms protected against XSS/CSRF (OWASP)
+
+**SEO & machine-readability** (`rules/16-design-for-seo.md`)
+- [ ] Unique `title` + meta description; one `<h1>`; `canonical` set; `hreflang` if multilingual
+- [ ] `robots.txt` + XML sitemap valid; `noindex` only where intended
+- [ ] Schema.org JSON-LD for the page type (Article / Product / Organization / FAQ / Breadcrumb)
+- [ ] HTTP status hygiene: 200 for live pages, 301 for moves, 404/410 for gone (RFC 9110)
+
+**Social preview**
+- [ ] Open Graph set: `og:title`, `og:description`, `og:image` (1200×630), `og:url`, `og:type`
+- [ ] Card previews correctly in a messenger/X/LinkedIn before launch
+
+**PWA / app** (only if SaaS / dashboard / tool / installable)
+- [ ] Web App Manifest + icons; offline fallback; sensible update behavior
+
+**Privacy & consent** (commercial / EU / regulated)
+- [ ] Cookie/consent banner is honest — not a dark pattern; privacy policy linked in footer
+- [ ] Analytics/pixels disclosed; third-party scripts minimized; forms collect only needed data
+
+**QA matrix** (design is not done until edge states are checked)
+- [ ] Chrome / Safari / Firefox / Edge · desktop / tablet / mobile · light / dark
+- [ ] Long strings + RU/EN · empty state · data-heavy state · load-error · slow network
+- [ ] Keyboard-only pass · hoverless (touch) devices · visual-regression check before release
+
 ---
 
-*Checklist version: global-design-skill v1.9.6 — `checklists/global-design-review.md`*
+*Checklist version: global-design-skill v1.9.7 — `checklists/global-design-review.md`*
 *Related: `agents/design-critic.md`, `agents/frontend-handoff-reviewer.md`, `rules/00-escalation-protocol.md`*

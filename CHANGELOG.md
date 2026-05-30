@@ -6,6 +6,26 @@ Format: [version] — date — description
 
 ---
 
+## [1.9.7] — 2026-05-30
+
+### "Site as a product" delivery standards + ship-readiness gates
+
+The sources catalog gained the network/delivery layer (how a site lives in a real network, not just how it's built); the review checklist gained product gates beyond the visual.
+
+- `references/sources.md` — new sections:
+  - **HTTP & Networking** — RFC 9110 (Semantics), 9111 (Caching), 9112/9113/9114 (HTTP/1.1·2·3)
+  - **Security (headers & frontend)** — CSP, HSTS, Permissions-Policy, Referrer-Policy, COOP/CORP/CORS, OWASP Cheat Sheets
+  - **SEO & Machine-Readability** — Google Search Essentials, RFC 9309 (robots), Sitemaps Protocol, Robots meta / X-Robots-Tag, Schema.org
+  - **Social Preview** — Open Graph (og:image 1200×630)
+  - **PWA & Offline** — W3C Web App Manifest, Service Workers
+  - **Service Files** — RFC 8615 (.well-known), RFC 9116 (security.txt), humans.txt, llms.txt (proposal; GEO owned by the `geo` skill)
+  - **Performance** extended — Google CWV-in-Search, Navigation Timing L2, Resource Hints, MDN lazy loading + "performance is a design constraint" rule
+- `checklists/global-design-review.md` — **Ship-Readiness Product Gates** added: Security, SEO & machine-readability, Social preview, PWA/app, Privacy & consent, and a cross-browser/responsive/edge-state QA matrix.
+
+Already-covered layers (forms state matrix → `rules/10`, motion accessibility → `rules/05` R6, word-slop → Banned Patterns + `writing-rule` skill, SEO design → `rules/16`) were cross-referenced, not duplicated. HTTP/PWA/security kept as reference + handoff checks rather than new rules, staying within the skill's UI/UX scope.
+
+---
+
 ## [1.9.6] — 2026-05-30
 
 ### Web platform standards + verification floor added to the sources catalog

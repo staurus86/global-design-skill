@@ -66,6 +66,63 @@ The authority behind systematic CSS — cascade layers, tokens, values, color. R
 
 - **web.dev — Web Vitals** — https://web.dev/articles/vitals — the three Core Web Vitals and their "good" thresholds: **LCP < 2.5s, INP < 200ms, CLS < 0.1** (75th percentile). INP replaced FID as a Core Web Vital in March 2024.
 - **web.dev — LCP / INP / CLS** — https://web.dev/articles/lcp · https://web.dev/articles/inp · https://web.dev/articles/cls — per-metric optimization behind `rules/08-performance.md`.
+- **Google — Core Web Vitals & Search** — https://developers.google.com/search/docs/appearance/core-web-vitals — how CWV feed Google's page-experience signal.
+- **W3C — Navigation Timing Level 2** — https://www.w3.org/TR/navigation-timing-2/ — the spec for measuring navigation/document-load timing (real-user metrics).
+- **W3C — Resource Hints** — https://www.w3.org/TR/resource-hints/ — `dns-prefetch`, `preconnect`, `prefetch`, `prerender` to warm up critical resources early.
+- **MDN — Lazy loading** — https://developer.mozilla.org/en-US/docs/Web/Performance/Guides/Lazy_loading — defer non-critical media (`loading="lazy"`), never the LCP image.
+
+**Performance is a design constraint, not a post-ship fix.** Every block has a budget: hero weight, font count, JS bundle, the LCP image, animation cost. Design that breaks the budget is not done.
+
+## HTTP & Networking
+
+How the site is actually delivered — beautiful markup over a chaos of statuses, redirects, and cache headers is still a broken product.
+
+- **RFC 9110 — HTTP Semantics** — https://www.rfc-editor.org/rfc/rfc9110.html — methods, status codes, headers, URI semantics; the authority for 200/301/302/404/410, canonical logic, forms, and error responses.
+- **RFC 9111 — HTTP Caching** — https://www.rfc-editor.org/rfc/rfc9111.html — `Cache-Control`, `Age`, cacheable responses (SEO, speed, CDN).
+- **RFC 9112 / 9113 / 9114 — HTTP/1.1 · HTTP/2 · HTTP/3** — https://www.rfc-editor.org/rfc/rfc9112.html · …/rfc9113.html · …/rfc9114.html — which protocol the project runs on and how it affects speed (technical audit).
+
+## Security (headers & frontend)
+
+Every template needs a security pass: HTTPS, CSP, HSTS, safe external scripts, no inline chaos, safe forms, XSS protection.
+
+- **Content-Security-Policy (CSP)** — https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP — control which resources a page may load; primary XSS/injection defense.
+- **Strict-Transport-Security (HSTS)** — https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Strict-Transport-Security — force HTTPS on future visits.
+- **Permissions-Policy** — https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Permissions-Policy — allow/deny camera, mic, geolocation, fullscreen, etc.
+- **Referrer-Policy** — https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Referrer-Policy — how much referrer info leaks on navigation.
+- **COOP / CORP / CORS** — https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Cross-Origin-Opener-Policy — cross-origin isolation and resource-loading rules.
+- **OWASP Cheat Sheet Series** — https://cheatsheetseries.owasp.org/ — practical guides: auth, input validation, XSS, CSRF, file upload, API security.
+
+## SEO & Machine-Readability
+
+Every page is designed for the crawler/AI reader too: title, description, canonical, `hreflang`, schema, breadcrumbs, sitemap, robots, clean semantics. See `rules/16-design-for-seo.md`.
+
+- **Google Search Essentials** — https://developers.google.com/search/docs/essentials — baseline requirements to appear and work in Google Search.
+- **RFC 9309 — Robots Exclusion Protocol** — https://www.rfc-editor.org/rfc/rfc9309.html — the `robots.txt` standard (note: not an access-authorization mechanism).
+- **Sitemaps Protocol** — https://www.sitemaps.org/protocol.html — XML sitemap format, UTF-8, entity escaping, sitemap index.
+- **Robots meta / X-Robots-Tag** — https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag — `noindex`, `nofollow`, `nosnippet`, snippet limits.
+- **Schema.org** — https://schema.org/ — structured-data vocabulary for pages, products, organizations, articles, FAQ, events.
+
+## Social Preview
+
+A page can look great and share terribly. Every important page needs a share card: OG image 1200×630, real title + description, messenger fallback.
+
+- **Open Graph Protocol** — https://ogp.me/ — `og:title`, `og:description`, `og:image`, `og:url`, `og:type` to become a rich object in social graphs.
+
+## PWA & Offline
+
+For SaaS / dashboards / tools / web apps — check manifest, icons, offline fallback, install + update behavior.
+
+- **W3C — Web App Manifest** — https://www.w3.org/TR/appmanifest/ — app metadata: name, icons, `start_url`, launch behavior.
+- **W3C — Service Workers** — https://www.w3.org/TR/service-workers/ — background scripts for offline, caching, push.
+
+## Service Files (`.well-known` & site metadata)
+
+For modern SEO/GEO/AI-visibility projects, verify `/robots.txt`, `/sitemap.xml`, `/.well-known/security.txt`, `/humans.txt`, `/llms.txt`.
+
+- **RFC 8615 — Well-Known URIs** — https://datatracker.ietf.org/doc/html/rfc8615 — the standard `/.well-known/` path.
+- **RFC 9116 — security.txt** — https://datatracker.ietf.org/doc/rfc9116/ — machine-readable vulnerability-disclosure contact.
+- **humans.txt** — https://humanstxt.org/ — initiative (not a formal standard) crediting the people/tech behind a site.
+- **llms.txt** — https://llmstxt.org/ — *proposal* (not a mature standard) giving LLMs a curated context file. GEO/AI-visibility work is owned by the separate `geo` skill — cross-reference, don't duplicate it here.
 
 ## CSS Platform & Baseline
 
@@ -120,5 +177,5 @@ The verifiable floor. These don't make a design beautiful; they remove the techn
 
 ---
 
-*Reference version: global-design-skill v1.9.6 — `references/sources.md`*
-*Related: every `rules/*.md` (claims) · `references/tech-standards.md` (stack snippets) · `tokens/design-tokens.json` (DTCG format) · `validators/` (CI recipes) · `rules/19-contrast-standards.md` (WCAG/APCA) · `rules/04-color.md` (OKLCH)*
+*Reference version: global-design-skill v1.9.7 — `references/sources.md`*
+*Related: every `rules/*.md` (claims) · `references/tech-standards.md` (stack snippets) · `tokens/design-tokens.json` (DTCG format) · `validators/` (CI recipes) · `rules/16-design-for-seo.md` (SEO) · `rules/19-contrast-standards.md` (WCAG/APCA) · `rules/04-color.md` (OKLCH)*
