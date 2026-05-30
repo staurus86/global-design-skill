@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Playwright MCP
+.playwright-mcp/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+
+# Stray working screenshots dropped in repo root (curated copies live in redesigns/)
+/bst-*.jpeg
