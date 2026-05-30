@@ -3,7 +3,7 @@ name: global-design-skill
 description: "Design operating system for web UI/UX tasks. Use when user asks to design, build, redesign, or audit UI: landing pages, SaaS products, admin panels, dashboards, components, forms, animations, color systems, typography, developer handoff specs. Trigger phrases: 'design a page', 'build a landing page', 'create a SaaS UI', 'audit my design', 'review the UI', 'create a component', 'frontend spec', 'improve the interface', 'color tokens', 'add animation'. Stack: React 19, Next.js 15, Tailwind v4, motion/react, GSAP. Standards: CSS 2026 Baseline, WCAG 2.2 AA."
 license: MIT
 metadata:
-  version: 1.9.8
+  version: 1.9.9
   version_schema: semver
   author: global-design-skill
   tags: [design, ui-ux, react, nextjs, tailwind, accessibility, frontend, design-system]
@@ -69,6 +69,7 @@ Quick routing table — apply the Decision Pipeline for any task type. Full pack
 | Animations / motion | Effects Decision Block (in this file) | `patterns/effects/` directory |
 | UI block / component | Quality Gates → States → Tokens | `patterns/` directory |
 | UI review / audit | Banned Patterns + Quality Gates (in this file) | `checklists/ui-review.md` |
+| Catalog / directory / tool finder | Macrostructure-First + Memorability Gate → metaphor, JTBD scenarios, card differentiation, author curation | `references/catalog-and-directory-design.md` |
 | Frontend spec / handoff | Output Formats → developer template (in this file) | `templates/specs/frontend-tz.md` |
 | Industry / niche-specific rules | `GlobalDesignSkill:get_sector_context` (MCP tool) | `industries/*.md` |
 

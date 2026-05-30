@@ -272,6 +272,8 @@ Run before declaring any design done. Three altitudes — each catches what the 
 
 If any composition dimension fails, the design has a structural problem that style cannot fix. **If someone could look at the interface and say "AI made that" without doubt, it has failed.**
 
+**Fourth reflex — memorability (generative anti-slop).** Removing tells makes a page clean; it does not make it memorable. Show the design for 10 seconds, hide it, then answer: *what made this different from any other site in its category?* If the only answer is the category itself ("a catalog of SEO tools", "a SaaS landing"), it has no design DNA yet — it's a better template, not a product with a point of view. A pass names a hook: a visual metaphor, the author's real voice, a job-first finder, a signature interaction. See `rules/00` Memorability Gate.
+
 ### Standards Floor
 
 Anti-slop has a technical floor beneath the visual ceiling. A nice-looking page still fails if the foundation is slop. Verify:
@@ -338,5 +340,5 @@ themes × view-modes × states × card-tiers × viewports
 
 ---
 
-*Checklist version: global-design-skill v1.9.8 — `checklists/global-design-review.md`*
+*Checklist version: global-design-skill v1.9.9 — `checklists/global-design-review.md`*
 *Related: `agents/design-critic.md`, `agents/frontend-handoff-reviewer.md`, `rules/00-escalation-protocol.md`*

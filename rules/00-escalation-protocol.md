@@ -147,8 +147,23 @@ The strongest defense against AI-slop is structural, not cosmetic. Before colors
 | **Narrative scroll** | Scroll-driven sequence, one idea per viewport | Storytelling, product reveals, "wow" |
 | **Comparison-first** | Us-vs-them / before-after as the spine | Switching markets, displacement plays |
 | **Proof-first** | Logos, metrics, testimonials lead, pitch follows | Enterprise, trust-critical, late-stage |
+| **Scenario-first** | "What do you need?" → job buttons → results | Catalogs, directories, tool finders |
+| **Map / radar-first** | Interactive overview of the space; list is the drill-down | Large catalogs, many categories |
+| **Top-picks-first** | Curated "best of" shelves before the full base | Large bases needing a fast on-ramp |
 
-**Rule:** Name the macrostructure before writing markup ("Macrostructure: dashboard-first — the product is the argument"). Do not default to centered-hero → 3-feature-grid → pricing → footer; that skeleton *is* the slop. Combine with the aesthetic from Design Direction Fallback and the loudness from Design Dials — three independent choices, not one template.
+**Rule:** Name the macrostructure before writing markup ("Macrostructure: dashboard-first — the product is the argument"). Do not default to centered-hero → 3-feature-grid → pricing → footer (or, for catalogs, hero → stats → search → endless grid); that skeleton *is* the slop. Combine with the aesthetic from Design Direction Fallback and the loudness from Design Dials — three independent choices, not one template. For catalogs/directories specifically, see `references/catalog-and-directory-design.md`.
+
+---
+
+## Memorability Gate
+
+Removing slop tells makes a page *clean*; it does not make it *memorable*. Defensive anti-slop (delete what's generic) is half the job — **generative anti-slop adds what makes it *this* product**. A page that passes every Banned-Pattern check can still be forgettable. This gate is mandatory for any Level 3+ build.
+
+1. **Visual metaphor** — state the organising idea, not just the layout ("a tool radar", "a control cockpit", "the author's arsenal"). A grid is not a metaphor. The metaphor drives navigation, card shape, motion, and copy — and is what the visitor remembers.
+2. **The One Memorable Thing** — name the single element a visitor will recall in 3 days. Every decision serves it. If you can't name it, the design has no DNA yet.
+3. **10-second recall test** — show the design for 10 seconds, hide it, then answer: *what made this different from any other site in its category?* If the only answer is the category itself ("a catalog of SEO tools", "a SaaS landing page"), it fails — rework until the answer names the hook.
+
+**The trap this catches:** "I made it cleaner, denser, more useful" is real progress but is *not* anti-slop done. Useful + clean + forgettable = a better template, not a product with a point of view.
 
 ---
 

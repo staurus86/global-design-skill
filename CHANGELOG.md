@@ -6,6 +6,21 @@ Format: [version] — date — description
 
 ---
 
+## [1.9.9] — 2026-05-30
+
+### Generative anti-slop — from "remove tells" to "add design DNA"
+
+User review of the live redesign (a 393-tool SEO catalog) landed it at ~65–70%: cleaner, denser, more useful — but not memorable, no design DNA. The skill was strong at *defensive* anti-slop (delete what's generic) and weak at *generative* anti-slop (add what makes it *this* product). This release closes that gap, and adds the catalog/directory domain the skill never covered.
+
+- **New `references/catalog-and-directory-design.md`** — generative anti-slop for catalogs/directories: pick a visual metaphor (cockpit / market map / tool radar / arsenal / command center); catalog macrostructures beyond the standard skeleton; design selection scenarios (JTBD), not just tag filters; a card differentiation matrix (status / level / price / "best for" / "alternative to" / author note / freshness); a distributed **author curation layer** (opinions next to items, not just a bottom bio); a selection-methodology block; Top-N on-ramps; save/share/export; and the 10-second recall test.
+- **`rules/00-escalation-protocol.md`** — new **Memorability Gate** (visual metaphor + The One Memorable Thing + 10-second recall), mandatory for Level 3+. Macrostructure-First table gains catalog structures (scenario-first, map/radar-first, top-picks-first) and an explicit catalog anti-skeleton.
+- **`checklists/global-design-review.md`** — AI Slop Test gains a **fourth reflex: memorability** ("clean ≠ memorable").
+- `SKILL.md` Task Routing gains a Catalog / directory row; references tree → 25.
+
+**Principle distilled:** useful + clean + forgettable = a better template, not a product with a point of view. Anti-slop isn't done until the design has a hook a visitor can name in 10 seconds.
+
+---
+
 ## [1.9.8] — 2026-05-30
 
 ### Verification hardening — lessons from a real redesign
