@@ -176,6 +176,8 @@ Global Design Skill =
 | [Dark mode implementation](examples/06-dark-mode-implementation.md) | Token layer and theme switch strategy |
 | [Landing page audit](examples/audits/01-landing-page-audit.md) | Full page review with gate-based scoring |
 | [SaaS hero redesign](examples/landing-pages/01-saas-hero-redesign.md) | Landing page rewrite with implementation notes |
+| [Skill walkthroughs — 5 site types](examples/skill-walkthroughs.md) | Dry-run routing: fintech SaaS · travel landing · e-commerce catalog redesign · unknown-niche learn · healthcare audit |
+| [bestseotools case study (before → after)](redesigns/bestseotools/CASE-STUDY.md) | Real multi-pass catalog redesign, 65–70% → ~85%, with screenshots |
 
 ---
 
