@@ -6,6 +6,25 @@ Format: [version] — date — description
 
 ---
 
+## [1.9.3] — 2026-05-30
+
+### Authoritative sources catalog (new)
+
+- `references/sources.md` — primary-source bibliography behind the skill's standards, grouped by domain (accessibility/contrast, OKLCH color, typography, motion, Core Web Vitals, CSS Baseline, frameworks, UX laws, design systems). URLs verified current as of May 2026; dated facts noted (WCAG 2.2 Rec Oct 2023, INP replaced FID Mar 2024, Motion renamed from Framer Motion 2025).
+- `README.md` — references tree corrected to 22 files: adds the previously unlisted `tech-standards.md` plus new `sources.md`.
+- `skills/global-design/SKILL.md` — Full Package Reference notes the sources catalog.
+
+### Frameworks harvested from the retired `hyperdesign` skill
+
+- `rules/00-escalation-protocol.md` — three approach frameworks added:
+  - **Design Dials** — DESIGN_VARIANCE / MOTION_INTENSITY / VISUAL_DENSITY, independent 1–10 sliders with defaults and raise/lower triggers
+  - **Junior Pass** — show assumptions + gray-box placeholders before any Level 3+ build; skip only for Level 1–2 or explicit "just build it"
+  - **Design Direction Fallback — 5 Schools** — for style-vague requests: propose 3 contrasting directions from Information Architecture / Motion Poetics / Minimalism / Experimental Avant-garde / Eastern Philosophy
+- `checklists/global-design-review.md` — **AI Slop Test** added to Pre-Delivery Sanity Tests: first-order (category→look), second-order (category+avoided-cliché→look), third-order composition audit (balance / whitespace / rhythm / gestalt)
+- `hyperdesign` skill retired — all unique content harvested; remaining material was already covered by `agents/`, `patterns/`, `blueprints/`, and `rules/`.
+
+---
+
 ## [1.9.2] — 2026-05-30
 
 ### Typography Rule — 3 new rules (gap-closing vs. industry references)

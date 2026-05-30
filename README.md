@@ -293,7 +293,7 @@ global-design-skill/
 │       ├── cursor-effects.md       ← Glow, custom dot, invert, text-reveal, trail
 │       └── 3d-effects.md           ← CSS 3D, card flip, product tilt, Three.js, Spline
 │
-├── references/                     ← 20 reference files: knowledge + examples
+├── references/                     ← 22 reference files: knowledge + examples
 │   ├── typography.md               ← Variable fonts, fluid scale, pairing, loading
 │   ├── color-alchemy.md            ← OKLCH color science, palette construction
 │   ├── motion-systems.md           ← CSS + GSAP motion patterns
@@ -313,7 +313,9 @@ global-design-skill/
 │   ├── portfolios.md               ← 8 annotated portfolio sites with thesis analysis
 │   ├── pricing-pages.md            ← Linear/Vercel/Stripe/Notion pricing analyzed
 │   ├── navigation-examples.md      ← Sidebar/top nav/mobile/breadcrumbs in the wild
-│   └── behavioral-design.md        ← 29 cognitive biases mapped to UI decisions (pricing, CTAs, nav, trust, onboarding)
+│   ├── behavioral-design.md        ← 29 cognitive biases mapped to UI decisions (pricing, CTAs, nav, trust, onboarding)
+│   ├── tech-standards.md           ← Full stack snippets: CSS/Tailwind/React/Next/Motion/GSAP
+│   └── sources.md                  ← Authoritative primary sources (WCAG, CWV, OKLCH, Baseline, Laws of UX...)
 │
 ├── tokens/                         ← Design token system
 │   ├── design-tokens.json          ← W3C DTCG format (Style Dictionary ready)

@@ -256,7 +256,23 @@ Load the page on a 390px viewport. In 3 seconds, can a visitor answer:
 
 If any answer is unclear in 3 seconds — the above-the-fold is not doing its job.
 
+### AI Slop Test
+
+Run before declaring any design done. Three altitudes — each catches what the previous misses.
+
+**First-order reflex — category → look.** Could someone guess the theme + palette from the category alone? "Observability → dark blue", "healthcare → white + teal", "finance → navy + gold", "crypto → neon on black". If yes, rework the scene sentence and color strategy until the answer is *not* obvious from the domain.
+
+**Second-order reflex — category + avoided-cliché → look.** Could someone guess the aesthetic family once the obvious cliché is avoided? "AI tool that's not SaaS-cream → editorial-typographic", "fintech that's not navy-and-gold → terminal-native dark". This is the trap one tier deeper: the first reflex was dodged, the second wasn't. Rework until *both* altitude checks fail to predict the result.
+
+**Third-order — composition audit (independent of aesthetic).** Does the layout hold up spatially regardless of style?
+- **Balance:** clear visual centre of gravity? Heavy elements offset by lighter ones across the axis?
+- **Whitespace:** does negative space guide the eye, or fragment the layout into disconnected islands?
+- **Rhythm:** are spacing intervals derived from a scale, creating legible cadence — not arbitrary padding?
+- **Gestalt:** proximity (related close, unrelated separated), similarity (same function = same treatment), figure/ground (content unmistakably distinct from background)?
+
+If any composition dimension fails, the design has a structural problem that style cannot fix. **If someone could look at the interface and say "AI made that" without doubt, it has failed.**
+
 ---
 
-*Checklist version: global-design-skill v1.6 — `checklists/global-design-review.md`*
+*Checklist version: global-design-skill v1.9.3 — `checklists/global-design-review.md`*
 *Related: `agents/design-critic.md`, `agents/frontend-handoff-reviewer.md`, `rules/00-escalation-protocol.md`*

@@ -119,6 +119,36 @@ If a brand is named but you are not certain of its aesthetic, state that and ask
 
 ---
 
+## Design Dials
+
+Once the escalation level is set, calibrate the *loudness* of the output with three dials. State them explicitly at the start of a design response whenever they differ from the defaults — the user can then push any dial up or down in one word.
+
+| Dial | 1 | 10 | Default | Raise when | Lower when |
+|---|---|---|---|---|---|
+| **DESIGN_VARIANCE** | safe / conventional | pioneering / unexpected | 5 | portfolio, agency, "wow", brand hero | B2B form-first, admin, trust-critical |
+| **MOTION_INTENSITY** | static | full theatrical | 4 | landing, interactive showcase | dashboard, data table, productivity app |
+| **VISUAL_DENSITY** | sparse / editorial | data-dense | 4 | marketing, editorial, portfolio | analytics, monitoring, back-office (raise to 7–9) |
+
+**Rule:** Dials are independent. A monitoring dashboard can be high density (8) and low motion (2) and low variance (3) at once. Do not collapse all three to a single "boldness" slider.
+
+---
+
+## Junior Pass
+
+Before a full implementation on any Level 3+ task, show the cheap version first: stated assumptions + reasoning + gray-box placeholders with labels — then wait for confirmation. Understanding the request wrong early is ~100× cheaper to fix than after a full build.
+
+```
+JUNIOR PASS — before building [X]:
+  Assumptions:   [type / user / goal / device / tone you inferred]
+  Approach:      [archetype, layout skeleton, dials]
+  Placeholders:  [ gray box: "hero image 16:9" ] [ gray box: "3 feature cards" ]
+  Confirm before I build the real thing? (or correct any assumption)
+```
+
+**Skip the Junior Pass only when:** the task is Level 1–2, or the user explicitly said "just build it" / "don't ask, implement."
+
+---
+
 ## Ambiguity Resolution Protocol
 
 When the request doesn't map cleanly to a level:
@@ -128,6 +158,24 @@ When the request doesn't map cleanly to a level:
 3. **Never silently guess** — guessing level wrong wastes more time than a two-sentence clarification.
 
 For requests that are genuinely vague ("make it better"), default to Level 2 and state what you're doing.
+
+---
+
+## Design Direction Fallback — 5 Schools
+
+When the request is vague about *style* ("make something nice", "I don't know what I want", "just design it"), do not reach for the same aesthetic reflex. Propose exactly **3 differentiated directions**, each drawn from a different design school — as visual descriptions, before any code.
+
+| School | Visual character | Representative voices |
+|---|---|---|
+| **Information Architecture** | Rational, data-driven, restrained | Pentagram, Swiss International, Noto |
+| **Motion Poetics** | Kinetic, immersive, technical beauty | Field.io, Refik Anadol, generative systems |
+| **Minimalism** | Order, generous whitespace, precision | Kenya Hara, Naoto Fukasawa, Apple (pre-2020) |
+| **Experimental Avant-garde** | Pioneering, generative, visual shock | Stefan Sagmeister, David Carson, Lubalin |
+| **Eastern Philosophy** | Warmth, poetic restraint, contemplative | Kengo Kuma, wabi-sabi, Muji |
+
+**Per direction, present:** a named philosopher/studio anchor ("Kenya Hara-style Eastern Minimalism", not "minimalism") · a 1-sentence reason it fits this context · 3–4 signature visual traits · 3–5 tone keywords.
+
+**Rule:** No two directions from the same school — they must produce obvious visual contrast. After the user picks, return to the escalation level and Design Dials with the confirmed direction.
 
 ---
 
