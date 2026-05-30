@@ -12,7 +12,8 @@ Every `trigger-evals.json` scenario shows that the skill activates for the right
 |---|---|
 | `trigger-evals.json` | 15 prompts with `should_trigger: true/false` — tests skill routing |
 | `output-evals.json` | 5 full-task scenarios with `required_in_output` and `forbidden_in_output` |
-| `golden/` | Reference outputs — what a high-quality response looks like for key tasks |
+| `golden/` | Reference specs (one per output eval, `o01`–`o05`) — what a high-quality response must and must not contain |
+| `../scripts/check-eval-output.py` | Deterministic checker for `required_in_output` / `forbidden_in_output` terms against a captured response |
 
 ## How to use trigger evals
 
@@ -27,6 +28,14 @@ For each scenario in `output-evals.json`:
 2. Check that all `required_in_output` terms appear in the response
 3. Check that none of `forbidden_in_output` terms appear
 4. Verify the listed `gate_checks` are addressed
+
+Steps 2–3 can be automated. Save the response to a file and run:
+
+```bash
+python scripts/check-eval-output.py o02 response.md
+```
+
+The script reports each required/forbidden term as ok/MISSING/PRESENT and exits non-zero on failure. `gate_checks` remain a manual, semantic review.
 
 ## Golden outputs
 
