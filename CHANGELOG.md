@@ -6,7 +6,7 @@ Format: [version] — date — description
 
 ---
 
-## [1.9.1] — 2026-05-29
+## [1.9.1] — 2026-05-30
 
 ### Contrast Standards Rule (new)
 
@@ -37,6 +37,21 @@ Format: [version] — date — description
 
 - `CLAUDE.md` — added routing row: "Contrast audit / fix" → `rules/19-contrast-standards.md`
 - `README.md` — rule 19 added to repository structure tree
+
+### Maintainability Fixes (skill-insp audit)
+
+- `skills/global-design/SKILL.md` — Full Package Reference: rules count corrected 19 → 20 (escalation protocol + contrast standards added to the enumeration); frontmatter version 1.9.0 → 1.9.1
+- `skills/global-design/task-routing.md` — Rules-by-Domain table completed with rows 17 (motion/react), 18 (css-framework-selection), 19 (contrast-standards), 00 (escalation-protocol); routing footer v1.7.0 → v1.9.1
+- `manifest.yaml` — version 1.9.0 → 1.9.1
+
+### Progressive Disclosure & Eval Coverage (skill-insp audit)
+
+- `references/tech-standards.md` (new) — full stack code reference (CSS, Tailwind v4, React 19, Next.js 15, motion/react, GSAP, TypeScript 5) extracted from SKILL.md
+- `skills/global-design/SKILL.md` — Technology Standards replaced with a compact "use X / not Y" summary table + pointer; file slimmed 609 → 420 lines (standalone utility preserved)
+- `evals/golden/o02-o05.expected.md` (new) — golden reference specs for the remaining output evals (coverage now 5/5)
+- `scripts/check-eval-output.py` (new) — deterministic checker for `required_in_output` / `forbidden_in_output` terms against a captured response
+- `evals/README.md` — documented the eval runner
+- `skills/global-design/SKILL.md` — Task Routing: added `GlobalDesignSkill:get_sector_context` (MCP) row for industry/niche-specific rules
 
 ---
 
