@@ -166,6 +166,10 @@ Load the relevant rule alongside any blueprint or pattern.
 | Landing pages | `rules/14-landing-pages.md` |
 | Iconography | `rules/15-iconography.md` |
 | Design for SEO | `rules/16-design-for-seo.md` |
+| Motion / React | `rules/17-motion-react.md` |
+| CSS framework selection | `rules/18-css-framework-selection.md` |
+| Contrast standards (WCAG/APCA) | `rules/19-contrast-standards.md` |
+| Escalation protocol (request depth) | `rules/00-escalation-protocol.md` |
 
 ---
 
@@ -223,5 +227,5 @@ Load when the task involves finding, studying, or referencing real-world example
 
 ---
 
-*Routing version: global-design-skill v1.7.0 — `skills/global-design/task-routing.md`*  
-*Updated: 2026-05-26*
+*Routing version: global-design-skill v1.9.1 — `skills/global-design/task-routing.md`*  
+*Updated: 2026-05-30*
