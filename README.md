@@ -6,7 +6,7 @@ Turn Claude Code, Cursor, Codex, ChatGPT, Windsurf, and GitHub Copilot into a st
 
 Not another prompt collection. A self-learning design operating system: it knows sector-specific rules for 13 industries, learns from reference sites you point it at, and calibrates its pattern weights based on your feedback. All local, no telemetry.
 
-[![Version](https://img.shields.io/badge/version-1.9.0-blue)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-1.9.10-blue)](CHANGELOG.md)
 [![Standards](https://img.shields.io/badge/CSS-2026%20Baseline-green)](rules/)
 [![React](https://img.shields.io/badge/React-19-blue)](rules/)
 [![Next.js](https://img.shields.io/badge/Next.js-15-black)](rules/)
@@ -68,7 +68,7 @@ Global Design Skill gives the agent a reusable design operating system. It force
 - how accessibility is specified
 - how a developer can implement it without asking follow-up questions
 
-Current v1.7.0 includes **SEDI (Self-Evolving Design Intelligence)**: the skill detects your business sector automatically (B2B SaaS, e-commerce, health, finance, and 10 more), applies sector-specific banned patterns and required elements, learns from reference sites you point it at, and refines its pattern weights based on revision count. The more you use it, the more accurate it becomes — and all of that stays on your machine.
+It also includes **SEDI (Self-Evolving Design Intelligence)**: the skill detects your business sector automatically (B2B SaaS, e-commerce, health, finance, and 10 more), applies sector-specific banned patterns and required elements, learns from reference sites you point it at, and refines its pattern weights based on revision count. The more you use it, the more accurate it becomes — and all of that stays on your machine.
 
 ## Start here
 
@@ -181,17 +181,20 @@ Global Design Skill =
 
 ## Real-World Result
 
-Tested on a live Russian SEO tools directory (393 tools, real production traffic). Prompt: **"сделай дизайн лучше"** ("make the design better").
+Tested on a live Russian SEO tools directory (450 tools, real production traffic), over several passes. Initial prompt: **"сделай дизайн лучше"** ("make the design better").
 
 | Before | After |
 |--------|-------|
 | ![Before](docs/assets/before.png) | ![After](docs/assets/after.png) |
 
-**What changed in one pass:**
-- Plain text hero → editorial split layout with floating dashboard mockup
-- No social proof → three hard stats (393 tools · 45 categories · 6 groups) with live update timestamp
-- Flat color background → depth with layered UI elements
-- Search bar as afterthought → search as the visual anchor of the hero
+**What changed:**
+- Generic "best SEO tools" hero → an author-framed hero ("the tools in my working stack") with a curator chip and real result tiles
+- No selection path → JTBD scenarios ("what do you need?") + curated "ready stacks" shelves on top of the 450-item base
+- One ambiguous `$` symbol → explicit **Free / Freemium / Paid** badges + **★ my stack**
+- Flat 45-item category row → grouped category nav, a tool-radar with legend, plus favorites / CSV-Markdown export / share
+- Cleaned the semantic layer too: decorative numbers `aria-hidden`, no stray glyphs in `innerText`, real static count fallbacks
+
+Full before → after: [`redesigns/bestseotools/CASE-STUDY.md`](redesigns/bestseotools/CASE-STUDY.md).
 
 ---
 
@@ -446,7 +449,7 @@ All colors use **OKLCH** for perceptual uniformity. All spacing sits on a **4px 
 ```css
 /* tokens/tokens.css — import in your project */
 --color-accent:  oklch(57% 0.22 258);          /* electric blue */
---color-surface: oklch(100% 0.003 258);        /* card background */
+--color-surface: oklch(100% 0.002 258);        /* card background */
 --text-hero:     clamp(3.5rem, 8vw + 1rem, 12rem);
 --space-6:       24px;                          /* 4px × 6 */
 --radius-xl:     16px;
