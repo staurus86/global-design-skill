@@ -48,6 +48,8 @@
   --color-warning-bg: oklch(18% 0.06 75);
   --color-error:      oklch(60% 0.18 25);
   --color-error-bg:   oklch(17% 0.07 25);
+  --color-info:       oklch(68% 0.13 230);
+  --color-info-bg:    oklch(18% 0.05 230);
 
   /* --- Shadows: invisible on dark, use borders + depth instead --- */
   --shadow-xs: 0 0 0 1px var(--color-border);

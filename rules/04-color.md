@@ -76,7 +76,7 @@ Multiple accent hues create visual conflict. States, emphasis levels, and contex
 --color-tertiary: oklch(65% 0.22 30);   /* orange — third accent */
 ```
 
-**Exception:** Status colors (success/warning/error) are semantic — they communicate specific system states and use different hues by necessity. They are not accent variations.
+**Exception:** Status colors (success/warning/error/info) are semantic — they communicate specific system states and use different hues by necessity. They are not accent variations. Info uses a cyan hue (≈230) kept distinct from the accent hue so an informational message never reads as a primary action.
 
 ---
 
@@ -149,6 +149,7 @@ Approximately 8% of men and 0.5% of women have color vision deficiency. A UI tha
 | Error | Red border | + error icon + error text |
 | Success | Green indicator | + checkmark icon + success label |
 | Warning | Yellow/amber | + warning icon + warning text |
+| Info | Cyan/blue | + info icon + info text |
 | Disabled | Reduced opacity | + `aria-disabled="true"` + cursor:not-allowed |
 | Active nav item | Accent color | + font-weight change or background |
 | Required field | — | + asterisk (*) + screen reader "required" |
@@ -304,5 +305,5 @@ ul[data-columns] {
 
 ---
 
-*Rule version: global-design-skill v1.6 — `rules/04-color.md`*
+*Rule version: global-design-skill v1.9.2 — `rules/04-color.md`*
 *Related: `tokens/tokens.css` color section, `tokens/tokens-dark.css`, `recipes/add-dark-mode.md`, `references/color-alchemy.md`*

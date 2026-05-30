@@ -6,6 +6,29 @@ Format: [version] — date — description
 
 ---
 
+## [1.9.2] — 2026-05-30
+
+### Typography Rule — 3 new rules (gap-closing vs. industry references)
+
+- `rules/03-typography.md` — closes gaps surfaced by cross-referencing canonical UI guides (Adham Dannaway "16 UI Design Tips", Nordclan "UX for frontend"):
+  - **R11** — Left-align body text; center only elements ≤ 2 lines; never justify web body text
+  - **R12** — Pick body/UI fonts with a tall x-height (legible at 14–18px); reserve low x-height fonts (Gill Sans, Futura) for large display
+  - **R13** — Vertical rhythm: derive text spacing from line-height (40–75%), gap above a heading > gap below it
+  - Anti-patterns + Acceptance Criteria extended with the three new checks
+
+### Info status color (new — 4th functional color)
+
+- Adds the `info` status color (cyan, hue 230 — kept distinct from accent hue 258 so an informational message never reads as a primary action). Completes the standard error/success/warning/info set.
+  - `tokens/tokens.css` — `--color-info-100/500/700` primitives + `--color-info` / `--color-info-bg` semantic tokens
+  - `tokens/tokens-dark.css` — dark-mode info overrides (both `[data-theme="dark"]` and `prefers-color-scheme` blocks)
+  - `tokens/design-tokens.json` — info primitive scale + semantic status entries
+  - `tokens/README.md` — info documented in the semantic status list
+  - `skills/global-design/SKILL.md` — inline `--color-info` token in the core palette
+  - `rules/04-color.md` — R3 status exception + R7 color-is-never-the-only-signal table include info
+  - `rules/06-components.md` — R8 adds `.badge-info`
+
+---
+
 ## [1.9.1] — 2026-05-30
 
 ### Contrast Standards Rule (new)

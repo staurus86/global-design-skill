@@ -3,7 +3,7 @@ name: global-design-skill
 description: "Design operating system for web UI/UX tasks. Use when user asks to design, build, redesign, or audit UI: landing pages, SaaS products, admin panels, dashboards, components, forms, animations, color systems, typography, developer handoff specs. Trigger phrases: 'design a page', 'build a landing page', 'create a SaaS UI', 'audit my design', 'review the UI', 'create a component', 'frontend spec', 'improve the interface', 'color tokens', 'add animation'. Stack: React 19, Next.js 15, Tailwind v4, motion/react, GSAP. Standards: CSS 2026 Baseline, WCAG 2.2 AA."
 license: MIT
 metadata:
-  version: 1.9.1
+  version: 1.9.2
   version_schema: semver
   author: global-design-skill
   tags: [design, ui-ux, react, nextjs, tailwind, accessibility, frontend, design-system]
@@ -190,6 +190,7 @@ Use these when no project token system exists, or as the reference palette. Full
   --color-success: oklch(55% 0.18 145);
   --color-warning: oklch(65% 0.18 75);
   --color-error:   oklch(52% 0.22 25);
+  --color-info:    oklch(60% 0.14 230);  /* cyan — distinct from accent hue 258 */
 
   /* Semantic — map to primitives in your theme */
   --color-bg:           var(--color-neutral-0);

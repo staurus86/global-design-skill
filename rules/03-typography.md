@@ -257,6 +257,64 @@ Variable fonts allow smooth transitions between weights. Used deliberately, this
 
 ---
 
+## R11 — Left-align body text. Center only headings and short labels.
+
+A centered paragraph has a ragged left edge, so the eye must hunt for the start of each line — reading speed drops and longer blocks become tiring. Left alignment gives every line the same anchor.
+
+```css
+/* Correct — body left-aligned, headings may center */
+.prose, p, li { text-align: left; }
+.hero-heading, .section-eyebrow { text-align: center; }  /* OK: ≤ 2 lines */
+
+/* Wrong — centered multi-line body */
+.feature-card p { text-align: center; }   /* ragged left edge, slow to read */
+```
+
+**Rule:** Center is allowed only for elements ≤ 2 lines (hero H1, eyebrow, single-line CTA label). Any element that can wrap to 3+ lines is left-aligned. Never justify body text on the web — it creates rivers of whitespace without a hyphenation engine.
+
+---
+
+## R12 — Pick body fonts with a tall x-height.
+
+x-height is the height of lowercase letters relative to cap height. Tall x-height keeps letterforms open and legible at UI sizes (14–18px); low x-height fonts (Gill Sans, Futura) close up and strain reading on screens.
+
+```css
+/* Correct — tall x-height body fonts for UI/body copy */
+--font-body: 'Instrument Sans', 'DM Sans', system-ui, sans-serif;  /* tall x-height */
+
+/* Avoid as body/UI font — low x-height, loses legibility < 18px */
+/* Gill Sans, Futura, Century Gothic — display-only, never UI body */
+```
+
+**Selection test:** Set the candidate at 14px next to Instrument Sans or DM Sans. If the lowercase letters look noticeably smaller and the counters (enclosed spaces in a, e, o) start closing, the x-height is too low for body use — reserve it for large display only.
+
+---
+
+## R13 — Vertical rhythm: derive text spacing from line-height.
+
+Spacing between text elements is not arbitrary — it scales from the element's line-height so rhythm stays consistent across sizes. Space *above* a heading is larger than space *below* it, because the heading belongs to the content that follows.
+
+```css
+/* Spacing = 40–75% of the element's line-height (× font-size) */
+h2 {
+  --lh: calc(1.3 * 1em);              /* heading line-height */
+  margin-top: calc(var(--lh) * 0.75); /* larger gap above — separates from prior block */
+  margin-bottom: calc(var(--lh) * 0.4); /* smaller gap below — binds to its content */
+}
+
+p + p { margin-top: calc(1.65em * 0.5); }  /* paragraph rhythm from body line-height */
+
+/* Wrong — fixed pixel gaps unrelated to type size */
+h2 { margin-top: 40px; margin-bottom: 40px; }  /* equal above/below breaks grouping */
+```
+
+**Rules:**
+- Gap above a heading > gap below it (heading groups with what follows — see `rules/01-visual-hierarchy.md` R5).
+- Larger type → larger surrounding space; small type → tight space.
+- Place images *above* their caption/heading, not below.
+
+---
+
 ## Typography Anti-Patterns
 
 - Paragraph width > 80ch (eyes lose line when scanning)
@@ -267,6 +325,9 @@ Variable fonts allow smooth transitions between weights. Used deliberately, this
 - Line-height < 1.4 for body text
 - `letter-spacing: -0.05em` on body text (negative tracking works only for large display)
 - `text-transform: uppercase` on long sentences (should only be used on labels ≤ 5 words)
+- Centered or justified multi-line body text (ragged/uneven left edge slows reading)
+- Low x-height fonts (Gill Sans, Futura) as UI/body text below 18px
+- Fixed-pixel margins on headings unrelated to line-height (breaks vertical rhythm)
 
 ---
 
@@ -283,6 +344,9 @@ Variable fonts allow smooth transitions between weights. Used deliberately, this
 [ ] Eyebrow tag present on hero H1 and major section H2s
 [ ] No gradient text
 [ ] Prose max-width ≤ 680px (65–75ch)
+[ ] Body text left-aligned — center only on elements ≤ 2 lines
+[ ] Body/UI font has a tall x-height (legible at 14–18px)
+[ ] Heading spacing derives from line-height — gap above > gap below
 ```
 
 ---
@@ -311,5 +375,5 @@ h1, h2, .price-figure {
 
 ---
 
-*Rule version: global-design-skill v1.6 — `rules/03-typography.md`*
+*Rule version: global-design-skill v1.9.2 — `rules/03-typography.md`*
 *Related: `references/typography.md`, `tokens/tokens.css` typography section, `patterns/marketing-blocks/hero-sections.md`*

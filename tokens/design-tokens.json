@@ -60,6 +60,12 @@
         "100": { "$value": "oklch(95% 0.07 25)" },
         "500": { "$value": "oklch(52% 0.22 25)",  "$description": "Base error red" },
         "700": { "$value": "oklch(40% 0.20 25)" }
+      },
+
+      "info": {
+        "100": { "$value": "oklch(95% 0.06 230)" },
+        "500": { "$value": "oklch(60% 0.14 230)", "$description": "Base info cyan — distinct from accent hue 258" },
+        "700": { "$value": "oklch(48% 0.16 230)" }
       }
     },
 
@@ -96,7 +102,9 @@
         "warning":    { "$value": "{color.primitive.warning.500}" },
         "warningBg":  { "$value": "{color.primitive.warning.100}" },
         "error":      { "$value": "{color.primitive.error.500}" },
-        "errorBg":    { "$value": "{color.primitive.error.100}" }
+        "errorBg":    { "$value": "{color.primitive.error.100}" },
+        "info":       { "$value": "{color.primitive.info.500}" },
+        "infoBg":     { "$value": "{color.primitive.info.100}" }
       }
     }
   },

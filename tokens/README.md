@@ -60,6 +60,7 @@
 --color-success / --color-success-bg
 --color-warning / --color-warning-bg
 --color-error   / --color-error-bg
+--color-info    / --color-info-bg     /* cyan — informational, distinct from accent */
 ```
 
 ### Usage examples

@@ -256,6 +256,7 @@ Badges communicate state. State requires both color AND label — never color al
 .badge-active   { color: oklch(38% 0.16 145); background: oklch(94% 0.08 145); }
 .badge-pending  { color: oklch(42% 0.16 65);  background: oklch(95% 0.08 65); }
 .badge-error    { color: oklch(38% 0.18 25);  background: oklch(94% 0.08 25); }
+.badge-info     { color: oklch(40% 0.15 230); background: oklch(94% 0.06 230); }
 .badge-inactive { color: oklch(45% 0 0);      background: oklch(93% 0 0); }
 ```
 
