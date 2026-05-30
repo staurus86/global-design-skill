@@ -455,6 +455,72 @@ Best for: SaaS apps, dashboards, authenticated product views.
 
 ---
 
+## Pattern C — Fluid Island (floating detached nav)
+
+A navbar that reads as a *spatial object* rather than browser chrome: a glass pill detached from the viewport edges, centered, sized to its content. Use for marketing, portfolio, and agency pages — not for data-dense app shells, where a docked header is more efficient.
+
+```html
+<header class="island-nav">
+  <nav class="island-nav__inner" aria-label="Primary">
+    <a href="/" class="island-nav__brand">Logo</a>
+    <ul class="island-nav__links">
+      <li><a href="/work">Work</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/pricing">Pricing</a></li>
+    </ul>
+    <a href="/contact" class="island-nav__cta">Contact</a>
+  </nav>
+</header>
+```
+
+```css
+.island-nav {
+  position: sticky;
+  top: var(--space-6);              /* detached from the top edge — not glued */
+  z-index: var(--z-sticky);
+  display: flex;
+  justify-content: center;
+  padding-inline: var(--space-4);
+  pointer-events: none;             /* the gutter doesn't block clicks */
+}
+
+.island-nav__inner {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  width: max-content;               /* sized to content, not full-bleed */
+  max-width: 100%;
+  padding: var(--space-2) var(--space-2) var(--space-2) var(--space-5);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border);
+  background: oklch(from var(--color-surface) l c h / 0.7);
+  backdrop-filter: blur(16px) saturate(160%);
+  box-shadow: var(--shadow-md);
+}
+
+/* CTA sits flush inside the pill's right padding */
+.island-nav__cta {
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  background: var(--color-accent);
+  color: var(--color-neutral-0);
+}
+
+/* Mobile: the island shrinks to brand + menu trigger; links move to an overlay */
+@media (max-width: 768px) {
+  .island-nav__links { display: none; }
+}
+```
+
+**Rules:**
+- `backdrop-filter` only works here because the element is `sticky` — never put blur on a scrolling container (GPU repaint cost). See `rules/08-performance.md`.
+- The outer `pointer-events: none` + inner `pointer-events: auto` keeps the transparent side-gutters click-through.
+- Keep it `width: max-content` — a full-width island defeats the "object, not chrome" effect.
+- On scroll, optionally tighten: reduce `top` and raise background opacity via `@container scroll-state(stuck: top)` (see `rules/02-layout-and-grid.md`).
+
+---
+
 ## Active State Rules
 
 ```css

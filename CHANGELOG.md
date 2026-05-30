@@ -6,6 +6,17 @@ Format: [version] — date — description
 
 ---
 
+## [1.9.4] — 2026-05-30
+
+### Two component patterns added (harvested from sibling design skills)
+
+- `patterns/navigation/header-patterns.md` — **Pattern C: Fluid Island** — a floating, detached glass-pill navbar that reads as a spatial object, not browser chrome. Sticky-offset + content-width + click-through gutters + blur-on-sticky guidance.
+- `patterns/effects/hover-effects.md` — **Effect 8: Button-in-Button** — trailing arrow nested in its own circular wrapper that translates independently of the button on hover (mechanical depth, not a flat color swap). Added to the Hover Effect Selection Guide.
+
+Both were genuinely absent (verified by gap-check); the rest of the surveyed design skills (high-end-visual-design, industrial-brutalist-ui, designer-skills, theme-factory) were already covered by existing rules, patterns, blueprints, agents, and the A–H aesthetic archetypes — no wholesale import.
+
+---
+
 ## [1.9.3] — 2026-05-30
 
 ### Authoritative sources catalog (new)

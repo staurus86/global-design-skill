@@ -553,11 +553,63 @@ document.querySelectorAll('[data-pill-nav]').forEach(el => new PillNav(el));
 
 ---
 
+## Effect 8 — Button-in-Button (nested trailing icon)
+
+A trailing arrow never sits naked next to the label. It lives in its own circular wrapper, flush with the pill's right inner padding, and translates *independently* of the button on hover — giving mechanical depth instead of a flat color swap.
+
+```html
+<button class="bib group">
+  <span>Start free trial</span>
+  <span class="bib__icon" aria-hidden="true">↗</span>
+</button>
+```
+
+```css
+.bib {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-2) var(--space-2) var(--space-5); /* tighter right — icon fills it */
+  border-radius: var(--radius-full);
+  background: var(--color-accent);
+  color: var(--color-neutral-0);
+  transition:
+    transform var(--duration-fast) var(--ease-snappy),
+    background-color var(--duration-fast) var(--ease-smooth);
+}
+
+.bib__icon {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--radius-full);
+  background: oklch(from var(--color-neutral-0) l c h / 0.15);  /* nested circle */
+  transition: transform var(--duration-normal) var(--ease-spring);
+}
+
+/* Button presses; inner icon advances diagonally — independent motion = depth */
+.bib:active { transform: scale(0.98); }
+@media (hover: hover) {
+  .bib:hover .bib__icon { transform: translate(2px, -1px) scale(1.05); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bib, .bib__icon { transition: background-color var(--duration-fast) var(--ease-smooth); }
+  .bib:hover .bib__icon { transform: none; }
+}
+```
+
+**When to use:** primary CTAs with a directional verb (launch, open, continue, external link). The independent icon motion signals "this goes somewhere." Pair the icon glyph with the action's direction — `↗` external, `→` forward, `↓` download. Keep the icon `aria-hidden`; the label carries meaning.
+
+---
+
 ## Hover Effect Selection Guide
 
 | Element | Best hover effect | Duration |
 |---|---|---|
 | Primary CTA button | Magnetic + colored shadow | 300ms spring |
+| Directional CTA (launch, external) | Button-in-Button trailing icon | 300ms spring |
 | Ghost/outline button | Slide fill from left | 350ms spring |
 | Feature card | 3D tilt + shine | 150ms linear |
 | Portfolio card | Lift + scale image 1.04 | 250ms spring |
@@ -569,6 +621,6 @@ document.querySelectorAll('[data-pill-nav]').forEach(el => new PillNav(el));
 
 ---
 
-*Pattern version: global-design-skill v1.0 — `patterns/effects/hover-effects.md`*  
-*Updated: 2026-05-20*  
+*Pattern version: global-design-skill v1.9.4 — `patterns/effects/hover-effects.md`*  
+*Updated: 2026-05-30*  
 *Related: `patterns/effects/cursor-effects.md`, `patterns/effects/visual-effects.md`, `rules/05-animation.md`*
