@@ -272,7 +272,19 @@ Run before declaring any design done. Three altitudes — each catches what the 
 
 If any composition dimension fails, the design has a structural problem that style cannot fix. **If someone could look at the interface and say "AI made that" without doubt, it has failed.**
 
+### Standards Floor
+
+Anti-slop has a technical floor beneath the visual ceiling. A nice-looking page still fails if the foundation is slop. Verify:
+
+- [ ] **Semantic HTML** — `header`/`main`/`nav`/`section`/`article`/`button`/`form`/`label` used for meaning, not `<div>` soup (WHATWG HTML — `references/sources.md`)
+- [ ] **Systematic CSS** — cascade layers + tokens + scales; no random magic numbers (`margin: 37px`), no specificity wars
+- [ ] **Accessible interactivity** — every interactive block is keyboard-operable with visible focus and idle/disabled/loading/error/success states (WCAG, ARIA APG)
+- [ ] **Verified features** — any modern CSS/JS feature checked on Baseline / Can I use before use; non-Baseline behind `@supports` or with a fallback
+- [ ] **Clean validation** — markup passes Nu HTML Checker; CSS/JS pass Stylelint/ESLint/Prettier; Lighthouse a11y ≥ 95, performance ≥ 88
+
+Full source list and tools: `references/sources.md`.
+
 ---
 
-*Checklist version: global-design-skill v1.9.3 — `checklists/global-design-review.md`*
+*Checklist version: global-design-skill v1.9.6 — `checklists/global-design-review.md`*
 *Related: `agents/design-critic.md`, `agents/frontend-handoff-reviewer.md`, `rules/00-escalation-protocol.md`*

@@ -1,16 +1,47 @@
 # Reference — Authoritative Sources
 
 > The primary sources behind this skill's standards. When a rule states a threshold (contrast ratio, Core Web Vital, touch target) or a technique, the authority for it lives here. Cite these — not blog summaries — when a claim needs backing. Links verified current as of **May 2026**; specs and framework docs evolve, so re-check the dated facts before quoting them as today's state.
+>
+> **The anti-slop floor.** Generic AI sites fail *below* the visual layer first: non-semantic `<div>` soup, ad-hoc CSS with random magic numbers, inaccessible custom controls, features used "because trendy" without a Baseline check, unvalidated markup. A site is not "not slop" because it looks nice — it earns that only on a foundation of correct semantics, a systematic CSS architecture (cascade layers + tokens), keyboard/AT access, verified browser support, and clean validation. The specs and tools below are that floor; the visual rules are the ceiling.
 
 ---
+
+## Web Platform Specifications
+
+The source of truth for HTML semantics and JS — get the structure right before any visual layer.
+
+- **W3C Web Standards (catalog)** — https://www.w3.org/standards/ — top-level index of HTML/CSS/a11y/i18n/API standards; use as the upper catalog, not a tutorial.
+- **WHATWG HTML Living Standard** — https://html.spec.whatwg.org/multipage/ — the authority for semantic elements, document structure, forms, interactivity. Correct HTML (`header`/`main`/`nav`/`section`/`article`/`button`/`label`) is the anti-slop foundation.
+- **WHATWG DOM Standard** — https://dom.spec.whatwg.org/ — the document tree, events, `EventTarget`, mutations — how JS actually operates on HTML.
+- **WHATWG Fetch Standard** — https://fetch.spec.whatwg.org/ — `fetch`, CORS, request/response, resource loading (frontend, performance, security).
+- **WHATWG URL Standard** — https://url.spec.whatwg.org/ — URL/domain/query/`form-urlencoded` parsing (routing, canonical, filters, params).
+- **WHATWG Encoding Standard** — https://encoding.spec.whatwg.org/ — UTF-8, legacy encodings, `TextEncoder`/`TextDecoder` (mandatory for multilingual sites).
+- **ECMA-262 / ECMAScript** — https://ecma-international.org/publications-and-standards/standards/ecma-262/ — the JS language itself (types, syntax, runtime model) — not a React guide.
+- **Web IDL Standard** — https://webidl.spec.whatwg.org/ — how specs describe browser interfaces and bind them to JavaScript.
+
+## CSS Specifications
+
+The authority behind systematic CSS — cascade layers, tokens, values, color. Random `margin: 37px` and specificity wars are slop; these define the system that prevents them.
+
+- **CSS Snapshot** — https://www.w3.org/TR/css-2024/ — which CSS modules define the current state of CSS (status map, not a tutorial).
+- **CSS Cascading and Inheritance Level 5** — https://www.w3.org/TR/css-cascade-5/ — the cascade, inheritance, specificity, and `@layer` cascade layers behind a maintainable architecture.
+- **CSS Values and Units Level 4** — https://www.w3.org/TR/css-values-4/ — value types, functions, units behind fluid typography, `clamp()`, responsive spacing, viewport units.
+- **CSS Color Module Level 4** — https://www.w3.org/TR/css-color-4/ — modern color: `oklch()`, `color-mix()`, new color spaces, opacity (the spec under `rules/04-color.md`).
 
 ## Accessibility & Contrast
 
 - **WCAG 2.2** — https://www.w3.org/TR/WCAG22/ — the contrast floors (4.5:1 body, 3:1 large/UI), focus-visible (§2.4.11), target size (§2.5.8). W3C Recommendation 5 Oct 2023 (updated Dec 2024); also ISO/IEC 40500:2025.
+- **WCAG Quick Reference (How to Meet WCAG)** — https://www.w3.org/WAI/WCAG22/quickref/ — filterable criteria by A/AA/AAA + techniques; the official source to turn into an agent/dev checklist.
 - **What's New in WCAG 2.2** — https://www.w3.org/WAI/standards-guidelines/wcag/new-in-22/ — the 9 success criteria added since 2.1.
-- **WAI-ARIA Authoring Practices Guide (APG)** — https://www.w3.org/WAI/ARIA/apg/ — keyboard interaction + ARIA patterns for every widget (combobox, dialog, tabs, listbox).
+- **WAI-ARIA 1.2 (spec)** — https://www.w3.org/TR/wai-aria-1.2/ — roles, states, properties for complex widgets. Use sparingly: native HTML first, ARIA only where HTML cannot express the semantics.
+- **WAI-ARIA Authoring Practices Guide (APG)** — https://www.w3.org/WAI/ARIA/apg/ — keyboard interaction + ARIA patterns for every widget (combobox, dialog, tabs, listbox). Keeps "unique" custom blocks from being pretty-but-broken.
 - **MDN — ARIA** — https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA — roles, states, properties reference.
 - **APCA (Advanced Perceptual Contrast Algorithm)** — https://www.myndex.com/APCA/ — the WCAG 3.0-track Lc contrast model used in `rules/19-contrast-standards.md` R11.
+
+## Internationalization & Text
+
+- **W3C Internationalization (i18n)** — https://www.w3.org/International/ — languages, scripts, text direction, locales; the authority for RTL UI, `hreflang`, and multilingual layout (RU/EN/AR).
+- **Unicode Standard** — https://www.unicode.org/standard/standard.html — characters, scripts, emoji, normalization — correct text in search, forms, and multilingual content.
 
 ## Color — OKLCH
 
@@ -40,7 +71,27 @@
 
 - **Baseline (web.dev)** — https://web.dev/baseline — feature support status used throughout "Technology Standards"; "Widely available" = 30 months across core browsers. Defined by the WebDX Community Group.
 - **MDN — Baseline** — https://developer.mozilla.org/en-US/docs/Glossary/Baseline/Compatibility · **Can I use** — https://caniuse.com — per-feature support checks.
+- **MDN Browser Compatibility Data (BCD)** — https://github.com/mdn/browser-compat-data — machine-readable support data powering MDN/IDEs; the programmatic source for "is this feature safe?".
+- **Chrome Platform Status** — https://chromestatus.com — feature status, origin trials, shipping status in Chrome/Chromium.
 - **MDN — `@starting-style`** https://developer.mozilla.org/en-US/docs/Web/CSS/@starting-style · **`@property`** https://developer.mozilla.org/en-US/docs/Web/CSS/@property · **Popover API** https://developer.mozilla.org/en-US/docs/Web/API/Popover_API · **Container queries** https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_queries · **Anchor positioning** https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_anchor_positioning — the CSS 2026 techniques cited inline in the rules.
+
+**Feature-use rule:** before using a CSS/JS feature, confirm it on Baseline (or BCD/Can I use) — "trendy" is not a support guarantee. If it's not Widely Available, gate it behind `@supports` or provide a fallback.
+
+## Design Tokens & Component Standards
+
+- **Design Tokens Community Group (DTCG)** — https://www.designtokens.org/ — the W3C Community Group format for color/type/spacing/radius/shadow/theme tokens. This skill's `tokens/design-tokens.json` already uses the DTCG `$value`/`$type` schema; this is its spec.
+- **Open UI** — https://open-ui.org/ — W3C Community Group standardizing native UI controls (`select`, checkbox, radio, date/color pickers). Build custom components against the platform direction — unique without being broken.
+
+## Validation, Linting & Quality Tools
+
+The verifiable floor. These don't make a design beautiful; they remove the technical slop underneath it. Wire them into the workflow (see `validators/` for CI recipes).
+
+- **W3C Markup Validation Service** — https://validator.w3.org/ · **Nu Html Checker** — https://validator.w3.org/nu — validate HTML on templates, articles, cards, landings (Nu is the modern HTML5 checker, CI-friendly).
+- **W3C CSS Validation Service** — https://jigsaw.w3.org/css-validator/ — CSS syntax errors (not design quality).
+- **W3C Link Checker** — https://validator.w3.org/checklink — broken links, redirects, fragment problems on large sites/docs.
+- **Lighthouse** — https://developer.chrome.com/docs/lighthouse/overview — automated performance / a11y / SEO / best-practices audit; catches baseline technical slop (does not replace manual review). Targets in `rules/08-performance.md`.
+- **Stylelint** — https://stylelint.io/ · **ESLint** — https://eslint.org/docs/latest/ · **Prettier** — https://prettier.io/docs — CSS/JS linting + formatting; enforce conventions, end manual style debates.
+- **Google HTML/CSS Style Guide** — https://google.github.io/styleguide/htmlcssguide.html — practical (non-W3C) code-style reference for consistency.
 
 ## Frameworks (stack standards)
 
@@ -69,5 +120,5 @@
 
 ---
 
-*Reference version: global-design-skill v1.9.3 — `references/sources.md`*
-*Related: every `rules/*.md` (claims) · `references/tech-standards.md` (stack snippets) · `rules/19-contrast-standards.md` (WCAG/APCA) · `rules/04-color.md` (OKLCH)*
+*Reference version: global-design-skill v1.9.6 — `references/sources.md`*
+*Related: every `rules/*.md` (claims) · `references/tech-standards.md` (stack snippets) · `tokens/design-tokens.json` (DTCG format) · `validators/` (CI recipes) · `rules/19-contrast-standards.md` (WCAG/APCA) · `rules/04-color.md` (OKLCH)*

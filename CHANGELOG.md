@@ -6,6 +6,27 @@ Format: [version] — date — description
 
 ---
 
+## [1.9.6] — 2026-05-30
+
+### Web platform standards + verification floor added to the sources catalog
+
+`references/sources.md` substantially expanded from a design-claims bibliography into a full standards-and-verification reference. New material (all genuinely absent, verified May 2026):
+
+- **Web Platform Specifications** — W3C standards catalog; WHATWG HTML / DOM / Fetch / URL / Encoding; ECMA-262; Web IDL.
+- **CSS Specifications** — CSS Snapshot, CSS Cascade & Inheritance L5 (`@layer`), CSS Values & Units L4, CSS Color L4.
+- **Accessibility** — added WAI-ARIA 1.2 spec + WCAG Quick Reference (alongside existing WCAG 2.2, APG, MDN ARIA, APCA).
+- **Internationalization & Text** — W3C i18n, Unicode Standard (RTL, `hreflang`, multilingual).
+- **Browser compatibility** — added MDN Browser Compatibility Data (BCD) + Chrome Platform Status, with a "check Baseline before use" feature-use rule.
+- **Design Tokens & Component Standards** — DTCG (the spec behind this skill's `tokens/design-tokens.json`) + Open UI.
+- **Validation, Linting & Quality Tools** — W3C Markup Validator, Nu HTML Checker, W3C CSS Validator, W3C Link Checker, Lighthouse, Stylelint, ESLint, Prettier, Google HTML/CSS Style Guide.
+- Intro reframed around the **anti-slop floor**: slop fails below the visual layer first (non-semantic markup, ad-hoc CSS, inaccessible controls, unverified features, invalid markup).
+
+### Standards Floor check (checklist)
+
+- `checklists/global-design-review.md` — new **Standards Floor** block in Pre-Delivery Sanity Tests: semantic HTML, systematic CSS (cascade layers + tokens), accessible interactivity, Baseline-verified features, clean validation (Nu/Stylelint/ESLint/Prettier/Lighthouse). Operationalizes the technical floor beneath the AI Slop Test's visual ceiling.
+
+---
+
 ## [1.9.5] — 2026-05-30
 
 ### Reference sources distributed across the skill (curated, license-aware)
