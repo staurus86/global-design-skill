@@ -14,6 +14,9 @@ Each snippet returns data — it does not change the page (except the exercise p
 | Contrast "failures" that weren't | DOM-walk contrast script flagged white-on-dark hero | Hero/cards/footer use **gradient** backgrounds (`background-color: transparent`) → script read the wrong layer |
 | Hidden paid badge | `$` element existed in the DOM | On featured cards, `$` and the "Топ" badge were both absolute top-right → `$` sat under "Топ" |
 | Broken list view | Grid view screenshot looked great | View toggle put the class on the grid itself; the `.list-view .cards-grid` (descendant) rule never matched |
+| Filters/search visually dead | `card.hidden = true` was set; an attribute-level test (`:not([hidden])`) passed | `.card{display:flex}` overrode the UA `[hidden]{display:none}` → every card stayed visible. Toggling `[hidden]` only hides if the element's own `display` rule doesn't win |
+| Active category "ran back and forth" | The scroll-spy code read correct | It compared scroll vs **cached** `offsetTop`; lazy-loaded images grow page height → cached offsets go stale → highlight jumps non-monotonically. Read live `getBoundingClientRect()` |
+| Junk in the text / SR layer | Looked clean visually | Lone `$` status glyphs + decorative list numbers (duplicating the `<ol>`) leaked into `innerText` / screen-reader output — invisible on screen, dirty for bots & a11y |
 
 The pattern: **measure the rendered result, not the source intent — and exercise interactive state.**
 
@@ -144,6 +147,65 @@ Run A (contrast) and B (invisible text) in **every theme**. Run C (badge overlap
 
 ---
 
+## E. Filter / visibility parity — does `[hidden]` actually hide?
+
+A filter or search that sets `el.hidden = true` (or toggles the `hidden` attribute) only hides if no CSS `display` rule on the element wins over the UA `[hidden]{display:none}`. `.card{display:flex}` (common) **defeats it** — the attribute is set, the card stays on screen. An attribute-level test (`querySelectorAll(':not([hidden])').length`) passes while the page is visually broken. **Apply a filter first, then run this:**
+
+```js
+(() => {
+  const cards = [...document.querySelectorAll('.card,[data-card],.cards-grid > *')];
+  const attrHidden  = cards.filter(c => c.hidden || c.hasAttribute('hidden')).length;
+  const reallyShown = cards.filter(c => c.offsetParent !== null).length;
+  const attrShown   = cards.length - attrHidden;
+  return { total: cards.length, attrShown, reallyShown,
+    BUG: attrShown !== reallyShown
+      ? 'a display rule defeats [hidden] — add `.card[hidden]{display:none!important}`'
+      : 'ok' };
+})();
+```
+
+Rule of thumb: any element you hide via the `hidden` attribute needs `[hidden]{display:none!important}` if it also has an explicit `display`.
+
+---
+
+## F. Accessible-text / bot layer — what Googlebot, a screen-reader and `innerText` actually get
+
+The rendered pixels can be perfect while the **text layer** is full of junk: lone status glyphs (`$`), decorative numbers that duplicate an `<ol>`'s own numbering ("1, 1 …" to a screen-reader), category labels mangled by abbreviation. Audit it directly:
+
+```js
+(() => {
+  const txt = document.body.innerText;
+  // stray status glyphs sitting on their own line (a decorative $ leaking into text)
+  const loneGlyphs = (txt.match(/(?:^|\n)\s*[$€₽]\s*(?=\n|$)/g) || []).length;
+  // decorative numbers NOT hidden from the a11y tree (list ranks, plot/radar nodes, count badges)
+  const decoNums = [...document.querySelectorAll('span,div,b,strong')].filter(e =>
+    e.children.length === 0 && /^\d{1,3}$/.test((e.textContent || '').trim())
+    && /rank|num|node|badge|count/i.test(e.className)
+    && e.getAttribute('aria-hidden') !== 'true'
+    && !e.closest('[role="img"]')
+  ).map(e => e.className);
+  return { loneStatusGlyphsInText: loneGlyphs, decorativeNumbersExposed: decoNums };
+})();
+```
+
+Fixes: decorative glyphs/numbers → `aria-hidden="true"` (or wrap a visual plot in `role="img"` with an `aria-label`); a status symbol that must stay a JS data hook → hide it visually *and* from text (`display:none`) and read its value via `textContent`. Re-check that `innerText` contains zero lone glyphs and that ordered lists aren't double-numbered.
+
+---
+
+## G. Count / version parity — no-JS fallback and cache desync
+
+For SEO, the no-JS HTML and every cached/CDN snapshot must agree with the live JS-rendered page.
+
+```js
+// static fallbacks must equal the JS-computed values (no "—" placeholders for crawlers)
+[...document.querySelectorAll('[id$="Count"],[data-count]')].map(e => ({ id: e.id, shown: e.textContent.trim() }));
+// then compare to raw HTML: view-source should show the SAME numbers, not "—" or a stale count
+```
+
+If different bots get 396 vs 450, suspect: CDN/edge cache, `Cache-Control` on the HTML, a Service Worker, or a stale uploaded file. Counters rendered only by JS should ship with a **real** static fallback in the markup, not a placeholder.
+
+---
+
 ## How to use in a Playwright/agent workflow
 
 ```js
@@ -156,5 +218,5 @@ if (invisible.invisibleTextTypes > 0) throw new Error('Invisible text in dark: '
 
 ---
 
-*Reference version: global-design-skill v1.9.8 — `references/live-audit-snippets.md`*
+*Reference version: global-design-skill v1.9.10 — `references/live-audit-snippets.md`*
 *Related: `rules/19-contrast-standards.md` (R14 text-fill traps), `checklists/global-design-review.md` (Live Verification), `blueprints/redesign-existing-page.md` (Phase 6), `references/sources.md` (validation tools)*

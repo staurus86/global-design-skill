@@ -74,6 +74,8 @@ Identical icon+title+description cards repeated 393× are visual noise (Banned P
 
 Keep colour for **one** decisive signal (commercial status); render the rest quiet (`rules/04` R7). Use tiers — featured/recommended cards carry more signals; the long tail stays minimal.
 
+**Anti-pattern: a single symbol as the status system.** A lone `$` glyph that means "paid" *and* "freemium" (or any one-symbol status) forces the user to guess and reads as scattered junk in the text layer. Replace it with distinct labelled badges — **Free / Freemium / Paid** (+ `RU` / `Trial` / `Open Source` / `Enterprise` as needed). If a legacy glyph stays as a JS detection hook, hide it from view and text (`display:none`) and read it via `textContent` — never let it be the visible status. (See `rules/07` R11; real example in `redesigns/bestseotools/CASE-STUDY.md`.)
+
 ---
 
 ## 5. Author curation layer — distribute the expertise into the catalog
@@ -134,5 +136,5 @@ If the answer is only "a catalog of SEO tools", it failed memorability. A pass s
 
 ---
 
-*Reference version: global-design-skill v1.9.9 — `references/catalog-and-directory-design.md`*
+*Reference version: global-design-skill v1.9.10 — `references/catalog-and-directory-design.md`*
 *Related: `rules/00-escalation-protocol.md` (Macrostructure-First + Memorability Gate), `rules/11-data-tables.md`, `rules/13-saas-products.md`, `checklists/global-design-review.md` (AI Slop Test), `references/behavioral-design.md`*

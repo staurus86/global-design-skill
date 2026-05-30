@@ -270,6 +270,33 @@ Global pattern using CSS (works without JS):
 
 ---
 
+## R11 — Scroll-spy & sticky nav: read live positions, don't pin tall blocks
+
+Two scroll-driven bugs from a real catalog redesign (`redesigns/bestseotools/CASE-STUDY.md`). Framework-agnostic — applies to vanilla JS and React scroll handlers alike.
+
+**Scroll-spy must read live geometry, not cached offsets.** Highlighting the active section by comparing `scrollY` to a **cached** `offsetTop` breaks the moment page height changes — lazy-loaded images/media push sections down, the cache goes stale, and the active item **jumps back and forth** instead of advancing in order. Read the current position each frame:
+
+```js
+// rAF-throttled scroll handler
+let current = sections[0];
+for (const s of sections) {
+  if (s.getBoundingClientRect().top <= navHeight + 24) current = s; else break; // DOM order → early-break is cheap
+}
+setActive(current.id);
+```
+
+`getBoundingClientRect()` is always current; the early `break` keeps it to a few reads per frame. Don't auto-scroll the active item's *page* position from a scroll handler (feedback loop) — only scroll the nav strip horizontally.
+
+**A sticky element can only pin what's slim.** `position: sticky; top: 0` on a *tall* block (e.g. a grouped category nav, ~750px) pins the whole thing and covers the viewport, so it has to collapse the instant it sticks. Delaying the collapse just keeps the tall block pinned. Instead: let the **expanded** block scroll away in flow, and make only the **compact** bar sticky — switch after the expanded block has scrolled past, and compensate the height change with a spacer so content doesn't jump.
+
+```css
+/* expanded = in normal flow (scrolls away); only the compact bar sticks */
+@media (min-width: 1024px){ .nav:not(.nav-compact){ position: relative } }
+.nav.nav-compact{ position: sticky; top: 0 }
+```
+
+---
+
 ## Banned Patterns
 
 ```tsx

@@ -197,6 +197,7 @@ Check these explicitly — any `✓` is an automatic fail:
 - [ ] Data slop: meaningless fake statistics ("50% faster", "99.9% uptime")
 - [ ] Icon on every heading, bullet, and card label
 - [ ] Gradient backgrounds on every section
+- [ ] Single-symbol status: a lone `$` (meaning paid **and** freemium) instead of labelled Free/Freemium/Paid badges
 
 ---
 
@@ -326,6 +327,9 @@ A redesign is **not** verified by a screenshot of the homepage hero. Bugs hide i
 - [ ] **Empty / no-results state** — type a query that matches nothing; confirm the empty state shows (reason + recovery)
 - [ ] **Every filter exercised** — each quick-filter/category; counts update; combined filters don't break layout
 - [ ] **Keyboard pass** — Tab through; every interactive element shows a visible focus ring
+- [ ] **Filter/search actually hides** — after applying a filter, the rendered-visible count (`offsetParent !== null`) equals the `:not([hidden])` count. A `.card{display:flex}` rule silently defeats `[hidden]{display:none}` → cards stay on screen while an attribute test passes (snippet E)
+- [ ] **Text / bot / SR layer clean** — `document.body.innerText` has no stray status glyphs (`$`) and no doubled list numbers; decorative numbers are `aria-hidden` or inside `role="img"` (snippet F). Verify what Googlebot/screen-reader get, not just the pixels
+- [ ] **Count & version parity** — JS-rendered counters ship with real static fallbacks (no `—` placeholders for no-JS/crawlers); the live/CDN HTML is not a stale snapshot (no 396-vs-450 desync — check CDN/Cache-Control/Service Worker) (snippet G)
 - [ ] **Combinatorial edge matrix** — the bug is at the intersection, not the homepage:
 
 ```
@@ -340,5 +344,5 @@ themes × view-modes × states × card-tiers × viewports
 
 ---
 
-*Checklist version: global-design-skill v1.9.9 — `checklists/global-design-review.md`*
+*Checklist version: global-design-skill v1.9.10 — `checklists/global-design-review.md`*
 *Related: `agents/design-critic.md`, `agents/frontend-handoff-reviewer.md`, `rules/00-escalation-protocol.md`*

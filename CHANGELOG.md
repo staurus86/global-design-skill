@@ -6,6 +6,23 @@ Format: [version] — date — description
 
 ---
 
+## [1.9.10] — 2026-05-30
+
+### Semantic / text-layer cleanup + scroll behavior — from the catalog redesign (now 450 tools)
+
+Later rounds of the same live redesign moved the reviewer score to ~85% and surfaced a new class of misses: the page looked right but the **HTML / accessible / bot layer** was dirty, filtering was visually dead despite "correct" code, and scroll-driven UI jumped. Each is now encoded, plus a real **before → after case study**.
+
+- **New `redesigns/bestseotools/CASE-STUDY.md`** — до → после of a 450-tool catalog, with fresh `after/v2-*` screenshots (badge system, curated shelves, grouped nav, radar legend, reworked hero) paired against `before/`. A problems→fixes table maps each miss to where it's encoded.
+- **`references/live-audit-snippets.md`** — three new failure-mode rows + snippets **E** (filter/visibility parity — `[hidden]` defeated by `.card{display:flex}`; assert `offsetParent` count == `:not([hidden])` count), **F** (accessible-text/bot layer — stray status glyphs + decorative numbers leaking into `innerText`/SR), **G** (count & version parity — no-JS static fallbacks, CDN/cache desync).
+- **`rules/17-motion-react.md`** — new **R11**: scroll-spy must read live `getBoundingClientRect()` (lazy media grows page height → cached offsets go stale → active item jumps); a sticky element can only pin what's slim (tall grouped nav scrolls away in flow, only the compact bar sticks).
+- **`rules/07-accessibility.md`** — new **R11**: decorative numbers/glyphs (`<ol>` rank circles, plot/radar nodes, `$` status symbols) must be `aria-hidden` / `role="img"` and kept out of `innerText`; status is a labelled badge, never a lone symbol. Acceptance criteria updated.
+- **`checklists/global-design-review.md`** — Banned Patterns gains single-symbol status; Live Redesign Verification gains filter-hides / text-layer-clean / count-version-parity checks.
+- **`references/catalog-and-directory-design.md`** — §4 gains the single-symbol-status anti-pattern (distinct Free/Freemium/Paid badges).
+
+**Principle distilled:** the accessible/text layer is a first-class deliverable — verify what a screen-reader and Googlebot receive (`innerText`, the a11y tree), and verify the *rendered* visibility of a filter (`offsetParent`), not the attribute.
+
+---
+
 ## [1.9.9] — 2026-05-30
 
 ### Generative anti-slop — from "remove tells" to "add design DNA"

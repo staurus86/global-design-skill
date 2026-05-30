@@ -367,6 +367,25 @@ Native HTML elements carry built-in accessibility semantics. A `<button>` is key
 
 ---
 
+## R11 — Decorative content is hidden from the accessibility & text layer.
+
+Numbers, symbols, and glyphs that are *visual decoration* must not reach a screen reader, `innerText`, or a crawler — they duplicate or pollute the real content. (From a real catalog redesign — `redesigns/bestseotools/CASE-STUDY.md`.)
+
+- **Decorative numbers** on an `<ol>`/`<li>` (a styled rank circle, a plotted node label) duplicate the list's own numbering — a screen reader reads "1, 1, Screaming Frog". Mark the decorative span `aria-hidden="true"` and let the `<ol>` carry the sequence.
+- **A whole visual plot** (a radar/scatter where dots are numbered) → wrap in `role="img"` with one `aria-label`; SR then ignores its inner number nodes (also `aria-hidden` them for belt-and-suspenders).
+- **A status glyph used as data** (a `$` meaning "paid") reads as a lone "$" scattered through the text. Communicate status with a real labelled badge (`Free` / `Freemium` / `Paid`); if the glyph must stay as a JS hook, `display:none` it (gone from view **and** text) and read its value via `textContent`.
+
+```html
+<li><span class="rank" aria-hidden="true">1</span> <a href="…">Screaming Frog</a></li>
+<div class="plot" role="img" aria-label="Tool map by price and level">
+  <span class="node" aria-hidden="true">1</span> …
+</div>
+```
+
+**Audit the layer bots and SR actually receive, not just the pixels:** `document.body.innerText` should contain no stray status glyphs and no doubled list numbers; ordered lists must not be double-numbered. Snippet: `references/live-audit-snippets.md` § F.
+
+---
+
 ## Keyboard Navigation Reference
 
 | Component | Enter | Space | Escape | Arrow keys | Tab |
@@ -397,6 +416,7 @@ Native HTML elements carry built-in accessibility semantics. A `<button>` is key
 [ ] Dynamic content (errors, toasts, counts): aria-live regions wired
 [ ] All touch targets ≥ 44×44px
 [ ] Semantic HTML used — ARIA added where native semantics insufficient
+[ ] Decorative numbers/glyphs are aria-hidden (or inside role="img"); innerText has no stray status symbols ($) and ordered lists are not double-numbered
 [ ] Color contrast ≥ 4.5:1 body text, ≥ 3:1 large text and UI components
 [ ] Tested: keyboard-only navigation, screen reader (VoiceOver/NVDA), 200% zoom
 ```
