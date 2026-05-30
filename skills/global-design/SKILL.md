@@ -3,7 +3,7 @@ name: global-design-skill
 description: "Design operating system for web UI/UX tasks. Use when user asks to design, build, redesign, or audit UI: landing pages, SaaS products, admin panels, dashboards, components, forms, animations, color systems, typography, developer handoff specs. Trigger phrases: 'design a page', 'build a landing page', 'create a SaaS UI', 'audit my design', 'review the UI', 'create a component', 'frontend spec', 'improve the interface', 'color tokens', 'add animation'. Stack: React 19, Next.js 15, Tailwind v4, motion/react, GSAP. Standards: CSS 2026 Baseline, WCAG 2.2 AA."
 license: MIT
 metadata:
-  version: 1.9.4
+  version: 1.9.5
   version_schema: semver
   author: global-design-skill
   tags: [design, ui-ux, react, nextjs, tailwind, accessibility, frontend, design-system]
@@ -410,7 +410,7 @@ This skill is self-contained for core design tasks. The [full package](https://g
 
 **Domain knowledge** (in `references/`): typography + variable fonts, OKLCH color science, motion systems (CSS + GSAP), Motion React API, visual effects, 3D/WebGL/R3F, accessibility (ARIA, keyboard, focus), performance (CWV, images, fonts), design tokens, forms, responsive/container queries, data visualization, behavioral design (29 cognitive biases mapped to pricing, CTAs, navigation, trust, onboarding, error states), and a catalog of authoritative primary sources (`references/sources.md` — WCAG 2.2, Core Web Vitals, OKLCH, Baseline, Laws of UX).
 
-**Curated real-world examples** (in `references/`): inspiration galleries, aesthetic archetypes A–H, SaaS UI patterns (Linear, Vercel, Notion), marketing/landing pages, portfolio sites, pricing pages, navigation patterns.
+**Curated real-world examples** (in `references/`): inspiration galleries (sites, sections, motion, branding, anti-slop study), aesthetic archetypes A–H, SaaS UI patterns (Linear, Vercel, Notion), marketing/landing pages, portfolio sites, pricing pages, navigation patterns, plus a license-aware catalog of copyable component libraries, templates, and free assets (`references/component-libraries.md`).
 
 **Build protocols** (in `blueprints/`): step-by-step guides for landing pages, interactive landing pages, SaaS apps, admin panels, pricing pages, onboarding flows, portfolios, redesigns, full websites.
 

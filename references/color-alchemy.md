@@ -318,6 +318,15 @@ Use relative color syntax to generate opacity variants from tokens:
 
 ---
 
+## Palette Tools
+
+- **Coolors** (coolors.co) — fast palette generator with export, accessibility/contrast check, and color extraction from an image. Use it to *explore*, then convert the chosen hues to OKLCH tokens (this skill ships OKLCH, never raw hex — see R1 in `rules/04-color.md`).
+- **OKLCH Color Picker** (oklch.com, Evil Martians) — pick and tune directly in OKLCH; the right final step after Coolors exploration.
+
+Workflow: explore in Coolors → lock the hue family → rebuild the scale in OKLCH (`oklch.com`) → tokenize per `Generating the Accent Scale` above. Never ship a Coolors hex palette directly.
+
+---
+
 ## Banned Color Patterns
 
 These are explicit fails in `checklists/global-design-review.md`:
@@ -334,5 +343,5 @@ These are explicit fails in `checklists/global-design-review.md`:
 
 ---
 
-*Reference version: global-design-skill v1.0 — `references/color-alchemy.md`*
-*Related: `rules/04-color.md`, `tokens/design-tokens.json`, `references/visual-effects.md`*
+*Reference version: global-design-skill v1.9.5 — `references/color-alchemy.md`*
+*Related: `rules/04-color.md`, `tokens/design-tokens.json`, `references/visual-effects.md`, `references/component-libraries.md`*

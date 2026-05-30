@@ -60,7 +60,12 @@
 - **Material Design 3** — https://m3.material.io — color roles, state layers, elevation, type scale (note: `m3`, not legacy `m2`).
 - **Apple Human Interface Guidelines** — https://developer.apple.com/design/human-interface-guidelines — 44pt touch-target baseline, platform conventions.
 - **Ant Design** — https://ant.design — dense enterprise/admin component conventions and feedback patterns.
-- **GOV.UK Design System** — https://design-system.service.gov.uk — accessibility-first, research-backed form and component patterns.
+- **GOV.UK Design System** — https://design-system.service.gov.uk — accessibility-first, research-backed form and component patterns. Code MIT; content under Open Government Licence.
+- **USWDS (U.S. Web Design System)** — https://designsystem.digital.gov — government-grade UX: forms, alerts, accordions, search, banners, service patterns.
+- **Microsoft Fluent UI** — https://developer.microsoft.com/fluentui — Microsoft 365 patterns for enterprise, dashboards, productivity apps. Fluent UI React is MIT; fonts/icons have separate asset terms.
+- **IBM Carbon Design System** — https://carbondesignsystem.com — B2B, industrial, data-heavy enterprise SaaS.
+- **Shopify Polaris** — https://polaris.shopify.com — ecommerce, seller dashboards, product-admin UI.
+- **Atlassian Design System** — https://atlassian.design — B2B SaaS, project/task managers, statuses, tables, docs.
 
 ---
 

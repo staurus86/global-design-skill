@@ -21,6 +21,13 @@
 | **Dark Design** | dark.design | Dark mode UI/web design specifically |
 | **Hover States** | hoverstat.es | Interaction design, micro-animations, cursor effects |
 | **Codrops** | tympanus.net/codrops | Web experiments, interactive components with code |
+| **Siteinspire** | siteinspire.com | Calm, editorial, studio/fashion/architecture — "expensive quiet" |
+| **Land-book** | land-book.com | Hand-picked, filterable by page type (landing, pricing, blog, case study) |
+| **Lapa Ninja** | lapa.ninja | 7,300+ landing pages with full-page screenshots and filters |
+| **One Page Love** | onepagelove.com | 9,000+ one-page sites + isolated page sections with design notes |
+| **Refero** | refero.design | Tens of thousands of web + iOS screens, advanced search |
+| **UI Patterns** | ui-patterns.com | Solve-it-right reference: the canonical solution per UI problem |
+| **ScreensDesign** | screensdesign.com | App screens, onboarding, paywalls, revenue-backed patterns |
 | **Dribbble** | dribbble.com | UI concepts (not always realistic — filter for web/app) |
 | **Behance** | behance.net | Longer case studies, process-focused work |
 
@@ -146,6 +153,63 @@ Sites with the best form design.
 
 ---
 
+## Category 9 — Section & Component Galleries
+
+When you need one block done right — not a whole site. Study how different design systems solve the same pattern.
+
+| Site | URL | Best for |
+|---|---|---|
+| **The Component Gallery** | component.gallery | One UI pattern across 95+ design systems (carousel, popover, accordion, tabs…) — how the pros structure it |
+| **Navbar Gallery** | navbar.gallery | Navigation only: sticky, mega menu, sidebar, announcement bar, fullscreen, breadcrumbs |
+| **Footer Design** | footer.design | Footers only — escape the "link dump" footer; CTA / editorial / brand / utility variants |
+| **CTA Gallery** | cta.gallery | Call-to-action blocks, offers, final conversion sections |
+| **Unsection** | unsection.com | Isolated sections: hero, pricing, features, footer |
+| **Bento Grids** | bentogrids.com | Bento layouts for feature blocks, AI/SaaS pages, dashboard storytelling (browse visually) |
+
+---
+
+## Category 10 — Motion & Interaction Study
+
+For the *one strong motion moment* — not scattered animation. Study mechanics you can rebuild.
+
+| Site | URL | Best for |
+|---|---|---|
+| **Codrops Playground / Hub** | tympanus.net/codrops | Open-source demos: clip-path, 3D grids, magnetic hover, creative menus, scroll effects |
+| **GSAP Showcase** | gsap.com/showcase | Agency-grade scroll storytelling, parallax, staggered reveals, SVG/text animation |
+| **GSAP Demo Hub** | demos.gsap.com | Interactive demos — mechanics, not just inspiration |
+| **Design Spells** | designspells.com | Micro-magic: easter eggs, delightful hover, dynamic island, confetti, transitions — the "delight layer" |
+| **Hover States** | hoverstat.es | Alternative/experimental design, tactile scroll, contextual nav, playful interaction |
+
+---
+
+## Category 11 — Branding & Visual Identity
+
+For type character, color anchors, and how an identity becomes a site — not for copying marks.
+
+| Site | URL | Best for |
+|---|---|---|
+| **Typewolf** | typewolf.com | Web fonts in the wild + pairings — the antidote to default Inter |
+| **Fonts In Use** | fontsinuse.com | Typography archive indexed by typeface, industry, period — pick a brand's font character |
+| **Brand New** | underconsideration.com/brandnew | Daily logo/identity/branding critique — how systems are built |
+| **Rebrand Gallery** | rebrand.gallery | Identities, design systems, brand bentos — how a system turns into UI |
+| **Commerce Cream** | commercecream.com | Best Shopify storefronts — product cards, PLP/PDP, ecommerce branding |
+
+---
+
+## Category 12 — Anti-Slop Study & Competitive References
+
+Sources whose whole point is *not looking AI-generated*. Read these to sharpen the slop-ban list and the macrostructure-first habit.
+
+| Site | URL | What to take |
+|---|---|---|
+| **925Studios — AI Slop Web Design Guide** | 925studios.co/blog/ai-slop-web-design-guide | Checklist of slop tells (default Inter, purple-blue gradients, identical cards, vague headlines) and their fixes |
+| **Hallmark (Nutlope)** | github.com/Nutlope/hallmark | Competitive anti-slop *skill*: build/audit/redesign/study modes, macrostructure variance, "made not generated" |
+| **Design Spells** | designspells.com | The delight details that break sterility (also in Category 10) |
+
+> See `checklists/global-design-review.md` → AI Slop Test, and `rules/00-escalation-protocol.md` → Macrostructure-First + Design Direction Fallback, for how this skill operationalizes these ideas.
+
+---
+
 ## How to Use This File
 
 **In a design session:**
@@ -160,6 +224,6 @@ This file is the first lookup layer. If the request matches a listed site, fetch
 
 ---
 
-*Reference version: global-design-skill v1.0 — `references/inspiration-sites.md`*
-*Updated: 2026-05-20*
-*Related: `agents/reference-hunter.md`, `references/saas-ui-examples.md`*
+*Reference version: global-design-skill v1.9.5 — `references/inspiration-sites.md`*
+*Updated: 2026-05-30*
+*Related: `agents/reference-hunter.md`, `references/saas-ui-examples.md`, `references/component-libraries.md` (copyable code)*

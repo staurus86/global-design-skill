@@ -132,6 +132,18 @@ Never mix sets in the same product.
 Exception: one-off custom SVGs for brand-specific concepts (verified by designer).
 ```
 
+**Free, commercial-safe icon sources (verify the set's license once, then commit to it):**
+
+| Set | License | Notes |
+|---|---|---|
+| **Lucide** (lucide.dev) | ISC | Default recommendation — consistent geometry, tree-shakeable |
+| **Heroicons** (heroicons.com) | MIT | Tailwind Labs, 16 + 24 sizes |
+| **Tabler Icons** (tabler.io/icons) | MIT | 6,100+ icons, personal + commercial |
+| **Phosphor** (phosphoricons.com) | MIT | Weight variants (thin → bold) |
+| **SVG Repo** (svgrepo.com) | Mixed — **verify per icon** | 500k+ vectors; license varies by icon, do not assume |
+
+Pick one set as the product's system; SVG Repo is a fallback for a missing concept — check that icon's specific license before shipping.
+
 ---
 
 ## R6 — Icon-only navigation items always have visible labels.
@@ -291,5 +303,5 @@ Emoji have inconsistent rendering across platforms, operating systems, and scree
 
 ---
 
-*Rule version: global-design-skill v1.0 — `rules/15-iconography.md`*
+*Rule version: global-design-skill v1.9.5 — `rules/15-iconography.md`*
 *Related: `rules/07-accessibility.md` R4, `rules/04-color.md` R7, `rules/05-animation.md` R8, `rules/06-components.md`*

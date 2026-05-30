@@ -133,6 +133,25 @@ Once the escalation level is set, calibrate the *loudness* of the output with th
 
 ---
 
+## Macrostructure-First
+
+The strongest defense against AI-slop is structural, not cosmetic. Before colors, fonts, or components, choose the page's **macrostructure** — the skeleton that organizes the whole narrative. Two briefs with the same palette but different macrostructures don't look like the same template recolored; two briefs with the same macrostructure and different palettes do.
+
+| Macrostructure | Organizing logic | Fits |
+|---|---|---|
+| **Editorial** | Long-form narrative, strong type hierarchy, generous measure | Manifestos, brand stories, thought leadership |
+| **Dashboard-first** | The product UI *is* the hero; show the real interface | Dev tools, analytics, data products |
+| **Product-led** | Feature → benefit → proof, repeated in rhythm | SaaS, B2B apps |
+| **Manifesto** | One belief stated boldly, evidence underneath | Category creators, rebrands, launches |
+| **Split-screen** | Two persistent panels — one fixed, one scrolling | Portfolios, comparison, dual-audience |
+| **Narrative scroll** | Scroll-driven sequence, one idea per viewport | Storytelling, product reveals, "wow" |
+| **Comparison-first** | Us-vs-them / before-after as the spine | Switching markets, displacement plays |
+| **Proof-first** | Logos, metrics, testimonials lead, pitch follows | Enterprise, trust-critical, late-stage |
+
+**Rule:** Name the macrostructure before writing markup ("Macrostructure: dashboard-first — the product is the argument"). Do not default to centered-hero → 3-feature-grid → pricing → footer; that skeleton *is* the slop. Combine with the aesthetic from Design Direction Fallback and the loudness from Design Dials — three independent choices, not one template.
+
+---
+
 ## Junior Pass
 
 Before a full implementation on any Level 3+ task, show the cheap version first: stated assumptions + reasoning + gray-box placeholders with labels — then wait for confirmation. Understanding the request wrong early is ~100× cheaper to fix than after a full build.

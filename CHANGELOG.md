@@ -6,6 +6,23 @@ Format: [version] — date — description
 
 ---
 
+## [1.9.5] — 2026-05-30
+
+### Reference sources distributed across the skill (curated, license-aware)
+
+A large catalog of design sources was triaged and placed in its correct home — copyable code separated from inspiration-to-study, with explicit licensing throughout.
+
+- **New `references/component-libraries.md`** — license-aware catalog of *usable code and assets*: component libraries (shadcn/ui, Magic UI, Aceternity, Origin UI, HyperUI, daisyUI, Preline, Flowbite, Meraki, Radix, Mantine, MUI, Chakra, Ant Design), free templates/cloneables (Figma, Framer, Webflow, Untitled UI), and free illustrations/SVG generators (unDraw, Open Doodles, Open Peeps, Haikei). Leads with a "copy code only where the license permits" table and an anti-slop "re-token before shipping" warning.
+- **`references/inspiration-sites.md`** — expanded with Categories 9–12: Section & Component galleries (Component Gallery, Navbar Gallery, Footer Design, Bento Grids, CTA/Unsection), Motion & Interaction study (GSAP Showcase/Demos, Design Spells), Branding & Visual Identity (Typewolf, Fonts In Use, Brand New, Rebrand Gallery, Commerce Cream), and Anti-Slop Study (925Studios guide, Hallmark). Category 1 gained Siteinspire, Land-book, One Page Love, Refero, UI Patterns, ScreensDesign. "Take techniques, not brand assets" reinforced.
+- **`references/sources.md`** — Design Systems extended with USWDS, Microsoft Fluent, IBM Carbon, Shopify Polaris, Atlassian (with licensing notes).
+- **`rules/15-iconography.md`** — R5 now lists free, commercial-safe icon sources with licenses (Lucide ISC, Heroicons/Tabler/Phosphor MIT, SVG Repo verify-per-icon).
+- **`references/typography.md`** — new "Where to Source Fonts" (Google Fonts, Fontshare, Fontsource) + discovery (Typewolf, Fonts In Use); self-host guidance.
+- **`references/color-alchemy.md`** — new "Palette Tools" (Coolors, oklch.com) with explore-then-tokenize workflow.
+- **`rules/00-escalation-protocol.md`** — new **Macrostructure-First** framework: choose page skeleton (editorial / dashboard-first / product-led / manifesto / split-screen / narrative-scroll / comparison-first / proof-first) before color or components — structural variety as the primary anti-slop defense.
+- `README.md` references tree → 23; `SKILL.md` Full Package Reference notes the new catalogs.
+
+---
+
 ## [1.9.4] — 2026-05-30
 
 ### Two component patterns added (harvested from sibling design skills)

@@ -207,6 +207,24 @@ All display sizes use `clamp()`. Never fixed `px` for headings. From `tokens/des
 
 ---
 
+## Where to Source Fonts
+
+Free, commercial-safe type — the way out of default Inter/Arial.
+
+| Source | License | Use |
+|---|---|---|
+| **Google Fonts** (fonts.google.com) | OFL / open source | Largest free library, commercial-safe; serve via CDN or self-host |
+| **Fontshare** (fontshare.com) | Free personal + commercial | High-quality display + grotesk faces (Clash Display, Cabinet Grotesk, Satoshi) |
+| **Fontsource** (fontsource.org) | Open source (per-font) | NPM packages to **self-host** open fonts — better performance + privacy than the Google CDN |
+
+**Discovery (find the right face — not download):**
+- **Typewolf** (typewolf.com) — fonts in the wild + pairings; pick a character, then source it above.
+- **Fonts In Use** (fontsinuse.com) — typography archive by industry/period; match a brand's tone through type.
+
+Self-host via Fontsource for production (avoids a third-party request, eliminates a render-blocking dependency, and is GDPR-cleaner than the Google Fonts CDN). See loading strategy below.
+
+---
+
 ## Font Loading Strategy
 
 Poor font loading causes FOUT (flash of unstyled text) or FOIT (invisible text). Use this strategy to prevent both.
@@ -381,5 +399,5 @@ Italic weight creates editorial contrast without decoration. Use on one word in 
 
 ---
 
-*Reference version: global-design-skill v1.0 — `references/typography.md`*
-*Related: `rules/03-typography.md`, `tokens/design-tokens.json`, `references/aesthetic-archetypes.md`*
+*Reference version: global-design-skill v1.9.5 — `references/typography.md`*
+*Related: `rules/03-typography.md`, `tokens/design-tokens.json`, `references/aesthetic-archetypes.md`, `references/component-libraries.md`*
