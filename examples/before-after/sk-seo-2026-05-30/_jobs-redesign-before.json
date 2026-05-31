@@ -1,0 +1,9 @@
+[
+ {"url":"http://127.0.0.1:8000/index.html","out":"C:/Users/Staurus/Desktop/global-design-skill/examples/before-after/sk-seo-2026-05-30/redesign/before/index-desktop.png","width":1440,"mobile":false},
+ {"url":"http://127.0.0.1:8000/index.html","out":"C:/Users/Staurus/Desktop/global-design-skill/examples/before-after/sk-seo-2026-05-30/redesign/before/index-mobile.png","width":390,"mobile":true},
+ {"url":"http://127.0.0.1:8000/services.html","out":"C:/Users/Staurus/Desktop/global-design-skill/examples/before-after/sk-seo-2026-05-30/redesign/before/services-desktop.png","width":1440,"mobile":false},
+ {"url":"http://127.0.0.1:8000/services.html","out":"C:/Users/Staurus/Desktop/global-design-skill/examples/before-after/sk-seo-2026-05-30/redesign/before/services-mobile.png","width":390,"mobile":true},
+ {"url":"http://127.0.0.1:8000/cases.html","out":"C:/Users/Staurus/Desktop/global-design-skill/examples/before-after/sk-seo-2026-05-30/redesign/before/cases-desktop.png","width":1440,"mobile":false},
+ {"url":"http://127.0.0.1:8000/cases.html","out":"C:/Users/Staurus/Desktop/global-design-skill/examples/before-after/sk-seo-2026-05-30/redesign/before/cases-mobile.png","width":390,"mobile":true},
+ {"url":"http://127.0.0.1:8000/blog/seo-audit-that-actually-works.html","out":"C:/Users/Staurus/Desktop/global-design-skill/examples/before-after/sk-seo-2026-05-30/redesign/before/article-desktop.png","width":1440,"mobile":false}
+]

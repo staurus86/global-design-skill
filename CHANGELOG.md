@@ -6,6 +6,22 @@ Format: [version] — date — description
 
 ---
 
+## [1.9.11] — 2026-05-31
+
+### Bento proof-blocks, branded icon systems, verify-before-tile — from a live 7-page redesign
+
+A second live redesign (sk-seo.ru — personal brand, dark, vanilla, no build step) was a **visual upgrade**, not cleanup: bento "proof" blocks, a 60-icon branded set, portraits, unified blog CTAs. Shipped to prod at 0 axe / 0 overflow on 390/768/1280/1440. The gaps it exposed are now encoded, plus a full **before → after** example.
+
+- **New `examples/before-after/sk-seo-2026-05-31/`** — `before/` (pre-bento) + `after/` (7 pages × desktop+mobile) + 12 component shots + `README.md` + `DESIGN-DECISIONS.md` (per-page было→стало→почему→проверка). Linked from README Worked Examples + a second **Real-World Result** before/after block.
+- **`patterns/marketing-blocks/bento-grid.md`** — new **Proof-Bento Variants** (proof-cell hero / spotlight price-anchor / statement band) + **Editorial Meta-Spec** companion + the **"new fact, not an echo"** content rule (a meta "Scale" field shows a *tier*, never a repeat of the headline number). Checklist + version bumped.
+- **`rules/15-iconography.md`** — new **R11**: a domain-specific **branded icon set can BE the system** (extends R5's one-off exception). One topic → one icon, no repeats on a single plane, bare (drop the colored chip), still one visual system, lazy below the fold. Acceptance criteria updated.
+- **`blueprints/redesign-existing-page.md`** — **Verify-before-tile** added to Phase 6 (build a new pattern on one page, prove axe+overflow+render, *then* replicate); two anti-patterns: **tile-before-verify** and **shipping deploy junk** (no-build `cp -r` deploys sweep backups/source to prod = crawlable duplicate content).
+- **`feedback/iteration-log.md`** — first real entry: 1 iteration/page, the one process miss (a hand-off summary claimed verification + screenshots that didn't exist on disk).
+
+**Principle distilled:** trust artifacts, not summaries — verify each page before tiling a pattern across the site, and confirm the cache-buster actually changed on the *live* page after deploy. Structured UI obeys the Writing Standard too: a proof/meta cell must add a new fact, not echo one already on screen.
+
+---
+
 ## [1.9.10] — 2026-05-30
 
 ### Semantic / text-layer cleanup + scroll behavior — from the catalog redesign (now 450 tools)

@@ -1,0 +1,15 @@
+[
+ {"name":"index","url":"http://127.0.0.1:8000/index.html"},
+ {"name":"about","url":"http://127.0.0.1:8000/about.html"},
+ {"name":"services","url":"http://127.0.0.1:8000/services.html"},
+ {"name":"cases","url":"http://127.0.0.1:8000/cases.html"},
+ {"name":"contacts","url":"http://127.0.0.1:8000/contacts.html"},
+ {"name":"blog","url":"http://127.0.0.1:8000/blog.html"},
+ {"name":"tools","url":"http://127.0.0.1:8000/tools.html"},
+ {"name":"seo-audit","url":"http://127.0.0.1:8000/tools/seo-audit.html"},
+ {"name":"llms-txt-generator","url":"http://127.0.0.1:8000/tools/llms-txt-generator.html"},
+ {"name":"404","url":"http://127.0.0.1:8000/404.html"},
+ {"name":"privacy","url":"http://127.0.0.1:8000/privacy.html"},
+ {"name":"article-flagship","url":"http://127.0.0.1:8000/blog/seo-audit-that-actually-works.html"},
+ {"name":"article-enterprise","url":"http://127.0.0.1:8000/blog/enterprise-seo-chto-otlichaet-audit-na-100m-plus-stranits.html"}
+]

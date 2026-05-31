@@ -178,6 +178,7 @@ Global Design Skill =
 | [SaaS hero redesign](examples/landing-pages/01-saas-hero-redesign.md) | Landing page rewrite with implementation notes |
 | [Skill walkthroughs — 5 site types](examples/skill-walkthroughs.md) | Dry-run routing: fintech SaaS · travel landing · e-commerce catalog redesign · unknown-niche learn · healthcare audit |
 | [bestseotools case study (before → after)](redesigns/bestseotools/CASE-STUDY.md) | Real multi-pass catalog redesign, 65–70% → ~85%, with screenshots |
+| [sk-seo.ru bento redesign (before → after)](examples/before-after/sk-seo-2026-05-31/README.md) | Live 7-page redesign: bento proof-blocks, 60-icon branded set, portraits, unified blog CTAs — 0 axe / 0 overflow, shipped |
 
 ---
 
@@ -197,6 +198,23 @@ Tested on a live Russian SEO tools directory (450 tools, real production traffic
 - Cleaned the semantic layer too: decorative numbers `aria-hidden`, no stray glyphs in `innerText`, real static count fallbacks
 
 Full before → after: [`redesigns/bestseotools/CASE-STUDY.md`](redesigns/bestseotools/CASE-STUDY.md).
+
+### Second case — sk-seo.ru (live, 7 pages, shipped 2026-05-31)
+
+A second pass on a different live site (personal brand, dark theme, vanilla HTML/CSS/JS, no build step). This one was a **visual upgrade**, not just cleanup: a bento "proof-block" language, a 60-icon branded set, real portraits, and a unified blog CTA — verified at **0 axe violations / 0 horizontal overflow** on 390/768/1280/1440 across 9 pages, then deployed and smoke-tested on production.
+
+| Before (home) | After (home) |
+|--------|-------|
+| ![Before](examples/before-after/sk-seo-2026-05-31/before/index-desktop.png) | ![After](examples/before-after/sk-seo-2026-05-31/after/index-desktop.png) |
+
+**What changed:**
+- Flat 2-column hero with proof numbers below the fold → **bento hero** with an accent "proof" cell (`108M — biggest audit`) and the credibility numbers above the fold
+- Uniform service grid → a **spotlight** featured-tariff (price-anchor) + trust strip; **branded topic icons** replace generic line icons
+- Case cards gained an **editorial meta-spec** (Niche / Scale / Status) where "Scale" is a *tier*, not a repeat of the headline number
+- Generic Lucide icons → a **60-icon branded set**, one-topic-one-icon, applied to blog (15) + services (6) + tools (30)
+- 12 blog articles that ended with no CTA → a unified inline + final CTA
+
+Full before → after: [`examples/before-after/sk-seo-2026-05-31/`](examples/before-after/sk-seo-2026-05-31/README.md) (before/ + after/ + 12 component shots + `DESIGN-DECISIONS.md`).
 
 ---
 

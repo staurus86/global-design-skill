@@ -300,6 +300,64 @@ document.querySelectorAll('.bento-card').forEach((card, i) => {
 
 ---
 
+## Proof-Bento Variants (field-tested)
+
+Three named applications of the bento idea where one cell is an **accent "proof" cell** — a green-bordered, slightly-tinted box that holds the single most persuasive fact. Tested live on sk-seo.ru (2026-05-31, `examples/before-after/sk-seo-2026-05-31/`).
+
+### A. Proof-cell hero
+
+Pull the one number that proves credibility out of a stats strip (usually buried below the fold) and give it its own accent cell *inside the hero bento*, beside the name/CTA and photo.
+
+```
+┌──────────────────────┬──────────┐
+│  name + subtitle     │  PHOTO   │
+│  + CTAs   (main)     │          │
+├───────────┬──────────┴──────────┤
+│  stats    │  ★ 108M — biggest   │  ← accent proof cell, above the fold
+│  20/200/.. │     audit  (proof)  │
+└───────────┴─────────────────────┘
+```
+
+### B. Spotlight (featured-tariff / price-anchor)
+
+Above a uniform card grid, a 2-cell bento: an **accent anchor cell** (the flagship/most-expensive offer, with price + 3 inclusions + CTA) next to a **portrait or trust cell**. The expensive anchor reframes the grid below as affordable — price-anchoring. A full-width **trust strip** (NDA · fixed price · reporting · no boilerplate) spans underneath.
+
+### C. Statement band
+
+A 2-cell bento used as a section intro: an **accent cell** with one display-size thesis + 2–3 stats, beside a cinematic image. Sets the frame before a long card list ("From a landing page to 108M pages →" above the case grid).
+
+### The accent "proof" cell recipe
+
+```css
+.proof-cell {
+  border: 1px solid var(--accent-green-dim);
+  border-radius: var(--radius-xl);
+  background:
+    radial-gradient(130% 150% at 0% 0%, var(--accent-green-glow) 0%, transparent 55%),
+    var(--bg-surface);
+}
+/* eyebrow uses the mono "// Label" convention; the headline number is display-size */
+```
+
+**Content rule (carries Writing Standard into layout):** the proof/meta cell must add a *new* fact, not echo one already shown. On a case card with `420K` in the title and metrics, the meta "Scale" field shows a **tier** (`Enterprise` / `Mid-market` / `Own project`), never `420K` again — a third repeat is filler. Same principle as "cut needless words," applied to structured UI.
+
+---
+
+## Editorial Meta-Spec (companion pattern)
+
+Under a card title, a mono triad with a hairline border top+bottom — a scannable "spec sheet" row:
+
+```
+┌─────────────────────────────────────┐
+│ NICHE        SCALE        STATUS     │   ← mono labels, uppercase, --text-muted
+│ Fintech      Enterprise   Shipped    │   ← values; status in --accent-green
+└─────────────────────────────────────┘
+```
+
+Use it to give catalog/case cards instant structure. Keep values short and **non-duplicative** of the title/metrics (see content rule above). 3 columns on desktop, wraps on mobile.
+
+---
+
 ## Checklist
 
 ```
@@ -313,9 +371,11 @@ document.querySelectorAll('.bento-card').forEach((card, i) => {
 [ ] Hover state: subtle lift + shadow on each card
 [ ] No raw px gap values — uses var(--space-4) or var(--space-6)
 [ ] Images inside cards have width + height attributes set
+[ ] Proof/accent cell (if used) holds a NEW fact, not an echo of the title/metrics
+[ ] Meta-spec values are non-duplicative and short (tier, not the same number)
 ```
 
 ---
 
-*Pattern version: global-design-skill v1.0 — `patterns/marketing-blocks/bento-grid.md`*
+*Pattern version: global-design-skill v1.9.11 — `patterns/marketing-blocks/bento-grid.md`*
 *Related: `rules/02-layout-and-grid.md`, `checklists/global-design-review.md` §4.10, `patterns/marketing-blocks/feature-sections.md`*

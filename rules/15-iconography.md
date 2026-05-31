@@ -285,6 +285,44 @@ Emoji have inconsistent rendering across platforms, operating systems, and scree
 
 ---
 
+## R11 — A domain-specific icon set can *be* the system (extends R5).
+
+R5 says "one icon set, exception: one-off custom SVGs." On a content, portfolio, catalog, or personal-brand site that exception scales up: a **purpose-built branded icon set** (one visual language — same stroke, same accent, transparent background) beats a generic Lucide row, because each icon maps 1:1 to the *topic* of the thing it labels instead of being a decorative stand-in.
+
+```
+When a branded set beats the generic set:
+  ✓ Blog / article cards   → icon = the article's subject (entity-seo, robots-rules, core-web-vitals)
+  ✓ Service / tool cards    → icon = what the service/tool does
+  ✓ Catalog / directory     → icon = the item's category
+A generic Lucide "document/gear/rocket" placeholder communicates nothing the title doesn't.
+```
+
+**Rules for a branded set:**
+
+1. **One topic → one icon, no repeats on a single plane.** If 30 cards share a page, use 30 distinct icons. A repeated icon reads as "these two are the same thing." (Cross-page reuse is fine.)
+2. **Self-styled SVGs sit bare — drop the colored box.** A branded icon carries its own accent/gradient; nesting it in the generic `--accent-green-glow` chip double-decorates. Use a transparent ~56px container.
+3. **The set is still *one* system.** Same stroke weight, same accent, same canvas. Mixing a branded set with leftover Lucide on the same surface is the R5 violation in a new costume — convert the whole plane or none of it.
+4. **Decorative role stays (R2).** Branded topic icons are `alt=""` / `aria-hidden`; the card title is the accessible name.
+5. **Below-the-fold icons are `loading="lazy"`** — and verify they actually decode on scroll (`naturalWidth > 0`), not just that the file 200s.
+
+```html
+<div class="card__icon card__icon--brand">
+  <img src="/img/icons/robots-rules.svg" width="56" height="56" alt="" loading="lazy">
+</div>
+<h3 class="card__title">Robots.txt</h3>   <!-- carries the accessible meaning -->
+```
+
+```css
+.card__icon--brand { width: 56px; height: 56px; background: none; border-radius: 0; }
+.card__icon--brand img { width: 56px; height: 56px; display: block; }
+```
+
+**Trade-off:** a branded set is real design + maintenance cost. Worth it when icons *recur as a system* across many topic-labeled cards; overkill for a handful of generic actions — there, stay on Lucide (R5).
+
+*Field-tested: sk-seo.ru 2026-05-31 — 60-icon branded set on blog (15) + services (6) + tools (30), see `examples/before-after/sk-seo-2026-05-31/`.*
+
+---
+
 ## Iconography Acceptance Criteria
 
 ```
@@ -299,9 +337,10 @@ Emoji have inconsistent rendering across platforms, operating systems, and scree
 [ ] prefers-reduced-motion override on icon animations
 [ ] No emoji as UI icons
 [ ] Icon sizes from token scale (--icon-sm through --icon-2xl)
+[ ] Branded set (if used): one topic → one icon, no repeats on a plane, bare (no colored box), still one visual system
 ```
 
 ---
 
-*Rule version: global-design-skill v1.9.5 — `rules/15-iconography.md`*
+*Rule version: global-design-skill v1.9.11 — `rules/15-iconography.md`*
 *Related: `rules/07-accessibility.md` R4, `rules/04-color.md` R7, `rules/05-animation.md` R8, `rules/06-components.md`*

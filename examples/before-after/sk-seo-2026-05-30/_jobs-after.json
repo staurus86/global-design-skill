@@ -1,0 +1,22 @@
+[
+ {"url":"http://127.0.0.1:8000/index.html","out":"C:/Users/Staurus/Desktop/global-design-skill/examples/before-after/sk-seo-2026-05-30/after/index-desktop.png","width":1440,"mobile":false},
+ {"url":"http://127.0.0.1:8000/index.html","out":"C:/Users/Staurus/Desktop/global-design-skill/examples/before-after/sk-seo-2026-05-30/after/index-mobile.png","width":390,"mobile":true},
+ {"url":"http://127.0.0.1:8000/services.html","out":"C:/Users/Staurus/Desktop/global-design-skill/examples/before-after/sk-seo-2026-05-30/after/services-desktop.png","width":1440,"mobile":false},
+ {"url":"http://127.0.0.1:8000/services.html","out":"C:/Users/Staurus/Desktop/global-design-skill/examples/before-after/sk-seo-2026-05-30/after/services-mobile.png","width":390,"mobile":true},
+ {"url":"http://127.0.0.1:8000/about.html","out":"C:/Users/Staurus/Desktop/global-design-skill/examples/before-after/sk-seo-2026-05-30/after/about-desktop.png","width":1440,"mobile":false},
+ {"url":"http://127.0.0.1:8000/about.html","out":"C:/Users/Staurus/Desktop/global-design-skill/examples/before-after/sk-seo-2026-05-30/after/about-mobile.png","width":390,"mobile":true},
+ {"url":"http://127.0.0.1:8000/cases.html","out":"C:/Users/Staurus/Desktop/global-design-skill/examples/before-after/sk-seo-2026-05-30/after/cases-desktop.png","width":1440,"mobile":false},
+ {"url":"http://127.0.0.1:8000/cases.html","out":"C:/Users/Staurus/Desktop/global-design-skill/examples/before-after/sk-seo-2026-05-30/after/cases-mobile.png","width":390,"mobile":true},
+ {"url":"http://127.0.0.1:8000/contacts.html","out":"C:/Users/Staurus/Desktop/global-design-skill/examples/before-after/sk-seo-2026-05-30/after/contacts-desktop.png","width":1440,"mobile":false},
+ {"url":"http://127.0.0.1:8000/contacts.html","out":"C:/Users/Staurus/Desktop/global-design-skill/examples/before-after/sk-seo-2026-05-30/after/contacts-mobile.png","width":390,"mobile":true},
+ {"url":"http://127.0.0.1:8000/blog.html","out":"C:/Users/Staurus/Desktop/global-design-skill/examples/before-after/sk-seo-2026-05-30/after/blog-desktop.png","width":1440,"mobile":false},
+ {"url":"http://127.0.0.1:8000/blog.html","out":"C:/Users/Staurus/Desktop/global-design-skill/examples/before-after/sk-seo-2026-05-30/after/blog-mobile.png","width":390,"mobile":true},
+ {"url":"http://127.0.0.1:8000/tools.html","out":"C:/Users/Staurus/Desktop/global-design-skill/examples/before-after/sk-seo-2026-05-30/after/tools-desktop.png","width":1440,"mobile":false},
+ {"url":"http://127.0.0.1:8000/tools.html","out":"C:/Users/Staurus/Desktop/global-design-skill/examples/before-after/sk-seo-2026-05-30/after/tools-mobile.png","width":390,"mobile":true},
+ {"url":"http://127.0.0.1:8000/tools/seo-audit.html","out":"C:/Users/Staurus/Desktop/global-design-skill/examples/before-after/sk-seo-2026-05-30/after/seo-audit-desktop.png","width":1440,"mobile":false},
+ {"url":"http://127.0.0.1:8000/tools/seo-audit.html","out":"C:/Users/Staurus/Desktop/global-design-skill/examples/before-after/sk-seo-2026-05-30/after/seo-audit-mobile.png","width":390,"mobile":true},
+ {"url":"http://127.0.0.1:8000/404.html","out":"C:/Users/Staurus/Desktop/global-design-skill/examples/before-after/sk-seo-2026-05-30/after/404-desktop.png","width":1440,"mobile":false},
+ {"url":"http://127.0.0.1:8000/404.html","out":"C:/Users/Staurus/Desktop/global-design-skill/examples/before-after/sk-seo-2026-05-30/after/404-mobile.png","width":390,"mobile":true},
+ {"url":"http://127.0.0.1:8000/privacy.html","out":"C:/Users/Staurus/Desktop/global-design-skill/examples/before-after/sk-seo-2026-05-30/after/privacy-desktop.png","width":1440,"mobile":false},
+ {"url":"http://127.0.0.1:8000/privacy.html","out":"C:/Users/Staurus/Desktop/global-design-skill/examples/before-after/sk-seo-2026-05-30/after/privacy-mobile.png","width":390,"mobile":true}
+]

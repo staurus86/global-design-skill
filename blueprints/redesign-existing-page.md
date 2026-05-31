@@ -205,6 +205,20 @@ Regression checklist:
 - [ ] Token references updated consistently (no orphaned raw values)
 ```
 
+### Verify-before-tile (when rolling a new pattern across many pages)
+
+A redesign often means applying one new pattern (a bento block, an icon system, a CTA) to N pages. **Build it on ONE page, prove it, then tile** — never apply to all N first and check at the end.
+
+```
+Per page, before moving to the next:
+- [ ] Horizontal overflow check at 390 / 768 / 1280 / 1440 (document.scrollWidth vs viewport)
+- [ ] axe-core scan at the same widths (0 new violations)
+- [ ] Look at the actual render — a screenshot, not just "no errors"
+Only after the pattern is clean on page 1 do you replicate to pages 2..N.
+```
+
+Trust **artifacts on disk**, not a summary's claim of verification. If a prior note says "screenshots in /redesign/", confirm the files exist before believing the result. (Real miss caught this way on sk-seo.ru 2026-05-31: a hand-off summary claimed an axe pass with screenshots that were never written.)
+
 ---
 
 ## Redesign Anti-Patterns
@@ -220,6 +234,10 @@ These actions create redesigns that fail:
 **Ignoring the mobile context:** Redesigning desktop, treating mobile as "and make it responsive." Mobile users are not smaller desktop users — they have different intent, different context, and different patience.
 
 **Redesigning the wrong thing:** Page performance is driven by the offer, not the design. If the product doesn't match market need, no design improvement will fix conversion.
+
+**Tile-before-verify:** Applying the new pattern to all pages, then checking once at the end. A break in the shared CSS now multiplies across every page, and you can't tell which page introduced it. Verify page-by-page (see Phase 6).
+
+**Shipping deploy junk (no-build sites):** A `cp -r` / "upload the whole folder" deploy step on a raw-HTML site sweeps backup folders, `*.tmp`, and source assets onto production — on an SEO site, backup HTML at predictable URLs is crawlable duplicate content. Before deploy, move junk out of the deploy paths (move, never delete user files); after deploy, restore. Confirm the cache-buster (`?v=`) actually changed on the live page.
 
 ---
 
