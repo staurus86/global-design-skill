@@ -1,0 +1,65 @@
+/* Chexter.ru — Living Diagnostics DNA tokens (S3)
+   Dark-first. OKLCH only. Derived from Data Teal brandbook (#1E63FF / #18D4D0 / navy #0B1633).
+   Contrast pairs target WCAG 2.2 AA (rules/19). Glow/scan carry meaning, not decoration. */
+
+:root {
+  /* ---- Base surfaces (navy, hue 264) ---- */
+  --c-bg:        oklch(16% 0.040 264);  /* page base — navy #0B1633 */
+  --c-surface:   oklch(21% 0.045 264);  /* cards */
+  --c-surface-2: oklch(26% 0.050 264);  /* raised / hover */
+  --c-border:    oklch(34% 0.040 264);  /* hairlines */
+  --c-border-strong: oklch(44% 0.045 264);
+
+  /* ---- Text (on navy) ---- */
+  --c-text:        oklch(97% 0.010 264);  /* ~AA 15:1 on --c-bg */
+  --c-text-muted:  oklch(76% 0.020 264);  /* ~AA 6:1  on --c-bg */
+  --c-text-faint:  oklch(60% 0.025 264);  /* labels only, large/non-essential */
+
+  /* ---- Accent (electric blue #1E63FF) ---- */
+  --c-accent:        oklch(62% 0.190 264);
+  --c-accent-strong: oklch(56% 0.205 264);
+  --c-accent-soft:   oklch(40% 0.110 264);
+  --c-on-accent:     oklch(98% 0.010 264);
+
+  /* ---- Scan signal (teal #18D4D0) — "анализ идёт" ---- */
+  --c-scan:        oklch(82% 0.130 195);
+  --c-scan-dim:    oklch(62% 0.110 195);
+  --c-scan-glow:   oklch(82% 0.130 195 / 0.45);
+
+  /* ---- Verdict scale (PageSpeed-style score) ---- */
+  --c-good:    oklch(76% 0.165 150);  /* зелёный */
+  --c-mid:     oklch(82% 0.150 85);   /* жёлтый */
+  --c-bad:     oklch(66% 0.200 25);   /* красный */
+
+  /* ---- Glow / atmosphere (meaningful) ---- */
+  --glow-scan:   0 0 0 1px oklch(82% 0.130 195 / 0.25), 0 0 32px -4px var(--c-scan-glow);
+  --glow-accent: 0 0 40px -8px oklch(62% 0.190 264 / 0.55);
+
+  /* ---- Radius ---- */
+  --r-sm: 8px; --r-md: 12px; --r-lg: 18px; --r-xl: 28px; --r-full: 999px;
+
+  /* ---- Spacing (4px grid) ---- */
+  --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px; --s-5: 24px;
+  --s-6: 32px; --s-7: 48px; --s-8: 64px; --s-9: 96px; --s-10: 128px;
+
+  /* ---- Type scale (clamp, fluid) ---- */
+  --f-display: clamp(2.5rem, 1.6rem + 4.4vw, 4.75rem);  /* hero H1 */
+  --f-h2:      clamp(1.75rem, 1.2rem + 2.6vw, 2.75rem);
+  --f-h3:      clamp(1.25rem, 1.0rem + 1.1vw, 1.625rem);
+  --f-body:    clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);
+  --f-small:   0.875rem;
+  --f-mono:    "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --f-sans:    "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  --lh-tight: 1.08; --lh-snug: 1.3; --lh-body: 1.6;
+
+  /* ---- Motion (named curves, not ease-in-out everywhere) ---- */
+  --ease-scan:  cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-fast: 160ms; --dur: 320ms; --dur-slow: 640ms;
+}
+
+/* Reduced-motion is a hard requirement (Effects Decision Block, Step 4) */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+}

@@ -206,6 +206,69 @@ If different bots get 396 vs 450, suspect: CDN/edge cache, `Cache-Control` on th
 
 ---
 
+## H. JS-injected layout integrity — one throw blanks half the page
+
+A single uncaught JS error stops **all** subsequent script: tool cards never inject, `IntersectionObserver` reveals never fire, and `.reveal{opacity:0}` elements stay invisible. The page looks like a "broken empty middle" while the hero, static labels and footer render fine — a misleading signal that hides the real cause (the console error).
+
+```js
+page.on('pageerror', e => { throw new Error('JS threw, layout will be partial: ' + e.message); });
+// after load, prove the JS actually ran:
+const ran = await page.evaluate(() => ({
+  injected: document.querySelectorAll('[data-injected],.tool,.card').length,
+  revealed: document.querySelectorAll('.reveal.in,.is-in').length,
+  revealTotal: document.querySelectorAll('.reveal,[class*="reveal"]').length,
+}));
+if (ran.revealTotal && ran.revealed === 0) throw new Error('No reveals fired — suspect a JS throw before IO setup');
+```
+
+**Real miss (chexter.ru pilot 2026-05-31):** `id="g-seo"` referenced in JS as a bare global `g_seo` → `g_seo is not defined`. A hyphenated `id` does **not** create a usable named global; the throw killed card injection *and* every scroll reveal. Always `document.getElementById('g-seo')`, never rely on named-element globals.
+
+---
+
+## I. Mobile overflow — trust `scrollWidth`, and `min-width:0` on track children
+
+`getBoundingClientRect().right > viewport` flags **clipped** absolute children (a sweep line inside `overflow:hidden`) that don't actually extend the page. The source of truth for horizontal overflow is `document.documentElement.scrollWidth`.
+
+```js
+const ov = await page.evaluate(() => ({ sw: document.documentElement.scrollWidth, cw: document.documentElement.clientWidth }));
+if (ov.sw > ov.cw) {/* find the real culprit */
+  const wide = await page.evaluate(() => [...document.querySelectorAll('*')]
+    .filter(el => el.getBoundingClientRect().right > innerWidth + 1 && getComputedStyle(el).position !== 'absolute')
+    .map(el => el.tagName + '.' + (el.className||'').toString().split(' ')[0]).slice(0,8));
+}
+```
+
+**Real miss (chexter.ru pilot):** 451px > 390px viewport. Cause: CSS Grid/Flex children default to `min-width:auto`, so a `1fr` track can't shrink below its content's min-content. Fix: `min-width:0` on grid/flex track children (and on flex `input`s). Absolute children inside `overflow:hidden` were a red herring — `scrollWidth` was the real signal.
+
+---
+
+## J. Reveal-on-scroll + local render of a deployed app
+
+**Screenshots:** a `fullPage` shot does **not** trigger `IntersectionObserver` for below-the-fold elements — they stay at `opacity:0`. Scroll through first, then capture.
+
+```js
+const h = await page.evaluate(() => document.body.scrollHeight);
+for (let y = 0; y <= h; y += 500) { await page.evaluate(yy => scrollTo(0, yy), y); await page.waitForTimeout(160); }
+await page.evaluate(() => scrollTo(0, 0)); await page.waitForTimeout(800);
+await page.screenshot({ fullPage: true, path });
+```
+
+**Local render when the entry point hardcodes a prod base path:** some apps `define()` an absolute server path in `public/index.php` (e.g. `/var/www/.../app`), so `php -S` 500s locally — and "PHP doesn't run here" gets mistaken for an environment limit. Don't edit the committed entry. Serve a **local-only router shim** that overrides the constant, returns `false` for real static files, then includes the app's autoload + bootstrap:
+
+```php
+// router.local.php — php -S 127.0.0.1:8130 -t public router.local.php   (never deploy)
+$base = __DIR__ . '/..';                      // local project root
+$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+if ($uri !== '/' && is_file($base.'/public'.$uri)) return false;   // let the server serve assets
+define('CHEXTER_BASE_PATH', $base);           // the constant the prod index.php hardcodes
+require $base.'/app/Core/Autoloader.php'; App\Core\Autoloader::register($base.'/app');
+($app = require $base.'/config/bootstrap.php')->run();
+```
+
+This unblocked true before/after verification on chexter.ru (HTTP 200 + axe 0 locally) without touching the deploy entry.
+
+---
+
 ## How to use in a Playwright/agent workflow
 
 ```js

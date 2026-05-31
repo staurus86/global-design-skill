@@ -6,6 +6,20 @@ Format: [version] — date — description
 
 ---
 
+## [1.9.13] — 2026-05-31
+
+### Second proving-ground case study — chexter.ru homepage (до → после)
+
+A Level-5 homepage redesign of chexter.ru (RU B2B SaaS, website-audit tools) used as a second real case after bestseotools. Direction: "Living Diagnostics" (Motion Poetics — x-ray/scan metaphor). Verified on a **live PHP render** (HTTP 200, axe 0, 0 overflow at 390/768/1280), with isolated scope (dark theme under `body.home-v2` + `hv-` classes) leaving all other pages at 200.
+
+- **`redesigns/chexter/CASE-STUDY.md`** — new. Arc, problems→fixes table, what it proves. Before/after screenshots in `redesigns/chexter/{before,after}/`.
+- **`references/live-audit-snippets.md`** — added §H, §I, §J from real misses caught during the pilot:
+  - **§H** JS-injected layout integrity — a single uncaught error blanks half the page; a hyphenated `id` is **not** a usable JS global (`g_seo is not defined`). Capture `pageerror`; assert reveals actually fired.
+  - **§I** Mobile overflow — trust `document.scrollWidth`, not per-element bounding rects (clipped absolutes are red herrings); fix with `min-width:0` on Grid/Flex track children.
+  - **§J** Reveal-on-scroll screenshots must scroll through first; and a local-only router shim to render an app whose entry point hardcodes a prod base path (without editing the deploy entry).
+
+---
+
 ## [1.9.12] — 2026-05-31
 
 ### Cross-skill audit — genuine gaps borrowed from 10 public design skills
