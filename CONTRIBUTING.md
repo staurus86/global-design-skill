@@ -141,6 +141,12 @@ All code examples must follow the 2026 baseline:
 
 ---
 
+## Distribution
+
+Submitting this skill to a marketplace or skill directory? The submission checklist, listing copy, and per-directory requirements live in [`docs/directory-submission.md`](docs/directory-submission.md).
+
+---
+
 ## Philosophy
 
 If your contribution only describes what something looks like — not **why**, **when**, and **how to verify** — it belongs elsewhere.

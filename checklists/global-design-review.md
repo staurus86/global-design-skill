@@ -257,6 +257,38 @@ Load the page on a 390px viewport. In 3 seconds, can a visitor answer:
 
 If any answer is unclear in 3 seconds — the above-the-fold is not doing its job.
 
+### Usability Heuristics Pass (Nielsen 10)
+
+The slop and squint tests catch *visual* failure. This pass catches *usability* failure — a beautiful screen can still be unusable. Walk one real task end-to-end and flag any violation; rate severity 0 (none) → 4 (catastrophe).
+
+| # | Heuristic | Fails when |
+|---|---|---|
+| 1 | Visibility of system status | Action gives no feedback; loading/sync/save state invisible |
+| 2 | Match system ↔ real world | Jargon, icons, or order that don't match the user's mental model |
+| 3 | User control & freedom | No undo, no cancel, no clear exit from a flow or modal |
+| 4 | Consistency & standards | Same word/element means different things, or differs from platform convention |
+| 5 | Error prevention | Destructive action with no confirm; easy-to-mistype input with no guard |
+| 6 | Recognition over recall | User must remember data from a prior screen; options hidden |
+| 7 | Flexibility & efficiency | No shortcut/accelerator for the frequent path (keyboard, recents, defaults) |
+| 8 | Aesthetic & minimalist | Screen carries content that competes with the primary task |
+| 9 | Help users with errors | Error in a code/neutral tone with no plain cause + recovery (`patterns/product-ui/error-states.md`) |
+| 10 | Help & documentation | Non-obvious feature has no inline hint, empty-state guidance, or tooltip |
+
+### Trunk Test (Krug) — answerable on any page, mid-scroll
+
+Drop a user onto the page scrolled halfway, with no context. They must answer all six in a glance:
+
+```
+[ ] What site is this?              (identity / logo)
+[ ] What page am I on?              (page title / active nav)
+[ ] What are the major sections?    (primary nav)
+[ ] What are my options here?       (local nav / actions)
+[ ] Where am I in the scheme?       (breadcrumb / "you are here")
+[ ] How do I search?                (search affordance, if applicable)
+```
+
+If any answer requires hunting, navigation orientation is broken — fix before handoff (`rules/00` Ambiguity, `patterns/navigation/`).
+
 ### AI Slop Test
 
 Run before declaring any design done. Three altitudes — each catches what the previous misses.
@@ -344,5 +376,5 @@ themes × view-modes × states × card-tiers × viewports
 
 ---
 
-*Checklist version: global-design-skill v1.9.10 — `checklists/global-design-review.md`*
+*Checklist version: global-design-skill v1.9.12 — `checklists/global-design-review.md`*
 *Related: `agents/design-critic.md`, `agents/frontend-handoff-reviewer.md`, `rules/00-escalation-protocol.md`*

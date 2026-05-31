@@ -21,6 +21,8 @@
 | 1.7 | Error state: border-color change + error message + aria-invalid | CRITICAL | |
 | 1.8 | Empty state: illustration/icon + title + body + CTA (specific, not generic) | CRITICAL | |
 | 1.9 | Success state: feedback message + duration defined | IMPORTANT | |
+| 1.10 | Clickable elements show `cursor: pointer`; hover transition 120–300ms (never `transition: all`) | IMPORTANT | |
+| 1.11 | Icons are SVG (Heroicons/Lucide) — no emoji used as functional icons (`rules/15`) | IMPORTANT | |
 
 ---
 

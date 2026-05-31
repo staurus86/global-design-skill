@@ -3,12 +3,12 @@ name: global-design-skill
 description: "Design operating system for web UI/UX tasks. Use when user asks to design, build, redesign, or audit UI: landing pages, SaaS products, admin panels, dashboards, components, forms, animations, color systems, typography, developer handoff specs. Trigger phrases: 'design a page', 'build a landing page', 'create a SaaS UI', 'audit my design', 'review the UI', 'create a component', 'frontend spec', 'improve the interface', 'color tokens', 'add animation'. Stack: React 19, Next.js 15, Tailwind v4, motion/react, GSAP. Standards: CSS 2026 Baseline, WCAG 2.2 AA."
 license: MIT
 metadata:
-  version: 1.9.9
+  version: 1.9.12
   version_schema: semver
   author: global-design-skill
   tags: [design, ui-ux, react, nextjs, tailwind, accessibility, frontend, design-system]
   created: 2024-09-01
-  updated: 2026-05-30
+  updated: 2026-05-31
   documentation: https://github.com/staurus86/global-design-skill
   requires:
     - blueprints/

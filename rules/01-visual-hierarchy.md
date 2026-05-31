@@ -139,6 +139,7 @@ Whitespace is a hierarchy tool. It separates ranks, creates breathing room for f
 - The most important element on the screen gets the most whitespace around it
 - Cramping a hero headline to fit more content above the fold is the wrong tradeoff
 - Adding content to fill whitespace is the wrong solution — the whitespace was intentional
+- **Workflow:** start with more whitespace than feels comfortable, then reduce. Tightening a spacious layout is easier and safer than finding room in a cramped one.
 
 **Minimum section padding:** `6rem` block (96px). Preferred: `10rem-16rem`.
 

@@ -1,6 +1,8 @@
 # Reference — Aesthetic Archetypes in the Wild
 
 > Real examples of each aesthetic archetype (A–H). Use when a client needs a direction, or when choosing which archetype to commit to. Each archetype includes 5–8 live sites, their defining visual signatures, and what makes them a strong reference for that archetype.
+>
+> **For trendy named looks** (glassmorphism, aurora/mesh, OLED-luxury, brutalism) — how to compose them from existing techniques with accessibility guardrails — see `references/aesthetic-recipes.md`.
 
 ---
 

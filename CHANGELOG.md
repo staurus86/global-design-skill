@@ -6,6 +6,30 @@ Format: [version] — date — description
 
 ---
 
+## [1.9.12] — 2026-05-31
+
+### Cross-skill audit — genuine gaps borrowed from 10 public design skills
+
+Reviewed 10 external design skills (refactoring-ui, taste-skill, ui-ux-pro-max, frontend-design-pro, interface-design, bencium, Owl-Listener, Apple-skills, Anthropic frontend-design, wondelai). Most of their ideas were already covered — Design Dials (`rules/00`), emoji-icon ban (`rules/15`), motion timing (`global-design-review` 8.6), grayscale test (2.16) — or conflicted with deliberate stances (Refactoring UI's "weight over size" vs. our R3 "size establishes rank"). Only the real gaps were added; nothing refactored.
+
+- **`rules/03-typography.md`** — new **R14: real typographic punctuation** (curly quotes, `’`, `…`, en-dash ranges, `×`, `−`, `→`, `&nbsp;` unit binding, `text-wrap: balance/pretty`, `hanging-punctuation`). Em-dash stays banned per the copy standard. Anti-patterns + acceptance criteria updated. (← bencium typography)
+- **`patterns/product-ui/microinteractions.md`** — new file: the **Trigger · Rules · Feedback · Loops & Modes** anatomy (Saffer), tied to `MOTION_INTENSITY`. Fills the gap between `rules/05` (animation *mechanics*) and a microinteraction's *structure*. (← wondelai microinteractions)
+- **`checklists/global-design-review.md`** — new **Usability Heuristics Pass** (Nielsen 10 with severity rating) + **Trunk Test** (Krug's 6 orientation questions). A usability lens distinct from the visual/slop tests. (← wondelai ux-heuristics)
+- **`rules/01-visual-hierarchy.md`** — R9 gains the **whitespace-first workflow** (start spacious, then reduce). (← Refactoring UI)
+- **`checklists/ui-review.md`** — Component States 1.10 (`cursor: pointer` + 120–300ms hover, no `transition: all`) and 1.11 (SVG icons, no emoji). (← ui-ux-pro-max pre-delivery checklist)
+- **`references/aesthetic-recipes.md`** — new file: a **composition layer** mapping named looks (glassmorphism, aurora/mesh, OLED-luxury, brutalism) to the existing technique CSS in `visual-effects.md`, each with a11y guardrails + "skip when". Neumorphism/claymorphism deliberately excluded (low-contrast, anti-slop conflict). No CSS duplicated. (← frontend-design-pro-demo)
+
+**File-linkage audit (same session):** reachability check across all 232 `.md` files — every runtime resource (rules / patterns / references / blueprints / checklists / agents / templates / industries / recipes) is reachable; no orphaned skill content. The only zero-inbound files are intentional (GitHub templates, historical `docs/superpowers/` plans, eval goldens wired by id). Fixes:
+
+- **`mcp-server/server.py`** — `gds://rules/{name}` docstring listed rules 00–18 but omitted `19-contrast-standards`; an agent relying only on the MCP resource hint couldn't discover it. Added.
+- **`README.md`** — `examples/prompts/` now lists each prompt file individually (4 were reachable only via the directory link).
+- **`CONTRIBUTING.md`** — links `docs/directory-submission.md` (previously the only doc with zero inbound references).
+- **`scripts/_orphan_audit.py`** — reusable linkage checker (path + basename reachability); can be wired into CI.
+
+**Principle distilled:** verify the target before borrowing — a mature skill's biggest risk from "best practices" elsewhere is duplicating what it already does better or importing a stance it deliberately rejected.
+
+---
+
 ## [1.9.11] — 2026-05-31
 
 ### Bento proof-blocks, branded icon systems, verify-before-tile — from a live 7-page redesign

@@ -177,7 +177,7 @@ def main():
         03-typography | 04-color | 05-animation | 06-components | 07-accessibility |
         08-performance | 09-responsive | 10-forms | 11-data-tables | 12-admin-panels |
         13-saas-products | 14-landing-pages | 15-iconography | 16-design-for-seo |
-        17-motion-react | 18-css-framework-selection"""
+        17-motion-react | 18-css-framework-selection | 19-contrast-standards"""
         return _read_repo_file(f"rules/{name}.md")
 
     @mcp.resource("gds://industries/{sector}", mime_type="text/markdown")

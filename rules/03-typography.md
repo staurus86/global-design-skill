@@ -315,6 +315,45 @@ h2 { margin-top: 40px; margin-bottom: 40px; }  /* equal above/below breaks group
 
 ---
 
+## R14 — Use real typographic punctuation, not ASCII substitutes.
+
+Straight quotes, three dots, and the letter `x` for dimensions are typewriter relics. They read as unfinished to anyone with a typographic eye and they survive into production unless the rule is explicit. Output the correct Unicode mark.
+
+| Use | Not | Where |
+|---|---|---|
+| `“ ”` curly double quotes | `" "` straight | Quoted speech, pull quotes |
+| `‘ ’` curly single quotes | `' '` straight | Nested quotes |
+| `’` apostrophe (U+2019) | `'` straight | Contractions, possessives (`it’s`, `user’s`) |
+| `…` ellipsis (U+2026) | `...` three periods | Truncation, omission |
+| `–` en-dash | `-` hyphen | Numeric ranges, no surrounding spaces (`10–20`, `Mon–Fri`) |
+| `×` multiplication sign | letter `x` | Dimensions, multipliers (`390×844`, `2×`, `1.5×`) |
+| `−` minus (U+2212) | hyphen `-` | Negative values in data/figures (`−12%`) |
+| `→` arrow | `->` | Flow, version bumps (`v2 → v3`) |
+
+```css
+/* Hang punctuation into the margin; balance/pretty wrapping prevents orphans */
+.prose          { hanging-punctuation: first last; }
+h1, h2, .lead   { text-wrap: balance; }   /* headings: even line lengths */
+p               { text-wrap: pretty; }    /* prose: no single-word last line */
+
+/* Tabular figures for aligned numeric columns; old-style for running prose */
+.data-table td  { font-variant-numeric: tabular-nums; }
+```
+
+**Non-breaking space (` `) — bind units to their values and kill widows:**
+
+```html
+<!-- Number + unit must never wrap apart -->
+<span>10&nbsp;GB</span>  <span>$25&nbsp;/&nbsp;mo</span>  <span>2&nbsp;weeks</span>
+
+<!-- Glue the last two words of a heading so one word never drops alone -->
+<h2>Ship faster without the&nbsp;chaos</h2>
+```
+
+**Em-dash stays banned.** This rule governs quotes, ranges, and units — it does **not** reintroduce the em-dash (`—`). Per the copy standard, replace em-dashes with commas, colons, or periods. See Banned Patterns → Copy in `skills/global-design/SKILL.md`.
+
+---
+
 ## Typography Anti-Patterns
 
 - Paragraph width > 80ch (eyes lose line when scanning)
@@ -328,6 +367,8 @@ h2 { margin-top: 40px; margin-bottom: 40px; }  /* equal above/below breaks group
 - Centered or justified multi-line body text (ragged/uneven left edge slows reading)
 - Low x-height fonts (Gill Sans, Futura) as UI/body text below 18px
 - Fixed-pixel margins on headings unrelated to line-height (breaks vertical rhythm)
+- Straight quotes (`"`/`'`), `...` for ellipsis, or letter `x` for dimensions instead of real typographic marks (`“ ” ’ … ×`)
+- Number and unit allowed to wrap apart (`10` / `GB` on separate lines — use `&nbsp;`)
 
 ---
 
@@ -347,6 +388,8 @@ h2 { margin-top: 40px; margin-bottom: 40px; }  /* equal above/below breaks group
 [ ] Body text left-aligned — center only on elements ≤ 2 lines
 [ ] Body/UI font has a tall x-height (legible at 14–18px)
 [ ] Heading spacing derives from line-height — gap above > gap below
+[ ] Real typographic punctuation: curly quotes, `…`, `×`, en-dash ranges — no ASCII substitutes
+[ ] Numbers bound to units with `&nbsp;`; headings use `text-wrap: balance`
 ```
 
 ---
@@ -375,5 +418,5 @@ h1, h2, .price-figure {
 
 ---
 
-*Rule version: global-design-skill v1.9.2 — `rules/03-typography.md`*
+*Rule version: global-design-skill v1.9.12 — `rules/03-typography.md`*
 *Related: `references/typography.md`, `tokens/tokens.css` typography section, `patterns/marketing-blocks/hero-sections.md`*

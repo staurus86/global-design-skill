@@ -6,7 +6,7 @@ Turn Claude Code, Cursor, Codex, ChatGPT, Windsurf, and GitHub Copilot into a st
 
 Not another prompt collection. A self-learning design operating system: it knows sector-specific rules for 13 industries, learns from reference sites you point it at, and calibrates its pattern weights based on your feedback. All local, no telemetry.
 
-[![Version](https://img.shields.io/badge/version-1.9.10-blue)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-1.9.12-blue)](CHANGELOG.md)
 [![Standards](https://img.shields.io/badge/CSS-2026%20Baseline-green)](rules/)
 [![React](https://img.shields.io/badge/React-19-blue)](rules/)
 [![Next.js](https://img.shields.io/badge/Next.js-15-black)](rules/)
@@ -101,7 +101,12 @@ Use global-design-skill and redesign this SaaS hero. Avoid generic centered hero
 Use global-design-skill and create a frontend handoff spec for this component. Include states, tokens, ARIA, keyboard behavior, and acceptance criteria.
 ```
 
-More copy-paste prompts: [examples/prompts](examples/prompts/).
+More copy-paste prompts in [examples/prompts](examples/prompts/):
+- [audit-live-url.md](examples/prompts/audit-live-url.md) — audit a live page by URL
+- [build-admin-panel.md](examples/prompts/build-admin-panel.md) — build an admin panel from scratch
+- [frontend-handoff-spec.md](examples/prompts/frontend-handoff-spec.md) — generate a developer handoff spec
+- [improve-pricing-page.md](examples/prompts/improve-pricing-page.md) — improve an existing pricing page
+- [redesign-saas-hero.md](examples/prompts/redesign-saas-hero.md) — redesign a SaaS hero section
 
 ---
 
@@ -296,13 +301,13 @@ global-design-skill/
 │   │   ├── cta-sections.md         └── bento-grid.md
 │   │   └── faq-sections.md
 │   │
-│   ├── product-ui/                 ← 10 SaaS / app UI files
+│   ├── product-ui/                 ← 12 SaaS / app UI files
 │   │   ├── onboarding.md           ├── forms.md
 │   │   ├── empty-states.md         ├── modals.md
 │   │   ├── error-states.md         ├── notifications.md
 │   │   ├── loading-states.md       ├── search.md
 │   │   ├── settings-pages.md       ├── tooltips-popovers.md
-│   │   └── command-palette.md
+│   │   ├── command-palette.md      └── microinteractions.md
 │   │
 │   ├── navigation/                 ← 6 navigation pattern files
 │   │   ├── header-patterns.md      ├── tabs-patterns.md
@@ -323,7 +328,7 @@ global-design-skill/
 │       ├── cursor-effects.md       ← Glow, custom dot, invert, text-reveal, trail
 │       └── 3d-effects.md           ← CSS 3D, card flip, product tilt, Three.js, Spline
 │
-├── references/                     ← 25 reference files: knowledge + examples
+├── references/                     ← 26 reference files: knowledge + examples
 │   ├── typography.md               ← Variable fonts, fluid scale, pairing, loading
 │   ├── color-alchemy.md            ← OKLCH color science, palette construction
 │   ├── motion-systems.md           ← CSS + GSAP motion patterns
@@ -338,6 +343,7 @@ global-design-skill/
 │   ├── data-viz.md                 ← Charts, tables, KPI reference
 │   ├── inspiration-sites.md        ← 8-category site gallery (galleries, SaaS, portfolios...)
 │   ├── aesthetic-archetypes.md     ← Real sites per archetype A–H with annotations
+│   ├── aesthetic-recipes.md        ← Named-look composition layer + a11y guardrails (glass/aurora/OLED/brutalist)
 │   ├── saas-ui-examples.md         ← Annotated SaaS UI patterns (empty states, onboarding...)
 │   ├── marketing-sites.md          ← Hero/social proof/features/CTAs in production
 │   ├── portfolios.md               ← 8 annotated portfolio sites with thesis analysis
