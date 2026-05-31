@@ -6,6 +6,29 @@ Format: [version] — date — description
 
 ---
 
+## [2.0.0] — 2026-05-31
+
+### 2.0 — Stable milestone: the design operating system, consolidated
+
+First major release. Not new features bolted on — a line under everything the skill became across the 1.x series: a self-contained design operating system that decides what to build, for whom, and exactly how, then verifies it. Hardened on real redesigns (bestseotools 450-tool catalog, sk-seo.ru 7 pages, chexter.ru homepage), with the misses from each fed back into the rules.
+
+**What 2.0 consolidates (236 markdown files):**
+
+- **20 rules** — escalation protocol, visual hierarchy, layout, typography (incl. R14 typographic punctuation), color, animation, components, accessibility, performance, responsive, forms, data tables, admin panels, SaaS, landing pages, iconography, SEO, motion/react, CSS framework selection, contrast standards.
+- **44 patterns** across marketing-blocks / product-ui / navigation / admin-ui / effects / states — including microinteraction anatomy and a decision matrix for UI states.
+- **26 reference catalogs** — typography, OKLCH color science, motion systems, visual effects, 3D/WebGL, accessibility, performance, behavioral design (29 cognitive biases), aesthetic archetypes + named-look recipes, plus a primary-source list.
+- **9 blueprints · 6 checklists · 11 agents · 15 recipes · 13 industry profiles · 6 templates.**
+- **SEDI + MCP server** — sector classification, banned-pattern checks, learn-from-reference, tools + resources + prompts, `GDS_MCP_SAFE_MODE`. All local, no telemetry.
+- **Tooling** — CI (line endings, test suite), eval suite (trigger + output golden evals), one-step installer + `gds` CLI, demo gallery, Figma token pipeline, integrations for 6 AI tools (Claude Code, Cursor, Codex, ChatGPT, Windsurf, GitHub Copilot).
+
+**Standards floor:** CSS 2026 Baseline · React 19 · Next.js 15 · Tailwind v4 · `motion/react` · WCAG 2.2 AA · OKLCH-only color.
+
+**Version surfaces unified** at 2.0.0 (`manifest.yaml`, `SKILL.md`, README badge) — the 1.9.12 / 1.9.13 split is closed. Per-file rule/checklist version footers keep their own last-touched stamps (they mark file edits, not the release).
+
+**Still planned** (not in this release): the Design Intelligence Platform — benchmark viewer, reference-pattern accuracy scoring, MCP registry packaging, multi-agent perception→cognition→execution pipeline, sector auto-update. Tracked under ROADMAP **v2.1**.
+
+---
+
 ## [1.9.13] — 2026-05-31
 
 ### Second proving-ground case study — chexter.ru homepage (до → после)
