@@ -6,6 +6,27 @@ Format: [version] — date — description
 
 ---
 
+## [2.1.0] — 2026-05-31
+
+### Anti-slop system + honesty audit
+
+A dedicated anti-slop knowledge module, wired into the enforcement points so it fires during audits rather than sitting as a passive doc.
+
+**Added:**
+- `references/anti-slop-system.md` — tell→fix catalog where every row is tagged **[AI]** (diagnostic tell), **[craft]** (good practice the default skips), or **[trend]** (time-bound), with a legend and a provenance/confidence note. Distilled from EN/RU/JP/FR/DE/CN/KR/ES/PT/IT research; core CSS values verified against primary sources (impeccable.style, Comeau shadows, Rauno, Evil Martians, Hobday).
+- New catalog rows: `L7` cards-as-only-structure, `I3` emoji-as-UI-icons, `I4` decorative-charts.
+- Quality Gate 4 extended states: no-data vs no-results, permission-denied, slow-network, long-content overflow, first-run empty.
+- `rules/03-typography.md` — optical-sizing rule, weight-on-hover rule, extended banned-font list (Sora, Geist, Instrument Serif) with a "no brand reason" qualifier.
+- `rules/04-color.md` — decorative-color tells (gradient-text, gray-on-color, neutrals < 5% saturation).
+
+**Changed:**
+- `skills/global-design/SKILL.md` Banned Patterns, `checklists/global-design-review.md` AI Slop Test, `agents/design-critic.md`, `agents/conversion-designer.md` — wired in emoji / cards-as-only / decorative-chart bans + conversion dark-patterns (drip pricing, preselected paid).
+- `references/sources.md` and `references/inspiration-sites.md` (Category 12) point to the new catalog and added sources.
+- T5 (font-weight) corrected: a discrete weight swap reflows; animating the variable-font `wght` axis does not.
+- Version surfaces aligned to 2.1.0 (README badge, `SKILL.md`, anti-slop footer).
+
+---
+
 ## [2.0.0] — 2026-05-31
 
 ### 2.0 — Stable milestone: the design operating system, consolidated
