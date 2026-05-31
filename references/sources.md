@@ -2,7 +2,7 @@
 
 > The primary sources behind this skill's standards. When a rule states a threshold (contrast ratio, Core Web Vital, touch target) or a technique, the authority for it lives here. Cite these — not blog summaries — when a claim needs backing. Links verified current as of **May 2026**; specs and framework docs evolve, so re-check the dated facts before quoting them as today's state.
 >
-> **The anti-slop floor.** Generic AI sites fail *below* the visual layer first: non-semantic `<div>` soup, ad-hoc CSS with random magic numbers, inaccessible custom controls, features used "because trendy" without a Baseline check, unvalidated markup. A site is not "not slop" because it looks nice — it earns that only on a foundation of correct semantics, a systematic CSS architecture (cascade layers + tokens), keyboard/AT access, verified browser support, and clean validation. The specs and tools below are that floor; the visual rules are the ceiling.
+> **The anti-slop floor.** Generic AI sites fail *below* the visual layer first: non-semantic `<div>` soup, ad-hoc CSS with random magic numbers, inaccessible custom controls, features used "because trendy" without a Baseline check, unvalidated markup. A site is not "not slop" because it looks nice — it earns that only on a foundation of correct semantics, a systematic CSS architecture (cascade layers + tokens), keyboard/AT access, verified browser support, and clean validation. The specs and tools below are that floor; the *ceiling* — the visual and interaction tells with concrete fixes — lives in `references/anti-slop-system.md`.
 
 ---
 

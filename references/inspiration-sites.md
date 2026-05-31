@@ -202,11 +202,17 @@ Sources whose whole point is *not looking AI-generated*. Read these to sharpen t
 
 | Site | URL | What to take |
 |---|---|---|
+| **impeccable.style — Slop** | impeccable.style/slop | The most concrete catalog of AI UI tells by category, with exact CSS values and fixes — the primary anti-slop reference |
 | **925Studios — AI Slop Web Design Guide** | 925studios.co/blog/ai-slop-web-design-guide | Checklist of slop tells (default Inter, purple-blue gradients, identical cards, vague headlines) and their fixes |
+| **prg.sh — Same Purple Gradient Website** | prg.sh/ramblings/Why-Your-AI-Keeps-Building-the-Same-Purple-Gradient-Website | Root cause (LLM as statistical pattern-matcher) + concrete bans |
 | **Hallmark (Nutlope)** | github.com/Nutlope/hallmark | Competitive anti-slop *skill*: build/audit/redesign/study modes, macrostructure variance, "made not generated" |
+| **Josh Comeau — Designing Shadows** | joshwcomeau.com/css/designing-shadows | Layered shadow physics with exact CSS — the fix for flat single-shadow slop |
+| **Rauno — Web Interface Guidelines** | interfaces.rauno.me | Numbered interaction/motion/timing rules at Linear-level precision |
+| **Goodpatch (JP)** | goodpatch.com/blog/2025-12-tochio | Intentionality vs pattern-match — why generated UI feels hollow |
+| **metabole.studio (FR)** | metabole.studio/fr/blog/tendances-web-design-2026 | Editorial layout, anti-bento, analog counter-signal to AI imagery |
 | **Design Spells** | designspells.com | The delight details that break sterility (also in Category 10) |
 
-> See `checklists/global-design-review.md` → AI Slop Test, and `rules/00-escalation-protocol.md` → Macrostructure-First + Design Direction Fallback, for how this skill operationalizes these ideas.
+> The full tell→fix catalog distilled from these sources lives in `references/anti-slop-system.md`. See also `checklists/global-design-review.md` → AI Slop Test, and `rules/00-escalation-protocol.md` → Macrostructure-First + Design Direction Fallback, for how this skill operationalizes these ideas.
 
 ---
 
