@@ -127,7 +127,7 @@ Using only one font is bland. Using more than three creates chaos.
 | Body | Paragraphs, UI labels, body copy | Instrument Sans, DM Sans, Cabinet Grotesk, Outfit |
 | Mono | Code, data, timestamps | JetBrains Mono, Berkeley Mono, Commit Mono |
 
-**Banned as primary display fonts:** Inter, Roboto, Arial, Open Sans, Helvetica, Poppins (as default), Space Grotesk (as "premium" signal).
+**Banned as primary display fonts:** Inter, Roboto, Arial, Open Sans, Helvetica, Poppins (as default), Space Grotesk, Sora, Geist, Instrument Serif (as a trendy "premium" signal). The rule is not the font name — it is choosing any current AI-default face *without a brand reason*. Any of these is fine when the brief genuinely calls for it.
 
 ```css
 /* Font loading — only required weights */
@@ -369,6 +369,9 @@ p               { text-wrap: pretty; }    /* prose: no single-word last line */
 - Fixed-pixel margins on headings unrelated to line-height (breaks vertical rhythm)
 - Straight quotes (`"`/`'`), `...` for ellipsis, or letter `x` for dimensions instead of real typographic marks (`“ ” ’ … ×`)
 - Number and unit allowed to wrap apart (`10` / `GB` on separate lines — use `&nbsp;`)
+- `font-weight` change on hover/selected — reflows text and jumps its width (animate weight only on scroll per R10, never on hover; shift color/opacity instead)
+- Missing `font-optical-sizing: auto` on variable display type — large headings render thin and generic; pair with `font-feature-settings: "liga" 1, "kern" 1`
+- CJK body at the Latin 1.5 line-height — denser glyphs need 1.6–1.75; measure 35–42 CJK chars/line (see `references/anti-slop-system.md` §8)
 
 ---
 
@@ -419,4 +422,4 @@ h1, h2, .price-figure {
 ---
 
 *Rule version: global-design-skill v1.9.12 — `rules/03-typography.md`*
-*Related: `references/typography.md`, `tokens/tokens.css` typography section, `patterns/marketing-blocks/hero-sections.md`*
+*Related: `references/typography.md`, `references/anti-slop-system.md` (type rows T1–T6 + §8 CJK/Korean craft), `tokens/tokens.css` typography section, `patterns/marketing-blocks/hero-sections.md`*

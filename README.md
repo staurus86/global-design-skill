@@ -328,7 +328,7 @@ global-design-skill/
 │       ├── cursor-effects.md       ← Glow, custom dot, invert, text-reveal, trail
 │       └── 3d-effects.md           ← CSS 3D, card flip, product tilt, Three.js, Spline
 │
-├── references/                     ← 26 reference files: knowledge + examples
+├── references/                     ← 27 reference files: knowledge + examples
 │   ├── typography.md               ← Variable fonts, fluid scale, pairing, loading
 │   ├── color-alchemy.md            ← OKLCH color science, palette construction
 │   ├── motion-systems.md           ← CSS + GSAP motion patterns

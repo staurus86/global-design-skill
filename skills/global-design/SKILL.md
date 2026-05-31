@@ -69,6 +69,7 @@ Quick routing table — apply the Decision Pipeline for any task type. Full pack
 | Animations / motion | Effects Decision Block (in this file) | `patterns/effects/` directory |
 | UI block / component | Quality Gates → States → Tokens | `patterns/` directory |
 | UI review / audit | Banned Patterns + Quality Gates (in this file) | `checklists/ui-review.md` |
+| Anti-slop deep audit / "looks AI-generated" | Banned Patterns (in this file) → concrete tell→fix catalog | `references/anti-slop-system.md` |
 | Catalog / directory / tool finder | Macrostructure-First + Memorability Gate → metaphor, JTBD scenarios, card differentiation, author curation | `references/catalog-and-directory-design.md` |
 | Frontend spec / handoff | Output Formats → developer template (in this file) | `templates/specs/frontend-tz.md` |
 | Industry / niche-specific rules | `GlobalDesignSkill:get_sector_context` (MCP tool) | `industries/*.md` |
@@ -288,7 +289,7 @@ A design is "done" only when it passes all gates for its type.
 
 **Gate 3 — Design System:** Colors in OKLCH. Type scale with `clamp()`. Spacing on 4px grid. All values as CSS custom properties — no raw values in components.
 
-**Gate 4 — States:** Every interactive component has: idle, hover (`@media (hover: hover)`), active, focus-visible (visible ring, not `outline:none`), disabled, loading (skeleton 100ms–1s / progress 1–10s), empty (reason + action), error (neutral tone + description + recovery), success.
+**Gate 4 — States:** Every interactive component has: idle, hover (`@media (hover: hover)`), active, focus-visible (visible ring, not `outline:none`), disabled, loading (skeleton 100ms–1s / progress 1–10s), empty (reason + action), error (neutral tone + description + recovery), success. For data-driven and content surfaces also design: **no-data vs no-results** (distinct), **permission-denied**, **slow-network / partial load**, **long-content overflow** (truncation/wrap), and **first-run empty**. Test each at 390px.
 
 **Gate 5 — Responsive:** Base at 390px. No horizontal scroll. Touch targets ≥ 44×44px. `min-height: 100dvh` not `100vh`. Text readable at 200% zoom.
 
@@ -319,13 +320,15 @@ Core ten:
 
 ## Banned Patterns
 
-Never produce these regardless of user request. If asked, explain why and offer a correct alternative.
+Never produce these regardless of user request. If asked, explain why and offer a correct alternative. This is the short ban list; the full pattern catalog with CSS values lives in `references/anti-slop-system.md`, where each row is tagged **[AI]** (diagnostic tell), **[craft]** (good practice the default skips), or **[trend]** (time-bound).
 
 **Structural:**
 - Centered H1 + subtitle + two equal CTA buttons as the only hero variant
 - 3-column icon grid as the only feature presentation
 - Every section with same padding, same width container, same card style
 - Nested cards
+- Cards as the only structural pattern — match structure to content (editorial/asymmetric layout, comparison table, timeline, dense list, annotated diagram, process map, split feature)
+- Emoji as primary UI icons or section markers — use one consistent SVG icon set
 - Gradient text (`background-clip: text` + gradient)
 - Side-stripe borders (`border-left/right` > 1px as decorative accent)
 
@@ -333,6 +336,13 @@ Never produce these regardless of user request. If asked, explain why and offer 
 - Pure `#000000` or `#ffffff` without OKLCH tint
 - Purple-to-indigo gradient on white as the "dark SaaS" default
 - Hex colors when OKLCH equivalents are available
+- Gray text (`#6b7280`) on a colored surface — washed out; use a darker tint of the surface hue or near-white
+
+**Depth & surface:**
+- Over-rounded everything (`border-radius: 16–24px` on cards/inputs/sections) — radius hierarchy instead: cards ≤ 12px, inputs 6–8px, full-pill only for tags
+- Hairline border **and** wide soft shadow on the same surface (the "safe depth" double-signal) — pick one
+- One flat `box-shadow: 0 4px 20px rgba(0,0,0,.15)` on everything — layer 2–3 hue-tinted shadows with one light source
+- Bento grid + global glassmorphism as the homepage default — one signature moment, not blur everywhere
 
 **Motion:**
 - `transition: all 0.3s ease-in-out` as a catch-all
@@ -342,12 +352,24 @@ Never produce these regardless of user request. If asked, explain why and offer 
 - Animating `top`/`left` instead of `transform`/`opacity` (forces layout recalc, kills GPU compositing)
 - Effects that cause layout shift (CLS) — animate only composited properties
 - Effects visible at 390px that cause horizontal overflow
+- `font-weight` change on hover/selected — reflows text and jumps width; shift color/opacity instead
+- Bounce/elastic easing on UI elements — reserve spring physics for elements with real mass (drag, sheets)
 
 **Copy:**
 - "Seamless", "Elevate", "Unleash", "Next-Gen", "Empower", "Revolutionize"
 - Generic CTAs: "Get Started", "Learn More" without specificity
 - Fake data: "John Doe", "Acme Corp", "99.9% uptime", arbitrary percentages
 - Em dashes (— or --) — use commas, colons, semicolons, or periods
+
+**Data & charts:**
+- Decorative charts, sparklines, or dashboards with no labels, units, axes, or real data ("data slop")
+- Any chart that still "works" after you delete its data — it was decoration, not information
+
+**Conversion (dark patterns — never, even if asked):**
+- Fake urgency / fake scarcity (countdown timers, false stock counts)
+- Hidden costs revealed late (drip pricing); preselected paid add-ons or opt-ins
+- Confirm-shaming ("No thanks, I hate saving money"), forced continuity, hard-to-cancel flows
+- Full ethical-persuasion mapping: `agents/conversion-designer.md`
 
 **Cognitive:**
 - Navigation with 8+ top-level items (Hick's Law)
@@ -410,6 +432,8 @@ Anti-patterns
 This skill is self-contained for core design tasks. The [full package](https://github.com/staurus86/global-design-skill) adds deep-dive catalogs for each domain:
 
 **Domain knowledge** (in `references/`): typography + variable fonts, OKLCH color science, motion systems (CSS + GSAP), Motion React API, visual effects, 3D/WebGL/R3F, accessibility (ARIA, keyboard, focus), performance (CWV, images, fonts), design tokens, forms, responsive/container queries, data visualization, behavioral design (29 cognitive biases mapped to pricing, CTAs, navigation, trust, onboarding, error states), and a catalog of authoritative primary sources (`references/sources.md` — WCAG 2.2, Core Web Vitals, OKLCH, Baseline, Laws of UX).
+
+**Anti-slop catalog** (in `references/anti-slop-system.md`): the concrete tell→fix table — color, typography, layout, depth, texture, motion, imagery, copy — with CSS values, OKLCH rules, cross-cultural craft signals (Japanese yohaku, Swiss grid, French editorial), and a curated source set. The visual *ceiling* above the technical *floor* in `references/sources.md`.
 
 **Curated real-world examples** (in `references/`): inspiration galleries (sites, sections, motion, branding, anti-slop study), aesthetic archetypes A–H, SaaS UI patterns (Linear, Vercel, Notion), marketing/landing pages, portfolio sites, pricing pages, navigation patterns, plus a license-aware catalog of copyable component libraries, templates, and free assets (`references/component-libraries.md`).
 

@@ -33,7 +33,9 @@ This is not about making things pretty. It's about removing every obstacle betwe
 **Friction inventory**
 - [ ] Form fields: only fields needed to deliver the value (email-only > full registration)
 - [ ] No required account creation before demonstrating value
-- [ ] No unexpected costs: shipping, taxes, subscription tier limits hidden until checkout
+- [ ] No unexpected costs: shipping, taxes, subscription tier limits hidden until checkout (no drip pricing)
+- [ ] No preselected paid add-ons or opt-ins; cancellation as easy as signup
+- [ ] No dark patterns even if asked: fake urgency/scarcity, confirm-shaming, forced continuity
 - [ ] Progress is visible for multi-step flows
 - [ ] Microcopy addresses the moment of hesitation (privacy note under email field, no-card-needed near trial CTA)
 

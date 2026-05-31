@@ -239,6 +239,9 @@ Choosing colors without a strategy leads to inconsistent application. Pick one s
 - `rgba(purple, 0.2)` blobs as the only decoration
 - Gradient text (`background-clip: text`) — see `rules/03-typography.md` R9
 - High-chroma colors at extreme lightness (L < 20% or L > 85%) with C > 0.15
+- Gray text on a colored surface — washed out; use a darker tint of that surface's hue or near-white
+- Hand-picked gray steps for text hierarchy — stack opacity instead (`oklch(0% 0 0 / .85 / .55 / .25)`) so it adapts across themes
+- Neutrals at > 5% saturation (HSB) — keep "grays" near-achromatic (see `references/anti-slop-system.md` D6)
 
 ---
 
@@ -306,4 +309,4 @@ ul[data-columns] {
 ---
 
 *Rule version: global-design-skill v1.9.2 — `rules/04-color.md`*
-*Related: `tokens/tokens.css` color section, `tokens/tokens-dark.css`, `recipes/add-dark-mode.md`, `references/color-alchemy.md`*
+*Related: `tokens/tokens.css` color section, `tokens/tokens-dark.css`, `recipes/add-dark-mode.md`, `references/color-alchemy.md`, `references/anti-slop-system.md` (color rows C1–C4)*

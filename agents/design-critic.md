@@ -41,13 +41,20 @@ This agent deliberately does not propose solutions. Solutions are the job of the
 - [ ] Headings without sufficient size delta from body text
 
 **Banned patterns**
-Full list in `SKILL.md` Section 2. Check for:
+Full list in `SKILL.md` Section 2; full tagged catalog in `references/anti-slop-system.md` (weigh **[AI]** rows when diagnosing generation). Check for:
 - [ ] Side-stripe border accents on cards or list items
 - [ ] Gradient text (`background-clip: text`)
 - [ ] Hero-metric template (big number + stat grid + gradient accent)
 - [ ] Identical card grids (same size, icon + heading + text repeated)
-- [ ] `ease-in-out` on primary transitions
+- [ ] `ease-in-out` / `transition: all` on primary transitions
+- [ ] Over-rounded radius (44px+ blob) or one uniform radius everywhere
+- [ ] Hairline border + wide soft shadow on one surface; or one flat un-layered shadow
+- [ ] `font-weight` change on hover/selected (reflows text)
+- [ ] Gray text on a colored surface (washed out)
 - [ ] Glassmorphism used decoratively (not spatially)
+- [ ] Emoji as primary UI icons or section markers
+- [ ] Cards as the only structural pattern (no editorial/table/timeline/list alternative considered)
+- [ ] Decorative charts with no labels, units, or real data
 - [ ] Meta-labels as eyebrows ("SECTION 01", "ABOUT US")
 - [ ] Filler navigation prompts ("Scroll to explore")
 

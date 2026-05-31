@@ -61,7 +61,7 @@
 | 3.2 | Body text ≥ 16px (1rem) on all viewports | CRITICAL | |
 | 3.3 | Line height ≥ 1.5 for body text | CRITICAL | |
 | 3.4 | Paragraph width ≤ 75 characters (≤ 680px at 16px) | IMPORTANT | |
-| 3.5 | No banned fonts: Inter as default, Roboto, Arial, Open Sans, Helvetica, Poppins | CRITICAL | |
+| 3.5 | No banned fonts as default: Inter, Roboto, Arial, Open Sans, Helvetica, Poppins, Space Grotesk, Sora, Geist, Instrument Serif — any trendy AI-default face chosen without a brand reason | CRITICAL | |
 | 3.6 | Hero H1 ≤ 3 lines on smallest target viewport | CRITICAL | |
 | 3.7 | Every H1/H2 has an eyebrow tag | IMPORTANT | |
 | 3.8 | Font pairing: expressive display + functional body | IMPORTANT | |
@@ -116,6 +116,7 @@
 | 6.8 | Form fields: label + input + helper + error anatomy complete | CRITICAL | |
 | 6.9 | Modals use native `<dialog>` element | IMPORTANT | |
 | 6.10 | No decorative side-stripe borders (`border-left` > 1px as accent) | CRITICAL | |
+| 6.11 | Data/content surfaces also handle: no-data vs no-results (distinct), permission-denied, slow-network/partial load, long-content overflow, first-run empty | IMPORTANT | |
 
 ---
 
@@ -192,10 +193,19 @@ Check these explicitly — any `✓` is an automatic fail:
 - [ ] Glassmorphism as default polish (only if it carries spatial meaning)
 - [ ] Modal as first design thought (exhaust inline/progressive alternatives first)
 - [ ] Gradient text (`background-clip: text`)
-- [ ] Side-stripe accent borders (border-left/right > 1px colored)
+- [ ] Side-stripe accent borders (border-left/right > 1px colored) — also clashes with rounded corners
+- [ ] Over-rounded radius (44px+ "blob") or one uniform radius on everything
+- [ ] Hairline border + wide soft shadow on the same surface (depth double-signal)
+- [ ] One flat `box-shadow` everywhere (not layered, not hue-tinted; blur should ≈ 2× the y-distance)
+- [ ] `font-weight` change on hover/selected (reflows text — animate weight only on scroll, per typography R10)
+- [ ] Bounce/elastic easing on UI elements (reserve spring for elements with real mass)
+- [ ] Gray text on a colored surface (washed out — use a darker tint of the surface hue or near-white)
 - [ ] SVG-drawn faces, people, or objects (always looks wrong)
 - [ ] Data slop: meaningless fake statistics ("50% faster", "99.9% uptime")
 - [ ] Icon on every heading, bullet, and card label
+- [ ] Emoji as primary UI icons or section markers (use one consistent SVG icon set)
+- [ ] Cards as the only structural pattern (editorial / table / timeline / list / diagram / process map not considered)
+- [ ] Decorative charts: sparklines/dashboards with no labels, units, or real data
 - [ ] Gradient backgrounds on every section
 - [ ] Single-symbol status: a lone `$` (meaning paid **and** freemium) instead of labelled Free/Freemium/Paid badges
 
@@ -291,7 +301,7 @@ If any answer requires hunting, navigation orientation is broken — fix before 
 
 ### AI Slop Test
 
-Run before declaring any design done. Three altitudes — each catches what the previous misses.
+Run before declaring any design done. Three altitudes — each catches what the previous misses. The full pattern catalog is `references/anti-slop-system.md` — note its tags: **[AI]** diagnostic tells vs **[craft]**/**[trend]** (good practice the default skips, not proof of AI). When *diagnosing* AI, weigh the [AI] rows.
 
 **First-order reflex — category → look.** Could someone guess the theme + palette from the category alone? "Observability → dark blue", "healthcare → white + teal", "finance → navy + gold", "crypto → neon on black". If yes, rework the scene sentence and color strategy until the answer is *not* obvious from the domain.
 
