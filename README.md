@@ -178,6 +178,7 @@ Global Design Skill =
 | [SaaS hero redesign](examples/landing-pages/01-saas-hero-redesign.md) | Landing page rewrite with implementation notes |
 | [Skill walkthroughs — 5 site types](examples/skill-walkthroughs.md) | Dry-run routing: fintech SaaS · travel landing · e-commerce catalog redesign · unknown-niche learn · healthcare audit |
 | [bestseotools case study (before → after)](redesigns/bestseotools/CASE-STUDY.md) | Real multi-pass catalog redesign, 65–70% → ~85%, with screenshots |
+| [sk-seo.ru a11y + contrast + anti-slop audit (before → after)](examples/before-after/sk-seo-2026-05-30/README.md) | 28-page audit: WCAG contrast fixes (ghost decoratives lifted to readable), forced-colors focus, form ARIA — 0 axe across 13 pages |
 | [sk-seo.ru bento redesign (before → after)](examples/before-after/sk-seo-2026-05-31/README.md) | Live 7-page redesign: bento proof-blocks, 60-icon branded set, portraits, unified blog CTAs — 0 axe / 0 overflow, shipped |
 
 ---
@@ -215,6 +216,12 @@ A second pass on a different live site (personal brand, dark theme, vanilla HTML
 - 12 blog articles that ended with no CTA → a unified inline + final CTA
 
 Full before → after: [`examples/before-after/sk-seo-2026-05-31/`](examples/before-after/sk-seo-2026-05-31/README.md) (before/ + after/ + 12 component shots + `DESIGN-DECISIONS.md`).
+
+### Earlier pass — readability & contrast on the dark theme
+
+Before the bento work, the same site went through an a11y + contrast pass with the skill ([`examples/before-after/sk-seo-2026-05-30/`](examples/before-after/sk-seo-2026-05-30/README.md)). The dark theme leaned on **ghost decoratives** — accent-green numbers and a giant "404" set at `opacity: 0.15–0.3`. On a near-black background those shimmer and strain the eye, and they measured **1.2–1.9:1** (axe color-contrast failures). They were lifted to `opacity: 0.5–0.6` (≈readable), card tags moved `--text-muted → --text-secondary`, and the body text stays a softened off-white (`#f5f3ef`), never pure white — the dark-mode contrast ceiling. Result: **0 axe color-contrast failures across 13 pages**, and the page reads calm instead of vibrating.
+
+This is encoded in [`rules/19-contrast-standards.md`](rules/19-contrast-standards.md) (WCAG AA/AAA + APCA + dark-mode ceiling) and the **ghost-decorative anti-pattern** (low-opacity accent text holds legibility only at ~`opacity ≥ 0.55`).
 
 ---
 
