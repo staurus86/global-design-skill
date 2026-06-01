@@ -6,6 +6,20 @@ Format: [version] — date — description
 
 ---
 
+## [2.1.3] — 2026-06-01
+
+### Bundle the validators/ directory
+
+Completeness audit of the installed skill: scanned every relative link in the bundled `.md` files. `references/sources.md` points to `validators/` (CI recipes: axe-core, lighthouse-ci, bundle-analyzer), but the directory was not bundled, so that reference broke after install.
+
+**Fixed:**
+- `scripts/gds` — added `validators` to `SKILL_RESOURCE_DIRS` (now bundles 12 dirs).
+- `install.md`, `README.md` — manual-copy loops include `validators`.
+
+**Audit result:** no skill content references any non-bundled directory (`mcp-server/`, `learning/`, `sedi/`, `docs/`, `examples/` are MCP/dev-only and not linked from skill files). Known cosmetic issue, unchanged: ~24 files reference the skill core files with a `skills/global-design/` prefix that does not resolve in the flattened install (the target files — `SKILL.md`, `quality-gates.md`, `output-formats.md` — are present at the skill root regardless).
+
+---
+
 ## [2.1.2] — 2026-06-01
 
 ### MCP config path fix

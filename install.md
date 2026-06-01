@@ -51,7 +51,7 @@ cp -r "$SRC/skills/global-design/." .claude/skills/global-design/
 
 # Bundle the resource dirs SKILL.md links to (references/, rules/, patterns/, ...)
 # so its relative paths resolve inside the installed skill folder.
-for d in references blueprints patterns rules checklists templates agents industries tokens integrations recipes; do
+for d in references blueprints patterns rules checklists templates agents industries tokens integrations recipes validators; do
   cp -r "$SRC/$d" .claude/skills/global-design/
 done
 
@@ -72,7 +72,7 @@ mkdir -p ~/.claude/skills/global-design ~/.claude/agents
 cp -r skills/global-design/. ~/.claude/skills/global-design/
 
 # Bundle the resource dirs SKILL.md links to, so its relative paths resolve.
-for d in references blueprints patterns rules checklists templates agents industries tokens integrations recipes; do
+for d in references blueprints patterns rules checklists templates agents industries tokens integrations recipes validators; do
   cp -r "$d" ~/.claude/skills/global-design/
 done
 

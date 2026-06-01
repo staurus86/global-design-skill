@@ -6,7 +6,7 @@ Turn Claude Code, Cursor, Codex, ChatGPT, Windsurf, and GitHub Copilot into a st
 
 Not another prompt collection. A self-learning design operating system: it knows sector-specific rules for 13 industries, learns from reference sites you point it at, and calibrates its pattern weights based on your feedback. All local, no telemetry.
 
-[![Version](https://img.shields.io/badge/version-2.1.2-blue)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-2.1.3-blue)](CHANGELOG.md)
 [![Standards](https://img.shields.io/badge/CSS-2026%20Baseline-green)](rules/)
 [![React](https://img.shields.io/badge/React-19-blue)](rules/)
 [![Next.js](https://img.shields.io/badge/Next.js-15-black)](rules/)
@@ -38,7 +38,7 @@ so its relative links resolve. Manual copy must do the same:
 SRC=path/to/global-design-skill
 mkdir -p .claude/skills/global-design .claude/agents
 cp -r "$SRC/skills/global-design/." .claude/skills/global-design/
-for d in references blueprints patterns rules checklists templates agents industries tokens integrations recipes; do
+for d in references blueprints patterns rules checklists templates agents industries tokens integrations recipes validators; do
   cp -r "$SRC/$d" .claude/skills/global-design/
 done
 cp "$SRC"/agents/*.md .claude/agents/

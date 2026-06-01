@@ -34,6 +34,7 @@ VERSION = "1.8.0"
 SKILL_RESOURCE_DIRS = [
     "references", "blueprints", "patterns", "rules", "checklists",
     "templates", "agents", "industries", "tokens", "integrations", "recipes",
+    "validators",
 ]
 
 # Force UTF-8 output so checkmarks and dashes render correctly everywhere
