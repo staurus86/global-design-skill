@@ -54,7 +54,7 @@ pip install -e ".[test]"
 python server.py
 ```
 
-Add to `.claude/mcp.json`:
+Add to `.mcp.json` at the project root (Claude Code does not read `.claude/mcp.json`):
 ```json
 {
   "mcpServers": {

@@ -6,6 +6,20 @@ Format: [version] — date — description
 
 ---
 
+## [2.1.2] — 2026-06-01
+
+### MCP config path fix
+
+`gds install --tool=mcp` wrote the server config to `.claude/mcp.json`, which Claude Code does not read. Project MCP servers must live in `.mcp.json` at the project root, so the MCP server never loaded for anyone who followed the installer.
+
+**Fixed:**
+- `scripts/gds` — `_install_mcp` now writes `.mcp.json` at the project root; `gds doctor` checks the same path.
+- `install.md`, `CLAUDE.md`, `mcp-server/README.md`, `integrations/21st-dev/guide.md`, `scripts/install.sh` — corrected the MCP config location to `.mcp.json` (project root).
+
+**Verified end-to-end (clean install):** `gds install --tool=all` → `gds doctor` 10/10; skill resources bundled and resolvable; MCP server boots over stdio with a clean stdout (banner to stderr); self-learning knowledge base round-trips to `~/.global-design-skill/knowledge/`.
+
+---
+
 ## [2.1.1] — 2026-06-01
 
 ### Install bundling fix

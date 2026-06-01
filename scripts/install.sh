@@ -12,7 +12,7 @@
 #   --cursor         Install .cursorrules
 #   --copilot        Install .github/copilot-instructions.md
 #   --windsurf       Install .windsurfrules
-#   --mcp            Install MCP server dependencies + .claude/mcp.json
+#   --mcp            Install MCP server dependencies + .mcp.json (project root)
 #   --all            Install everything (default when no --* flags given)
 #
 # Requires: Python 3.11+

@@ -52,7 +52,7 @@ Category shortcuts:
 
 ## MCP Setup (Claude Code)
 
-Add to `.claude/mcp.json`:
+Add to `.mcp.json` at the project root (Claude Code does not read `.claude/mcp.json`):
 
 ```json
 {

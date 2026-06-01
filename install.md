@@ -133,7 +133,7 @@ pip install -e ".[test]"
 python server.py
 ```
 
-Add to `.claude/mcp.json` in your project (or let `gds install --tool=mcp` do it automatically):
+Add to `.mcp.json` in your project root — Claude Code reads project MCP servers from there, not from `.claude/mcp.json` (or let `gds install --tool=mcp` do it automatically):
 
 ```json
 {

@@ -23,7 +23,9 @@ pip install -e .
 
 ## Setup in Claude Code
 
-Add to `~/.claude/settings.json`:
+Add to `.mcp.json` at your project root (project scope), or run
+`claude mcp add` for user scope. Claude Code does not read `.claude/mcp.json`
+or `settings.json` for MCP servers:
 
 ```json
 {

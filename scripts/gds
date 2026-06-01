@@ -176,7 +176,9 @@ def _install_mcp(target: Path) -> None:
         "env": {},
     }
 
-    config_path = target / ".claude" / "mcp.json"
+    # Claude Code reads project MCP servers from .mcp.json at the project root
+    # (NOT .claude/mcp.json — that path is ignored).
+    config_path = target / ".mcp.json"
     config_path.parent.mkdir(parents=True, exist_ok=True)
 
     if config_path.exists():
@@ -284,7 +286,7 @@ def cmd_doctor(args) -> None:
     chk(industry_count >= 14, f"Industry files present ({industry_count}/14)", f"Industry files incomplete ({industry_count}/14)")
 
     # MCP config
-    mcp_config = target / ".claude" / "mcp.json"
+    mcp_config = target / ".mcp.json"
     if mcp_config.exists():
         try:
             cfg = json.loads(mcp_config.read_text(encoding="utf-8"))
