@@ -18,6 +18,10 @@ Not another prompt collection. A self-learning design operating system: it knows
 
 ## Install in 30 seconds
 
+> **A note, and an apology.** Through v2.1.0 the installer copied only `skills/global-design/`. The folders that file links to (`references/`, `rules/`, `patterns/` and the rest) live at the repo root, so they never reached your project. The anti-slop catalog and every reference link came up empty unless you happened to run from the repo root. That was my bug, and it shipped for too long. The installer now bundles those folders next to `SKILL.md`, and `gds doctor` verifies they are there. If your earlier installs felt half-broken, this is why. Sorry. Re-run the command below to get a working copy.
+>
+> — Staurus
+
 ```bash
 git clone https://github.com/staurus86/global-design-skill.git
 cd global-design-skill
