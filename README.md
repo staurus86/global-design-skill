@@ -26,11 +26,19 @@ python scripts/gds install --tool=all /path/to/your-project
 
 ### Claude Code
 
+The `gds` command above is the recommended path — it bundles the skill's
+resource folders (`references/`, `rules/`, `patterns/`, ...) beside `SKILL.md`
+so its relative links resolve. Manual copy must do the same:
+
 ```bash
-mkdir -p .claude/skills .claude/agents
-cp -r path/to/global-design-skill/skills/global-design .claude/skills/
-cp path/to/global-design-skill/agents/*.md .claude/agents/
-cat path/to/global-design-skill/integrations/claude-code/CLAUDE.md >> CLAUDE.md
+SRC=path/to/global-design-skill
+mkdir -p .claude/skills/global-design .claude/agents
+cp -r "$SRC/skills/global-design/." .claude/skills/global-design/
+for d in references blueprints patterns rules checklists templates agents industries tokens integrations recipes; do
+  cp -r "$SRC/$d" .claude/skills/global-design/
+done
+cp "$SRC"/agents/*.md .claude/agents/
+cat "$SRC/integrations/claude-code/CLAUDE.md" >> CLAUDE.md
 ```
 
 ### Cursor

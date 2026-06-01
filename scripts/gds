@@ -25,7 +25,16 @@ import sys
 from pathlib import Path
 
 GDS_ROOT = Path(__file__).parent.parent.resolve()
-VERSION = "1.7.0"
+VERSION = "1.8.0"
+
+# Resource directories the skill references via relative paths from SKILL.md
+# (references/anti-slop-system.md, rules/*, patterns/*, etc.). They live at the
+# repo root, so the installer must copy them alongside SKILL.md — otherwise the
+# links resolve to a non-existent path inside the installed skill folder.
+SKILL_RESOURCE_DIRS = [
+    "references", "blueprints", "patterns", "rules", "checklists",
+    "templates", "agents", "industries", "tokens", "integrations", "recipes",
+]
 
 # Force UTF-8 output so checkmarks and dashes render correctly everywhere
 if hasattr(sys.stdout, "reconfigure"):
@@ -66,6 +75,18 @@ def _install_claude_code(target: Path) -> None:
         _ok(f"Skills → {skills_dst}")
     else:
         _fail(f"Source not found: {src_skill}")
+
+    # Bundle the resource directories the skill links to, so relative paths in
+    # SKILL.md (references/, rules/, patterns/, ...) resolve inside the install.
+    bundled = 0
+    for name in SKILL_RESOURCE_DIRS:
+        src_dir = GDS_ROOT / name
+        if src_dir.exists():
+            shutil.copytree(src_dir, skills_dst / name, dirs_exist_ok=True)
+            bundled += 1
+        else:
+            _fail(f"Resource dir not found: {src_dir}")
+    _ok(f"Bundled {bundled}/{len(SKILL_RESOURCE_DIRS)} resource dirs into skill folder")
 
     src_agents = GDS_ROOT / "agents"
     if src_agents.exists():
@@ -228,8 +249,18 @@ def cmd_doctor(args) -> None:
         chk(False, "", "fastmcp not installed — run: pip install 'fastmcp>=0.1'")
 
     # Skills
-    skill_file = target / ".claude" / "skills" / "global-design" / "SKILL.md"
-    chk(skill_file.exists(), f"Skills installed ({skill_file.parent})", f"Skills not found — run: gds install --tool=claude-code {target}")
+    skill_dir = target / ".claude" / "skills" / "global-design"
+    skill_file = skill_dir / "SKILL.md"
+    chk(skill_file.exists(), f"Skills installed ({skill_dir})", f"Skills not found — run: gds install --tool=claude-code {target}")
+
+    # Skill resources bundled — relative links in SKILL.md must resolve
+    anti_slop = skill_dir / "references" / "anti-slop-system.md"
+    missing = [d for d in SKILL_RESOURCE_DIRS if not (skill_dir / d).exists()]
+    chk(
+        anti_slop.exists() and not missing,
+        "Skill resources bundled (references/, rules/, patterns/, ...)",
+        f"Skill resources missing ({', '.join(missing) or 'references/anti-slop-system.md'}) — re-run: gds install --tool=claude-code {target}",
+    )
 
     # Agents
     agents_dir = target / ".claude" / "agents"

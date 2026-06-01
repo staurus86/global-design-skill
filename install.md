@@ -45,20 +45,37 @@ bash scripts/install.sh /path/to/your-project
 
 ```bash
 # From inside your project
-mkdir -p .claude/skills .claude/agents
-cp -r path/to/global-design-skill/skills/global-design .claude/skills/
-cp path/to/global-design-skill/agents/*.md .claude/agents/
+SRC=path/to/global-design-skill
+mkdir -p .claude/skills/global-design .claude/agents
+cp -r "$SRC/skills/global-design/." .claude/skills/global-design/
+
+# Bundle the resource dirs SKILL.md links to (references/, rules/, patterns/, ...)
+# so its relative paths resolve inside the installed skill folder.
+for d in references blueprints patterns rules checklists templates agents industries tokens integrations recipes; do
+  cp -r "$SRC/$d" .claude/skills/global-design/
+done
+
+cp "$SRC"/agents/*.md .claude/agents/
 
 # Append the routing block to your project CLAUDE.md
-cat path/to/global-design-skill/integrations/claude-code/CLAUDE.md >> CLAUDE.md
+cat "$SRC/integrations/claude-code/CLAUDE.md" >> CLAUDE.md
 ```
+
+> The `gds install` command above does the resource bundling for you. Copy the dirs manually only if you are not using the CLI.
 
 #### Option B: Global install
 
 Make the skill available in every project:
 
 ```bash
-cp -r skills/global-design ~/.claude/skills/global-design
+mkdir -p ~/.claude/skills/global-design ~/.claude/agents
+cp -r skills/global-design/. ~/.claude/skills/global-design/
+
+# Bundle the resource dirs SKILL.md links to, so its relative paths resolve.
+for d in references blueprints patterns rules checklists templates agents industries tokens integrations recipes; do
+  cp -r "$d" ~/.claude/skills/global-design/
+done
+
 cp agents/*.md ~/.claude/agents/
 cat integrations/claude-code/CLAUDE.md >> ~/.claude/CLAUDE.md
 ```
@@ -204,6 +221,8 @@ Then re-run the copy commands from the relevant section above to refresh the fil
 ## Troubleshooting
 
 **"Skill not found"** — Verify `skills/global-design/SKILL.md` exists and that the routing block from `integrations/claude-code/CLAUDE.md` is present in your `CLAUDE.md`.
+
+**Anti-slop catalog / `references/`, `rules/`, `patterns/` links don't load** — The skill folder is missing its bundled resources. SKILL.md references them with relative paths, so they must sit beside `SKILL.md` inside `.claude/skills/global-design/`. Re-run `gds install --tool=claude-code <project>` (it copies them automatically), or run `gds doctor <project>` to confirm "Skill resources bundled" passes.
 
 **Agent not activating** — Check that agent files are directly in `.claude/agents/` (not a subdirectory).
 
