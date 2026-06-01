@@ -101,9 +101,9 @@ This agent does not fix problems — it identifies them and articulates the stan
 
 ## Связанные файлы
 
-- `skills/global-design/SKILL.md` — aesthetic archetypes, banned patterns, AIDA structure
-- `skills/global-design/operating-principles.md` — Principle 2 (one focus), Principle 6 (hierarchy), Principle 10 (verify against goal)
-- `skills/global-design/quality-gates.md` — Gate 1 (problem definition), Gate 3 (design system)
+- `SKILL.md` — aesthetic archetypes, banned patterns, AIDA structure
+- `operating-principles.md` — Principle 2 (one focus), Principle 6 (hierarchy), Principle 10 (verify against goal)
+- `quality-gates.md` — Gate 1 (problem definition), Gate 3 (design system)
 - `agents/design-critic.md` — adversarial detail review (runs after design-director)
 - `checklists/global-design-review.md` — full visual checklist
 

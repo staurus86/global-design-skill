@@ -120,8 +120,8 @@ This is not about making things pretty. It's about removing every obstacle betwe
 
 ## Связанные файлы
 
-- `skills/global-design/operating-principles.md` — Principle 2 (one focus), cognitive laws (Hick's, Fitts', Doherty)
-- `skills/global-design/quality-gates.md` — Gate 1 (Problem Definition), Gate 4 (States)
+- `operating-principles.md` — Principle 2 (one focus), cognitive laws (Hick's, Fitts', Doherty)
+- `quality-gates.md` — Gate 1 (Problem Definition), Gate 4 (States)
 - `rules/14-landing-pages.md` — landing page decision rules
 - `blueprints/landing-page-from-scratch.md` — AIDA structure blueprint
 - `patterns/marketing-blocks/cta-sections.md` — CTA design patterns

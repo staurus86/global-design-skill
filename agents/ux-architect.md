@@ -106,9 +106,9 @@ The UX Architect does not evaluate aesthetics — it evaluates whether the right
 
 ## Связанные файлы
 
-- `skills/global-design/SKILL.md` — Step 1-4 of the decision pipeline
-- `skills/global-design/operating-principles.md` — Principle 1 (resolve unknowns first), Principle 4 (all states required)
-- `skills/global-design/quality-gates.md` — Gate 1 (Problem Definition), Gate 2 (Information Architecture), Gate 4 (States)
+- `SKILL.md` — Step 1-4 of the decision pipeline
+- `operating-principles.md` — Principle 1 (resolve unknowns first), Principle 4 (all states required)
+- `quality-gates.md` — Gate 1 (Problem Definition), Gate 2 (Information Architecture), Gate 4 (States)
 - `blueprints/landing-page-from-scratch.md` — landing page IA template
 - `blueprints/saas-app-from-scratch.md` — SaaS app IA template
 - `patterns/product-ui/onboarding.md` — first-time user patterns

@@ -181,4 +181,4 @@
 ---
 
 *Template version: global-design-skill v1.0 — `templates/specs/design-review-report.md`*  
-*Related: `checklists/global-design-review.md`, `skills/global-design/quality-gates.md`, `agents/`*
+*Related: `checklists/global-design-review.md`, `quality-gates.md`, `agents/`*

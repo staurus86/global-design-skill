@@ -105,7 +105,7 @@
 | Banned patterns scan | `agents/design-critic.md` | `checklists/global-design-review.md` |
 | UI component review | — | `checklists/ui-review.md` |
 | Find real design references | `agents/reference-hunter.md` | `references/inspiration-sites.md` `references/aesthetic-archetypes.md` |
-| Audit a live URL | `agents/reference-hunter.md` (Capability 4) | `skills/global-design/quality-gates.md` |
+| Audit a live URL | `agents/reference-hunter.md` (Capability 4) | `quality-gates.md` |
 | Competitive analysis | `agents/reference-hunter.md` (Capability 3) | `references/saas-ui-examples.md` |
 
 ---
@@ -222,10 +222,10 @@ Load when the task involves finding, studying, or referencing real-world example
 
 "Write a spec" / "Handoff"
   └── Load: templates/specs/frontend-tz.md
-      Gate check: skills/global-design/quality-gates.md
+      Gate check: quality-gates.md
 ```
 
 ---
 
-*Routing version: global-design-skill v1.9.1 — `skills/global-design/task-routing.md`*  
+*Routing version: global-design-skill v1.9.1 — `task-routing.md`*  
 *Updated: 2026-05-30*

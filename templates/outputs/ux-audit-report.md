@@ -92,4 +92,4 @@ Rough time to resolve each critical issue.
 
 *Template version: global-design-skill v1.0 — `templates/outputs/ux-audit-report.md`*  
 *Updated: 2026-05-20*  
-*Related: `skills/global-design/output-formats.md`, `templates/specs/design-review-report.md`, `agents/ux-architect.md`*
+*Related: `output-formats.md`, `templates/specs/design-review-report.md`, `agents/ux-architect.md`*

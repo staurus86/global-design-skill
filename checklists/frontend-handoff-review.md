@@ -113,4 +113,4 @@ Answer all four. Any "no" blocks handoff.
 
 *Checklist version: global-design-skill v1.0 — `checklists/frontend-handoff-review.md`*  
 *Updated: 2026-05-20*  
-*Related: `templates/specs/frontend-tz.md`, `skills/global-design/quality-gates.md` (Gate 8), `agents/frontend-handoff-reviewer.md`*
+*Related: `templates/specs/frontend-tz.md`, `quality-gates.md` (Gate 8), `agents/frontend-handoff-reviewer.md`*

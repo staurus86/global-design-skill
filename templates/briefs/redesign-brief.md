@@ -125,7 +125,7 @@ Qualitative: user research findings, support ticket themes, NPS verbatims.]
 [3–5 sites from `references/inspiration-sites.md` that this redesign should look toward. Not "similar" to your product — sites that solve the specific problem this redesign addresses.]
 
 **Tone:**
-[From `skills/global-design/SKILL.md` — quiet / excited / calm / authoritative / warm / tense?]
+[From `SKILL.md` — quiet / excited / calm / authoritative / warm / tense?]
 
 **What the design should NOT look like:**
 [Specific examples of aesthetics to avoid — and why. "Not like [Site X] because their pricing section is manipulative" is actionable.]
@@ -137,7 +137,7 @@ Qualitative: user research findings, support ticket themes, NPS verbatims.]
 > The redesign is complete when ALL of the following are true.
 
 **Functional:**
-- [ ] All 8 quality gates pass (see `skills/global-design/quality-gates.md`)
+- [ ] All 8 quality gates pass (see `quality-gates.md`)
 - [ ] All 5 scoring dimensions ≥15/20
 - [ ] No banned patterns present
 - [ ] [Specific user flow test]: user can complete [task] in under [time]
@@ -181,4 +181,4 @@ Qualitative: user research findings, support ticket themes, NPS verbatims.]
 ---
 
 *Template version: global-design-skill v1.0 — `templates/briefs/redesign-brief.md`*  
-*Related: `blueprints/redesign-existing-page.md`, `templates/specs/design-review-report.md`, `skills/global-design/quality-gates.md`*
+*Related: `blueprints/redesign-existing-page.md`, `templates/specs/design-review-report.md`, `quality-gates.md`*

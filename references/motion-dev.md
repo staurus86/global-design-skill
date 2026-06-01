@@ -467,4 +467,4 @@ export const fadeIn = {
 ---
 
 *Reference version: global-design-skill v1.0 — `references/motion-dev.md`*
-*Related: `rules/05-animation.md`, `references/motion-systems.md`, `skills/global-design/SKILL.md` §GSAP*
+*Related: `rules/05-animation.md`, `references/motion-systems.md`, `SKILL.md` §GSAP*

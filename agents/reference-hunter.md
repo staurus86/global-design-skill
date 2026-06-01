@@ -343,7 +343,7 @@ Examples:
 | `references/navigation-examples.md` | Navigation patterns in real products |
 | `rules/` | All 16 rules files — scoring dimensions |
 | `checklists/global-design-review.md` | Banned patterns list |
-| `skills/global-design/quality-gates.md` | 8 gates for audit scoring |
+| `quality-gates.md` | 8 gates for audit scoring |
 
 ---
 

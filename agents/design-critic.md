@@ -138,9 +138,9 @@ Full list in `SKILL.md` Section 2; full tagged catalog in `references/anti-slop-
 
 ## Связанные файлы
 
-- `skills/global-design/SKILL.md` — Section 2: Banned Patterns (complete list)
-- `skills/global-design/operating-principles.md` — all 10 principles as review criteria
-- `skills/global-design/quality-gates.md` — Gate 4 (States), Gate 5 (Responsive), Gate 6 (Accessibility)
+- `SKILL.md` — Section 2: Banned Patterns (complete list)
+- `operating-principles.md` — all 10 principles as review criteria
+- `quality-gates.md` — Gate 4 (States), Gate 5 (Responsive), Gate 6 (Accessibility)
 - `checklists/ui-review.md` — systematic UI checklist
 - `checklists/global-design-review.md` — global design standards checklist
 - `agents/design-director.md` — runs before this agent (concept level)

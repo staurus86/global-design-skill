@@ -474,4 +474,4 @@ After onboarding completion, the user lands on a dashboard with a getting-starte
 ---
 
 *Recipe version: global-design-skill v1.0 — `recipes/improve-onboarding.md`*  
-*Related: `patterns/product-ui/forms.md`, `patterns/product-ui/notifications.md`, `skills/global-design/operating-principles.md`*
+*Related: `patterns/product-ui/forms.md`, `patterns/product-ui/notifications.md`, `operating-principles.md`*

@@ -350,7 +350,7 @@ p               { text-wrap: pretty; }    /* prose: no single-word last line */
 <h2>Ship faster without the&nbsp;chaos</h2>
 ```
 
-**Em-dash stays banned.** This rule governs quotes, ranges, and units — it does **not** reintroduce the em-dash (`—`). Per the copy standard, replace em-dashes with commas, colons, or periods. See Banned Patterns → Copy in `skills/global-design/SKILL.md`.
+**Em-dash stays banned.** This rule governs quotes, ranges, and units — it does **not** reintroduce the em-dash (`—`). Per the copy standard, replace em-dashes with commas, colons, or periods. See Banned Patterns → Copy in `SKILL.md`.
 
 ---
 

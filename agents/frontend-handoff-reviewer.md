@@ -138,9 +138,9 @@ UX Architect → Design Director → (design) → Design Critic → **Frontend H
 
 ## Связанные файлы
 
-- `skills/global-design/quality-gates.md` — Gate 8 (Frontend Readiness) is the primary checklist
-- `skills/global-design/operating-principles.md` — Principle 9 (Handoff-ready means unambiguous)
-- `skills/global-design/output-formats.md` — Developer output format template
+- `quality-gates.md` — Gate 8 (Frontend Readiness) is the primary checklist
+- `operating-principles.md` — Principle 9 (Handoff-ready means unambiguous)
+- `output-formats.md` — Developer output format template
 - `templates/specs/frontend-tz.md` — canonical spec template
 - `checklists/frontend-handoff-review.md` — extended handoff checklist
 - `references/accessibility.md` — ARIA patterns and keyboard navigation recipes

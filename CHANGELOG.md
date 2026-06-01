@@ -6,6 +6,19 @@ Format: [version] — date — description
 
 ---
 
+## [2.1.4] — 2026-06-01
+
+### Fix skill-core path references in the flattened install
+
+The installer flattens `skills/global-design/*` to the skill root, but 24 content files referenced the core files with a `skills/global-design/` prefix (`skills/global-design/quality-gates.md`, etc.) that does not resolve there. All 39 occurrences were non-clickable backtick/prose mentions, so the impact was cosmetic, but the paths were wrong in the install.
+
+**Fixed:**
+- Stripped the `skills/global-design/` prefix from references to `SKILL.md`, `quality-gates.md`, `operating-principles.md`, `output-formats.md`, `task-routing.md` across 24 files (agents, references, rules, patterns, blueprints, checklists, templates, recipes). The bare filenames resolve at the skill root after install and remain findable in repo-dev.
+
+**Audit:** re-scanned every relative link in the installed skill — no skill-content reference points to a missing or non-bundled path. Remaining flagged tokens (`rules/04`, `tokens.css`, `package.json`) are prose shorthand or code-example filenames, not skill files.
+
+---
+
 ## [2.1.3] — 2026-06-01
 
 ### Bundle the validators/ directory

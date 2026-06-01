@@ -2,7 +2,7 @@
 
 > Trendy aesthetics are *compositions* of techniques, not new techniques. This file maps a named look to the existing technique recipes that build it, plus the accessibility guardrails that keep it shippable and when to **not** use it. The CSS lives in `references/visual-effects.md`; this file is the assembly + judgment layer.
 >
-> **Excluded by design:** neumorphism and claymorphism. Both depend on low-contrast tonal shadows that routinely fail WCAG 1.4.3 (text) and 1.4.11 (UI contrast) and read as 2020-era slop. If a client insists, treat it as a Level-1 accent on a single non-critical surface — never the system. See Banned Patterns in `skills/global-design/SKILL.md`.
+> **Excluded by design:** neumorphism and claymorphism. Both depend on low-contrast tonal shadows that routinely fail WCAG 1.4.3 (text) and 1.4.11 (UI contrast) and read as 2020-era slop. If a client insists, treat it as a Level-1 accent on a single non-critical surface — never the system. See Banned Patterns in `SKILL.md`.
 
 ---
 

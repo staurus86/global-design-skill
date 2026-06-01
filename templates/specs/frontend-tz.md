@@ -354,4 +354,4 @@ animate(element, {
 ---
 
 *Template version: global-design-skill v1.0 — `templates/specs/frontend-tz.md`*
-*Gate 8 checklist: `skills/global-design/quality-gates.md`*
+*Gate 8 checklist: `quality-gates.md`*

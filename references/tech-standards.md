@@ -1,6 +1,6 @@
 # Technology Standards (2025–2026)
 
-> Full code reference for the stack standards summarized in `skills/global-design/SKILL.md` → "Technology Standards". Use these — not legacy alternatives.
+> Full code reference for the stack standards summarized in `SKILL.md` → "Technology Standards". Use these — not legacy alternatives.
 
 ### CSS
 

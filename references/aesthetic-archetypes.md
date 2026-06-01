@@ -288,4 +288,4 @@ The rule: mixing is intentional contrast between modes (marketing vs. app), neve
 
 *Reference version: global-design-skill v1.0 — `references/aesthetic-archetypes.md`*  
 *Updated: 2026-05-20*  
-*Related: `agents/reference-hunter.md`, `references/inspiration-sites.md`, `skills/global-design/SKILL.md`*
+*Related: `agents/reference-hunter.md`, `references/inspiration-sites.md`, `SKILL.md`*

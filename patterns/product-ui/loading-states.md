@@ -353,7 +353,7 @@ Show a subtle "saving" indicator on the optimistic item, not a blocking loading 
 ## Related Files
 
 - `rules/13-saas-products.md` — R5: Real-time feedback, Doherty Threshold
-- `skills/global-design/operating-principles.md` — Principle 4: Loading decision matrix
-- `skills/global-design/quality-gates.md` — Gate 4: Loading state required
+- `operating-principles.md` — Principle 4: Loading decision matrix
+- `quality-gates.md` — Gate 4: Loading state required
 - `patterns/product-ui/error-states.md` — when loading fails
 - `patterns/product-ui/empty-states.md` — when loaded content is genuinely empty

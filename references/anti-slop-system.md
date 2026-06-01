@@ -10,7 +10,7 @@
 >
 > **Why slop happens.** An image model and a coding model both regress to the statistical mean of their training data. "Slop" is that mean rendered confidently. The [AI] rows name the mean directly; the [craft] rows are the deviations that read as *chosen, not defaulted*.
 >
-> **How to use.** Deep catalog behind the short ban list in `skills/global-design/SKILL.md` → Banned Patterns and the `AI Slop Test` in `checklists/global-design-review.md`. When *diagnosing* "did AI make this?", weigh the [AI] rows. When *improving* any design (AI or human), apply [craft]. Values are defaults to deviate *from* with intent, not new dogma to default *to*.
+> **How to use.** Deep catalog behind the short ban list in `SKILL.md` → Banned Patterns and the `AI Slop Test` in `checklists/global-design-review.md`. When *diagnosing* "did AI make this?", weigh the [AI] rows. When *improving* any design (AI or human), apply [craft]. Values are defaults to deviate *from* with intent, not new dogma to default *to*.
 
 ---
 
@@ -159,5 +159,5 @@ Slop is the confident average. Every fix above is one act of *deviation with a r
 
 ---
 
-*Reference version: global-design-skill v2.1.3 — `references/anti-slop-system.md`*
-*Related: `references/sources.md` (the floor) · `skills/global-design/SKILL.md` → Banned Patterns · `checklists/global-design-review.md` → AI Slop Test · `references/inspiration-sites.md` → Category 12 · `references/aesthetic-recipes.md` (slop vs premium per trend) · `rules/00-escalation-protocol.md` (Macrostructure-First)*
+*Reference version: global-design-skill v2.1.4 — `references/anti-slop-system.md`*
+*Related: `references/sources.md` (the floor) · `SKILL.md` → Banned Patterns · `checklists/global-design-review.md` → AI Slop Test · `references/inspiration-sites.md` → Category 12 · `references/aesthetic-recipes.md` (slop vs premium per trend) · `rules/00-escalation-protocol.md` (Macrostructure-First)*
