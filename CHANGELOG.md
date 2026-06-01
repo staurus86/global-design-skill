@@ -6,6 +6,23 @@ Format: [version] — date — description
 
 ---
 
+## [2.1.1] — 2026-06-01
+
+### Install bundling fix
+
+The installer copied only `skills/global-design/`, but `SKILL.md` links to resource folders (`references/`, `rules/`, `patterns/`, ...) that live at the repo root. After install those links resolved to a missing path inside the skill folder, so the anti-slop catalog and every reference link were invisible in any session whose working directory was not the repo root.
+
+**Fixed:**
+- `scripts/gds` — `_install_claude_code` now copies the 11 resource directories (`SKILL_RESOURCE_DIRS`) next to `SKILL.md` in the install target, so relative links resolve.
+- `scripts/gds` — `gds doctor` gained a "Skill resources bundled" check that fails if `references/anti-slop-system.md` or any resource dir is missing.
+- `install.md`, `README.md` — manual-copy instructions bundle the same folders; added a troubleshooting entry for missing `references/`/`rules/`/`patterns/`.
+
+**Changed:**
+- Version surfaces aligned to 2.1.1 (`manifest.yaml`, README badge, `SKILL.md`, anti-slop footer).
+- `README.md` — added a transparency note about the bug under the install section.
+
+---
+
 ## [2.1.0] — 2026-05-31
 
 ### Anti-slop system + honesty audit
