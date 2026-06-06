@@ -6,6 +6,44 @@ Format: [version] — date — description
 
 ---
 
+## [2.3.0] — 2026-06-06
+
+### New template: design-system MASTER + page-overrides (multi-page consistency)
+
+Second GitHub-audit-driven addition. UI/UX Pro Max's distinctive mechanism is a persisted design-system source of truth (`MASTER.md`) plus per-page override files — the thing that keeps a 15-page site looking like one product instead of one template recolored. We had the inputs (Design Dials, Macrostructure, Memorability Gate in `rules/00`; Design Tokens Core; `tokens.css`) but no convention that freezes them per project and lets pages inherit, declaring only justified deviations.
+
+**Added:**
+- **`templates/specs/design-system-master.md`** — fill-in MASTER that locks identity (the One Memorable Thing, visual metaphor, default macrostructure, Design Dials), OKLCH tokens, typography, spacing/radius/shadow, component conventions, motion budget, and voice for the whole project — plus the **page-overrides convention**: each page inherits MASTER and lists only its deltas, each with a required one-line justification. Three pages overriding the same value the same way means the MASTER is wrong.
+
+**Wired in (consistency pass):**
+- `blueprints/website-from-scratch.md` — new **Step 0: Lock the MASTER** before IA; the existing "Design System for Multi-Page Sites" section now points to the MASTER as source of truth.
+- `skills/global-design/SKILL.md` — Task Routing "Website from scratch" row references the template; version 2.2.0 → 2.3.0.
+- `skills/global-design/task-routing.md` — Output Templates row added; multi-page Build row notes Step 0.
+- `README.md` — templates tree updated.
+
+**Principle distilled:** freeze the design system once per project; pages inherit by default and earn their deviations with a reason — inheritance is the default, drift is the bug.
+
+---
+
+## [2.2.0] — 2026-06-06
+
+### New rule: rendered verification (Decision Pipeline step 12, made operational)
+
+A GitHub audit of competing design skills surfaced one mechanism we lacked as a first-class rule: a live render → audit → fix loop (LibreUIUX wires Chrome DevTools MCP for it). We already had the *knowledge* — `references/live-audit-snippets.md`, the verify-in-every-mode matrix in `checklists/global-design-review.md`, verify-before-tile in `blueprints/redesign-existing-page.md`, R14 in `rules/19` — but it was scattered and Pipeline step 12 VERIFY pointed only at the paper Quality Gates. This consolidates it into a routable, mandatory rule.
+
+**Added:**
+- **`rules/20-rendered-verification.md`** — R1 when rendered verification is mandatory vs optional (Level 3+ and any deploy = mandatory); R2 the render → audit → triage → fix-at-source → re-render loop; R3 the theme × viewport × view-mode × state matrix; R4 fix-at-source-in-every-mode (never per-instance); R5 the accessible/text layer as a first-class deliverable. References the existing audit snippets rather than duplicating them.
+
+**Wired in (consistency pass):**
+- `skills/global-design/SKILL.md` — Decision Pipeline step 12 VERIFY now points to rule 20; rules-catalog count 20 → 21.
+- `skills/global-design/task-routing.md` — added to Rules-by-Domain and Review-and-Audit tables; routing version bumped to v2.2.0.
+- `CLAUDE.md` — added a Task-routing row for verify-rendered / done-before-deploy.
+- `README.md` — rules tree updated (20 domain rule files).
+
+**Principle distilled:** a correct screenshot of the default state is not verification — render the real DOM and prove the Gates in every mode before declaring done.
+
+---
+
 ## [2.1.4] — 2026-06-01
 
 ### Fix skill-core path references in the flattened install

@@ -25,6 +25,18 @@ CSS framework:  [Tailwind / Bootstrap / Bulma / UnoCSS / Panda CSS / Open Props]
 
 ---
 
+## Step 0 — Lock the MASTER before designing any page
+
+A multi-page site drifts the moment each page re-decides its own tokens, spacing, and voice. Freeze the project-wide system once, then have every page inherit it.
+
+1. Fill `templates/specs/design-system-master.md` → copy into the project as `design-system/MASTER.md`. This locks: identity (the One Memorable Thing, visual metaphor, default macrostructure, Design Dials from `rules/00`), OKLCH tokens, typography, spacing/radius/shadow, component conventions, motion budget, voice.
+2. Each page gets a `design-system/pages/[name].md` that lists **only** its justified deviations from the MASTER. Default is inheritance; an unexplained override is an inconsistency, not a feature.
+3. If three pages override the same MASTER value the same way, the MASTER is wrong — fix it there, not per page.
+
+The homepage may legitimately push `VISUAL_DENSITY` low and use multiple section backgrounds; a data-heavy `/customers` index may push it high. Record each as a page override with a one-line reason — that is how the site stays one product instead of one template recolored.
+
+---
+
 ## Site Architecture — IA First
 
 Map all pages before designing any of them.
@@ -213,6 +225,8 @@ CTA: [Start your free trial / Contact sales]
 ---
 
 ## Design System for Multi-Page Sites
+
+> Source of truth: the project `MASTER` (Step 0, `templates/specs/design-system-master.md`). The snippets below are the *shape* of what the MASTER records — fill the MASTER with the project's resolved values, then reference its tokens here.
 
 ### Typography hierarchy
 

@@ -24,6 +24,7 @@ Do **not** use for pure backend, SQL, server config, data analysis — unless UI
 | Developer handoff | `templates/specs/frontend-tz.md` |
 | Accessibility review | `agents/accessibility-auditor.md` + `rules/07-accessibility.md` |
 | Contrast audit / fix (text, blocks, sections, dark mode) | `rules/19-contrast-standards.md` |
+| Verify rendered result / done-before-deploy / "passes in source but breaks live" | `rules/20-rendered-verification.md` + `references/live-audit-snippets.md` |
 | Anti-slop audit / "looks AI-generated" | `references/anti-slop-system.md` |
 | Animation (scroll, transitions, stagger) | `rules/17-motion-react.md` |
 | Ready-made React components | `integrations/21st-dev/guide.md` |

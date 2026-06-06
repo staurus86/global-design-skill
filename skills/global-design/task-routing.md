@@ -22,7 +22,7 @@
 | Landing page (wow/interactive) | `blueprints/interactive-landing-page.md` | `rules/14-landing-pages.md` `rules/05-animation.md` | `patterns/marketing-blocks/` `patterns/effects/` | `checklists/landing-conversion-review.md` `checklists/wow-effects-checklist.md` |
 | SaaS app / product | `blueprints/saas-app-from-scratch.md` | `rules/13-saas-products.md` | `patterns/product-ui/` | `checklists/ui-review.md` |
 | Admin panel | `blueprints/admin-panel-from-scratch.md` | `rules/12-admin-panels.md` | `patterns/admin-ui/` | `checklists/ui-review.md` |
-| Multi-page website | `blueprints/website-from-scratch.md` | `rules/14-landing-pages.md` `rules/02-layout-and-grid.md` | `patterns/marketing-blocks/` `patterns/navigation/` | `checklists/global-design-review.md` |
+| Multi-page website | `blueprints/website-from-scratch.md` (Step 0: lock the MASTER → `templates/specs/design-system-master.md`) | `rules/14-landing-pages.md` `rules/02-layout-and-grid.md` | `patterns/marketing-blocks/` `patterns/navigation/` | `checklists/global-design-review.md` |
 | Pricing page | `blueprints/pricing-page-from-scratch.md` | `rules/14-landing-pages.md` | `patterns/marketing-blocks/pricing-sections.md` `patterns/marketing-blocks/comparison-sections.md` | `checklists/landing-conversion-review.md` |
 | Portfolio site | `blueprints/portfolio-from-scratch.md` | `rules/01-visual-hierarchy.md` `rules/03-typography.md` | `patterns/effects/` `references/portfolios.md` | `checklists/global-design-review.md` |
 | Onboarding flow | `blueprints/onboarding-flow-from-scratch.md` | `rules/13-saas-products.md` | `patterns/product-ui/onboarding.md` `patterns/product-ui/forms.md` | `checklists/ui-review.md` |
@@ -104,6 +104,7 @@
 | Frontend handoff review | `agents/frontend-handoff-reviewer.md` | `templates/specs/frontend-tz.md` |
 | Banned patterns scan | `agents/design-critic.md` | `checklists/global-design-review.md` |
 | UI component review | — | `checklists/ui-review.md` |
+| Verify rendered result / "looks right in source but breaks live" | — | `rules/20-rendered-verification.md` + `references/live-audit-snippets.md` |
 | Find real design references | `agents/reference-hunter.md` | `references/inspiration-sites.md` `references/aesthetic-archetypes.md` |
 | Audit a live URL | `agents/reference-hunter.md` (Capability 4) | `quality-gates.md` |
 | Competitive analysis | `agents/reference-hunter.md` (Capability 3) | `references/saas-ui-examples.md` |
@@ -139,6 +140,7 @@
 | Developer handoff spec | `templates/specs/frontend-tz.md` |
 | Component specification | `templates/specs/component-spec.md` |
 | Design review report | `templates/specs/design-review-report.md` |
+| Design-system source of truth (multi-page consistency) | `templates/specs/design-system-master.md` |
 | New project brief | `templates/briefs/project-brief.md` |
 | Redesign brief | `templates/briefs/redesign-brief.md` |
 
@@ -169,6 +171,7 @@ Load the relevant rule alongside any blueprint or pattern.
 | Motion / React | `rules/17-motion-react.md` |
 | CSS framework selection | `rules/18-css-framework-selection.md` |
 | Contrast standards (WCAG/APCA) | `rules/19-contrast-standards.md` |
+| Rendered verification (render → audit → fix) | `rules/20-rendered-verification.md` + `references/live-audit-snippets.md` |
 | Escalation protocol (request depth) | `rules/00-escalation-protocol.md` |
 
 ---
@@ -227,5 +230,5 @@ Load when the task involves finding, studying, or referencing real-world example
 
 ---
 
-*Routing version: global-design-skill v1.9.1 — `task-routing.md`*  
-*Updated: 2026-05-30*
+*Routing version: global-design-skill v2.2.0 — `task-routing.md`*  
+*Updated: 2026-06-06*

@@ -291,7 +291,7 @@ global-design-skill/
 │   ├── portfolio-from-scratch.md   ← Work grid, about, contact, anti-patterns
 │   └── onboarding-flow-from-scratch.md ← Signup → aha moment → checklist
 │
-├── rules/                          ← 19 domain rules files
+├── rules/                          ← 20 domain rules files
 │   ├── 00-escalation-protocol.md   ← Intent-to-depth mapping (read first)
 │   ├── 01-visual-hierarchy.md      ├── 09-responsive.md
 │   ├── 02-layout-and-grid.md       ├── 10-forms.md
@@ -303,7 +303,8 @@ global-design-skill/
 │   ├── 08-performance.md           ├── 16-design-for-seo.md
 │   ├── 17-motion-react.md          ← motion/react v12 (scroll, stagger, exit)
 │   ├── 18-css-framework-selection.md ← Bootstrap / Bulma / UnoCSS / Panda CSS / Open Props router
-│   └── 19-contrast-standards.md   ← WCAG AA/AAA, APCA, surface stacking, dark mode ceiling, fix workflow
+│   ├── 19-contrast-standards.md   ← WCAG AA/AAA, APCA, surface stacking, dark mode ceiling, fix workflow
+│   └── 20-rendered-verification.md ← render → audit → fix loop, mode matrix, verify-before-done
 │
 ├── patterns/
 │   ├── marketing-blocks/           ← 9 landing page section files
@@ -378,7 +379,8 @@ global-design-skill/
 │   ├── specs/
 │   │   ├── frontend-tz.md          ← Gate 8 developer handoff template
 │   │   ├── component-spec.md       ← Component API + states + ARIA template
-│   │   └── design-review-report.md ← Review output with gates + scores + sign-off
+│   │   ├── design-review-report.md ← Review output with gates + scores + sign-off
+│   │   └── design-system-master.md ← Multi-page source of truth + page-overrides convention
 │   ├── briefs/
 │   │   ├── project-brief.md        ← Problem → goal → scope → sign-off
 │   │   └── redesign-brief.md       ← Redesign scope, constraints, acceptance criteria
