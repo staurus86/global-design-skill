@@ -6,7 +6,7 @@ Turn Claude Code, Cursor, Codex, ChatGPT, Windsurf, and GitHub Copilot into a st
 
 Not another prompt collection. A self-learning design operating system: it knows sector-specific rules for 13 industries, learns from reference sites you point it at, and calibrates its pattern weights based on your feedback. All local, no telemetry.
 
-[![Version](https://img.shields.io/badge/version-2.1.4-blue)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-2.3.0-blue)](CHANGELOG.md)
 [![Standards](https://img.shields.io/badge/CSS-2026%20Baseline-green)](rules/)
 [![React](https://img.shields.io/badge/React-19-blue)](rules/)
 [![Next.js](https://img.shields.io/badge/Next.js-15-black)](rules/)
@@ -197,6 +197,7 @@ Global Design Skill =
 | [bestseotools case study (before → after)](redesigns/bestseotools/CASE-STUDY.md) | Real multi-pass catalog redesign, 65–70% → ~85%, with screenshots |
 | [sk-seo.ru a11y + contrast + anti-slop audit (before → after)](examples/before-after/sk-seo-2026-05-30/README.md) | 28-page audit: WCAG contrast fixes (ghost decoratives lifted to readable), forced-colors focus, form ARIA — 0 axe across 13 pages |
 | [sk-seo.ru bento redesign (before → after)](examples/before-after/sk-seo-2026-05-31/README.md) | Live 7-page redesign: bento proof-blocks, 60-icon branded set, portraits, unified blog CTAs — 0 axe / 0 overflow, shipped |
+| [GEO course landing (before → after)](examples/before-after/geo-course-2026-06-06/README.md) | Dark course LP: teal dashboard-card-and-countdown hero → crimson "answer-graph" metaphor hero, dark pattern removed, editorial hierarchy |
 
 ---
 
@@ -239,6 +240,24 @@ Full before → after: [`examples/before-after/sk-seo-2026-05-31/`](examples/bef
 Before the bento work, the same site went through an a11y + contrast pass with the skill ([`examples/before-after/sk-seo-2026-05-30/`](examples/before-after/sk-seo-2026-05-30/README.md)). The dark theme leaned on **ghost decoratives** — accent-green numbers and a giant "404" set at `opacity: 0.15–0.3`. On a near-black background those shimmer and strain the eye, and they measured **1.2–1.9:1** (axe color-contrast failures). They were lifted to `opacity: 0.5–0.6` (≈readable), card tags moved `--text-muted → --text-secondary`, and the body text stays a softened off-white (`#f5f3ef`), never pure white — the dark-mode contrast ceiling. Result: **0 axe color-contrast failures across 13 pages**, and the page reads calm instead of vibrating.
 
 This is encoded in [`rules/19-contrast-standards.md`](rules/19-contrast-standards.md) (WCAG AA/AAA + APCA + dark-mode ceiling) and the **ghost-decorative anti-pattern** (low-opacity accent text holds legibility only at ~`opacity ≥ 0.55`).
+
+### Third case — GEO course landing (geo-course.ru)
+
+A dark course landing whose hero leaned on the two things the skill bans first: a decorative dashboard card (a bar chart with no real data) and a countdown timer (fake urgency). The redesign replaced both with a single idea.
+
+| Before | After |
+|--------|-------|
+| ![Before](examples/before-after/geo-course-2026-06-06/before.png) | ![After](examples/before-after/geo-course-2026-06-06/after.png) |
+
+**What changed:**
+- Teal-on-near-black (the default "dark SaaS" accent) → a **single crimson hue** with one signature radial glow — one color story, not a teal card fighting a teal CTA
+- The decorative **dashboard card** → a **visual metaphor**: a glowing central node with radiating network lines (the *answer graph* — your brand as the node AI engines cite), the page's One Memorable Thing
+- The `06 : 05 : 10 : 12` **countdown timer removed** — a banned dark pattern; urgency now reads from a dated cohort, not a ticking clock
+- `48 000 ₽` + timer → a **course-substance strip** (level · modules · tools · start date), value over price pressure
+- Centered text + floating card → **editorial hierarchy**: larger tight display H1, eyebrow pill, a framing question block, and a real attributed testimonial (E-E-A-T over decoration)
+- Two competing buttons → one **red primary CTA** + a quiet secondary text link
+
+Full before → after: [`examples/before-after/geo-course-2026-06-06/`](examples/before-after/geo-course-2026-06-06/README.md).
 
 ---
 
