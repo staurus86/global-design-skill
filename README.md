@@ -172,6 +172,8 @@ Global Design Skill =
 | Add hover effects | "Use global-design-skill and add hover effects to the cards" |
 | Add text animations | "Use global-design-skill and animate the hero text" |
 | Review before shipping | "Use global-design-skill and run a UI review checklist" |
+| Lock a multi-page design system (MASTER) | "Use global-design-skill and create a design-system MASTER for this site, then page overrides" |
+| Verify the rendered result in every mode | "Use global-design-skill and verify this page renders correctly across themes, viewports, and states" |
 | WCAG accessibility audit | "Use global-design-skill accessibility-auditor on this component" |
 | Performance audit | "Use global-design-skill performance-auditor on this page" |
 | Detect business niche automatically | "Use global-design-skill and design for [product/context]" — niche auto-detected |
@@ -445,7 +447,7 @@ global-design-skill/
 ├── industries/                 ← 13 sector-specific design rule files
 │   └── _index.md, b2b-products.md … entertainment.md
 │
-├── patterns/states/            ← 6 extended UI state files + decision matrix
+├── patterns/states/            ← 5 extended UI state files + decision matrix
 │
 ├── validators/                 ← Lighthouse CI, axe-core, bundle-analyzer guides
 │
@@ -658,6 +660,8 @@ Gate 8 — Frontend Readiness
 
 Full gate specifications: `skills/global-design/quality-gates.md`
 Developer handoff template: `templates/specs/frontend-tz.md`
+
+**Verification is operational, not on paper.** For any redesign or deploy, the gates are proven on the rendered DOM across the full mode matrix (theme × viewport × state), not on a single default-state screenshot — `rules/20-rendered-verification.md`.
 
 ---
 
