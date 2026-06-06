@@ -6,6 +6,27 @@ Format: [version] — date — description
 
 ---
 
+## [2.3.1] — 2026-06-06
+
+### Demo gallery hardening — rule 20 applied to the showcase itself
+
+Ran the nine demo-gallery pages through the improved skill, exercising the new `rules/20-rendered-verification.md` loop: rendered every page in both themes × 390/1280 + axe, fixed at source, re-verified. Demo content only — no rule, token-system, or MCP behavior change.
+
+**Result: 0 axe color-contrast violations / 0 horizontal overflow across all 36 render combos** (9 pages × 2 themes × 2 viewports), where the baseline had 600+ contrast violations and horizontal overflow on 6 of 9 pages at 390px.
+
+**Fixed at source (what rendering caught that static review missed):**
+- **`--color-text-muted` failed 4.5:1 in both themes** — used for section labels, table headers, meta text across every page. Darkened light (60%→50% L) / lightened dark (55%→64% L). One token fix cleared ~80% of violations.
+- **caniuse "partial" cells rendered white-on-gold (2.68:1)** — a CSS specificity bug: `.compat-table td` (0,1,1) overrode `.support-partial-cell` (0,1,0)'s intended dark text. The source *looked* correct; only the rendered DOM revealed it. Fixed with `.compat-table td.support-partial-cell`.
+- **Horizontal overflow at 390px on 6 pages** — the `.changelog` / `.token-legend` meta tables; now scroll within their container instead of the page.
+- **White-on-accent toggle/active states (3.29:1 in dark)** — new `--color-accent-solid` token for filled accent surfaces (synced into `demo/tokens.css`).
+- **Accent-on-accent-tint chips** (avatars, mdn return-type, 4.16–4.41:1) → theme-safe `--color-accent-hover`.
+- **`measureHeights()` ran once at load** → stale before/after wrapper height after viewport change; added a debounced resize handler to all 9.
+- **`index.html`** — hero-pill text lightened for its fixed dark banner; `prefers-reduced-motion` guard added.
+
+Interaction verified (before/after toggle, 0 console errors) and resize recompute confirmed via Playwright.
+
+---
+
 ## [2.3.0] — 2026-06-06
 
 ### New template: design-system MASTER + page-overrides (multi-page consistency)

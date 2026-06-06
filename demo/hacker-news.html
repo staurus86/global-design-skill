@@ -12,9 +12,10 @@
       --color-border:         oklch(90% 0.006 258);
       --color-text:           oklch(17% 0.012 258);
       --color-text-secondary: oklch(42% 0.012 258);
-      --color-text-muted:     oklch(60% 0.008 258);
+      --color-text-muted:     oklch(50% 0.01 258);
       --color-accent:         oklch(52% 0.20 258);
       --color-accent-hover:   oklch(45% 0.21 258);
+      --color-accent-solid:   oklch(48% 0.18 258);
       --space-1: 4px;  --space-2: 8px;  --space-3: 12px; --space-4: 16px;
       --space-5: 20px; --space-6: 24px; --space-8: 32px; --space-10: 40px;
       --text-xs: 11px; --text-sm: 13px; --text-base: 15px;
@@ -29,9 +30,10 @@
         --color-border:         oklch(26% 0.010 258);
         --color-text:           oklch(94% 0.004 258);
         --color-text-secondary: oklch(72% 0.008 258);
-        --color-text-muted:     oklch(55% 0.006 258);
+        --color-text-muted:     oklch(64% 0.008 258);
         --color-accent:         oklch(65% 0.20 258);
         --color-accent-hover:   oklch(72% 0.20 258);
+        --color-accent-solid:   oklch(52% 0.20 258);
       }
     }
 
@@ -69,7 +71,7 @@
       font-weight: 600; color: var(--color-text-muted); cursor: pointer; min-height: 44px;
       transition: background var(--t-fast) var(--ease-out), color var(--t-fast) var(--ease-out);
     }
-    .toggle-btn.active { background: var(--color-accent); color: oklch(100% 0 0); }
+    .toggle-btn.active { background: var(--color-accent-solid); color: oklch(100% 0 0); }
     .toggle-btn:focus-visible { outline: 2px solid var(--color-accent); outline-offset: -2px; }
 
     /* ── Component wrapper ── */
@@ -201,6 +203,8 @@
     }
     .token-legend tr:last-child td { border-bottom: none; }
     .token-name { color: var(--color-accent); }
+      /* meta reference tables: contain on mobile, don't overflow the page */
+    .changelog, .token-legend { display: block; overflow-x: auto; }
   </style>
 </head>
 <body>
@@ -349,7 +353,7 @@
       <tr><td class="token-name">--color-border</td><td>oklch(90% 0.006 258)</td><td>oklch(26% 0.010 258)</td><td>Card border, vote widget border, dividers</td></tr>
       <tr><td class="token-name">--color-text</td><td>oklch(17% 0.012 258)</td><td>oklch(94% 0.004 258)</td><td>Title text</td></tr>
       <tr><td class="token-name">--color-text-secondary</td><td>oklch(42% 0.012 258)</td><td>oklch(72% 0.008 258)</td><td>Score, author name</td></tr>
-      <tr><td class="token-name">--color-text-muted</td><td>oklch(60% 0.008 258)</td><td>oklch(55% 0.006 258)</td><td>Vote arrows, time, separator dots, header</td></tr>
+      <tr><td class="token-name">--color-text-muted</td><td>oklch(50% 0.01 258)</td><td>oklch(64% 0.008 258)</td><td>Vote arrows, time, separator dots, header</td></tr>
       <tr><td class="token-name">--color-accent</td><td>oklch(52% 0.20 258)</td><td>oklch(65% 0.20 258)</td><td>Toggle active, comment link, focus rings</td></tr>
     </tbody>
   </table>
@@ -397,6 +401,7 @@
 
   window.addEventListener('DOMContentLoaded', () => {
     measureHeights();
+    let _rzT; window.addEventListener('resize', () => { clearTimeout(_rzT); _rzT = setTimeout(measureHeights, 150); });
     btnBefore.addEventListener('click', () => switchTo('before'));
     btnAfter.addEventListener('click',  () => switchTo('after'));
     [btnBefore, btnAfter].forEach(btn =>

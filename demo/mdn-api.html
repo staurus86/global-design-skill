@@ -12,9 +12,10 @@
       --color-border:         oklch(90% 0.006 258);
       --color-text:           oklch(17% 0.012 258);
       --color-text-secondary: oklch(42% 0.012 258);
-      --color-text-muted:     oklch(60% 0.008 258);
+      --color-text-muted:     oklch(50% 0.01 258);
       --color-accent:         oklch(52% 0.20 258);
       --color-accent-hover:   oklch(45% 0.21 258);
+      --color-accent-solid:   oklch(48% 0.18 258);
       --color-success:        oklch(45% 0.15 145);
       --color-success-bg:     oklch(56% 0.17 145 / 0.12);
       --space-1: 4px;  --space-2: 8px;  --space-3: 12px; --space-4: 16px;
@@ -31,9 +32,10 @@
         --color-border:         oklch(26% 0.010 258);
         --color-text:           oklch(94% 0.004 258);
         --color-text-secondary: oklch(72% 0.008 258);
-        --color-text-muted:     oklch(55% 0.006 258);
+        --color-text-muted:     oklch(64% 0.008 258);
         --color-accent:         oklch(65% 0.20 258);
         --color-accent-hover:   oklch(72% 0.20 258);
+        --color-accent-solid:   oklch(52% 0.20 258);
         --color-success:        oklch(70% 0.12 145);
         --color-success-bg:     oklch(56% 0.17 145 / 0.15);
       }
@@ -52,7 +54,7 @@
     /* ── Toggle bar ── */
     .toggle-bar { display: flex; border: 1px solid var(--color-border); border-radius: 10px; overflow: hidden; margin-bottom: var(--space-6); background: var(--color-surface); }
     .toggle-btn { flex: 1; padding: var(--space-3) var(--space-4); font-size: var(--text-sm); font-weight: 600; color: var(--color-text-muted); cursor: pointer; min-height: 44px; transition: background var(--t-fast) var(--ease-out), color var(--t-fast) var(--ease-out); }
-    .toggle-btn.active { background: var(--color-accent); color: oklch(100% 0 0); }
+    .toggle-btn.active { background: var(--color-accent-solid); color: oklch(100% 0 0); }
     .toggle-btn:focus-visible { outline: 2px solid var(--color-accent); outline-offset: -2px; }
     /* ── Component wrapper ── */
     .component-wrapper { position: relative; margin-bottom: var(--space-8); }
@@ -91,7 +93,7 @@
     .mdn-optional-badge { font-size: var(--text-xs); font-weight: 600; padding: 1px var(--space-2); border-radius: 999px; border: 1px solid var(--color-border); color: var(--color-text-muted); width: fit-content; }
     .mdn-param-desc { font-size: var(--text-sm); color: var(--color-text-secondary); line-height: 1.55; }
     .mdn-return-row { display: flex; align-items: flex-start; gap: var(--space-3); padding: var(--space-3) var(--space-4); background: oklch(from var(--color-border) l c h / 0.4); border: 1px solid var(--color-border); border-radius: 8px; }
-    .mdn-return-type { font-family: 'Menlo','Consolas',monospace; font-size: var(--text-xs); font-weight: 700; padding: 2px var(--space-2); border-radius: 4px; background: oklch(from var(--color-accent) l c h / 0.10); color: var(--color-accent); white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
+    .mdn-return-type { font-family: 'Menlo','Consolas',monospace; font-size: var(--text-xs); font-weight: 700; padding: 2px var(--space-2); border-radius: 4px; background: oklch(from var(--color-accent) l c h / 0.10); color: var(--color-accent-hover); white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
     .mdn-return-desc { font-size: var(--text-sm); color: var(--color-text-secondary); line-height: 1.55; }
     .mdn-compat { display: flex; align-items: center; gap: var(--space-4); flex-wrap: wrap; }
     .mdn-compat-label { font-size: var(--text-xs); color: var(--color-text-muted); font-weight: 600; white-space: nowrap; }
@@ -127,6 +129,8 @@
     .token-legend td { padding: var(--space-2) var(--space-3); border-bottom: 1px solid var(--color-border); vertical-align: top; font-family: 'Menlo','Consolas',monospace; font-size: var(--text-xs); }
     .token-legend tr:last-child td { border-bottom: none; }
     .token-name { color: var(--color-accent); }
+      /* meta reference tables: contain on mobile, don't overflow the page */
+    .changelog, .token-legend { display: block; overflow-x: auto; }
   </style>
 </head>
 <body>
@@ -309,7 +313,7 @@ map(callbackFn, thisArg)</pre>
       <tr><td class="token-name">--color-border</td><td>oklch(90% 0.006 258)</td><td>oklch(26% 0.010 258)</td><td>Card border, syntax block, return row, section dividers</td></tr>
       <tr><td class="token-name">--color-text</td><td>oklch(17% 0.012 258)</td><td>oklch(94% 0.004 258)</td><td>Method name</td></tr>
       <tr><td class="token-name">--color-text-secondary</td><td>oklch(42% 0.012 258)</td><td>oklch(72% 0.008 258)</td><td>Description, parameter descriptions, return description</td></tr>
-      <tr><td class="token-name">--color-text-muted</td><td>oklch(60% 0.008 258)</td><td>oklch(55% 0.006 258)</td><td>Namespace prefix (Array.prototype.), subsection labels, optional badge</td></tr>
+      <tr><td class="token-name">--color-text-muted</td><td>oklch(50% 0.01 258)</td><td>oklch(64% 0.008 258)</td><td>Namespace prefix (Array.prototype.), subsection labels, optional badge</td></tr>
       <tr><td class="token-name">--color-accent</td><td>oklch(52% 0.20 258)</td><td>oklch(65% 0.20 258)</td><td>Method name (.map()), parameter name pills, return type pill, focus rings</td></tr>
       <tr><td class="token-name">--color-success</td><td>oklch(45% 0.15 145)</td><td>oklch(70% 0.12 145)</td><td>Baseline pill text, browser support dot text</td></tr>
       <tr><td class="token-name">--color-success-bg</td><td>oklch(56% 0.17 145 / 0.12)</td><td>oklch(56% 0.17 145 / 0.15)</td><td>Baseline pill background, browser support dot background</td></tr>
@@ -359,6 +363,7 @@ map(callbackFn, thisArg)</pre>
 
   window.addEventListener('DOMContentLoaded', () => {
     measureHeights();
+    let _rzT; window.addEventListener('resize', () => { clearTimeout(_rzT); _rzT = setTimeout(measureHeights, 150); });
     btnBefore.addEventListener('click', () => switchTo('before'));
     btnAfter.addEventListener('click',  () => switchTo('after'));
     [btnBefore, btnAfter].forEach(btn =>
