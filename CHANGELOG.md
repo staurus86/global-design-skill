@@ -6,6 +6,23 @@ Format: [version] — date — description
 
 ---
 
+## [2.4.0] — 2026-06-06
+
+### Reference extraction + fidelity & token-drift verification
+
+A second GitHub-skill-audit pass (anydesign, Figma-to-Flutter golden-tests, shadcn-skills) surfaced three mechanisms that *complete* the work just shipped — they extend rule 20 (verification) and the MASTER template (consistency) rather than duplicating them.
+
+**Added:**
+- **`recipes/extract-design-from-reference.md`** — turn a reference (image / live site / Figma) into a filled `design-system-master.md` + DTCG `design-tokens.json` + a component inventory, before building. Prefers *extracted* values (CSS `--*`, Figma variables) over *inferred* ones, tags every inference with confidence (✅ extracted / ⚠️ inferred / ❓ uncertain), and ends with explicit Open Questions instead of fabricating interaction states or dark mode a static frame can't show. Composes with the MASTER template (v2.3.0).
+- **`rules/20-rendered-verification.md` R6 — fidelity to the reference.** Correctness gates (R1–R5) don't prove the build *matches intent*. When a reference exists, diff the rendered build against it across layout / type / color / spacing / radii / shadow / assets, iterate to parity — and check 1px borders + shadow spread by computed value, since vision comparison slips on those.
+- **`rules/20` R7 — token-drift audit.** A declared token isn't proof it's applied: hardcoded literals that should be `var()`, out-of-sync duplicated copies, defined-but-unused / used-but-undefined tokens. This is the exact failure the demo gallery hit (v2.3.1). New `references/live-audit-snippets.md` snippet **K** (declared `:root` vs used) backs it.
+
+**Wired in:** `skills/global-design/SKILL.md` (Task Routing + version 2.3.1 → 2.4.0), `task-routing.md`, `CLAUDE.md`, `README.md` (recipes 15 → 16). Rule 20 acceptance criteria + footer updated; `live-audit-snippets.md` → v2.4.0.
+
+**Principle distilled:** extraction before building, fidelity-to-reference after — and a token you declared is only real once the rendered DOM proves it.
+
+---
+
 ## [2.3.1] — 2026-06-06
 
 ### Demo gallery hardening — rule 20 applied to the showcase itself

@@ -77,6 +77,37 @@ Snippets F (text-layer audit) and G (count/version parity) in `references/live-a
 
 ---
 
+## R6 — When a reference exists, verify fidelity to it — not just correctness.
+
+R1–R5 prove the build is *correct* (accessible, contained, every mode works). They do not prove it *matches the intended visual*. When the brief carries a reference — a mockup, a screenshot, a Figma frame, or "make it look like [brand]" (see `rules/00` Brand Reference Anchors) — run a fidelity loop alongside the correctness loop:
+
+```
+1. RENDER both the build and the reference at the same viewport
+2. DIFF across explicit axes — never a single side-by-side glance:
+   layout/structure · type (family, scale, weight) · color (bg/text/accent) ·
+   spacing rhythm · corner radii · shadow/elevation · asset rendering
+3. Each mismatch → fix at source → re-render → re-diff
+4. Repeat until parity
+```
+
+**Vision has limits — know them.** Screenshot/AI-vision comparison reliably catches layout and color mismatches but *slips on 1px borders, sub-pixel shadow spread, and small letter-spacing*. For those, read the computed value directly (`getComputedStyle`) and compare numbers — do not trust the picture. Do not claim "matches the reference" from one glance; diff the axes and name what you checked.
+
+Extraction-first variant: to turn a reference *into* the build spec (filled MASTER + tokens) before building, use `recipes/extract-design-from-reference.md`.
+
+---
+
+## R7 — Verify the tokens are actually applied — audit drift.
+
+A declared token is not proof it reached the page. Tokens drift from the rendered result three ways: (a) a value **hardcoded inline** instead of `var(--token)`; (b) **duplicated token copies** that fall out of sync — a "single source of truth" that nothing enforces; (c) a token **defined but never referenced** (dead) or **referenced but never defined** (broken fallback). Audit declared vs rendered:
+
+- Compare the source `:root` tokens against the values actually computed on elements.
+- Flag: hardcoded literals equal to a token's value (should be `var()`); token copies that disagree across files; defined-but-unused and used-but-undefined tokens.
+- Snippet: `references/live-audit-snippets.md` (K — token drift).
+
+This is the exact failure the demo gallery hit: `demo/tokens.css` was the declared source of truth, yet inline copies had drifted and two tokens (`--ease-spring`, `--t-slow`) existed in the source but in zero rendered pages. Static review passed; the drift was only visible against the rendered DOM.
+
+---
+
 ## Acceptance Criteria
 
 ```
@@ -90,9 +121,11 @@ Snippets F (text-layer audit) and G (count/version parity) in `references/live-a
 [ ] axe-core run on the rendered page passes (no new contrast/ARIA violations)
 [ ] Deploy: live URL exercised (curl/Playwright/screenshot) before declaring "done" — never claimed on inspection alone
 [ ] Re-render after fixes confirms zero regressions in the same matrix
+[ ] When a reference exists: rendered build diffed against it across layout / type / color / spacing / radii / shadow / assets — parity confirmed; 1px borders and shadow spread checked via computed value, not vision (R6)
+[ ] Token drift audited: no hardcoded literal equal to a token's value, no out-of-sync token copies, no defined-but-unused or used-but-undefined tokens (R7)
 ```
 
 ---
 
-*Rule version: global-design-skill v2.2.0 — `rules/20-rendered-verification.md`*
-*Related: `references/live-audit-snippets.md` (console + Playwright audits), `checklists/global-design-review.md` (verify-in-every-mode matrix), `blueprints/redesign-existing-page.md` (verify-before-tile), `rules/19-contrast-standards.md` (R14 rendered fill), `rules/16-design-for-seo.md` (no-JS parity), `skills/global-design/quality-gates.md` (Gates 4–7)*
+*Rule version: global-design-skill v2.4.0 — `rules/20-rendered-verification.md`*
+*Related: `references/live-audit-snippets.md` (console + Playwright audits, incl. H token-drift), `recipes/extract-design-from-reference.md` (reference → MASTER + tokens), `templates/specs/design-system-master.md` (the token source of truth R7 audits against), `checklists/global-design-review.md` (verify-in-every-mode matrix), `blueprints/redesign-existing-page.md` (verify-before-tile), `rules/19-contrast-standards.md` (R14 rendered fill), `rules/16-design-for-seo.md` (no-JS parity), `skills/global-design/quality-gates.md` (Gates 4–7)*

@@ -130,6 +130,7 @@
 | Improve loading states | `recipes/improve-loading-states.md` |
 | Improve onboarding | `recipes/improve-onboarding.md` |
 | Add page transitions | `recipes/add-page-transitions.md` |
+| Extract a design system from a reference (image / site / Figma) | `recipes/extract-design-from-reference.md` + `templates/specs/design-system-master.md` |
 
 ---
 

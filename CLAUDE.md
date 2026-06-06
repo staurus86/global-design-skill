@@ -20,6 +20,7 @@ Do **not** use for pure backend, SQL, server config, data analysis — unless UI
 | Interpret user request depth first | `rules/00-escalation-protocol.md` |
 | Landing page from scratch | `blueprints/landing-page-from-scratch.md` |
 | Existing page redesign | `blueprints/redesign-existing-page.md` |
+| "Make it like this" reference → design system (image / site / Figma) | `recipes/extract-design-from-reference.md` + `templates/specs/design-system-master.md` |
 | Full UI audit | `checklists/global-design-review.md` |
 | Developer handoff | `templates/specs/frontend-tz.md` |
 | Accessibility review | `agents/accessibility-auditor.md` + `rules/07-accessibility.md` |

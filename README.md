@@ -6,7 +6,7 @@ Turn Claude Code, Cursor, Codex, ChatGPT, Windsurf, and GitHub Copilot into a st
 
 Not another prompt collection. A self-learning design operating system: it knows sector-specific rules for 13 industries, learns from reference sites you point it at, and calibrates its pattern weights based on your feedback. All local, no telemetry.
 
-[![Version](https://img.shields.io/badge/version-2.3.1-blue)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-2.4.0-blue)](CHANGELOG.md)
 [![Standards](https://img.shields.io/badge/CSS-2026%20Baseline-green)](rules/)
 [![React](https://img.shields.io/badge/React-19-blue)](rules/)
 [![Next.js](https://img.shields.io/badge/Next.js-15-black)](rules/)
@@ -416,7 +416,7 @@ global-design-skill/
 │   ├── admin-panel-review.md       ← Density, tables, destructive actions, states
 │   └── wow-effects-checklist.md    ← 65 checks: reduced-motion, GPU, mobile, banned
 │
-├── recipes/                        ← 15 step-by-step improvement guides
+├── recipes/                        ← 16 step-by-step improvement guides
 │   ├── make-page-more-premium.md   ├── improve-typography.md
 │   ├── make-interface-cleaner.md   ├── add-animations.md
 │   ├── improve-hero-section.md     ├── improve-loading-states.md
@@ -425,7 +425,8 @@ global-design-skill/
 │   ├── add-dark-mode.md            └── add-page-transitions.md
 │   ├── improve-mobile-version.md
 │   ├── improve-empty-states.md
-│   └── improve-navigation.md
+│   ├── improve-navigation.md
+│   └── extract-design-from-reference.md ← reference (image/site/Figma) → filled MASTER + DTCG tokens
 │
 ├── examples/                       ← Before/after worked examples
 │   ├── 01-hero-redesign.md         ← Font, gradient, CTA fixes

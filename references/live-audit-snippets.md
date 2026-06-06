@@ -269,6 +269,36 @@ This unblocked true before/after verification on chexter.ru (HTTP 200 + axe 0 lo
 
 ---
 
+## K. Token drift — declared `:root` tokens vs what's actually used
+
+A declared token is not proof it's applied. This finds, on the rendered page: hardcoded literals equal to a token's value (should be `var()`), tokens defined but never referenced (dead), and tokens referenced but never defined (broken fallback). Run per theme.
+
+```js
+(() => {
+  const declared = {}, used = new Set(), hardcoded = [];
+  const readRules = sh => { try { return sh.cssRules || []; } catch { return []; } };
+  for (const sh of document.styleSheets) for (const r of readRules(sh)) {
+    if (r.selectorText && /(^|,)\s*:root\s*$/.test(r.selectorText))
+      for (const p of r.style) if (p.startsWith('--')) declared[p] = r.style.getPropertyValue(p).trim().replace(/\s+/g,' ');
+  }
+  for (const sh of document.styleSheets) for (const r of readRules(sh)) if (r.style)
+    for (const p of r.style) (r.style.getPropertyValue(p).match(/var\(\s*(--[\w-]+)/g)||[])
+      .forEach(m => used.add(m.replace(/var\(\s*/,'')));
+  const byVal = {}; for (const [t,v] of Object.entries(declared)) (byVal[v] ||= []).push(t);
+  for (const sh of document.styleSheets) for (const r of readRules(sh)) if (r.style)
+    for (const p of r.style) { const v = r.style.getPropertyValue(p).trim().replace(/\s+/g,' ');
+      if (v && !v.includes('var(') && byVal[v]) hardcoded.push({ where:r.selectorText, prop:p, value:v, shouldUse:byVal[v].join('|') }); }
+  const definedUnused = Object.keys(declared).filter(t => !used.has(t));
+  const usedUndefined = [...used].filter(t => !(t in declared));
+  console.table(hardcoded.slice(0,20));
+  return { definedUnused, usedUndefined, hardcodedLiterals: hardcoded.length };
+})();
+```
+
+**Cross-file sync** (duplicated token copies that disagree) is not visible to a single page — grep the repo for the bare value across all files and diff. **Real miss (demo gallery 2026-06-06):** `demo/tokens.css` was the declared source of truth, but `--color-text-muted` was hardcoded inline in places (not `var()`), the muted value failed contrast once rendered, and `--ease-spring`/`--t-slow` were defined in the source yet referenced in zero pages. Static review passed; only declared-vs-rendered surfaced it.
+
+---
+
 ## How to use in a Playwright/agent workflow
 
 ```js
@@ -281,5 +311,5 @@ if (invisible.invisibleTextTypes > 0) throw new Error('Invisible text in dark: '
 
 ---
 
-*Reference version: global-design-skill v1.9.10 — `references/live-audit-snippets.md`*
+*Reference version: global-design-skill v2.4.0 — `references/live-audit-snippets.md`*
 *Related: `rules/19-contrast-standards.md` (R14 text-fill traps), `checklists/global-design-review.md` (Live Verification), `blueprints/redesign-existing-page.md` (Phase 6), `references/sources.md` (validation tools)*

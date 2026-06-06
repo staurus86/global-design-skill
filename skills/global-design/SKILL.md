@@ -3,7 +3,7 @@ name: global-design-skill
 description: "Design operating system for web UI/UX tasks. Use when user asks to design, build, redesign, or audit UI: landing pages, SaaS products, admin panels, dashboards, components, forms, animations, color systems, typography, developer handoff specs. Trigger phrases: 'design a page', 'build a landing page', 'create a SaaS UI', 'audit my design', 'review the UI', 'create a component', 'frontend spec', 'improve the interface', 'color tokens', 'add animation'. Stack: React 19, Next.js 15, Tailwind v4, motion/react, GSAP. Standards: CSS 2026 Baseline, WCAG 2.2 AA."
 license: MIT
 metadata:
-  version: 2.3.1
+  version: 2.4.0
   version_schema: semver
   author: global-design-skill
   tags: [design, ui-ux, react, nextjs, tailwind, accessibility, frontend, design-system]
@@ -65,6 +65,7 @@ Quick routing table — apply the Decision Pipeline for any task type. Full pack
 | Onboarding flow | Decision Pipeline → Activation + aha moment | `blueprints/onboarding-flow-from-scratch.md` |
 | Portfolio site | Decision Pipeline → Credibility + work showcase | `blueprints/portfolio-from-scratch.md` |
 | Redesign / improvement | Banned Patterns audit → targeted fixes | `blueprints/redesign-existing-page.md` |
+| "Make it like this" reference (image / site / Figma) | Extract → fill MASTER + DTCG tokens → build → verify fidelity | `recipes/extract-design-from-reference.md` + `templates/specs/design-system-master.md` |
 | Website from scratch | Decision Pipeline → lock MASTER → full IA → blueprints | `blueprints/website-from-scratch.md` + `templates/specs/design-system-master.md` |
 | Animations / motion | Effects Decision Block (in this file) | `patterns/effects/` directory |
 | UI block / component | Quality Gates → States → Tokens | `patterns/` directory |
