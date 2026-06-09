@@ -174,6 +174,7 @@ The verifiable floor. These don't make a design beautiful; they remove the techn
 - **IBM Carbon Design System** — https://carbondesignsystem.com — B2B, industrial, data-heavy enterprise SaaS.
 - **Shopify Polaris** — https://polaris.shopify.com — ecommerce, seller dashboards, product-admin UI.
 - **Atlassian Design System** — https://atlassian.design — B2B SaaS, project/task managers, statuses, tables, docs.
+- **getdesign.md** — https://getdesign.md — curated library of production-grade DESIGN.md analyses (Stripe, Figma, Tesla, Coinbase…): extracted color systems, type rules, and UI conventions in the same `design-system-master` shape this skill produces. A cross-brand reference layer, not a spec — verify any extracted value against the primary source before quoting.
 
 ---
 
