@@ -30,6 +30,7 @@
 | **ScreensDesign** | screensdesign.com | App screens, onboarding, paywalls, revenue-backed patterns |
 | **Dribbble** | dribbble.com | UI concepts (not always realistic — filter for web/app) |
 | **Behance** | behance.net | Longer case studies, process-focused work |
+| **getdesign.md** | getdesign.md | DESIGN.md analyses of major brands' design systems (Stripe, Figma, Tesla, Coinbase…) — extracted color/type/UI conventions for AI agents, not screenshots |
 
 ---
 
@@ -231,5 +232,5 @@ This file is the first lookup layer. If the request matches a listed site, fetch
 ---
 
 *Reference version: global-design-skill v1.9.5 — `references/inspiration-sites.md`*
-*Updated: 2026-05-30*
+*Updated: 2026-06-09*
 *Related: `agents/reference-hunter.md`, `references/saas-ui-examples.md`, `references/component-libraries.md` (copyable code)*
