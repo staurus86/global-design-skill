@@ -26,6 +26,7 @@
 | Pricing page | `blueprints/pricing-page-from-scratch.md` | `rules/14-landing-pages.md` | `patterns/marketing-blocks/pricing-sections.md` `patterns/marketing-blocks/comparison-sections.md` | `checklists/landing-conversion-review.md` |
 | Portfolio site | `blueprints/portfolio-from-scratch.md` | `rules/01-visual-hierarchy.md` `rules/03-typography.md` | `patterns/effects/` `references/portfolios.md` | `checklists/global-design-review.md` |
 | Onboarding flow | `blueprints/onboarding-flow-from-scratch.md` | `rules/13-saas-products.md` | `patterns/product-ui/onboarding.md` `patterns/product-ui/forms.md` | `checklists/ui-review.md` |
+| E-commerce store (PLP / PDP / cart / checkout) | `blueprints/ecommerce-from-scratch.md` | `rules/10-forms.md` `rules/14-landing-pages.md` | `patterns/product-ui/forms.md` `patterns/navigation/` | `checklists/global-design-review.md` |
 | Redesign existing page | `blueprints/redesign-existing-page.md` | relevant domain rule | — | `checklists/global-design-review.md` |
 | Site in one prompt (autonomous, no dialogue) | `rules/21-one-shot-build.md` → blueprint for the site type | `rules/00-escalation-protocol.md` `rules/20-rendered-verification.md` | per blueprint | `checklists/global-design-review.md` |
 
@@ -76,6 +77,7 @@
 | Filters | `patterns/admin-ui/filters.md` |
 | Bulk actions | `patterns/admin-ui/bulk-actions.md` |
 | Form / inputs | `patterns/product-ui/forms.md` + `rules/10-forms.md` |
+| Auth screens (sign-up / password reset / magic link / 2FA) | `patterns/product-ui/auth-screens.md` + `patterns/product-ui/forms.md` (Pattern 1 — sign-in) |
 | Onboarding wizard | `patterns/product-ui/onboarding.md` |
 | Empty states | `patterns/product-ui/empty-states.md` |
 | Error states | `patterns/product-ui/error-states.md` |
@@ -233,5 +235,5 @@ Load when the task involves finding, studying, or referencing real-world example
 
 ---
 
-*Routing version: global-design-skill v2.5.0 — `task-routing.md`*  
+*Routing version: global-design-skill v2.6.0 — `task-routing.md`*  
 *Updated: 2026-06-11*

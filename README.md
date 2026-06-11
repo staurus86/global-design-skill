@@ -6,7 +6,7 @@ Turn Claude Code, Cursor, Codex, ChatGPT, Windsurf, and GitHub Copilot into a st
 
 Not another prompt collection. A self-learning design operating system: it knows sector-specific rules for 13 industries, learns from reference sites you point it at, and calibrates its pattern weights based on your feedback. All local, no telemetry.
 
-[![Version](https://img.shields.io/badge/version-2.5.0-blue)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-2.6.0-blue)](CHANGELOG.md)
 [![Standards](https://img.shields.io/badge/CSS-2026%20Baseline-green)](rules/)
 [![React](https://img.shields.io/badge/React-19-blue)](rules/)
 [![Next.js](https://img.shields.io/badge/Next.js-16-black)](rules/)
@@ -310,7 +310,8 @@ global-design-skill/
 │   ├── redesign-existing-page.md   ← 6-phase redesign protocol
 │   ├── pricing-page-from-scratch.md ← Hero+toggle, 3 tiers, FAQ, trust
 │   ├── portfolio-from-scratch.md   ← Work grid, about, contact, anti-patterns
-│   └── onboarding-flow-from-scratch.md ← Signup → aha moment → checklist
+│   ├── onboarding-flow-from-scratch.md ← Signup → aha moment → checklist
+│   └── ecommerce-from-scratch.md   ← PLP, PDP buy box, cart, 12-element checkout
 │
 ├── rules/                          ← 22 rules files (00–21)
 │   ├── 00-escalation-protocol.md   ← Intent-to-depth mapping (read first)
@@ -336,13 +337,14 @@ global-design-skill/
 │   │   ├── cta-sections.md         └── bento-grid.md
 │   │   └── faq-sections.md
 │   │
-│   ├── product-ui/                 ← 12 SaaS / app UI files
+│   ├── product-ui/                 ← 13 SaaS / app UI files
 │   │   ├── onboarding.md           ├── forms.md
 │   │   ├── empty-states.md         ├── modals.md
 │   │   ├── error-states.md         ├── notifications.md
 │   │   ├── loading-states.md       ├── search.md
 │   │   ├── settings-pages.md       ├── tooltips-popovers.md
-│   │   ├── command-palette.md      └── microinteractions.md
+│   │   ├── command-palette.md      ├── microinteractions.md
+│   │   └── auth-screens.md         ← sign-up, reset, magic link, OTP/2FA
 │   │
 │   ├── navigation/                 ← 6 navigation pattern files
 │   │   ├── header-patterns.md      ├── tabs-patterns.md

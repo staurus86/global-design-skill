@@ -20,6 +20,7 @@ Do **not** use for pure backend, SQL, server config, data analysis — unless UI
 | Interpret user request depth first | `rules/00-escalation-protocol.md` |
 | Landing page from scratch | `blueprints/landing-page-from-scratch.md` |
 | Existing page redesign | `blueprints/redesign-existing-page.md` |
+| E-commerce store (PLP / PDP / cart / checkout) | `blueprints/ecommerce-from-scratch.md` |
 | Site in one prompt / "just build it" (no dialogue) | `rules/21-one-shot-build.md` |
 | "Make it like this" reference → design system (image / site / Figma) | `recipes/extract-design-from-reference.md` + `templates/specs/design-system-master.md` |
 | Full UI audit | `checklists/global-design-review.md` |

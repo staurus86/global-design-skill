@@ -6,6 +6,20 @@ Format: [version] — date — description
 
 ---
 
+## [2.6.0] — 2026-06-11
+
+### E-commerce blueprint + auth screens pattern
+
+Coverage gaps from the v2.5.0 audit closed: the two most-built surfaces the library didn't cover.
+
+**Added:**
+- **`blueprints/ecommerce-from-scratch.md`** — 10th build protocol: PLP (filters, card anatomy, pagination strategy), PDP (gallery/LCP discipline, fixed buy-box order, variant rules, sticky mobile add-to-cart), cart (real-total transparency, collapsed promo field, mini-cart vs page), checkout (guest-first, one column, 12-element form budget, full `autocomplete` map, payment-error state), confirmation. Grounded in Baymard 2026 data: ~70% average cart abandonment — unexpected costs 48%, forced account creation 26%, checkout complexity 18%. Dark-pattern boundary restated for commerce (no fake scarcity, no drip pricing, no preselected add-ons).
+- **`patterns/product-ui/auth-screens.md`** — the auth flow beyond sign-in (which stays in `forms.md` Pattern 1): sign-up (live requirement checklist instead of a strength meter, no confirm-password), forgot/reset (enumeration-safe messaging, direct sign-in after reset), magic link (sent-state design, resend cooldown, cross-device), OTP/2FA (one input + `autocomplete="one-time-code"`, not six boxes), anti-pattern table.
+
+**Wired in:** SKILL.md (Task Routing row + blueprints enumeration + version 2.5.0 → 2.6.0), `task-routing.md` (Build From Scratch + component table rows), `CLAUDE.md`, `README.md` (badge, blueprints tree, product-ui 12 → 13).
+
+---
+
 ## [2.5.0] — 2026-06-11
 
 ### One-shot autonomous build + Next.js 16 stack refresh
