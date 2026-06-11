@@ -153,7 +153,7 @@ The verifiable floor. These don't make a design beautiful; they remove the techn
 ## Frameworks (stack standards)
 
 - **React 19** — https://react.dev/blog/2024/12/05/react-19 — `ref` as prop, `useActionState`, `useOptimistic`, `useFormStatus`.
-- **Next.js 15** — https://nextjs.org/docs — async `cookies`/`headers`/`params`/`searchParams`, `"use cache"`, explicit `revalidate`.
+- **Next.js 16** — https://nextjs.org/docs — async `cookies`/`headers`/`params`/`searchParams`, `"use cache"`, explicit `revalidate`.
 - **Tailwind CSS v4** — https://tailwindcss.com/docs — CSS-first `@theme`, `@custom-variant dark` (no `tailwind.config.js`).
 
 ## UX Laws & Cognitive Design

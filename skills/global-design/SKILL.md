@@ -1,14 +1,14 @@
 ---
 name: global-design-skill
-description: "Design operating system for web UI/UX tasks. Use when user asks to design, build, redesign, or audit UI: landing pages, SaaS products, admin panels, dashboards, components, forms, animations, color systems, typography, developer handoff specs. Trigger phrases: 'design a page', 'build a landing page', 'create a SaaS UI', 'audit my design', 'review the UI', 'create a component', 'frontend spec', 'improve the interface', 'color tokens', 'add animation'. Stack: React 19, Next.js 15, Tailwind v4, motion/react, GSAP. Standards: CSS 2026 Baseline, WCAG 2.2 AA."
+description: "Design operating system for web UI/UX tasks. Use when user asks to design, build, redesign, or audit UI: landing pages, SaaS products, admin panels, dashboards, components, forms, animations, color systems, typography, developer handoff specs. Trigger phrases: 'design a page', 'build a landing page', 'create a SaaS UI', 'audit my design', 'review the UI', 'create a component', 'frontend spec', 'improve the interface', 'color tokens', 'add animation'. Stack: React 19, Next.js 16, Tailwind v4, motion/react, GSAP. Standards: CSS 2026 Baseline, WCAG 2.2 AA."
 license: MIT
 metadata:
-  version: 2.4.0
+  version: 2.5.0
   version_schema: semver
   author: global-design-skill
   tags: [design, ui-ux, react, nextjs, tailwind, accessibility, frontend, design-system]
   created: 2024-09-01
-  updated: 2026-06-06
+  updated: 2026-06-11
   documentation: https://github.com/staurus86/global-design-skill
   requires:
     - blueprints/
@@ -49,6 +49,8 @@ If any of these is unclear — ask. One targeted question beats an hour of wrong
 
 **When context cannot be obtained:** If the user cannot provide type/user/goal after one targeted question, proceed with explicit stated assumptions: "Assuming [X] based on [signal in the request] — flag for review." Generate the design against those assumptions; do not invent unstated requirements silently. Offer to revise once real context arrives.
 
+**Single-prompt autonomous build** ("just build it", "сделай сайт", no dialogue possible): skip questions entirely — state every assumption in an Assumption Ledger, build, self-verify against the Quality Gates, deliver with max 3 open questions. Full protocol: `rules/21-one-shot-build.md` (full package).
+
 ---
 
 ## Task Routing
@@ -67,6 +69,7 @@ Quick routing table — apply the Decision Pipeline for any task type. Full pack
 | Redesign / improvement | Banned Patterns audit → targeted fixes | `blueprints/redesign-existing-page.md` |
 | "Make it like this" reference (image / site / Figma) | Extract → fill MASTER + DTCG tokens → build → verify fidelity | `recipes/extract-design-from-reference.md` + `templates/specs/design-system-master.md` |
 | Website from scratch | Decision Pipeline → lock MASTER → full IA → blueprints | `blueprints/website-from-scratch.md` + `templates/specs/design-system-master.md` |
+| Site in one prompt / "just build it" (no dialogue) | Assumption Ledger → mini-MASTER → build → self-verify | `rules/21-one-shot-build.md` |
 | Animations / motion | Effects Decision Block (in this file) | `patterns/effects/` directory |
 | UI block / component | Quality Gates → States → Tokens | `patterns/` directory |
 | UI review / audit | Banned Patterns + Quality Gates (in this file) | `checklists/ui-review.md` |
@@ -156,7 +159,7 @@ Use these — not legacy alternatives. Full working snippets per layer → `refe
 | CSS | OKLCH colors, `@property`, native nesting, `@starting-style`, Popover API, scroll-driven `animation-timeline` | hex/`rgb()`, JS for basic dropdowns, `scroll` listeners |
 | Tailwind | v4 — `@theme` in CSS, `@custom-variant dark` | `tailwind.config.js`, v3 config patterns |
 | React | 19 — `ref` as prop, `useActionState`, `useOptimistic`, `useFormStatus` | `forwardRef`, manual form state |
-| Next.js | 15 — `await` async APIs (`cookies`/`headers`/`params`/`searchParams`), explicit `revalidate`, `"use cache"` | sync dynamic APIs, implicit `force-cache` |
+| Next.js | 16 — Turbopack (default), `await` async APIs (`cookies`/`headers`/`params`/`searchParams`), `"use cache"` + Cache Components (PPR), `proxy.ts` | sync dynamic APIs, implicit `force-cache`, `middleware.ts` |
 | Motion | `motion/react` (`useInView`, `useAnimate`, `AnimatePresence`) | `framer-motion` import |
 | GSAP | `@gsap/react` `useGSAP` + `ScrollTrigger`, `contextSafe` handlers | unscoped `gsap` in effects |
 | TypeScript | 5.x — `satisfies`, `const` type params, template-literal token types | widening object literals |
@@ -442,6 +445,6 @@ This skill is self-contained for core design tasks. The [full package](https://g
 
 **Pattern library** (in `patterns/`): visual effects (grain, mesh, glow), parallax, text animations, scroll experiences, hover effects, cursor effects, 3D effects, marketing blocks, product UI, admin UI, navigation, states.
 
-**Rules catalog** (in `rules/`): 21 rules covering escalation protocol, visual hierarchy, layout, typography, color, animation, components, accessibility, performance, responsive, forms, data tables, admin panels, SaaS, landing pages, iconography, SEO, motion/react, CSS framework selection, contrast standards, rendered verification.
+**Rules catalog** (in `rules/`): 22 rules covering escalation protocol, visual hierarchy, layout, typography, color, animation, components, accessibility, performance, responsive, forms, data tables, admin panels, SaaS, landing pages, iconography, SEO, motion/react, CSS framework selection, contrast standards, rendered verification, one-shot autonomous build.
 
 Install: `git clone https://github.com/staurus86/global-design-skill` — then follow `install.md`.

@@ -6,6 +6,24 @@ Format: [version] — date — description
 
 ---
 
+## [2.5.0] — 2026-06-11
+
+### One-shot autonomous build + Next.js 16 stack refresh
+
+Full-repo audit pass (link integrity 1856 refs / 0 broken, 115 tests green, MCP server + evals verified) closed the one remaining gap for the "site in one prompt" scenario and refreshed the stack standard.
+
+**Added:**
+- **`rules/21-one-shot-build.md`** — protocol for single-prompt builds with no dialogue: Assumption Ledger replaces clarifying questions, mini-MASTER locked inline, Design Dials default one notch bolder (variance 6 — distinctive beats safe when there is no feedback loop), mandatory rule-20 self-verification, deliverable = site + ledger + verification evidence + max 3 open questions. Overrides the Junior Pass blocking step from `rules/00` in autonomous contexts.
+- **`pytest.ini`** — root `python -m pytest -q` no longer collides with the `mcp-server/tests` package; root suites (`tests/`, `sedi/tests`) run in one command, mcp-server stays separate.
+
+**Changed:**
+- **Stack standard: Next.js 15 → 16** across SKILL.md, README, tech-standards, performance/SaaS rules, blueprints, integrations (Cursor / ChatGPT / Copilot), MASTER template. `references/tech-standards.md` documents the 16 deltas: Turbopack default, Cache Components (PPR) + `"use cache"`, `proxy.ts` replacing `middleware.ts`, stable React Compiler.
+- **Wired in:** `skills/global-design/SKILL.md` (Task Routing row, Core Mandate autonomous-build paragraph, rules catalog 21 → 22, version 2.4.0 → 2.5.0), `task-routing.md`, `CLAUDE.md`, `README.md` (badges, stack table, rules tree).
+
+**Principle distilled:** in one-shot mode the user is not the QA loop — assumptions get declared, not asked, and verification carries the full weight of the conversation that didn't happen.
+
+---
+
 ## [2.4.0] — 2026-06-06
 
 ### Reference extraction + fidelity & token-drift verification

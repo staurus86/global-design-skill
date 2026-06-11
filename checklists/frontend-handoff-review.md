@@ -89,7 +89,7 @@ For every interactive element, the spec shows or describes:
 
 ## 7. Implementation Notes
 
-- [ ] Framework-specific notes given (React 19 / Next.js 15 / Tailwind v4 conventions)
+- [ ] Framework-specific notes given (React 19 / Next.js 16 / Tailwind v4 conventions)
 - [ ] Animation library decision stated (`motion/react`, GSAP, or CSS-only) with budget
 - [ ] Third-party dependencies named and justified
 - [ ] Edge cases noted: long text, zero data, max data, slow network, offline

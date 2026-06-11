@@ -109,7 +109,7 @@ function Submit() {
 }}>
 ```
 
-### Next.js 15
+### Next.js 16
 
 ```tsx
 /* File: app/[id]/page.tsx (Server Component) */
@@ -123,13 +123,19 @@ const { q } = await searchParams
 /* fetch: no-store by default (breaking — v14 was force-cache) */
 fetch(url, { next: { revalidate: 3600 } })  /* explicit cache */
 
-/* New "use cache" directive */
+/* "use cache" directive + Cache Components (PPR): static shell, dynamic streams in */
 async function getData() {
   "use cache"
   cacheLife('minutes')
   return db.query(...)
 }
 ```
+
+Next.js 16 specifics:
+- **Turbopack is the default bundler** for dev and build — no flag needed; do not add webpack-specific config to new projects
+- **Cache Components** (`cacheComponents: true`): Partial Pre-Rendering — static shell served instantly, dynamic fragments stream in; pair with `"use cache"` + `cacheLife()`
+- **`proxy.ts` replaces `middleware.ts`** — same API, renamed to clarify the network boundary
+- **React Compiler support is stable** — automatic memoization; stop hand-writing `useMemo`/`useCallback` for render-stability
 
 ### Motion (`motion/react`)
 

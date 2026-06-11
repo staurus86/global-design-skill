@@ -130,7 +130,7 @@ TECH STACK DEFAULTS
 When generating code, assume:
 - CSS: custom properties from tokens.css, OKLCH colors, clamp() for type
 - React: functional components, TypeScript interfaces for props
-- Next.js 15: await cookies()/headers()/params in Server Components; "use cache" + cacheLife() for data fetching
+- Next.js 16: await cookies()/headers()/params in Server Components; "use cache" + cacheLife() for data fetching
 - Tailwind v4: @theme {} in CSS, OKLCH colors, no tailwind.config.js
 - Animation: motion/react (not framer-motion), GSAP with useGSAP hook
 - Icons: Lucide React (custom stroke width via CSS, never default thick strokes)

@@ -58,7 +58,7 @@ You are working on a project that follows the global-design-skill design system.
 - Reserve space for dynamic content before it loads (skeleton heights match real content).
 - Lists > 200 rows: use virtual scrolling (TanStack Virtual).
 - All interactions must respond within 400ms (Doherty Threshold).
-- Next.js 15: use "use cache" + cacheLife() on slow data fetches.
+- Next.js 16: use "use cache" + cacheLife() on slow data fetches.
 
 ## LAYOUT
 - Minimum section padding: 80px (6rem). Preferred 96–128px.

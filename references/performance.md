@@ -64,7 +64,7 @@ LCP is almost always the hero image or hero text.
 </picture>
 ```
 
-### Preload LCP image (Next.js 15)
+### Preload LCP image (Next.js 16)
 
 ```tsx
 import Image from 'next/image'
@@ -251,7 +251,7 @@ button.addEventListener('click', () => {
 
 ## JavaScript Bundle
 
-### Lazy-load heavy components (Next.js 15)
+### Lazy-load heavy components (Next.js 16)
 
 ```tsx
 import dynamic from 'next/dynamic'
@@ -281,7 +281,7 @@ import { motion, AnimatePresence } from 'motion/react'
 
 ---
 
-## Next.js 15 Performance Patterns
+## Next.js 16 Performance Patterns
 
 ```tsx
 /* No-store by default (changed from v14) — be explicit */

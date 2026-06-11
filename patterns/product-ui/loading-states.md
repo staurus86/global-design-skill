@@ -188,7 +188,7 @@ Trigger: user clicks a button that triggers an async operation (form submit, del
 Trigger: navigating to a new page, loading a complex dashboard, or switching between heavy tabs.
 
 ```tsx
-// Next.js 15: loading.tsx
+// Next.js 16: loading.tsx
 export default function DashboardLoading() {
   return (
     <div className="dashboard-skeleton">

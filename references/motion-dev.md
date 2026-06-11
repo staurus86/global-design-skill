@@ -1,6 +1,6 @@
 # Reference — Motion Dev (React)
 
-> `motion/react` hooks, scroll-triggered animations, AnimatePresence, layout animations, and GSAP integration for React 19 + Next.js 15. For CSS-native animation patterns, see `references/motion-systems.md`.
+> `motion/react` hooks, scroll-triggered animations, AnimatePresence, layout animations, and GSAP integration for React 19 + Next.js 16. For CSS-native animation patterns, see `references/motion-systems.md`.
 
 ---
 

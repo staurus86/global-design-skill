@@ -256,7 +256,7 @@ Display via `?` shortcut: modal with all shortcuts organized by section.
 
 **Forms:**
 - [ ] React Hook Form + Zod schema validation
-- [ ] Server actions for submit (React 19 / Next.js 15)
+- [ ] Server actions for submit (React 19 / Next.js 16)
 - [ ] `useFormStatus` for loading state
 
 **Filters:**

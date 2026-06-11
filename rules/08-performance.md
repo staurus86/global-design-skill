@@ -307,12 +307,12 @@ function VirtualList({ items }) {
 
 ---
 
-## R10 — Next.js 15: use `"use cache"` for slow data fetches.
+## R10 — Next.js 16: use `"use cache"` for slow data fetches.
 
-The default `fetch()` behavior in Next.js 15 is `no-store` — all data fetches are uncached. Slow API calls on every request destroy performance. Cache data that doesn't change on every request.
+The default `fetch()` behavior in Next.js 16 is `no-store` — all data fetches are uncached. Slow API calls on every request destroy performance. Cache data that doesn't change on every request.
 
 ```tsx
-// Next.js 15 caching
+// Next.js 16 caching
 import { unstable_cacheLife as cacheLife } from 'next/cache'
 
 async function getProductList() {

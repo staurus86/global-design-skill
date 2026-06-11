@@ -12,7 +12,7 @@
 
 **Date:** [YYYY-MM-DD] · **Design lead:** [Name] · **Brief:** [link to project-brief.md]
 
-**Stack:** [React 19 / Next.js 15 / Tailwind v4 / other] · **CSS framework:** [Tailwind / Bootstrap / Bulma / UnoCSS / Panda CSS / Open Props]
+**Stack:** [React 19 / Next.js 16 / Tailwind v4 / other] · **CSS framework:** [Tailwind / Bootstrap / Bulma / UnoCSS / Panda CSS / Open Props]
 
 ---
 

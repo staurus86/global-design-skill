@@ -235,7 +235,7 @@ SaaS users pay monthly. Performance below expectation is a reason to cancel.
 
 **Implementation:**
 ```tsx
-// Cache with Next.js 15 "use cache"
+// Cache with Next.js 16 "use cache"
 'use cache'
 export async function getDashboardData(userId: string) {
   const data = await db.dashboard.get(userId)

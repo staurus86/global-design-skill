@@ -260,7 +260,7 @@ Every component in a SaaS app must have all states documented before development
 - `@import "tailwindcss"; @import "tw-animate-css"; @import "shadcn/tailwind.css"`
 - Theming via `@theme inline` — OKLCH throughout
 
-**Data fetching:** React 19 + Next.js 15
+**Data fetching:** React 19 + Next.js 16
 ```tsx
 // Server action pattern
 'use server'
@@ -279,7 +279,7 @@ const [optimisticItems, addOptimistic] = useOptimistic(items)
 // Update UI immediately, sync with server in background
 ```
 
-**Caching (Next.js 15):**
+**Caching (Next.js 16):**
 ```tsx
 'use cache'
 export async function getItems() {

@@ -27,6 +27,7 @@
 | Portfolio site | `blueprints/portfolio-from-scratch.md` | `rules/01-visual-hierarchy.md` `rules/03-typography.md` | `patterns/effects/` `references/portfolios.md` | `checklists/global-design-review.md` |
 | Onboarding flow | `blueprints/onboarding-flow-from-scratch.md` | `rules/13-saas-products.md` | `patterns/product-ui/onboarding.md` `patterns/product-ui/forms.md` | `checklists/ui-review.md` |
 | Redesign existing page | `blueprints/redesign-existing-page.md` | relevant domain rule | — | `checklists/global-design-review.md` |
+| Site in one prompt (autonomous, no dialogue) | `rules/21-one-shot-build.md` → blueprint for the site type | `rules/00-escalation-protocol.md` `rules/20-rendered-verification.md` | per blueprint | `checklists/global-design-review.md` |
 
 ---
 
@@ -174,6 +175,7 @@ Load the relevant rule alongside any blueprint or pattern.
 | Contrast standards (WCAG/APCA) | `rules/19-contrast-standards.md` |
 | Rendered verification (render → audit → fix) | `rules/20-rendered-verification.md` + `references/live-audit-snippets.md` |
 | Escalation protocol (request depth) | `rules/00-escalation-protocol.md` |
+| One-shot autonomous build (single prompt) | `rules/21-one-shot-build.md` |
 
 ---
 
@@ -231,5 +233,5 @@ Load when the task involves finding, studying, or referencing real-world example
 
 ---
 
-*Routing version: global-design-skill v2.2.0 — `task-routing.md`*  
-*Updated: 2026-06-06*
+*Routing version: global-design-skill v2.5.0 — `task-routing.md`*  
+*Updated: 2026-06-11*

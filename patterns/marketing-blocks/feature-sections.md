@@ -249,7 +249,7 @@ Feature sections answer the question: "How does this actually work?" They follow
           </p>
         </div>
         <div class="bento-cell__visual">
-          <img src="/features/zero-config.webp" alt="Setup wizard showing GitHub connected, framework detected as Next.js 15, and first deploy completed in 1m 47s" width="600" height="380" loading="lazy" />
+          <img src="/features/zero-config.webp" alt="Setup wizard showing GitHub connected, framework detected as Next.js 16, and first deploy completed in 1m 47s" width="600" height="380" loading="lazy" />
         </div>
       </article>
 

@@ -6,10 +6,10 @@ Turn Claude Code, Cursor, Codex, ChatGPT, Windsurf, and GitHub Copilot into a st
 
 Not another prompt collection. A self-learning design operating system: it knows sector-specific rules for 13 industries, learns from reference sites you point it at, and calibrates its pattern weights based on your feedback. All local, no telemetry.
 
-[![Version](https://img.shields.io/badge/version-2.4.0-blue)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-2.5.0-blue)](CHANGELOG.md)
 [![Standards](https://img.shields.io/badge/CSS-2026%20Baseline-green)](rules/)
 [![React](https://img.shields.io/badge/React-19-blue)](rules/)
-[![Next.js](https://img.shields.io/badge/Next.js-15-black)](rules/)
+[![Next.js](https://img.shields.io/badge/Next.js-16-black)](rules/)
 [![Tailwind](https://img.shields.io/badge/Tailwind-v4-cyan)](tokens/)
 [![Motion](https://img.shields.io/badge/motion%2Freact-v12-purple)](rules/17-motion-react.md)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
@@ -312,7 +312,7 @@ global-design-skill/
 │   ├── portfolio-from-scratch.md   ← Work grid, about, contact, anti-patterns
 │   └── onboarding-flow-from-scratch.md ← Signup → aha moment → checklist
 │
-├── rules/                          ← 20 domain rules files
+├── rules/                          ← 22 rules files (00–21)
 │   ├── 00-escalation-protocol.md   ← Intent-to-depth mapping (read first)
 │   ├── 01-visual-hierarchy.md      ├── 09-responsive.md
 │   ├── 02-layout-and-grid.md       ├── 10-forms.md
@@ -325,7 +325,8 @@ global-design-skill/
 │   ├── 17-motion-react.md          ← motion/react v12 (scroll, stagger, exit)
 │   ├── 18-css-framework-selection.md ← Bootstrap / Bulma / UnoCSS / Panda CSS / Open Props router
 │   ├── 19-contrast-standards.md   ← WCAG AA/AAA, APCA, surface stacking, dark mode ceiling, fix workflow
-│   └── 20-rendered-verification.md ← render → audit → fix loop, mode matrix, verify-before-done
+│   ├── 20-rendered-verification.md ← render → audit → fix loop, mode matrix, verify-before-done
+│   └── 21-one-shot-build.md        ← single-prompt autonomous build: assume → build → self-verify
 │
 ├── patterns/
 │   ├── marketing-blocks/           ← 9 landing page section files
@@ -503,7 +504,7 @@ global-design-skill/
 | **CSS Frameworks** | Tailwind v4 (default), Bootstrap 5.3, Bulma 1.0, UnoCSS, Panda CSS, Open Props — auto-detected from `package.json` |
 | **Tailwind** | v4 — `@theme {}` in CSS, no `tailwind.config.js` |
 | **React** | 19 — `useActionState`, `useOptimistic`, `useFormStatus`, ref as prop |
-| **Next.js** | 15 — `await cookies()`, `"use cache"`, Turbopack |
+| **Next.js** | 16 — Turbopack (default), `await cookies()`, `"use cache"` + Cache Components (PPR), `proxy.ts` |
 | **Motion** | `motion/react` v12 — `whileInView`, `useScroll`, `AnimatePresence`, `useReducedMotion`, OKLCH color support |
 | **GSAP** | `useGSAP` from `@gsap/react`, `contextSafe()` |
 | **TypeScript** | 5.x — `satisfies`, `const` type params, template literal types |
