@@ -22,6 +22,8 @@ Reviewed five external skills (`zanwei/design-dna`, `lottiefiles/motion-design-s
 - **`recipes/extract-design-from-reference.md`** — **Step 2b, the effects layer**: code-signal detection table for live sites (`<canvas>`, three/pixi/ogl, GSAP/lenis, `feTurbulence`, `cursor: none`), per-effect record format with confidence marker, four cost tiers, mandatory fallback above `css` tier. Effects inventory added as the 4th artifact. Explicitly rejects the source skill's force-fill rule — an absent effect is absent, not an empty row.
 - **`templates/specs/design-system-master.md`** — `Effect fallback` and `Fallback triggers` in the motion budget.
 
+**Version surfaces realigned:** `manifest.yaml` had been stuck at 2.1.4 since v2.2.0 — it is a release surface (aligned deliberately in `89fe50d` and again at 2.0.0), not a separate numbering scheme. Bumped to 2.7.0, and its `standards.nextjs` corrected from 15 to 16 to match the v2.5.0 stack refresh. Per-file `*version:*` footers in rules, checklists and references are **not** release surfaces — they stamp the file's last edit and stay as they are.
+
 **Wired in:** `skills/global-design/SKILL.md` (frontmatter 2.6.0 → 2.7.0, Task Routing row, domain-knowledge enumeration), `skills/global-design/task-routing.md` (Effects table +2 rows, knowledge lookup +1, version marker), `CLAUDE.md` (2 routing rows), `README.md` (badge 2.6.0 → 2.7.0, references tree 27 → 28), `agents/motion-designer.md` (new **Phase 6 — Personality and layers** in the audit protocol: archetype consistency, layer check, amplitude limits, GSAP-specific checks), `checklists/wow-effects-checklist.md` (+10 GSAP items), `integrations/claude-code/CLAUDE.md` (motion rules + 4 banned patterns).
 
 ---

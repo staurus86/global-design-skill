@@ -1,5 +1,5 @@
 name: global-design-skill
-version: 2.1.4
+version: 2.7.0
 description: >
   Portable design operating system for AI-assisted frontend development.
   Turns Claude Code, Cursor, Codex, ChatGPT, Windsurf, GitHub Copilot,
@@ -53,8 +53,8 @@ standards:
   colors: "OKLCH throughout"
   tailwind: "v4 (@theme CSS-native)"
   react: "19 (useActionState, useOptimistic, ref-as-prop)"
-  nextjs: "15 (async APIs, use cache, Turbopack)"
-  motion: "motion/react (formerly framer-motion)"
+  nextjs: "16 (Turbopack default, Cache Components/PPR, proxy.ts, use cache)"
+  motion: "motion/react (formerly framer-motion); GSAP for timeline, pin, scrub, SplitText"
   typescript: "5.x (satisfies, const type params)"
   accessibility: "WCAG 2.2 AA"
 
