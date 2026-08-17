@@ -67,6 +67,42 @@ Never use named easings (`ease`, `ease-in`, `ease-in-out`, `ease-out`). These ar
 
 ---
 
+## Springs — stiffness and damping
+
+Springs have no duration. They settle when the physics says so, which is why they beat fixed timing on anything the user drives directly — drag, tabs, toggles, layout shifts. For anything the user only watches, a `cubic-bezier` with a known duration is easier to choreograph against.
+
+```tsx
+transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+```
+
+| Feel | Stiffness | Damping | Use |
+|---|---|---|---|
+| Very stiff | 400+ | 25–30 | Buttons, toggles, tabs — near-instant settle |
+| Standard | 250–350 | 18–24 | Modals, drawers, layout animations |
+| Gentle | 100–150 | 20–25 | Large surfaces, ambient movement |
+| Bouncy | 150–250 | 10–15 | Playful archetype only |
+| Very bouncy | 100–200 | 5–10 | Celebration moments — one per page at most |
+
+Damping ratio decides the character: below 1.0 the spring oscillates, 1.0 is the fastest settle without overshoot, above 1.0 it crawls in. Damping under 15 on a Corporate or Premium build will look like a bug, not a flourish.
+
+**Never spring an error state.** Oscillation reads as playful, and a failed payment is not.
+
+---
+
+## Overshoot budget
+
+Overshoot is how far past the target the element travels before settling. It is the single strongest signal of motion personality — and the easiest to apply where it does harm.
+
+| Context | Overshoot | Why |
+|---|---|---|
+| Success confirmation | 5–10% | Enough lift to register as positive |
+| Generic feedback (press, toggle) | 2–5% | Physical, not decorative |
+| Celebration (onboarding complete, first win) | 15–25% | Once per flow, never repeated |
+| Premium / editorial builds | 0% | Overshoot reads as cheap on a luxury surface |
+| **Errors, warnings, destructive confirms** | **0%** | A bouncing error is cheerful about the failure |
+
+---
+
 ## `@starting-style` — CSS-Native Enter Animations
 
 `@starting-style` enables CSS transitions from `display: none` without JavaScript. Baseline 2024. (Chrome 117+, Firefox 129+, Safari 17.4+)

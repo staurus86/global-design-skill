@@ -3,7 +3,7 @@ name: global-design-skill
 description: "Design operating system for web UI/UX tasks. Use when user asks to design, build, redesign, or audit UI: landing pages, SaaS products, admin panels, dashboards, components, forms, animations, color systems, typography, developer handoff specs. Trigger phrases: 'design a page', 'build a landing page', 'create a SaaS UI', 'audit my design', 'review the UI', 'create a component', 'frontend spec', 'improve the interface', 'color tokens', 'add animation'. Stack: React 19, Next.js 16, Tailwind v4, motion/react, GSAP. Standards: CSS 2026 Baseline, WCAG 2.2 AA."
 license: MIT
 metadata:
-  version: 2.6.0
+  version: 2.7.0
   version_schema: semver
   author: global-design-skill
   tags: [design, ui-ux, react, nextjs, tailwind, accessibility, frontend, design-system]
@@ -71,7 +71,8 @@ Quick routing table — apply the Decision Pipeline for any task type. Full pack
 | "Make it like this" reference (image / site / Figma) | Extract → fill MASTER + DTCG tokens → build → verify fidelity | `recipes/extract-design-from-reference.md` + `templates/specs/design-system-master.md` |
 | Website from scratch | Decision Pipeline → lock MASTER → full IA → blueprints | `blueprints/website-from-scratch.md` + `templates/specs/design-system-master.md` |
 | Site in one prompt / "just build it" (no dialogue) | Assumption Ledger → mini-MASTER → build → self-verify | `rules/21-one-shot-build.md` |
-| Animations / motion | Effects Decision Block (in this file) | `patterns/effects/` directory |
+| Animations / motion | Effects Decision Block (in this file) | `patterns/effects/` directory + `rules/05-animation.md` |
+| Timeline / pin / scrub / horizontal scroll / SplitText | Effects Decision Block → GSAP tier | `references/gsap-patterns.md` |
 | UI block / component | Quality Gates → States → Tokens | `patterns/` directory |
 | UI review / audit | Banned Patterns + Quality Gates (in this file) | `checklists/ui-review.md` |
 | Anti-slop deep audit / "looks AI-generated" | Banned Patterns (in this file) → concrete tell→fix catalog | `references/anti-slop-system.md` |
@@ -436,7 +437,7 @@ Anti-patterns
 
 This skill is self-contained for core design tasks. The [full package](https://github.com/staurus86/global-design-skill) adds deep-dive catalogs for each domain:
 
-**Domain knowledge** (in `references/`): typography + variable fonts, OKLCH color science, motion systems (CSS + GSAP), Motion React API, visual effects, 3D/WebGL/R3F, accessibility (ARIA, keyboard, focus), performance (CWV, images, fonts), design tokens, forms, responsive/container queries, data visualization, behavioral design (29 cognitive biases mapped to pricing, CTAs, navigation, trust, onboarding, error states), and a catalog of authoritative primary sources (`references/sources.md` — WCAG 2.2, Core Web Vitals, OKLCH, Baseline, Laws of UX).
+**Domain knowledge** (in `references/`): typography + variable fonts, OKLCH color science, CSS-native motion systems and springs, GSAP timeline/ScrollTrigger/SplitText patterns, Motion React API, visual effects, 3D/WebGL/R3F including post-processing and shaders, accessibility (ARIA, keyboard, focus), performance (CWV, images, fonts), design tokens, forms, responsive/container queries, data visualization, behavioral design (29 cognitive biases mapped to pricing, CTAs, navigation, trust, onboarding, error states), and a catalog of authoritative primary sources (`references/sources.md` — WCAG 2.2, Core Web Vitals, OKLCH, Baseline, Laws of UX).
 
 **Anti-slop catalog** (in `references/anti-slop-system.md`): the concrete tell→fix table — color, typography, layout, depth, texture, motion, imagery, copy — with CSS values, OKLCH rules, cross-cultural craft signals (Japanese yohaku, Swiss grid, French editorial), and a curated source set. The visual *ceiling* above the technical *floor* in `references/sources.md`.
 

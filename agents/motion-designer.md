@@ -138,6 +138,35 @@ Assign a motion intensity score per page section (1–10):
 
 ---
 
+### Phase 6 — Personality and layers
+
+Intensity says how much motion the page gets. This phase checks whether it reads as one deliberate system.
+
+**Archetype consistency.** Name the project's archetype from the observed values, then check every animation against it (`rules/05` → Motion Personality):
+
+| Archetype | Duration band | Overshoot |
+|---|---|---|
+| Premium | 350–600ms | 0% |
+| Corporate | 200–400ms | 0–3% |
+| Playful | 150–300ms | 10–20% |
+| Energetic | 100–250ms | 15–30% |
+
+If different components sit in different bands with no stated reason, the project has no motion identity — flag it as a single finding, not one per component.
+
+**Layer check.** For each animation the user is meant to notice, name the primary, secondary, and ambient layer. A primary-only animation is why a technically correct build still feels cheap. Ambient is optional on admin and data screens; secondary is not.
+
+**Amplitude limits** (`rules/05` R13):
+- No `scale(0)` on enter or exit — 0.95 minimum
+- No unbroken travel past a third of the viewport
+- No more than a third of a group in motion at once
+- Errors and destructive confirmations: 0% overshoot, no springs
+
+**Distance and frequency** (`rules/05` R4): duration scaled by travel distance, exits at 65–75% of their entrance, frequently repeated animations (hover, toggle) held at 100–150ms.
+
+**GSAP-specific** (`references/gsap-patterns.md`), where the project uses it: `ease: 'none'` on every scrubbed tween, one ScrollTrigger per timeline, no `setState` in `onUpdate`, `gsap.matchMedia()` as the reduced-motion gate, `useGSAP()` with a scope in React.
+
+---
+
 ## Common Fixes
 
 **Fix 1 — Replace scroll listener with IntersectionObserver**
@@ -222,5 +251,5 @@ BLOCKED   — Missing prefers-reduced-motion on any animation (WCAG 2.3.3 violat
 
 ---
 
-*Agent version: global-design-skill v1.0 — `agents/motion-designer.md`*
-*Related: `rules/05-animation.md`, `tokens/tokens.css` animation section, `patterns/product-ui/loading-states.md`*
+*Agent version: global-design-skill v2.7.0 — `agents/motion-designer.md`*
+*Related: `rules/05-animation.md` (Motion Personality, three layers, R13 amplitude limits, Troubleshooting), `references/motion-systems.md` (easing/duration tokens, springs, overshoot budget), `references/gsap-patterns.md` (timeline, ScrollTrigger, SplitText), `rules/17-motion-react.md`, `tokens/tokens.css` animation section, `patterns/product-ui/loading-states.md`*

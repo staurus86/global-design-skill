@@ -128,6 +128,20 @@ Micro-interactions (hover states, icon swaps) must feel instant. Large structura
 * { transition: all 300ms ease-in-out; }
 ```
 
+**Distance scales the duration.** The table above assumes a short travel. An element crossing the viewport at the same 300ms reads as a teleport, because the eye tracks distance, not milliseconds. Take the element-type duration as the base at ~100px and multiply:
+
+| Travel | Multiplier |
+|---|---|
+| 50px | 0.8× |
+| 100px | 1.0× (base) |
+| 200px | 1.3× |
+| 400px | 1.6× |
+| Full viewport | 1.8–2.0× |
+
+**Exits run at 65–75% of the matching entrance.** An entrance introduces something the user needs to read; an exit removes something they are already done with. A modal that fades in over 400ms should leave in 260–300ms. Exits that match their entrance feel like the interface is stalling.
+
+**The more often it plays, the shorter it gets.** A hover that fires a thousand times a day and an onboarding reveal seen once are not the same animation, even on the same component. Hover: 100–150ms, opacity or color only. Once-in-a-lifetime reveal: 600ms+ with full choreography. When a duration feels right in isolation but wrong in the build, check how many times a session it actually runs.
+
 ---
 
 ## R5 — `@starting-style` for elements transitioning from `display: none`.
@@ -319,6 +333,39 @@ import { useAnimate, useInView, animateView } from 'motion/react'
 
 ---
 
+## Motion Personality — turn the dial into numbers
+
+`MOTION_INTENSITY: 1–10` (`rules/00`) says how much motion the project gets. It does not say what that motion feels like, so two builds at 6/10 can move like a bank and like a toy. Pick one archetype per project and hold it: the same easing on 80% of animations is what makes motion read as one product rather than one developer's mood per component.
+
+| Archetype | Duration band | Easing | Overshoot | Fits |
+|---|---|---|---|---|
+| **Premium** | 350–600ms | `--ease-smooth` / `cubic-bezier(0.4, 0, 0.2, 1)` | 0% | Luxury, editorial, spatial, portfolio |
+| **Corporate** | 200–400ms | `--ease-snappy` / `cubic-bezier(0.2, 0, 0, 1)` | 0–3% | SaaS, dashboards, admin, fintech |
+| **Playful** | 150–300ms | `--ease-spring` (back-out family) | 10–20% | Consumer apps, education, illustration |
+| **Energetic** | 100–250ms | expo-out | 15–30% | Gaming, sports, launches, campaigns |
+
+**Default:** Corporate for product UI, Playful for decorative and illustrative elements. Record the pick in the MASTER (`templates/specs/design-system-master.md` §6) as three constants — signature easing, three durations (quick / standard / slow), one entrance pattern. Everything else inherits them.
+
+Overshoot is context-sensitive regardless of archetype: success 5–10%, generic feedback 2–5%, celebration 15–25%, **errors 0%**. An error that bounces reads as cheerful about the failure.
+
+---
+
+## Motion has three layers. Flat animation is missing two of them.
+
+Motion that technically works but feels cheap is almost always a single layer moving alone. Real movement carries supporting motion:
+
+| Layer | What moves | Example |
+|---|---|---|
+| **Primary** | The thing the eye follows | Card slides up into place |
+| **Secondary** | What the primary action disturbs | Its shadow lands 50ms later; the icon inside shifts 2px |
+| **Ambient** | Background life, independent of interaction | Gradient drifts, grain shimmers, a slow float |
+
+The check when a build feels flat: name all three layers. If only the primary exists, the interface animates without moving. Ambient is optional on admin and data screens — secondary is not, on any page where motion is meant to be noticed.
+
+Counter-motion is the cheapest secondary layer there is: when the hero moves right, drift the background left at 20–30% of its speed. Depth for one line of CSS.
+
+---
+
 ## Motion Budget by Page Type
 
 | Page type | Motion intensity | Primary animations |
@@ -344,6 +391,12 @@ import { useAnimate, useInView, animateView } from 'motion/react'
 [ ] No multiple simultaneous pulse animations — shimmer pattern used
 [ ] Sequential elements stagger by 60–120ms
 [ ] motion/react import — not framer-motion
+[ ] One motion archetype picked and recorded in the MASTER — not per-component easing
+[ ] Long travel scaled by distance; exits at 65–75% of their entrance
+[ ] Frequently repeated animations (hover, toggle) kept at 100–150ms
+[ ] Noticed motion carries a secondary layer — not primary alone
+[ ] No scale(0) on enter or exit — 0.95 minimum
+[ ] Errors animate with 0% overshoot
 ```
 
 ---
@@ -414,6 +467,43 @@ async function navigate(url: string) {
 
 ---
 
+## R13 — Never scale to `0`. Never travel more than a third of the screen unbroken.
+
+Two amplitude limits that static review never catches, because both look correct in the CSS.
+
+**`scale(0)` collapses an element into a point** and reads as a glitch, not a dismissal. The last frames shrink past any legible size while the shadow and border collapse with them.
+
+```css
+/* Wrong — vanishes into nothing */
+.modal-exit { transform: scale(0); }
+
+/* Correct — recedes and fades */
+.modal-exit { transform: scale(0.95); opacity: 0; }
+```
+
+The same applies to entrances: start at `0.95`, not `0`. Anything below `0.9` looks like a zoom effect rather than an arrival.
+
+**Motion crossing more than a third of the viewport needs an intermediate keyframe** — a curve, a scale change, a speed change. A straight linear slide across the full screen has nothing for the eye to hold on to, and the duration required to make it comfortable (1.8–2.0× base, per R4) makes the wait obvious. Either shorten the travel or break it.
+
+Related limit for multi-element scenes: with three or more elements, keep no more than a third of them in active motion at once. Everything moving at once produces noise, not choreography.
+
+---
+
+## Troubleshooting — the animation works but feels wrong
+
+Motion failures rarely show up as bugs. They show up as a build that technically animates and still feels cheap. Symptom to cause:
+
+| Symptom | Likely cause | Fix |
+|---|---|---|
+| Feels robotic | Linear easing, or straight-line paths only | Purpose-built `cubic-bezier` (R2); add arc or counter-motion |
+| Feels cheap or flat | Only the primary layer moves | Add secondary (shadow, inner icon) and ambient |
+| Feels sluggish, though durations match the table | Duration ignores travel distance | Apply the R4 distance multiplier, or shorten the travel |
+| Feels twitchy on a familiar control | Same duration for a hover as for a first-run reveal | Apply the frequency rule (R4) |
+| Distracting | Too many elements in motion at once | Enforce the third-of-elements limit (R13); cut amplitude |
+| No personality — "generic AI page" | Different easing per component | Lock one archetype and one signature easing |
+| Element seems to disappear rather than close | `scale(0)`, or opacity alone on a spatial change | `scale(0.95)` + opacity; pair opacity with movement |
+| Reads as stalling on close | Exit as long as entrance | Exit at 65–75% |
+
 ---
 
 ## CSS 2026 — Stagger Without JavaScript
@@ -444,5 +534,6 @@ li {
 
 ---
 
-*Rule version: global-design-skill v1.6 — `rules/05-animation.md`*
+*Rule version: global-design-skill v2.7.0 — `rules/05-animation.md`*
+*Related: `references/motion-systems.md` (tokens, springs, overshoot), `references/gsap-patterns.md` (timeline + ScrollTrigger), `rules/17-motion-react.md` (React), `templates/specs/design-system-master.md` §6 (where the archetype is recorded)*
 *Related: `rules/17-motion-react.md`, `references/motion-systems.md`, `references/motion-dev.md`, `tokens/tokens.css`, `patterns/product-ui/loading-states.md`*

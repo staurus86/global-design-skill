@@ -117,7 +117,11 @@ Lock the rules every component on every page follows, so a button on /pricing ma
 Budget tier:        [CSS-only / CSS+IntersectionObserver / CSS+GSAP ScrollTrigger / R3F]
 Signature moment:   [the ONE place motion earns its weight — not blur/animation everywhere]
 prefers-reduced-motion: every animation gated — [confirmed]
+Effect fallback:    [what renders when the effect is off — static poster / CSS-only reduction / nothing]
+Fallback triggers:  [prefers-reduced-motion · save-data · no WebGL context · low hardwareConcurrency]
 ```
+
+A tier above `CSS-only` without a named fallback is an unfinished decision, not a budget. The fallback is a design state someone sees — specify it here, don't leave it to the implementer.
 
 ---
 
@@ -160,5 +164,5 @@ No other deviations. Tokens, fonts, spacing, components, voice = MASTER.
 
 ---
 
-*Template version: global-design-skill v2.3.0 — `templates/specs/design-system-master.md`*
+*Template version: global-design-skill v2.7.0 — `templates/specs/design-system-master.md`*
 *Related: `rules/00-escalation-protocol.md` (Dials, Macrostructure, Memorability Gate), `skills/global-design/SKILL.md` (Design Tokens Core), `tokens/tokens.css`, `templates/briefs/project-brief.md` (the what/why this freezes the how for), `blueprints/website-from-scratch.md` (Step 0)*

@@ -40,7 +40,13 @@ You are working on a project that follows the **global-design-skill** design sys
 - `will-change: transform` set only during active animation, removed after
 - No multiple simultaneous `animate-pulse` — use shimmer pattern
 - Sequential elements stagger 60–120ms
+- One motion archetype per project (Premium / Corporate / Playful / Energetic) — not per-component easing
+- Exits run at 65–75% of their entrance; long travel scales duration (400px ≈ 1.6×)
+- Never `scale(0)` — 0.95 minimum on enter and exit
+- Errors animate with 0% overshoot — no bouncing failures
 - Import from `motion/react` — never `framer-motion`
+- GSAP only for timeline, pin, scrub, or SplitText — every scrubbed tween needs `ease: 'none'`
+- `gsap.matchMedia()` gates GSAP motion; React uses `useGSAP()` with a scope, never bare `useEffect`
 - Canvas `devicePixelRatio` capped at 2 — `Math.min(window.devicePixelRatio, 2)`
 - Three.js / R3F canvas pauses when off-screen via `IntersectionObserver`
 - Cursor / tilt effects disabled on `pointer: coarse` (touch devices)
@@ -132,6 +138,10 @@ Motion:    transition: all
            Importing from framer-motion
            window.addEventListener('scroll') for animation calculations
            will-change: transform left on permanently
+           scale(0) on enter or exit
+           Overshoot / bounce on an error or destructive state
+           ease on a scrubbed ScrollTrigger tween
+           setState inside a ScrollTrigger onUpdate
            h-screen / 100vh on full-height sections (use 100dvh)
            Cursor/tilt effects on touch devices (pointer: coarse)
 

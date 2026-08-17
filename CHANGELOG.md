@@ -6,6 +6,26 @@ Format: [version] — date — description
 
 ---
 
+## [2.7.0] — 2026-08-17
+
+### Motion personality, GSAP reference, effects extraction
+
+Reviewed five external skills (`zanwei/design-dna`, `lottiefiles/motion-design-skill`, `AThevon/genjutsu`, `cloudai-x/threejs-skills`, `greensock/gsap`) and took what the library actually lacked. None was adopted wholesale — each contributed specific gaps, and their weaker conventions (raw hex, force-filled schemas, unpinned CDN versions) were deliberately not carried over.
+
+**Added:**
+- **`references/gsap-patterns.md`** — the library's biggest coverage gap. GSAP existed only as scattered snippets in a blueprint and the parallax pattern. Now: tool-choice table (CSS → motion/react → GSAP, with the bundle cost of each), `useGSAP()` scoping for React, timeline position parameter, `stagger` grid distribution, `ScrollTrigger.batch`, pin/scrub, `containerAnimation` for horizontal tracks, current `SplitText.create()` API (`autoSplit`, `mask`, `aria`), `gsap.matchMedia()` as the reduced-motion gate, and five failure modes that produce working-but-broken scroll animations. Licensing verified against the GreenSock repository at 3.15.0: the full plugin set, SplitText and MorphSVG included, is free for commercial use.
+
+**Extended:**
+- **`rules/05-animation.md`** — Motion Personality (4 archetypes mapping `MOTION_INTENSITY` to concrete duration/easing/overshoot values), the three motion layers (primary/secondary/ambient) as the diagnostic for flat-feeling builds, distance-scaled duration, exits at 65–75% of their entrance, the frequency rule, new **R13** (no `scale(0)`, third-of-screen travel limit, third-of-elements limit), and a symptom→cause troubleshooting table. Version marker corrected 1.6 → 2.7.0.
+- **`references/motion-systems.md`** — spring stiffness/damping table with the damping-ratio explanation, and a context-based overshoot budget (errors at 0%).
+- **`references/3d-animations.md`** — post-processing pass table with cost ratings (bloom, DOF, vignette, chromatic aberration, noise, SSAO) and the banding fix; custom-shader minimum (uniforms over state, lerped pointer, noise-type selection). Version marker corrected 1.0 → 2.7.0.
+- **`recipes/extract-design-from-reference.md`** — **Step 2b, the effects layer**: code-signal detection table for live sites (`<canvas>`, three/pixi/ogl, GSAP/lenis, `feTurbulence`, `cursor: none`), per-effect record format with confidence marker, four cost tiers, mandatory fallback above `css` tier. Effects inventory added as the 4th artifact. Explicitly rejects the source skill's force-fill rule — an absent effect is absent, not an empty row.
+- **`templates/specs/design-system-master.md`** — `Effect fallback` and `Fallback triggers` in the motion budget.
+
+**Wired in:** `skills/global-design/SKILL.md` (frontmatter 2.6.0 → 2.7.0, Task Routing row, domain-knowledge enumeration), `skills/global-design/task-routing.md` (Effects table +2 rows, knowledge lookup +1, version marker), `CLAUDE.md` (2 routing rows), `README.md` (badge 2.6.0 → 2.7.0, references tree 27 → 28), `agents/motion-designer.md` (new **Phase 6 — Personality and layers** in the audit protocol: archetype consistency, layer check, amplitude limits, GSAP-specific checks), `checklists/wow-effects-checklist.md` (+10 GSAP items), `integrations/claude-code/CLAUDE.md` (motion rules + 4 banned patterns).
+
+---
+
 ## [2.6.0] — 2026-06-11
 
 ### E-commerce blueprint + auth screens pattern

@@ -30,6 +30,8 @@ Do **not** use for pure backend, SQL, server config, data analysis — unless UI
 | Verify rendered result / done-before-deploy / "passes in source but breaks live" | `rules/20-rendered-verification.md` + `references/live-audit-snippets.md` |
 | Anti-slop audit / "looks AI-generated" | `references/anti-slop-system.md` |
 | Animation (scroll, transitions, stagger) | `rules/17-motion-react.md` |
+| Timeline / pin / scrub / horizontal scroll / SplitText | `references/gsap-patterns.md` |
+| Motion feels flat, robotic, or "generic AI" | `rules/05-animation.md` → Motion Personality + Troubleshooting |
 | Ready-made React components | `integrations/21st-dev/guide.md` |
 | HTML design → MP4 video (product demo, social, changelog) | `integrations/hyperframes/guide.md` |
 | Industry-specific rules | `GlobalDesignSkill:get_sector_context` (MCP tool) |

@@ -120,6 +120,15 @@ Each of these is an automatic fail:
 - [ ] Horizontal scroll gallery has visible scroll indicator or is swipeable on touch
 - [ ] Scroll progress indicators match actual scroll position (±5%)
 - [ ] GSAP `scrub` value tuned (0.5–2.0 typical) — not `scrub: true` (that = `scrub: 1` but unintentional)
+- [ ] Every scrubbed tween uses `ease: 'none'` — an ease remaps scroll progress and the element lags the cursor
+- [ ] One ScrollTrigger per timeline — a trigger on a child tween is silently ignored
+- [ ] `onUpdate` writes to the DOM (`gsap.quickSetter` / ref) — never `setState` (60 re-renders/sec)
+- [ ] `from()` following another tween in a timeline sets `immediateRender: false`
+- [ ] Elements inside a horizontal track use `containerAnimation` — a plain trigger never fires off-screen
+- [ ] Long lists reveal via `ScrollTrigger.batch`, not one trigger per item
+- [ ] `ScrollTrigger.refresh()` called after async content changes page height
+- [ ] React: animations created inside `useGSAP()` with a `scope` — no manual `useEffect` cleanup
+- [ ] SplitText uses `autoSplit` + `onSplit` (survives font load and resize); `aria` left at `'auto'`
 - [ ] Lenis (if used) does not conflict with browser native scroll restoration on route change
 
 ---
@@ -149,6 +158,6 @@ Answer these four questions. Any "no" = do not ship.
 
 ---
 
-*Checklist version: global-design-skill v1.0 — `checklists/wow-effects-checklist.md`*  
-*Updated: 2026-05-20*  
-*Related: `rules/05-animation.md`, `rules/08-performance.md`, `rules/07-accessibility.md`, `patterns/effects/`*
+*Checklist version: global-design-skill v2.7.0 — `checklists/wow-effects-checklist.md`*  
+*Updated: 2026-08-17*  
+*Related: `rules/05-animation.md`, `rules/08-performance.md`, `rules/07-accessibility.md`, `patterns/effects/`, `references/gsap-patterns.md`, `references/3d-animations.md`*

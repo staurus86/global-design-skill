@@ -40,11 +40,13 @@
 |---|---|---|
 | Add grain/mesh/spotlight/glow | `patterns/effects/visual-effects.md` | `tokens/tokens.css` |
 | Add parallax (any type) | `patterns/effects/parallax-system.md` | `rules/05-animation.md` |
-| Add text animations | `patterns/effects/text-animations.md` | `rules/03-typography.md` |
-| Add scroll experiences | `patterns/effects/scroll-experiences.md` | `rules/05-animation.md` |
+| Add text animations | `patterns/effects/text-animations.md` | `rules/03-typography.md` `references/gsap-patterns.md` (SplitText) |
+| Add scroll experiences | `patterns/effects/scroll-experiences.md` | `rules/05-animation.md` `references/gsap-patterns.md` |
 | Add hover effects | `patterns/effects/hover-effects.md` | `rules/06-components.md` |
 | Add cursor effects | `patterns/effects/cursor-effects.md` | — |
-| Add 3D effects | `patterns/effects/3d-effects.md` | `rules/05-animation.md` |
+| Add 3D effects | `patterns/effects/3d-effects.md` | `rules/05-animation.md` `references/3d-animations.md` (post-processing, shaders) |
+| Pin / scrub / horizontal scroll / timeline | `references/gsap-patterns.md` | `patterns/effects/scroll-experiences.md` |
+| Motion feels flat, robotic, or generic | `rules/05-animation.md` (Personality + Troubleshooting) | `references/motion-systems.md` |
 | Add page transitions | `recipes/add-page-transitions.md` | `patterns/effects/scroll-experiences.md` |
 | Make hero wow | `recipes/create-wow-hero.md` | `patterns/effects/visual-effects.md` `patterns/effects/hover-effects.md` |
 | Make page more premium | `recipes/make-page-more-premium.md` | `patterns/effects/visual-effects.md` |
@@ -161,6 +163,7 @@ Load the relevant rule alongside any blueprint or pattern.
 | Typography | `rules/03-typography.md` |
 | Color (OKLCH) | `rules/04-color.md` |
 | Animation and motion | `rules/05-animation.md` + `patterns/effects/` |
+| GSAP (timeline, ScrollTrigger, SplitText) | `references/gsap-patterns.md` |
 | Components | `rules/06-components.md` |
 | Accessibility (WCAG 2.2) | `rules/07-accessibility.md` |
 | Performance (CWV) | `rules/08-performance.md` |
@@ -235,5 +238,5 @@ Load when the task involves finding, studying, or referencing real-world example
 
 ---
 
-*Routing version: global-design-skill v2.6.0 — `task-routing.md`*  
+*Routing version: global-design-skill v2.7.0 — `task-routing.md`*  
 *Updated: 2026-06-11*

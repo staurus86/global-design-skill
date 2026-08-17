@@ -380,6 +380,59 @@ function AnimatedMesh() {
 
 ---
 
+## Post-processing — where the "expensive" look comes from
+
+A plain R3F scene with correct lighting still reads as a WebGL demo. What separates it from a product render is the post pass: bloom on emissive surfaces, subtle depth of field, a trace of chromatic aberration at the edges. Each one is a full-screen shader pass, so each one costs — budget them, don't stack them by default.
+
+```tsx
+import { EffectComposer, Bloom, DepthOfField, Vignette } from '@react-three/postprocessing'
+
+<EffectComposer disableNormalPass>
+  <Bloom intensity={0.6} luminanceThreshold={0.9} mipmapBlur />
+  <DepthOfField focusDistance={0.02} focalLength={0.05} bokehScale={2} />
+  <Vignette darkness={0.4} offset={0.3} />
+</EffectComposer>
+```
+
+| Pass | What it buys | Cost | Use when |
+|---|---|---|---|
+| Bloom | Emissive materials actually glow | Medium | Dark scenes with light sources — the highest payoff per pass |
+| Vignette | Focus pulled to center | Very low | Almost always safe |
+| Depth of field | Product-photography separation | High | One hero object, static camera |
+| Chromatic aberration | Lens realism, slight unease | Low | Sparingly — reads as a filter above ~0.002 |
+| Noise / grain | Kills gradient banding | Very low | Any dark gradient background |
+| SSAO | Contact shadows in crevices | Very high | Rarely worth it on the web |
+
+**Budget:** one or two passes on a marketing hero. `disableNormalPass` unless a pass needs normals — it saves a full render target. On mobile, drop everything except bloom and vignette; measure before shipping the rest.
+
+**Banding is the common case, and it is cheap to fix.** A dark radial gradient behind a 3D scene will band on 8-bit displays. Adding a low-intensity noise pass, or the SVG grain overlay from `patterns/effects/visual-effects.md`, removes it for effectively nothing.
+
+---
+
+## Custom shaders — the minimum that is worth it
+
+Writing GLSL is rarely the right call for a marketing page: `MeshTransmissionMaterial`, `MeshDistortMaterial`, and the drei material set cover most of what a hero needs. Reach for a raw shader when the effect is the product — a gradient mesh that responds to the pointer, a displacement tied to scroll, a fluid distortion on an image.
+
+```tsx
+const material = useRef<THREE.ShaderMaterial>(null)
+
+useFrame(({ clock, pointer }) => {
+  if (!material.current) return
+  material.current.uniforms.uTime.value = clock.elapsedTime
+  material.current.uniforms.uMouse.value.lerp(pointer, 0.05)   // lerp — never assign raw pointer
+})
+```
+
+Three rules that cover most shader problems on real sites:
+
+- **Uniforms carry state, not React.** Updating a uniform in `useFrame` costs nothing; driving the same value through `useState` re-renders the tree 60 times a second.
+- **Lerp pointer input.** Assigning the raw pointer position produces a jittery, cheap-feeling result. `0.03–0.08` is the usable band.
+- **Noise choice is a look, not a detail.** Perlin and simplex give smooth organic flow; worley (cellular) gives cracked or bubbled structure; fbm layers octaves for terrain and cloud. Picking the wrong one is why a "liquid" effect ends up looking like static.
+
+Reduced motion applies here too: freeze `uTime` rather than unmounting the mesh, so the composition survives and only the movement stops.
+
+---
+
 ## Archetype-Specific 3D Usage
 
 | Archetype | 3D technique | Example |
@@ -393,5 +446,5 @@ function AnimatedMesh() {
 
 ---
 
-*Reference version: global-design-skill v1.0 — `references/3d-animations.md`*
-*Related: `references/visual-effects.md`, `references/motion-systems.md`, `references/motion-dev.md`*
+*Reference version: global-design-skill v2.7.0 — `references/3d-animations.md`*
+*Related: `references/visual-effects.md`, `references/motion-systems.md`, `references/motion-dev.md`, `references/gsap-patterns.md` (scroll-driving a 3D scene), `patterns/effects/3d-effects.md` (copy-ready code)*
